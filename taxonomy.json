@@ -1,0 +1,306 @@
+{
+  "version": 3,
+  "updated": "2026-11-12",
+  "notes": [
+    "Dark = canal produzido 100% por IA. O apresentador pode ser um AVATAR do proprio criador,",
+    "a voz e sintetizada, o guiao e escrito por um modelo, a montagem e automatica e a publicacao",
+    "tambem. O nicho NAO importa: ha dark de tecnologia, de comida, de noticias, de terror.",
+    "O fluxo tipico: um bot agarra noticias/Reddit de madrugada -> guiao -> avatar fala ->",
+    "edicao automatica -> publica. Dai os sinais serem AVATAR + AUTOMACAO + CADENCIA.",
+    "Duas camadas independentes:",
+    "  1. niches -> que tipo de conteudo o canal faz (filtro de tipo, separado do Dark)",
+    "  2. ai     -> se o canal e produzido por IA (pesos, bandas de cadencia e limiar em `ai`)",
+    "Edita este ficheiro e volta a correr node .artcraft\\yt-dashboard.mjs: nada esta preso no codigo.",
+    "Sinais negativos contam contra (humano em camara, vlog, reaccao).",
+    "`overrides` forca a decisao por channel_id, quando a heuristica erra."
+  ],
+
+  "ai": {
+    "label": "Dark (100% IA)",
+    "threshold": 6,
+    "maxScore": 20,
+    "weights": {
+      "nicheFaceless": 0,
+      "descriptionAvatar": 8,
+      "descriptionAutomation": 7,
+      "descriptionAi": 6,
+      "descriptionHuman": -9,
+      "tagAvatar": 5,
+      "tagAi": 4,
+      "titleAvatar": 3,
+      "shortsActive": 1,
+      "humanKeyword": -7,
+      "vlogName": -5,
+      "reactionFormat": -6
+    },
+    "cadenceBands": [
+      { "min": 21, "points": 6, "why": "3+ uploads por dia: cadencia impossivel a mao" },
+      { "min": 10, "points": 3, "why": "10+ uploads na semana: ritmo de pipeline" },
+      { "min": 5, "points": 2, "why": "5+ uploads na semana" }
+    ],
+    "avatarKeywords": [
+      "avatar", "ai avatar", "avatar ia", "meu avatar", "digital twin", "heygen",
+      "synthesia", "d-id", "did studio", "deepbrain", "colossyan", "elai",
+      "avatar video", "virtual presenter", "apresentador virtual"
+    ],
+    "automationKeywords": [
+      "automated", "automatizado", "automatic", "auto publish", "auto-publish",
+      "pipeline", "bot", "robo", "robot", "fully ai", "100% ai", "100% ia",
+      "feito por ia", "gerado por ia", "faceless", "no face", "sem rosto",
+      "no editing", "sem editar", "ends to end", "end-to-end"
+    ],
+    "aiKeywords": [
+      "ai generated", "ai-generated", "made with ai", "ai voice", "ai narration",
+      "text to speech", "tts", "elevenlabs", "midjourney", "stable diffusion",
+      "runway", "sora", "ai story", "ai stories", "ai news", "narrado por ia",
+      "inteligencia artificial", "ai content", "ai-powered", "ai powered"
+    ],
+    "humanKeywords": [
+      "vlog", "vlogue", "podcast", "entrevista", "interview", "reaction", "react",
+      "ao vivo", "live stream", "livestream", "minha rotina", "my routine",
+      "unboxing", "day in the life", "my family", "familia", "comigo",
+      "apresentado por", "hosted by", "gravado por", "i recorded", "filmed by"
+    ],
+    "reactionKeywords": ["react", "reaction", "reagindo", "comentando"]
+  },
+
+  "formats": {
+    "shorts": { "label": "Shorts", "rule": "<= 65s ou titulo com #shorts" },
+    "long": { "label": "Longo", "rule": "> 65s" }
+  },
+
+  "niches": [
+    {
+      "id": "terror",
+      "label": "Terror",
+      "faceless": true,
+      "description": "Historias de terror narradas, creepypasta, relatos assustadores.",
+      "keywords": [
+        "terror", "horror", "assustador", "scary", "creepy", "creepypasta", "pesadelo",
+        "nightmare", "macabro", "macabre", "sobrenatural", "paranormal", "fantasma", "ghost",
+        "demonio", "demon", "exorcismo", "historia de terror", "relatos de terror",
+        "historias assustadoras", "medo", "arrepiante", "sinistro", "horror stories"
+      ]
+    },
+    {
+      "id": "misterio",
+      "label": "Misterio",
+      "faceless": true,
+      "description": "Misterios sem solucao, casos reais, true crime, desaparecimentos.",
+      "keywords": [
+        "misterio", "mystery", "sem solucao", "unsolved", "desaparec", "disappear",
+        "true crime", "caso real", "casos reais", "crime", "assassin", "homicid",
+        "investigacao criminal", "cold case", "conspiracao", "conspiracy",
+        "segredo", "obscuro", "bizarro", "inexplicavel", "disturbing"
+      ]
+    },
+    {
+      "id": "fatos",
+      "label": "Fatos/Curiosidades",
+      "faceless": true,
+      "description": "Fatos, listas, curiosidades, historia negra.",
+      "keywords": [
+        "fatos", "facts", "curiosidade", "curiosidades", "voce sabia", "did you know",
+        "dark facts", "dark history", "historia negra", "top 10", "voce nao sabia",
+        "segredos da historia", "lado obscuro", "nunca te contaram", "proibido", "banido"
+      ]
+    },
+    {
+      "id": "motivacional",
+      "label": "Motivacional",
+      "faceless": true,
+      "description": "Disciplina, mindset, produtividade, estoicismo narrado.",
+      "keywords": [
+        "motivacional", "motivation", "mindset", "disciplina", "sucesso", "produtividade",
+        "habitos", "foco", "estoicismo", "stoicism", "self improvement", "rotina matinal"
+      ]
+    },
+    {
+      "id": "psicologia",
+      "label": "Psicologia",
+      "faceless": true,
+      "description": "Psicologia, comportamento, manipulacao, mente.",
+      "keywords": [
+        "psicologia", "psychology", "manipulacao", "manipulation", "narcisista", "narcissist",
+        "psicopata", "psychopath", "gaslighting", "mente humana", "comportamento humano",
+        "linguagem corporal", "dark triad", "mental health", "ansiedade", "anxiety"
+      ]
+    },
+    {
+      "id": "cinema-animacao",
+      "label": "Cinema/Animacao",
+      "faceless": true,
+      "description": "Recaps de filmes, animacao, resumos de series.",
+      "keywords": [
+        "filme", "filmes", "serie", "series", "animacao", "anime", "resumo de filme",
+        "trailer", "cinema", "mcu", "marvel", "dc", "movie recap", "movie explained",
+        "film explained", "resumo", "recap"
+      ]
+    },
+    {
+      "id": "musica",
+      "label": "Musica",
+      "faceless": true,
+      "description": "Lo-fi, playlists, musica para estudar/dormir.",
+      "keywords": [
+        "lofi", "lo-fi", "musica para estudar", "study music", "sleep music", "playlist",
+        "relaxing music", "ambient", "piano", "musica", "music"
+      ]
+    },
+    {
+      "id": "asmr",
+      "label": "ASMR",
+      "faceless": false,
+      "description": "ASMR, sons, satisfacao.",
+      "keywords": ["asmr", "satisfying", "slime", "tingles"]
+    },
+    {
+      "id": "infantil",
+      "label": "Infantil",
+      "faceless": false,
+      "description": "Criancas, nursery rhymes, desenhos, brinquedos.",
+      "keywords": [
+        "infantil", "crianca", "criancas", "kids", "children", "nursery", "rhymes",
+        "brinquedo", "toys", "bebe", "baby", "desenho animado", "colorir", "abc"
+      ]
+    },
+    {
+      "id": "gaming",
+      "label": "Gaming",
+      "faceless": false,
+      "description": "Gameplay, lives, desafios.",
+      "keywords": [
+        "gameplay", "game play", "gamer", "jogos", "minecraft", "fortnite", "free fire",
+        "roblox", "valorant", "gta", "cs2", "lol", "fifa", "ea fc", "speedrun"
+      ]
+    },
+    {
+      "id": "financas",
+      "label": "Financas",
+      "faceless": false,
+      "description": "Dinheiro, investimento, renda, negocios.",
+      "keywords": [
+        "financas", "finance", "dinheiro", "money", "investimento", "invest", "renda",
+        "negocio", "business", "economia", "cripto", "crypto", "bitcoin", "trading",
+        "empreender", "wealth"
+      ]
+    },
+    {
+      "id": "culinaria",
+      "label": "Culinaria",
+      "faceless": false,
+      "description": "Receitas, comida, restaurantes.",
+      "keywords": [
+        "receita", "receitas", "culinaria", "cozinha", "cook", "cooking", "food",
+        "comida", "chef", "bolo", "doce", "restaurante", "mukbang"
+      ]
+    },
+    {
+      "id": "noticias",
+      "label": "Noticias",
+      "faceless": false,
+      "description": "Actualidade, jornalismo, politica.",
+      "keywords": [
+        "noticia", "noticias", "news", "jornal", "telejornal", "breaking", "urgente",
+        "politica", "governo", "eleicao", "guerra", "crise"
+      ]
+    },
+    {
+      "id": "humor",
+      "label": "Humor",
+      "faceless": false,
+      "description": "Comedia, memes, parodias.",
+      "keywords": [
+        "humor", "comedia", "piada", "memes", "engracado", "funny", "parodia",
+        "stand up", "troll", "zoeira"
+      ]
+    },
+    {
+      "id": "fitness",
+      "label": "Fitness",
+      "faceless": false,
+      "description": "Treino, saude, emagrecimento.",
+      "keywords": [
+        "fitness", "treino", "academia", "workout", "emagrec", "musculac", "saude",
+        "dieta", "hipertrofia", "corrida", "yoga", "calistenia"
+      ]
+    },
+    {
+      "id": "tecnologia",
+      "label": "Tecnologia",
+      "faceless": false,
+      "description": "Gadgets, IA, reviews, programacao.",
+      "keywords": [
+        "tecnologia", "tech", "gadget", "unboxing", "review", "inteligencia artificial",
+        "ai", "programacao", "software", "app", "iphone", "android"
+      ]
+    },
+    {
+      "id": "beleza",
+      "label": "Beleza",
+      "faceless": false,
+      "description": "Maquilhagem, cabelo, skincare.",
+      "keywords": [
+        "beleza", "makeup", "maquiagem", "hair", "cabelo", "skincare", "batom",
+        "unha", "pele"
+      ]
+    },
+    {
+      "id": "automoveis",
+      "label": "Automoveis",
+      "faceless": false,
+      "description": "Carros, motos, mecanica.",
+      "keywords": [
+        "carro", "carros", "auto", "moto", "veiculo", "motor", "drift", "turbo", "mecanica"
+      ]
+    },
+    {
+      "id": "vlogs",
+      "label": "Vlogs",
+      "faceless": false,
+      "description": "Dia a dia, lifestyle, rotina.",
+      "keywords": [
+        "vlog", "vloger", "vlogueiro", "day in the life", "24 horas", "rotina",
+        "lifestyle", "morning routine", "familia"
+      ]
+    },
+    {
+      "id": "podcast",
+      "label": "Podcast",
+      "faceless": false,
+      "description": "Conversas longas, entrevistas, cortes.",
+      "keywords": [
+        "podcast", "entrevista", "interview", "talk show", "cortes", "bate papo", "episodio"
+      ]
+    },
+    {
+      "id": "educacao",
+      "label": "Educacao",
+      "faceless": false,
+      "description": "Aulas, explicacoes, ciencia.",
+      "keywords": [
+        "aula", "explicado", "como fazer", "tutorial", "curso", "ciencia", "matematica",
+        "historia", "geografia", "fisica", "quimica", "estudar", "concurso"
+      ]
+    },
+    {
+      "id": "desporto",
+      "label": "Desporto",
+      "faceless": false,
+      "description": "Futebol, lutas, outros desportos.",
+      "keywords": [
+        "futebol", "soccer", "esporte", "esportes", "nba", "nfl", "ufc", "combate",
+        "luta", "gol", "melhores momentos", "highlights", "formula 1", "f1"
+      ]
+    },
+    {
+      "id": "outro",
+      "label": "Outro",
+      "faceless": false,
+      "description": "Sem sinal suficiente na amostra.",
+      "keywords": []
+    }
+  ],
+
+  "overrides": {}
+}

@@ -1,0 +1,607 @@
+{
+  "version": 1,
+  "updated": "2026-11-12",
+  "notes": [
+    "Toda a parametrizacao do pipeline de clonagem vive aqui. Nada esta preso no codigo.",
+    "yt-clone-build.mjs le este ficheiro, aplica os overrides que vierem por linha de comando",
+    "(ou do painel, via POST /clone) e so depois desenha cartoes, sintetiza voz e monta o video.",
+    "Cada chave em `parametros` mostra o que se pode mudar e o que significa."
+  ],
+  "parametros": {
+    "video": "resolucao, fps, codec, qualidade e audio do ficheiro final",
+    "scene": "duracao minima/maxima de cada cena e respiro depois da narracao",
+    "voice.engine": "sapi (Windows, tem pt-BR) | filmcraft (TTS da app, en-US) | none (video mudo)",
+    "cards": "tipografia, cores e tamanhos dos cartoes desenhados no FigCraft",
+    "cards.topEngine": "engine da banda de cima: remotion (tipografia cinetica original, sem footage de referencia) | effectcraft (presets do EffectCraft) | figcraft (cartoes estaticos)",
+    "cards.belowText": "texto embaixo do avatar: mode keywords (so palavras-chave) | full | off",
+    "motion": "Ken Burns (zoom lento) aplicado a cada cartao",
+    "transition": "none (corte seco) | xfade (fade/dissolve/whip entre cenas)",
+    "music": "ficheiro de musica de fundo opcional e o ganho relativo",
+    "loudness": "normalizacao EBU R128 do audio final",
+    "thumbnail": "palavras da capa 1280x720",
+    "script": "cenas por omissao; um --script <ficheiro.json> substitui isto"
+  },
+  "paths": {
+    "workDir": "D:\\CRAFT\\work\\clones",
+    "ffmpeg": "",
+    "ffprobe": "",
+    "figcraftDoc": ""
+  },
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "codec": "libx264",
+    "crf": 20,
+    "preset": "medium",
+    "pixFmt": "yuv420p",
+    "audioCodec": "aac",
+    "audioBitrate": "192k",
+    "sampleRate": 48000
+  },
+  "scene": {
+    "minSeconds": 4,
+    "maxSeconds": 18,
+    "padSeconds": 0.45
+  },
+  "voice": {
+    "engine": "voicecraft",
+    "sapi": {
+      "voice": "Microsoft Maria Desktop",
+      "rate": 0,
+      "volume": 100,
+      "python": "D:\\Comfy\\ComfyUI\\venv\\Scripts\\python.exe"
+    },
+    "filmcraft": {
+      "voice": "basic-female",
+      "pitch": "default",
+      "pace": 1
+    },
+    "edge": {
+      "python": "D:\\Comfy\\ComfyUI\\venv\\Scripts\\python.exe",
+      "voice": "pt-BR-FranciscaNeural",
+      "rate": "+0%",
+      "pitch": "+0Hz"
+    },
+    "polish": {
+      "enabled": true,
+      "engine": "soundcraft",
+      "cli": "D:\\CRAFT\\SoundCraft\\soundcraft-cli.exe",
+      "workDir": "",
+      "targetLufs": -14,
+      "ceilingDb": -1,
+      "chain": [
+        {
+          "plugin": "eq_7band",
+          "params": {
+            "hpf_on": 1,
+            "hpf_freq": 90,
+            "hpf_slope": 2,
+            "low_shelf_freq": 180,
+            "low_shelf_gain": -1.5,
+            "low_mid_freq": 400,
+            "low_mid_gain": -1,
+            "mid_freq": 1500,
+            "mid_gain": 1,
+            "high_mid_freq": 3500,
+            "high_mid_gain": 1.5,
+            "high_shelf_freq": 9000,
+            "high_shelf_gain": -1
+          }
+        },
+        {
+          "plugin": "compressor",
+          "params": {
+            "threshold": -18,
+            "ratio": 3,
+            "attack": 12,
+            "release": 120,
+            "knee": 6,
+            "makeup": 3,
+            "mix": 100
+          }
+        },
+        {
+          "plugin": "de_esser",
+          "params": {
+            "freq": 6500,
+            "range": 8,
+            "threshold": -28
+          }
+        },
+        {
+          "plugin": "saturator",
+          "params": {
+            "drive": 3,
+            "bias": 10,
+            "tone": 12000,
+            "mix": 35
+          }
+        },
+        {
+          "plugin": "maximizer",
+          "params": {
+            "threshold": -3,
+            "ceiling": -1,
+            "release": 80
+          }
+        }
+      ]
+    },
+    "voicecraft": {
+      "enabled": true,
+      "baseUrl": "http://127.0.0.1:8090",
+      "provider": "auto",
+      "profile": "adulto",
+      "format": "mp3",
+      "timeoutMs": 180000,
+      "fallbackEngine": "edge",
+      "_help": {
+        "estado dos provedores": "node D:\\CRAFT\\.artcraft\\voicecraft-status.mjs",
+        "listar vozes": "GET http://127.0.0.1:8090/api/voices?provider=nvidia&language=pt-BR",
+        "chaves": "ficam em D:\\CRAFT\\VoiceCraft\\.env (nunca aqui)",
+        "pela API (o pipeline usa isto)": {
+          "sem chave": [
+            "edge"
+          ],
+          "com chave carregada": [
+            "nvidia (2)",
+            "gemini (7)",
+            "gcloud (7)"
+          ],
+          "precisam de chave": [
+            "elevenlabs",
+            "openai",
+            "polly",
+            "azure"
+          ],
+          "locais offline": [
+            "voicestudio :3900",
+            "kokoro :8880"
+          ]
+        },
+        "pelo navegador (so o humano, no painel)": {
+          "modo": "Puter.js — sem chave, usa a conta Puter",
+          "liberta": [
+            "elevenlabs",
+            "openai",
+            "polly"
+          ],
+          "porque nao serve ao pipeline": "e JavaScript no cliente; nao existe endpoint HTTP para isso",
+          "onde": "http://127.0.0.1:8090 → aba \"Modo Puter.js\""
+        }
+      }
+    },
+    "fallback": {
+      "enabled": true,
+      "engine": "edge",
+      "perLanguage": {
+        "pt-BR": "pt-BR-FranciscaNeural",
+        "en-US": "en-US-AvaMultilingualNeural",
+        "es-ES": "es-ES-ElviraNeural"
+      }
+    }
+  },
+  "languages": {
+    "default": "pt-BR",
+    "supported": [
+      "pt-BR",
+      "en-US",
+      "es-ES"
+    ],
+    "perLanguage": {
+      "pt-BR": {
+        "engine": "voicecraft",
+        "provider": "gemini",
+        "voice": "Leda",
+        "ttsModel": "voicecraft"
+      },
+      "en-US": {
+        "engine": "voicecraft",
+        "provider": "nvidia",
+        "voice": "Magpie-Multilingual.EN-US.Mia",
+        "ttsModel": "voicecraft"
+      },
+      "es-ES": {
+        "engine": "voicecraft",
+        "provider": "nvidia",
+        "voice": "Magpie-Multilingual.ES-US.Isabela",
+        "ttsModel": "voicecraft"
+      }
+    },
+    "autoTranslate": true,
+    "translateEngine": "google",
+    "subtitleLanguages": [
+      "pt-BR",
+      "en-US",
+      "es-ES"
+    ]
+  },
+  "cards": {
+    "engine": "figcraft",
+    "topEngine": "remotion",
+    "remotion": {
+      "maxWords": 5,
+      "fontSize": 96,
+      "stagger": 7,
+      "accentEvery": 3,
+      "_help": {
+        "o que e": "banda de cima em tipografia cinetica original (Remotion/OpenMontage): palavras-chave entram palavra a palavra com spring e ficam flutuando o tempo todo",
+        "porque": "zero footage do canal de referencia na tela — copyright limpo, estrutura clonada, conteudo nosso",
+        "cores": "por defeito vem de cards.palette (ink/accent/bg); color/accentColor/backgroundColor/kickerColor sobrepõem",
+        "palavras": "maxWords = quantas palavras-chave por cena (extraidas do headline/texto, sem stopwords)",
+        "ritmo": "stagger = frames entre cada palavra entrar; accentEvery = a cada N palavras uma sai na cor de acento",
+        "desligar": "cards.topEngine = \"effectcraft\" volta ao motor de presets; \"figcraft\" volta aos cartoes estaticos"
+      }
+    },
+    "belowText": {
+      "mode": "keywords",
+      "maxWords": 3,
+      "_help": {
+        "o que e": "texto desenhado embaixo do avatar (abaixo do peito, nunca na frente do rosto)",
+        "keywords": "so as palavras-chave da cena (mode: \"keywords\"), acaba a poluicao em cima do avatar",
+        "full": "frase completa (comportamento antigo)",
+        "off": "nenhum texto embaixo"
+      }
+    },
+    "scaffold": {
+      "enabled": true,
+      "archetypes": ["whiteboard", "neon_grid", "ui_panel", "panel_stack", "full_graphic"],
+      "_help": {
+        "o que e": "desenha o cartao com o kit do explainer (whiteboard, grelha neon, painel de UI, paineis sobrepostos, grafico full) em vez de um retangulo de cor lisa.",
+        "zonas": "o grafico ocupa a metade de cima e o texto a de baixo; cada arquetipo traz o seu proprio kickerY/headlineY/bodyY, por isso o texto nunca cai em cima do desenho.",
+        "override por cena": "scene.scaffold = \"whiteboard\" (ou outro nome) escolhe o arquetipo daquela cena; sem isso rodam pela lista.",
+        "desligar": "cards.scaffold.enabled = false volta ao cartao de fundo liso."
+      }
+    },
+    "fontFamily": "Inter",
+    "weight": "Bold",
+    "palette": {
+      "bg": "#F0E6D8",
+      "ink": "#111111",
+      "accent": "#FF8A3D",
+      "muted": "#555555"
+    },
+    "padding": 90,
+    "layout": {
+      "kickerY": 0.3,
+      "headlineY": 0.365,
+      "bodyY": 0.6
+    },
+    "kicker": {
+      "size": 34,
+      "tracking": 6,
+      "maxCharsPerLine": 40
+    },
+    "headline": {
+      "size": 108,
+      "lineHeight": "106%",
+      "maxCharsPerLine": 16
+    },
+    "body": {
+      "size": 44,
+      "lineHeight": "136%",
+      "maxCharsPerLine": 30
+    },
+    "thumbnail": {
+      "width": 1280,
+      "height": 720,
+      "kickerSize": 30,
+      "headlineSize": 80,
+      "maxCharsPerLine": 20
+    },
+    "avatarLayout": {
+      "kickerY": 0.05,
+      "headlineY": 0.1,
+      "bodyY": 0.3
+    },
+    "avatarKicker": {
+      "size": 36,
+      "tracking": 3,
+      "maxCharsPerLine": 32
+    },
+    "avatarHeadline": {
+      "size": 92,
+      "lineHeight": "104%",
+      "maxCharsPerLine": 17
+    },
+    "avatarBody": {
+      "size": 40,
+      "lineHeight": "130%",
+      "maxCharsPerLine": 30
+    },
+    "motion": {
+      "enabled": true,
+      "cli": "D:\\CRAFT\\EffectCraft\\effectcraft-cli.exe",
+      "entranceSeconds": 3,
+      "kickerPreset": "fadeUpCharacters",
+      "headlinePreset": "scramble",
+      "bodyPreset": "fadeUpCharacters",
+      "_help": {
+        "presets": "typewriter · fadeUpCharacters · bounceInWords · trackingIn · scramble · blurIn · jitter · dropInLines",
+        "como funciona": "cada cena vira uma composicao de 3s no EffectCraft; o ffmpeg segura o ultimo frame",
+        "desligar": "cards.motion.enabled = false volta aos cartoes estaticos do FigCraft"
+      }
+    },
+    "paletteNote": "tema extraido do short de referencia 2k4Q3nIjq1U",
+    "textStyle": {
+      "uppercase": true,
+      "onMedia": {
+        "fill": "#FFFFFF",
+        "stroke": "#FF8A3D",
+        "strokeWidthRatio": 0.07,
+        "accent": "#FF6A00"
+      },
+      "_help": {
+        "plain": "sem media o texto usa as cores da paleta (ink / muted / accent)",
+        "kicker": "o kicker mantem a cor accent mesmo sobre media",
+        "mode": "caption = uma frase grande por cima de tudo (referencia); layers = kicker/headline/body (antigo)",
+        "markers": "escreve {EDITOR} no texto da cena para pintar essa palavra"
+      },
+      "mode": "caption",
+      "captionWords": "keywords",
+      "maxCaptionWords": 4,
+      "highlight": {
+        "mode": "markers",
+        "color": "#FF6A00",
+        "words": 1
+      }
+    },
+    "subtitle": {
+      "bold": true,
+      "uppercase": true,
+      "outlineColor": "#000000",
+      "outlineWidth": 4,
+      "fontSizeRatio": 0.026,
+      "_help": {
+        "off": "cards.subtitle.bold=false tira o negrito; outlineColor aceita #RRGGBB",
+        "captions": "captionsInCaptionMode=true volta a queimar as legendas por baixo da frase grande"
+      },
+      "maxCharsPerChunk": 62,
+      "headFill": "#FFFFFF",
+      "headOutline": "#000000",
+      "headSizeRatio": 0.062,
+      "headOutlineWidth": 12,
+      "captionsInCaptionMode": false
+    }
+  },
+  "motion": {
+    "kenBurns": {
+      "enabled": true,
+      "from": 1,
+      "to": 1.07
+    }
+  },
+  "transition": {
+    "type": "xfade",
+    "name": "fade",
+    "seconds": 0.35
+  },
+  "music": {
+    "path": "",
+    "gain": 0.1,
+    "loop": true
+  },
+  "loudness": {
+    "enabled": true,
+    "targetLufs": -14,
+    "truePeak": -1.5,
+    "range": 11
+  },
+  "thumbnail": {
+    "kicker": "DARK · IA",
+    "words": [
+      "O QUE ELES",
+      "NAO CONTAM"
+    ]
+  },
+  "avatar": {
+    "enabled": true,
+    "engine": "liveportrait",
+    "default": "frida",
+    "fallbackOrder": [
+      "liveportrait",
+      "cards"
+    ],
+    "liveportrait": {
+      "mode": "python",
+      "pythonPath": "D:\\Comfy\\ComfyUI\\venv\\Scripts\\python.exe",
+      "repoPath": "D:\\CRAFT\\tools\\LivePortrait",
+      "dockerImage": "liveportrait:latest",
+      "resolution": 720,
+      "device": "cuda",
+      "precision": "fp16",
+      "stitching": true,
+      "retargeting": {
+        "eyes": false,
+        "lips": false
+      },
+      "drivingOption": "expression-friendly",
+      "detThresh": 0.1,
+      "drivingVideo": "D:\\CRAFT\\tools\\LivePortrait\\assets\\examples\\driving\\d13.pkl",
+      "drivingNote": "d13 = apresentador a falar (boca abre). d0 era so olhar e sorriso."
+    },
+    "avatars": {
+      "frida": {
+        "name": "Frida",
+        "role": "apresentadora",
+        "sourceImage": "D:\\CRAFT\\work\\avatars\\frida.png",
+        "drivingVideo": "D:\\CRAFT\\tools\\LivePortrait\\assets\\examples\\driving\\d13.pkl",
+        "voice": {
+          "pt-BR": {
+            "engine": "voicecraft",
+            "provider": "gemini",
+            "voice": "Leda",
+            "profile": "adulto"
+          },
+          "en-US": {
+            "engine": "voicecraft",
+            "provider": "nvidia",
+            "voice": "Magpie-Multilingual.EN-US.Mia",
+            "profile": "adulto"
+          },
+          "es-ES": {
+            "engine": "voicecraft",
+            "provider": "nvidia",
+            "voice": "Magpie-Multilingual.ES-US.Isabela",
+            "profile": "adulto"
+          }
+        }
+      },
+      "luna": {
+        "name": "Luna",
+        "role": "comentarista",
+        "sourceImage": "D:\\CRAFT\\work\\avatars\\luna.png",
+        "drivingVideo": "D:\\CRAFT\\tools\\LivePortrait\\assets\\examples\\driving\\d13.pkl",
+        "voice": {
+          "pt-BR": {
+            "engine": "voicecraft",
+            "provider": "gemini",
+            "voice": "Zephyr",
+            "profile": "neutro"
+          },
+          "en-US": {
+            "engine": "voicecraft",
+            "provider": "nvidia",
+            "voice": "Magpie-Multilingual.EN-US.Mia.Calm",
+            "profile": "neutro"
+          },
+          "es-ES": {
+            "engine": "voicecraft",
+            "provider": "nvidia",
+            "voice": "Magpie-Multilingual.ES-US.Isabela.Calm",
+            "profile": "neutro"
+          }
+        }
+      }
+    },
+    "musetalk": {
+      "enabled": false,
+      "mode": "docker",
+      "dockerImage": "musetalk:latest",
+      "falApiKey": "",
+      "sourceVideo": "",
+      "faceRegion": [
+        256,
+        256
+      ],
+      "preparation": true,
+      "tensorrt": false
+    },
+    "hunyuan": {
+      "enabled": false,
+      "mode": "cloud",
+      "cloudProvider": "runpod",
+      "emotionReference": "",
+      "multiCharacter": false
+    },
+    "cloud": {
+      "enabled": false,
+      "provider": "runpod",
+      "runpod": {
+        "apiKey": "",
+        "gpuType": "RTX 3090",
+        "gpuCount": 1,
+        "maxPricePerHour": 0.5,
+        "templateId": "",
+        "volumeId": "",
+        "idleTimeoutSeconds": 300
+      },
+      "vastai": {
+        "apiKey": "",
+        "gpuType": "RTX 3090",
+        "maxPricePerHour": 0.35,
+        "reliability": 0.9
+      },
+      "lambda": {
+        "apiKey": "",
+        "instanceType": "gpu_1x_a100",
+        "maxPricePerHour": 1.5
+      },
+      "autoStart": false,
+      "maxCostPerVideoUsd": 0.5,
+      "costTracking": true
+    },
+    "compose": {
+      "mode": "split",
+      "bandZoom": 0.8,
+      "align": "center",
+      "margin": 30,
+      "boxWidth": 560,
+      "boxY": 0.5,
+      "border": false,
+      "borderColor": "#FF8A3D",
+      "borderWidth": 3,
+      "_help": {
+        "split": "a banda de baixo pertence ao apresentador, alinhado ao fundo como nas referencias",
+        "bandZoom": "subir para 0.9 aproxima a cara; descer para 0.7 mostra mais ombros"
+      },
+      "bandBackdrop": "blur"
+    }
+  },
+  "script": {
+    "path": "",
+    "kicker": "DARK · IA",
+    "scenes": [
+      {
+        "id": "s01",
+        "avatar": "frida",
+        "kicker": "DARK · IA",
+        "headline": "O QUE ELES NAO CONTAM",
+        "body": "Canal 100% IA: avatar, voz sintetizada e montagem automatica.",
+        "narration": "Ola, eu sou a Frida. Este canal nao tem apresentador humano: o rosto e um avatar, a voz e sintetizada e a montagem corre sozinha durante a noite."
+      },
+      {
+        "id": "s02",
+        "avatar": "luna",
+        "kicker": "COMENTARIO · LUNA",
+        "headline": "BOT, GUIAO, AVATAR",
+        "body": "De madrugada: noticias, guiao, voz, edicao, publicacao.",
+        "narration": "Eu sou a Luna. O fluxo e sempre o mesmo: um robo apanha as noticias do dia, escreve o guiao, o avatar fala e a edicao publica sem ninguem tocar em nada."
+      },
+      {
+        "id": "s03",
+        "avatar": "frida",
+        "kicker": "ANALISE · FRIDA",
+        "headline": "A ESTRUTURA COPIA-SE",
+        "body": "FigCraft desenha, o TTS narra, o ffmpeg monta.",
+        "narration": "E o que interessa e isto: a estrutura copia-se. Cartoes tipograficos, narracao sintetizada e montagem deterministica. O tema muda, o pipeline fica."
+      },
+      {
+        "id": "s04",
+        "avatar": "luna",
+        "kicker": "FECHO · LUNA",
+        "headline": "DUAS VOZES, UM PIPELINE",
+        "body": "Frida apresenta, Luna comenta, o sistema entrega.",
+        "narration": "Duas vozes, um pipeline. Eu comento, a Frida apresenta, e o sistema entrega o video pronto em tres idiomas."
+      }
+    ]
+  },
+  "target": {
+    "channel": "",
+    "channelId": "",
+    "url": ""
+  },
+  "layout": {
+    "mode": "split",
+    "topRatio": 0.55,
+    "bottomFill": "#12100E",
+    "captionGap": 0.032,
+    "fillWhenNoPresenter": true,
+    "divider": {
+      "enabled": true,
+      "color": "#FF8A3D",
+      "width": 4
+    },
+    "_help": {
+      "how": "cards/buildMotionCards render at width x (height*topRatio); the avatar fills the rest",
+      "noPresenter": "scene.presenter = \"none\" removes the presenter from that scene",
+      "fullFrame": "layout.mode = \"full\" goes back to the old single-canvas cards",
+      "perShot": "scene.layout / scene.splitRatio / scene.textSide sobrepoem o layout global",
+      "textSide": "auto coloca a frase no vazio do plano; top/mid/bottom forcam a altura",
+      "measured": "yccXYW5liLE: 33 planos, divisao mediana 57% (17%-79%), 16 split / 9 whiteboard / 7 grafico"
+    },
+    "perShot": true,
+    "textSide": "auto"
+  }
+}

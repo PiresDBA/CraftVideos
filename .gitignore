@@ -1,0 +1,26 @@
+# saidas de render e media (pesado)
+work/
+backups/
+*.mp4
+*.webm
+*.png
+*.jpg
+*.jpeg
+*.wav
+*.mp3
+*.ass
+*.srt
+
+# aplicacoes e motores instalados
+AniCraft/
+VectorCraft/
+FilmCraft/
+EffectCraft/
+FigCraft/
+Craft Anything/
+Comfy/
+OpenMontage/
+VoiceCraft/
+SoundCraft/
+tools/
+node_modules/

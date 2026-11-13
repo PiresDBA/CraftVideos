@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explainer effects — resultado</title>
+<style>
+  :root {
+    --bg: #0B0F14;
+    --panel: #12161C;
+    --line: #243040;
+    --text: #EAF2FF;
+    --muted: #8FA3B8;
+    --accent: #FF6A00;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 15px/1.5 -apple-system, "Segoe UI", Inter, system-ui, sans-serif;
+    padding: 40px 32px 80px;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; }
+  header { border-bottom: 1px solid var(--line); padding-bottom: 24px; margin-bottom: 36px; }
+  h1 { font-size: 30px; margin: 0 0 8px; letter-spacing: -0.02em; }
+  h1 span { color: var(--accent); }
+  p.lead { color: var(--muted); margin: 0; max-width: 70ch; }
+  .meta { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 16px; font-size: 13px; color: var(--muted); }
+  .meta b { color: var(--text); font-weight: 600; }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.13em; color: var(--muted); margin: 44px 0 16px; font-weight: 600; }
+  .videos { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+  video { width: 100%; display: block; border-radius: 8px; background: #000; }
+  .cap { margin-top: 10px; font-size: 13px; color: var(--muted); }
+  .cap b { color: var(--text); font-weight: 600; display: block; margin-bottom: 3px; }
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: start; }
+  .shot { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .shot img { width: 100%; height: auto; display: block; background: #000; }
+  .shot .body { padding: 10px 12px 12px; }
+  .shot .name { font-family: Consolas, monospace; font-size: 13px; color: var(--accent); }
+  .shot .desc { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+  footer { margin-top: 52px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+  code { font-family: Consolas, monospace; color: var(--text); }
+  @media (max-width: 1100px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 760px) { .videos, .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Explainer effects — <span>9 composições</span></h1>
+    <p class="lead">
+      Linguagem visual reconstruída a partir do short de referência <code>yccXYW5liLE</code>:
+      quadro branco a traço, legenda cinética com palavra-herói laranja, grelha de cartões
+      com contorno néon, painel de app e o corte split com o apresentador em baixo.
+    </p>
+    <div class="meta">
+      <div><b>1080×1920</b> · 30 fps</div>
+      <div>referência: <b>60.23 s · 33 planos</b></div>
+      <div>ritmo medido: <b>1.83 s/plano</b></div>
+      <div>acento <b>#FF6A00</b></div>
+    </div>
+  </header>
+
+  <h2>Os dois vídeos</h2>
+  <div class="videos">
+    <div class="card">
+      <video src="/demo_effects_reel.webm" controls loop muted playsinline poster="/frames/E4_neon_grid.png"></video>
+      <div class="cap"><b>demo_effects_reel · 31.2 s</b>Os oito efeitos em sequência, cada um com o seu tempo.</div>
+    </div>
+    <div class="card">
+      <video src="/demo_split_layout.webm" controls loop muted playsinline poster="/frames/D1_split_demo.png"></video>
+      <div class="cap"><b>demo_split_layout · 4.4 s</b>Banda de cima (1094 px) + zona do apresentador (826 px) = 1920.</div>
+    </div>
+  </div>
+
+  <h2>O clone corrigido (sem apresentador)</h2>
+  <div class="videos">
+    <div class="card">
+      <video src="/clone_pt-BR.webm" controls loop playsinline poster="/frames/E1_whiteboard.png"></video>
+      <div class="cap"><b>final_pt-BR · 67 s · 6 cenas</b>Narração VoiceCraft (nvidia Magpie pt-BR), cartões EffectCraft, legenda ASS. A legenda já sai limpa — o corpo do cartão ainda transborda e o layout continua genérico.</div>
+    </div>
+    <div class="card" style="display:flex;flex-direction:column;justify-content:center">
+      <div class="cap" style="font-size:14px;line-height:1.7">
+        <b>O que mudou no pipeline</b>
+        <code>buildMotionCards()</code>: em modo <code>caption</code> só o corpo é saltado — o cartão volta a ter kicker e manchete.<br>
+        <code>writeSceneASS()</code>: faltava o campo <code>Effect</code> vazio na linha <code>Dialogue</code>, e o libass imprimia <code>{\an2\pos(...)}</code> como texto.<br>
+        Filtro <code>subtitles</code>: <code>fontsdir</code> com dois pontos do drive quebrava o parser.
+      </div>
+    </div>
+  </div>
+
+  <h2>As nove composições</h2>
+  <div class="grid">
+    <div class="shot wide"><img src="/frames/E1_whiteboard.png" alt=""><div class="body"><div class="name">E1_whiteboard</div><div class="desc">Quadro branco: line-art, caneta, “A VIDEO EDITOR” com o A laranja.</div></div></div>
+    <div class="shot wide"><img src="/frames/E2_caption_top.png" alt=""><div class="body"><div class="name">E2_caption_top</div><div class="desc">Legenda cinética no topo do quadro.</div></div></div>
+    <div class="shot wide"><img src="/frames/E3_caption_bottom.png" alt=""><div class="body"><div class="name">E3_caption_bottom</div><div class="desc">Legenda no rodapé, sobre o apresentador.</div></div></div>
+    <div class="shot"><img src="/frames/E4_neon_grid.png" alt=""><div class="body"><div class="name">E4_neon_grid</div><div class="desc">Grelha 3×2 com contorno néon e asterisco.</div></div></div>
+    <div class="shot"><img src="/frames/E5_ui_panel.png" alt=""><div class="body"><div class="name">E5_ui_panel</div><div class="desc">Painel de app com moldura luminosa e barra de prompt.</div></div></div>
+    <div class="shot"><img src="/frames/E6_split_band.png" alt=""><div class="body"><div class="name">E6_split_band</div><div class="desc">Banda superior do split · 1080×1094.</div></div></div>
+    <div class="shot"><img src="/frames/E7_panel_stack.png" alt=""><div class="body"><div class="name">E7_panel_stack</div><div class="desc">Três painéis sobrepostos — o “vários vídeos acima”.</div></div></div>
+    <div class="shot wide"><img src="/frames/E8_full_graphic.png" alt=""><div class="body"><div class="name">E8_full_graphic</div><div class="desc">Gráfico a sangrar no quadro inteiro — “a tela fica maior”.</div></div></div>
+    <div class="shot"><img src="/frames/E9_presenter_zone.png" alt=""><div class="body"><div class="name">E9_presenter_zone</div><div class="desc">Metade inferior, onde entra o avatar · 1080×826.</div></div></div>
+  </div>
+
+  <footer>
+    Gerado por <code>work/clone-tooling/explainer-effects.mjs</code> ·
+    receita em <code>CONTRATO_FABRICA.md §3.4</code> · clipes em <code>work/explainer-study/clips/</code>.
+    Sem footage de apresentador: <code>E9</code> é guia de enquadramento.
+  </footer>
+</div>
+</body>
+</html>
