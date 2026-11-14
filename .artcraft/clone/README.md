@@ -7,11 +7,11 @@ nestes módulos, sem I/O e sem estado global, para poder ser testada.
 ```
 .artcraft/clone/lib/
   text.mjs     wrap, keyWords v2, keywordsWithFallback, styleWords,
-               highlightRuns, accentRuns, captionChunks
+               sceneKicker, highlightRuns, accentRuns, captionChunks
   layout.mjs   layoutMetrics, sceneLayout, textAnchorY
   colour.mjs   assColour (#RRGGBB <-> &HAABBGGRR)
-  ass.mjs      assTime, formatSRTTime, assStyleHeader, writeSceneASS,
-               buildASS, buildSRT
+  ass.mjs      assDialogue, assTime, formatSRTTime, assStyleHeader,
+               writeSceneASS, buildASS, buildSRT
   media.mjs    sceneVisual (a pasta visuals/ e a guarda do topEngine)
   runtime.mjs  run (com timeout), findFfmpeg, httpGet, httpPost,
                detectVRAM, pythonEnv
@@ -41,6 +41,45 @@ nestes módulos, sem I/O e sem estado global, para poder ser testada.
 | `manifest.json` embute a config crua | `redactConfig` remove chaves e tokens |
 | cada rebuild re-sintetizava a narração | cache por impressão digital do texto + voz + cadeia de polimento |
 
+## O que a F0 (13-11-2026) consertou
+
+O build de validação do `ref5-clone` revelou defeitos que os testes não
+apanhavam, porque estavam no motor e não na biblioteca:
+
+| Defeito | Sintoma | Correcção |
+|---|---|---|
+| **Campo `Effect` em falta** no `Dialogue:` do `Head` | o vídeo queimava `1075)}AGENTES IA EXECUTAM` gigante por cima da banda | `assDialogue()` monta a linha com os 10 campos do `Format:`; teste de regressão |
+| **A frase grande duplicada** | a banda Remotion desenhava as palavras e a camada ASS desenhava-as outra vez, por cima | `phraseInBand: true` quando a banda já pintou a frase |
+| **`cfg.script.kicker`** | `TypeError` em três call sites quando o guião vem por `--script` (a config não tem secção `script`) | `sceneKicker(scene, cfg)` — acesso sempre seguro |
+| **`phrase` em TDZ** | `ReferenceError` com uma cena sem texto | a declaração subiu para antes do primeiro uso |
+| **Legendas dependiam do `cwd`** | a partir de outro directório, a primeira cena falhava com `Unable to open sub_pt_BR_01.ass` | o `.ass` vai para a pasta de build da cena e o ffmpeg corre com `cwd: buildDir` |
+| **Raiz fixa `D:\CRAFT`** | o motor não corria noutra máquina | `CC = path.resolve(HERE, '..')` |
+| **`paths.ffmpeg` decorativo** | a config prometia um caminho que o motor ignorava | a config é honrada depois de carregada |
+| **`report.md` com chaves** | as chaves de API do avatar iam em claro para o relatório | `redactConfig(cfg.avatar)` |
+| **`--slug` sem sanitizar** | `--slug ../../..` escrevia fora da pasta de builds | slug limitado a `[A-Za-z0-9_-]`, 64 chars |
+| **`--script` inexistente** | ignorado em silêncio: o motor compunha o guião da config | falha com `script nao encontrado` (exit 2) |
+
+### O bug do `Effect` — por que era invisível
+
+O `Format:` dos Events do ASS declara dez campos (Layer, Start, End, Style,
+Name, MarginL, MarginR, MarginV, **Effect**, Text). O evento do `Head` era
+escrito com nove. A vírgula dentro de `\pos(540,1075)` ocupava então o
+lugar do `Effect` e o ffmpeg passava a ler o texto a partir de `1075)}`:
+as coordenadas queimavam-se no vídeo como texto gigante.
+
+Agora existe **um só** construtor (`assDialogue()`) para as três linhas de
+`Dialogue:` do módulo, e o teste de regressão compara o número de campos de
+cada evento com o que o `Format:` declara.
+
+### Teste de fumo da linha de comando
+
+`engine-cli-smoke.test.mjs` lanca o motor como processo filho e verifica o
+que o utilizador vê: `--validate` com e sem script, `--dry-run` com config
+sem secção `script`, `--script` inexistente e `--slug` com traversal.
+Não toca no workspace: a config e o guião vivem no `%TEMP%` e são removidos
+no fim.
+
+
 ## Comandos
 
 ```sh
@@ -57,6 +96,8 @@ node .artcraft/yt-clone-build.mjs --slug ref5-clone \
 # testes (PowerShell / bash — as aspas contam no Windows)
 node --test ".artcraft/clone/lib/*.test.mjs"
 ```
+
+113 testes (100 da biblioteca + 13 de fumo da CLI).
 
 ## Regras que os módulos respeitam
 

@@ -110,6 +110,24 @@
       "titulo": "Redacção de segredos no manifesto",
       "detalhe": "manifest.json embute a config inteira; se o utilizador preencher chaves de API, elas saiam no artefacto. redactConfig() substitui valores de chaves/ tokens/ segredos por ***redacted***, sem tocar no resto da config nem no objecto original.",
       "estado": "feito"
+    },
+    {
+      "id": "T28",
+      "titulo": "F0 — sanear o motor (P0 do ASS + P1 da revisão)",
+      "detalhe": "QA do build v3 revelou o P0: o evento Head do Dialogue tinha 9 campos em vez dos 10 do Format (faltava Effect) — a virgula de \\pos(540,1075) ocupava o lugar e o ffmpeg queimava '1075)}AGENTES...' gigante por cima da banda Remotion. Corrigido com um construtor unico assDialogue() + teste de regressao. P1: frase duplicada (phraseInBand), cfg.script.kicker (sceneKicker), TDZ do phrase, legendas presas ao cwd (ass para a pasta da cena + cwd: buildDir), raiz D:\\CRAFT fixa (path.resolve), paths.ffmpeg decorativo (config honrada), report.md sem redactConfig, --slug sem sanitizar, --script inexistente ignorado. Novo teste de fumo da CLI (engine-cli-smoke.test.mjs). 113 testes PASS.",
+      "estado": "feito"
+    },
+    {
+      "id": "T29",
+      "titulo": "F0 — QA por frame e correccao do OCR nativo",
+      "detalhe": "O OCR devolvia vazio e a excepcao 'Um ou mais erros.' enganava o diagnostico. Causa real: (1) o script de QA lia $data.Words, mas o JSON do win-ocr.ps1 tem a forma {engine,count,items[].lines[].words[]}; (2) o catch do win-ocr.ps1 engolia a exceccao verdadeira do AggregateException; (3) o filtro -Dir so aceitava *.jpg e os frames sao *.png. Ferramentas corrigidas em tools/win-ocr.ps1 (desembrulha a exceccao real, aceita png/jpg, valida existencia) e novo tools/qa-clone-frames.ps1 (nomes com InvariantCulture, OCR em lote, detector de coordenadas vazadas e de texto fora da area segura).",
+      "estado": "feito"
+    },
+    {
+      "id": "T30",
+      "titulo": "F0 — QA visual do build reconstruido",
+      "detalhe": "Rebuild do ref5-clone com o motor saneado: final_pt-BR.mp4 (1080x1920, h264+aac 48kHz stereo, 75.27s, 8.97MB, -14.0 LUFS). QA por frame das 6 cenas: OCR le 'DARK | AGENTES IA | EXECUTAM' etc. sem coordenadas vazadas e 0 alertas; leitura visual confirma que o texto gigante '1728))}AGENTES IA EXECUTAM' do build anterior desapareceu e a frase nao esta duplicada sobre a banda Remotion.",
+      "estado": "feito"
     }
   ]
 }

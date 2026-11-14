@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { wrap, keyWords, keywordsWithFallback, styleWords, highlightRuns, accentRuns, captionChunks, STOPWORDS } from './text.mjs';
+import { wrap, keyWords, keywordsWithFallback, styleWords, sceneKicker, highlightRuns, accentRuns, captionChunks, STOPWORDS } from './text.mjs';
 
 test('wrap parte em palavras e nunca ultrapassa o limite', () => {
   const lines = wrap('palavra um dois tres quatro cinco', 12);
@@ -125,6 +125,31 @@ test('styleWords respeita uppercase: false', () => {
 test('styleWords nunca perde palavras', () => {
   const words = ['a', 'b', 'c'];
   assert.equal(styleWords(words, {}).length, words.length);
+});
+
+// ---- sceneKicker (o bug do cfg.script.kicker)
+
+test('sceneKicker usa o kicker da cena', () => {
+  assert.equal(sceneKicker({ kicker: 'DARK' }, { script: { kicker: 'OUTRO' } }), 'DARK');
+});
+
+test('sceneKicker cai para o kicker global da config', () => {
+  assert.equal(sceneKicker({}, { script: { kicker: 'DARK' } }), 'DARK');
+});
+
+test('sceneKicker nao rebenta quando a config nao tem script', () => {
+  // BUG REAL: `cfg.script.kicker` rebentava com TypeError em 3 call sites do
+  // motor quando o guiao vinha por --script (a config nao tem seccao script).
+  assert.equal(sceneKicker({}, {}), '');
+  assert.equal(sceneKicker({ kicker: 'IA' }, {}), 'IA');
+});
+
+test('sceneKicker respeita uppercase: false', () => {
+  assert.equal(sceneKicker({ kicker: 'dark' }, {}, { uppercase: false }), 'dark');
+});
+
+test('sceneKicker junta um array de kickers', () => {
+  assert.equal(sceneKicker({ kicker: ['DARK', 'IA'] }, {}), 'DARK · IA');
 });
 
 // ---- des-duplicacao (a v1 fazia, a v2 tinha perdido)

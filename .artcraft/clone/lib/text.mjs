@@ -183,6 +183,30 @@ export function styleWords(words, textStyle = {}) {
 }
 
 /**
+ * Kicker (etiqueta) de uma cena: o da cena, senão o global da config.
+ *
+ * Antes vivia espalhado por tres call sites do motor, todos com o mesmo
+ * risco: `cfg.script.kicker` rebentava com TypeError quando a config nao
+ * tem seccao "script" — o caso normal, porque o guiao vem por `--script`.
+ * Aqui o acesso e sempre seguro.
+ *
+ * @param {object} scene   a cena ({ kicker })
+ * @param {object} cfg     a config ({ script: { kicker } })
+ * @param {object} opts    { uppercase: boolean }
+ * @returns {string}       o kicker pronto a desenhar
+ */
+export function sceneKicker(scene, cfg, opts = {}) {
+  const raw = (scene && scene.kicker) ||
+    (cfg && cfg.script && cfg.script.kicker) ||
+    '';
+  const one = (v) => {
+    const s = String(v == null ? '' : v);
+    return opts.uppercase === false ? s : s.toUpperCase();
+  };
+  return Array.isArray(raw) ? raw.map(one).join(' · ') : one(raw);
+}
+
+/**
  * Divide a frase em runs para pintar uma palavra na cor de acento.
  *
  * Modos:

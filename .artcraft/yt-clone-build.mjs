@@ -30,14 +30,19 @@ import { renderKineticCard, remotionAvailable, REMOTION_COMPOSER } from './yt-mo
 // ---- modulos internos (logica pura isolada e testavel)
 import { loadConfig as loadConfigFile, validateConfig, redactConfig, rawConfig } from './clone/lib/config.mjs';
 import { run, findFfmpeg, httpGet, httpPost, detectVRAM, pythonEnv } from './clone/lib/runtime.mjs';
-import { wrap, keyWords, keywordsWithFallback, styleWords } from './clone/lib/text.mjs';
+import { wrap, keyWords, keywordsWithFallback, styleWords, sceneKicker } from './clone/lib/text.mjs';
 import { layoutMetrics, sceneLayout, textAnchorY } from './clone/lib/layout.mjs';
 import { writeSceneASS, buildASS, buildSRT } from './clone/lib/ass.mjs';
 import { narrationFingerprint, readNarrationCache, writeNarrationCache } from './clone/lib/cache.mjs';
 import { sceneVisual } from './clone/lib/media.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const CC = "D:\\CRAFT";
+
+// A raiz do workspace e a pasta que contem este ficheiro (.artcraft/).
+// Antes era "D:\\CRAFT" fixo, o que partia o motor em qualquer outra
+// maquina — num repo publico isso e fatal. Resolver a partir do proprio
+// ficheiro torna o pipeline portavel: clona-se a pasta e funciona.
+const CC = path.resolve(HERE, '..');
 
 // ---------------------------------------------------------------- args
 
@@ -465,7 +470,15 @@ async function localizeScenes(cfg, scenes, lang) {
 }
 
 function loadScenes(cfg) {
-  if (SCRIPT_PATH && fs.existsSync(SCRIPT_PATH)) {
+  // Um --script que nao existe era ignorado em silencio: o motor compilava o
+  // guiao da config e produzia um video com o conteudo errado, sem aviso.
+  // Agora falha com mensagem clara.
+  if (SCRIPT_PATH && !fs.existsSync(SCRIPT_PATH)) {
+    console.error('script nao encontrado: ' + SCRIPT_PATH);
+    console.error('verifica o caminho (ou tira o --script e usa as cenas da config)');
+    process.exit(2);
+  }
+  if (SCRIPT_PATH) {
     const data = JSON.parse(fs.readFileSync(SCRIPT_PATH, 'utf8').replace(/^\uFEFF/, ''));
     const scenes = data.scenes || [];
     if (!scenes.length) {
@@ -595,7 +608,7 @@ async function buildMotionCards(cfg, scenes, dir, avatarMode, lang, durations) {
     const onMediaFill = (fallback) => (onMedia ? onMediaStyle.fill || '#FFFFFF' : fallback);
     const say = (v) => (upper ? String(v || '').toUpperCase() : String(v || ''));
 
-    const kicker = say(sc.kicker || cfg.script.kicker);
+    const kicker = sceneKicker(sc, cfg, { uppercase: upper });
     const headline = say(Array.isArray(sc.headline) ? sc.headline.join(' ') : sc.headline);
     const body = say(Array.isArray(sc.body) ? sc.body.join(' ') : sc.body);
 
@@ -684,7 +697,7 @@ async function buildRemotionCards(cfg, scenes, dir, avatarMode, lang, durations)
     // titulo ja vem em CAIXA ALTA, as de reserva nao — sem isto a cena ficava
     // "AGENTES | Programas | autonomously" a meio caminho.
     const bandWords = styleWords(words, TS);
-    const kicker = String(sc.kicker || cfg.script.kicker || '');
+    const kicker = sceneKicker(sc, cfg, { uppercase: TS.uppercase !== false });
 
     const out = path.join(cardsDir, 'scene' + String(i + 1).padStart(2, '0') + '.mp4');
     const ok = await renderKineticCard({
@@ -772,7 +785,7 @@ async function buildCards(cfg, scenes, dir, avatarMode, lang) {
     const parent = frameIds[i];
     const upper = !(C.textStyle && C.textStyle.uppercase === false);
     const say = (v) => (Array.isArray(v) ? v.map(say) : upper ? String(v == null ? '' : v).toUpperCase() : String(v == null ? '' : v));
-    const kicker = say(s.kicker || cfg.script.kicker);
+    const kicker = sceneKicker(s, cfg, { uppercase: upper });
     const headline = say(s.headline || s.title);
     const body = say(s.body || s.sub);
 
@@ -1661,6 +1674,15 @@ async function buildSceneClips(cfg, cards, tracks, avatarClips, scenes, broll, s
       lastVideo = 'vseam';
     }
 
+    // ---- frase da cena (titulo/caption/headline), normalizada
+    // Declarada aqui, ANTES de qualquer uso: antes vivia em baixo, no bloco
+    // das legendas, e o bloco do texto abaixo do avatar usava-a primeiro —
+    // com uma cena sem texto, isso era um ReferenceError (TDZ) que matava o
+    // build inteiro.
+    const scene = scenes[i] || {};
+    const phrase = scene.text || scene.caption ||
+      (Array.isArray(scene.headline) ? scene.headline.join(' ') : scene.headline) || '';
+
     // ---- texto embaixo do avatar (nao na frente do rosto, apenas abaixo do peito)
     // cards.belowText.mode: "keywords" = so as palavras-chave (o usuario pediu: a frase
     // completa poluia o avatar); "full" = frase inteira; "off" = nada. maxWords limita.
@@ -1729,8 +1751,6 @@ async function buildSceneClips(cfg, cards, tracks, avatarClips, scenes, broll, s
 
     // Subtitles
     const subsEnabled = subtitles?.[lang];
-    const scene = scenes[i] || {};
-    const phrase = scene.text || scene.caption || (Array.isArray(scene.headline) ? scene.headline.join(' ') : scene.headline) || '';
     if (subsEnabled && (t.text || phrase)) {
       // O P0 da revisao: esta chamada decide o estilo das legendas (tinta sobre
       // o cartao creme vs branco sobre imagem). Com a banda de cima em Remotion,
@@ -1747,16 +1767,28 @@ async function buildSceneClips(cfg, cards, tracks, avatarClips, scenes, broll, s
           anchorY: textAnchorY(cfg, SL),
           // reservas para a frase grande: quando o titulo e curto demais
           phraseFallbacks: [scene.body, scene.narration],
+          // Com a banda de cima em Remotion, a frase JA esta pintada na banda
+          // (tipografia cinetica com as mesmas palavras-chave). A camada ASS
+          // duplicava-a por cima — a banda ficava ilegivel.
+          phraseInBand: topEngineOf(cfg) === 'remotion',
         }
       );
       if (sceneAss) {
         const simpleName = 'sub_' + lang.replace(/[^A-Za-z0-9]/g, '_') + '_' + String(i + 1).padStart(2, '0') + '.ass';
-        fs.copyFileSync(sceneAss, path.join(CC, simpleName));
+        // A legenda vai para a pasta de build DA CENA, nao para a raiz do
+        // workspace: o filtro `subtitles=` recebe um nome relativo e o ffmpeg
+        // resolve-o contra o cwd do processo. Com a legenda na raiz, o build
+        // so funcionava se o motor fosse lancado a partir de D:\CRAFT —
+        // a partir de outro directorio, a primeira cena falhava com
+        // "Unable to open sub_pt_BR_01.ass". O cwd do ffmpeg e fixado abaixo.
+        fs.copyFileSync(sceneAss, path.join(buildDir, simpleName));
         // No fontsdir here: the drive colon cannot be escaped reliably through the
         // filtergraph parser ("No option name near '/Windows/Fonts'"). With 'Arial' as the
         // style font (which exists on this Windows) libass finds it via the native Windows
-        // font provider; the earlier literal `1075)}` was caused by the missing empty Effect
-        // field in the Dialogue line - now fixed with `,,` before the text.
+        // font provider.
+        // (O literal "1075)}" que aparecia no video nao era deste filtro: era o
+        // campo "Effect" em falta na linha Dialogue — corrigido em
+        // clone/lib/ass.mjs, com teste de regressao em ass.test.mjs.)
         filterParts.push('[' + lastVideo + ']subtitles=' + simpleName + '[vsub]');
         lastVideo = 'vsub';
       }
@@ -1789,7 +1821,9 @@ async function buildSceneClips(cfg, cards, tracks, avatarClips, scenes, broll, s
       '-c:a', cfg.video.audioCodec, '-b:a', cfg.video.audioBitrate, '-ar', String(cfg.video.sampleRate), '-ac', '2',
       '-shortest', out
     );
-    const r = await run(FFMPEG, args, { timeoutMs: TIMEOUT.ffmpeg });
+    // cwd: buildDir — o filtro de legendas usa o nome relativo do .ass, que
+    // o ffmpeg resolve contra o cwd do processo.
+    const r = await run(FFMPEG, args, { cwd: buildDir, timeoutMs: TIMEOUT.ffmpeg });
     if (r.code !== 0) throw new Error('ffmpeg (cena ' + (i + 1) + ' ' + lang + '): ' + String(r.stderr).slice(-800));
     clips.push({ file: out, duration: frames / fps, presenter: hasAvatar ? wanted : null });
   }
@@ -2107,6 +2141,14 @@ async function main() {
     transition: TRANSITION_TYPE,
   });
 
+  // ffmpeg/ffprobe: a config pode apontar para um binario proprio
+  // (paths.ffmpeg / paths.ffprobe). Antes estes campos eram decorativos —
+  // o motor procurava sempre no PATH do utilizador e no do hermes, e a
+  // mensagem de erro mandava "preenche paths.ffmpeg na config" sem que
+  // isso tivesse qualquer efeito. Agora a config e honrada.
+  FFMPEG = findFfmpeg('ffmpeg', cfg.paths?.ffmpeg || '');
+  FFPROBE = findFfmpeg('ffprobe', cfg.paths?.ffprobe || '');
+
   // --validate: diagnostico da config e nada mais. Sem ficheiros, sem rede,
   // sem custo — e o que se corre antes de cada build para apanhar typos.
   if (VALIDATE) {
@@ -2144,10 +2186,15 @@ async function main() {
   };
 
   const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
-  const slug = SLUG || path.basename(SCRIPT_PATH || '', '.json') || 'clone-' + stamp;
-  // path.resolve: os caminhos que daqui saem resolvem contra D:\CRAFT, e nao
-  // contra o directorio de onde o comando foi lancado (o run() usa
-  // process.cwd() como cwd por omissao).
+  // slug: nome seguro para uma pasta. Sem esta proteccao, "--slug ../../.."
+  // escrevia fora da pasta de builds (o daemon 8799 aceita pedidos locais
+  // sem autenticacao, e um browser pode fazer POST cross-origin a localhost).
+  const rawSlug = SLUG || path.basename(SCRIPT_PATH || '').replace(/\.[^.]+$/, '') || 'clone-' + stamp;
+  const slug = String(rawSlug).replace(/[^A-Za-z0-9_-]/g, '-').replace(/^-+|-+$/g, '').slice(0, 64) ||
+    ('clone-' + stamp);
+  // path.resolve: os caminhos que daqui saem resolvem contra a raiz do
+  // workspace (D:\CRAFT), e nao contra o directorio de onde o comando foi
+  // lancado (o run() usa process.cwd() como cwd por omissao).
   const dir = path.resolve(OUT_DIR || cfg.paths.workDir, slug);
   fs.mkdirSync(dir, { recursive: true });
 
@@ -2448,7 +2495,10 @@ async function main() {
     video: cfg.video,
     scene: cfg.scene,
     voice: cfg.voice.engine,
-    avatar: cfg.avatar,
+    // redactConfig: o report.md e um artefacto legivel e facil de partilhar.
+    // A config de avatar pode ter chaves de API (runpod, vastai, lambda,
+    // musetalk) — no manifest.json ja eram redigidas, aqui nao ficavam.
+    avatar: redactConfig(cfg.avatar),
     languages: cfg.languages,
     motion: cfg.motion,
     transition: cfg.transition,

@@ -93,6 +93,45 @@ export function assStyleHeader(cfg, bandH) {
  * cena 1 sobre a imagem da cena 2. Este ficheiro tem uma unica entrada, que
  * cobre a cena.
  */
+/**
+ * Linha de `Dialogue:` com o numero de campos exacto que o `Format:` dos
+ * Events declara (Layer, Start, End, Style, Name, MarginL, MarginR,
+ * MarginV, Effect, Text = 10).
+ *
+ * O campo "Effect" e vazio, mas TEM de existir. Sem ele, a virgula dentro
+ * de uma tag de posicao (`\pos(540,1075)`) ocupa o lugar do Effect e o
+ * ffmpeg passa a ler o texto a partir de "1075)}" — as coordenadas
+ * queimam-se no video como texto gigante.
+ *
+ * Bug real em 2026-11-13: o evento do Head era escrito a mao com 9 campos
+ * e a banda de cima ficava coberta por "1075)}AGENTES...". Ver o teste de
+ * regressao em ass.test.mjs.
+ *
+ * @param {number|string} layer   camada (0 = legendas, 1 = frase grande)
+ * @param {string} start          tempo de inicio ja formatado (assTime)
+ * @param {string} end            tempo de fim ja formatado (assTime)
+ * @param {string} style          nome do estilo ("Head", "Default", "Light")
+ * @param {string} text           conteudo (pode conter virgulas e tags)
+ * @returns {string}              a linha completa
+ */
+export function assDialogue(layer, start, end, style, text) {
+  // Name vazio, margens a zero, Effect vazio: 9 campos antes do texto.
+  return 'Dialogue: ' + layer + ',' + start + ',' + end + ',' + style + ',,0,0,0,,' + text;
+}
+
+/**
+ * Legendas de uma cena: frase grande (opcional) + legenda normal.
+ *
+ * @param {object} cfg          configuracao completa
+ * @param {string} dir          pasta do clone
+ * @param {string} lang         idioma ("pt-BR")
+ * @param {string} sceneId      identificador da cena ("01", "s01", ...)
+ * @param {string} text         legenda normal (a narração)
+ * @param {number} seconds      duracao da cena
+ * @param {number} bandH        altura da banda de cima
+ * @param {boolean} onLight     true se o fundo da cena e claro (texto escuro)
+ * @param {object} opts         { phrase, anchorY, phraseFallbacks }
+ */
 export function writeSceneASS(cfg, dir, lang, sceneId, text, seconds, bandH, onLight, opts = {}) {
   const folder = path.join(dir, 'subtitles', String(lang || 'pt-BR'));
   fs.mkdirSync(folder, { recursive: true });
@@ -106,8 +145,12 @@ export function writeSceneASS(cfg, dir, lang, sceneId, text, seconds, bandH, onL
   // ---- a frase grande: uma camada de texto sobre o frame inteiro, apresentador
   // incluido. Um cartao nao consegue pintar fora da sua banda — e por isso que
   // isto vive na camada ASS.
+  //
+  // EXCEPcao: quando a banda de cima ja desenha a frase (engine Remotion, que
+  // faz tipografia cinetica com as mesmas palavras-chave), a camada ASS
+  // duplicava o texto por cima da banda. `phraseInBand` desliga a duplicacao.
   const phrase = opts.phrase;
-  if (TS.mode === 'caption' && phrase) {
+  if (TS.mode === 'caption' && phrase && !opts.phraseInBand) {
     const LM = layoutMetrics(cfg);
     const anchorY = Math.max(0.12, Math.min(0.95, Number(opts.anchorY != null ? opts.anchorY : 0.28)));
     // textStyle.captionWords = "keywords" mostra so as palavras mais
@@ -124,8 +167,8 @@ export function writeSceneASS(cfg, dir, lang, sceneId, text, seconds, bandH, onL
     const accent = (TS.highlight && TS.highlight.color) || (TS.onMedia && TS.onMedia.accent) || '#FF6A00';
     const y = Math.round(LM.H * anchorY);
     events.push(
-      'Dialogue: 1,0:00:00.00,' + assTime(total) + ',Head,,0,0,0,' +
-      '{\\an2\\pos(' + Math.round(LM.W / 2) + ',' + y + ')}' + accentRuns(runs, accent)
+      assDialogue(1, '0:00:00.00', assTime(total), 'Head',
+        '{\\an2\\pos(' + Math.round(LM.W / 2) + ',' + y + ')}' + accentRuns(runs, accent))
     );
   }
 
@@ -140,7 +183,7 @@ export function writeSceneASS(cfg, dir, lang, sceneId, text, seconds, bandH, onL
     const slice = chunks.length ? total / chunks.length : total;
     const style = onLight ? 'Light' : 'Default';
     chunks.forEach((c, i) => {
-      events.push('Dialogue: 0,' + assTime(i * slice) + ',' + assTime((i + 1) * slice) + ',' + style + ',,0,0,0,,' + c);
+      events.push(assDialogue(0, assTime(i * slice), assTime((i + 1) * slice), style, c));
     });
   }
 
@@ -161,8 +204,8 @@ export function buildASS(tracks, cfg, dir, lang) {
     const start = t;
     t += tr.duration;
     lines.push(
-      'Dialogue: 0,' + assTime(start) + ',' + assTime(t) + ',Default,,0,0,0,,' +
-      String(tr.text).replace(/\r?\n/g, ' ').replace(/[{}]/g, '')
+      assDialogue(0, assTime(start), assTime(t), 'Default',
+        String(tr.text).replace(/\r?\n/g, ' ').replace(/[{}]/g, ''))
     );
   }
 

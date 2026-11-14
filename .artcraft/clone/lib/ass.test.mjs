@@ -6,6 +6,32 @@ import path from 'node:path';
 import { after } from 'node:test';
 import { assColour, assTime, formatSRTTime, assStyleHeader, writeSceneASS, buildASS, buildSRT } from './ass.mjs';
 
+/**
+ * Le um ficheiro .ass e devolve os eventos com os campos ja separados.
+ *
+ * O `Format:` dos Events declara o numero de campos (Layer, Start, End,
+ * Style, Name, MarginL, MarginR, MarginV, Effect, Text = 10). O texto do
+ * evento e o ultimo campo e pode conter virgulas (ex.: \pos(540,1075)), por
+ * isso so se pode separar a cabecalho a seguir com limite.
+ */
+function parseAssEvents(text) {
+  const formatLine = text.split('\n').find((l) => l.startsWith('Format: Layer'));
+  assert.ok(formatLine, 'o ficheiro .ass nao declara o Format dos Events');
+  const fields = formatLine.split(':')[1].split(',').length;
+  const events = text
+    .split('\n')
+    .filter((l) => l.startsWith('Dialogue:'))
+    .map((line) => {
+      const parts = line.split(',');
+      return {
+        meta: parts.slice(0, fields - 1),
+        body: parts.slice(fields - 1).join(','),
+        raw: line,
+      };
+    });
+  return { fields, events };
+}
+
 const cfg = {
   video: { width: 1080, height: 1920, fps: 30 },
   layout: { mode: 'split', topRatio: 0.55, captionGap: 0.032 },
@@ -77,6 +103,64 @@ test('writeSceneASS em modo caption devolve null sem frase', () => {
   const dir = tmp();
   const out = writeSceneASS(cfg, dir, 'pt-BR', 's02', 'texto', 3, 1056, false, {});
   assert.equal(out, null);
+});
+
+test('REGRESSAO: o Dialogue do Head tem os 10 campos que o Format declara', () => {
+  // BUG REAL (2026-11-13): o evento do Head era escrito com 9 campos — o
+  // campo "Effect" faltava. A virgula dentro de \pos(540,1075) ocupava
+  // entao o lugar do Effect, e o ffmpeg passava a ler o texto a partir de
+  // "1075)}": o video queimava a frase gigante "1075)}AGENTES..." por cima
+  // da banda de cima. Este teste e a rede de seguranca desse bug.
+  const dir = tmp();
+  const file = writeSceneASS(cfg, dir, 'pt-BR', 's03', 'texto completo', 5, 1056, false, {
+    phrase: 'AGENTES DE IA EXECUTAM TAREFAS',
+    anchorY: 0.28,
+  });
+  const { fields, events } = parseAssEvents(fs.readFileSync(file, 'utf8'));
+  assert.equal(fields, 10, 'o Format dos Events deve declarar 10 campos');
+  assert.ok(events.length >= 1, 'esperava-se pelo menos um evento');
+  for (const ev of events) {
+    assert.equal(ev.meta.length, fields - 1, 'cabecalho com o numero errado de campos: ' + ev.raw);
+    assert.ok(ev.body.length > 0, 'evento sem texto: ' + ev.raw);
+    // o texto NUNCA pode comecar por coordenadas: e o sintoma do campo em falta
+    assert.ok(
+      !/^\s*\d+\)/.test(ev.body),
+      'o texto comeca por coordenadas (campo Effect em falta): ' + ev.body.slice(0, 40)
+    );
+  }
+  const head = events.find((e) => e.raw.startsWith('Dialogue: 1,'));
+  assert.ok(head, 'falta o evento Head');
+  assert.ok(head.body.startsWith('{\\an2\\pos('), 'a tag de posicao ficou partida: ' + head.body.slice(0, 40));
+});
+
+test('REGRESSAO: a frase nao e duplicada quando a banda ja a desenha', () => {
+  // Com a banda de cima em Remotion (tipografia cinetica), as palavras-chave
+  // ja estao pintadas na banda. A camada ASS escrevia a MESMA frase por
+  // cima, gigante, e tapava a banda. `phraseInBand` desliga a duplicacao.
+  const dir = tmp();
+  const file = writeSceneASS(cfg, dir, 'pt-BR', 's05', 'texto', 5, 1056, false, {
+    phrase: 'AGENTES IA EXECUTAM',
+    anchorY: 0.28,
+    phraseInBand: true,
+  });
+  assert.equal(file, null, 'sem frase na camada ASS nao deve haver ficheiro de legendas');
+});
+
+test('REGRESSAO: as legendas normais tambem respeitam os 10 campos', () => {
+  const dir = tmp();
+  const cfgLayers = {
+    ...cfg,
+    cards: { ...cfg.cards, textStyle: { ...cfg.cards.textStyle, mode: 'layers' } },
+  };
+  const file = writeSceneASS(cfgLayers, dir, 'pt-BR', 's04', 'primeira legenda', 5, 1056, false, {
+    phrase: 'IGNORADO',
+  });
+  const { fields, events } = parseAssEvents(fs.readFileSync(file, 'utf8'));
+  assert.ok(events.length >= 1, 'esperava-se uma legenda');
+  for (const ev of events) {
+    assert.equal(ev.meta.length, fields - 1, 'cabecalho com o numero errado de campos: ' + ev.raw);
+    assert.ok(!/^\s*\d+\)/.test(ev.body), 'texto comeca por coordenadas: ' + ev.body.slice(0, 40));
+  }
 });
 
 test('buildASS/buildSRT correm o tempo pelas cenas', () => {
