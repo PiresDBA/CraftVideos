@@ -1,5 +1,41 @@
-# saidas de render e media (pesado)
-work/
+# -----------------------------------------------------------------
+# CHAVES E SEGREDOS — nunca entram no repositorio
+# -----------------------------------------------------------------
+.env
+.env.*
+*.env
+secrets.json
+secrets.yaml
+secrets.yml
+*credentials*.json
+*.key
+*.pem
+*.pfx
+*.p12
+*.keystore
+
+# -----------------------------------------------------------------
+# FICHEIROS GERADOS — regeneraveis, nao se versionam
+# -----------------------------------------------------------------
+# work/ — pesado. Versionam-se apenas os PROGRAMAS e os PLANOS:
+# o resto (renders, audio, frames, catalogos) e' gerado e reconstrói-se.
+work/*
+!work/clone-tooling/
+work/clone-tooling/*
+!work/clone-tooling/*.mjs
+!work/explainer-study/
+work/explainer-study/*
+!work/explainer-study/preview/
+work/explainer-study/preview/*
+!work/explainer-study/preview/index.html
+!work/explainer-study/preview/serve.mjs
+!work/clones/
+work/clones/*
+!work/clones/*/
+work/clones/*/*
+# o PLANO e' decisao de trabalho: versiona-se (comentario numa linha propria,
+# porque o git ignora o resto da linha quando o padrao tem texto a seguir)
+!work/clones/*/plan-remotion.json
 backups/
 *.mp4
 *.webm
@@ -10,8 +46,27 @@ backups/
 *.mp3
 *.ass
 *.srt
+*.log
+*.tmp
+temp/
 
-# aplicacoes e motores instalados
+# catalogos de comandos (dumpados por `artcraft.mjs refresh`)
+.artcraft/reference/
+
+# debris de diagnostico (diffs e capturas de teste)
+.artcraft/clone/_*
+
+# catalogo gerado do studio
+studio.catalog.json
+
+# backups intermedios da refatoração (ficam no disco, fora do git).
+# A cópia do ficheiro CORROMPIDO (.corrupt-*.bak) mantem-se versionada:
+# e' a prova do incidente e e' pequena.
+*.prerefactor-*.bak
+
+# -----------------------------------------------------------------
+# APLICACOES E MOTORES INSTALADOS — nao fazem parte do codigo
+# -----------------------------------------------------------------
 AniCraft/
 VectorCraft/
 FilmCraft/

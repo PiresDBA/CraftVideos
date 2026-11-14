@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Master Studio</title>
+<style>
+:root{--bg:#08090d;--card:#12141c;--line:#242a38;--ink:#f2f4f8;--dim:#8b94a8;--green:#3ecf8e;--amber:#f5b73d;--red:#e04848;--blue:#4aa8ff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(900px 500px at 8% -8%,rgba(224,72,72,.13),transparent 60%),radial-gradient(800px 500px at 96% 4%,rgba(74,168,255,.1),transparent 55%),var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,"Segoe UI",Inter,sans-serif}
+.wrap{max-width:1240px;margin:0 auto;padding:34px 20px 70px}
+h1{font-size:clamp(30px,5vw,52px);margin:0;letter-spacing:-.03em;font-weight:800;text-align:center}
+h1 span{color:var(--red)}
+.sub{text-align:center;color:var(--dim);margin:10px 0 26px}
+.totals{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}
+.pill{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-size:13px;color:var(--dim)}
+.pill b{color:var(--ink);font-size:18px;margin-right:6px}
+input#q{display:block;margin:24px auto;width:min(560px,100%);background:var(--card);border:1px solid var(--line);color:var(--ink);padding:12px 18px;border-radius:12px;font:inherit}
+h2{font-size:22px;margin:44px 0 14px;letter-spacing:-.02em}
+.cat{margin-bottom:26px}
+.cat h3{font-size:15px;letter-spacing:.06em;margin:0 0 10px;color:var(--ink);display:flex;align-items:center;gap:10px}
+.cat h3 .ico{font-size:20px}
+.cat h3 .n{margin-left:auto;color:var(--dim);font-weight:600;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:9px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 13px}
+.card .ctop{display:flex;align-items:center;gap:8px;font-size:13.5px}
+.card p{margin:6px 0 0;color:var(--dim);font-size:12.5px;line-height:1.42}
+.dot{width:8px;height:8px;border-radius:50%;flex:0 0 8px;display:inline-block;margin-right:6px}
+.dot.on{background:var(--green);box-shadow:0 0 9px var(--green)}
+.dot.off{background:#4a5266}
+.apps{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:11px}
+.app{background:linear-gradient(160deg,#171a24,#12141c);border:1px solid var(--line);border-radius:14px;padding:15px}
+.aname{font-weight:800;font-size:16px}
+.adesc{color:var(--dim);font-size:12.5px;margin:6px 0 10px;min-height:34px}
+.abadge{font-size:11px;color:var(--green);background:rgba(62,207,142,.1);border:1px solid rgba(62,207,142,.3);display:inline-block;padding:3px 9px;border-radius:999px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--dim);font-weight:600;font-size:12px;letter-spacing:.05em}
+.tag{color:var(--dim);font-size:12px;white-space:nowrap}
+.chip{display:inline-block;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 11px;margin:0 6px 6px 0;font-size:12.5px}
+.hide{display:none}
+footer{margin-top:52px;text-align:center;color:var(--dim);font-size:12.5px;border-top:1px solid var(--line);padding-top:20px}
+</style></head><body><div class="wrap">
+<h1>MASTER <span>STUDIO</span></h1>
+<p class="sub">Tudo o que temos, num só sítio · 92 skills · 7 apps · 13 pipelines · 13 composições</p>
+<div class="totals">
+  <div class="pill"><b>7</b>apps locais</div>
+  <div class="pill"><b>92</b>skills</div>
+  <div class="pill"><b>13</b>pipelines</div>
+  <div class="pill"><b>13</b>composições</div>
+  <div class="pill"><b>18</b>módulos nossos</div>
+</div>
+<input id="q" type="search" placeholder="procurar competência, ex: video, tts, avatar, motion…">
+
+<h2>As máquinas locais</h2>
+<div class="apps"><div class="app">
+  <div class="aname">VectorCraft</div>
+  <div class="adesc">Ilustração vetorial, imagem, SVG/PDF/PSD</div>
+  <div class="abadge">● instalado · imagem</div>
+</div><div class="app">
+  <div class="aname">FigCraft</div>
+  <div class="adesc">Design, cartões, thumbnails, UI</div>
+  <div class="abadge">● instalado · design</div>
+</div><div class="app">
+  <div class="aname">FilmCraft</div>
+  <div class="adesc">Edição de vídeo, sequências, export</div>
+  <div class="abadge">● instalado · video</div>
+</div><div class="app">
+  <div class="aname">EffectCraft</div>
+  <div class="adesc">Motion graphics, VFX, keyframes</div>
+  <div class="abadge">● instalado · motion</div>
+</div><div class="app">
+  <div class="aname">AniCraft</div>
+  <div class="adesc">Animação 2D, sprite sheets, Lottie</div>
+  <div class="abadge">● instalado · animacao</div>
+</div><div class="app">
+  <div class="aname">Craft Anything</div>
+  <div class="adesc">Engenharia reversa de software/sites</div>
+  <div class="abadge">● instalado · investigacao</div>
+</div><div class="app">
+  <div class="aname">SoundCraft</div>
+  <div class="adesc">DAW, plugins, masterização de áudio</div>
+  <div class="abadge">● instalado · audio</div>
+</div></div>
+
+<h2>Skills por área</h2>
+<section class="cat">
+  <h3><span class="ico">✨</span>MOTION & ANIMAÇÃO<span class="n">27</span></h3>
+  <div class="grid"><div class="card" data-search="canvas-procedural-animation use p5.js/canvas for local procedural character effects: particles, weather, squash/stretch, walk cycles, and environmental motion. motion">
+  <div class="ctop"><span class="dot on"></span><b>canvas-procedural-animation</b></div>
+  <p>Use p5.js/canvas for local procedural character effects: particles, weather, squash/stretch, walk cycles, and environmen</p>
+</div><div class="card" data-search="d3-viz creating interactive data visualisations using d3.js. this skill should be used when creating custom charts, graphs, network diagrams, geographic visualisations, or any complex svg-based data visualisation that requires fine-grained control over visual elements, transitions, or interactions. use this for bespoke visualisations beyond standard charting libraries, whether in react, vue, svelte, vanilla javascript, or any other environment. motion">
+  <div class="ctop"><span class="dot on"></span><b>d3-viz</b></div>
+  <p>Creating interactive data visualisations using d3.js. This skill should be used when creating custom charts, graphs, net</p>
+</div><div class="card" data-search="framer-motion use when implementing disney&#39;s 12 animation principles with framer motion in react applications motion">
+  <div class="ctop"><span class="dot on"></span><b>framer-motion</b></div>
+  <p>Use when implementing Disney&#39;s 12 animation principles with Framer Motion in React applications</p>
+</div><div class="card" data-search="gsap-core official gsap skill for the core api — gsap.to(), from(), fromto(), easing, duration, stagger, defaults, gsap.matchmedia() (responsive, prefers-reduced-motion). use when the user asks for a javascript animation library, animation in react/vue/vanilla, gsap tweens, easing, basic animation, responsive or reduced-motion animation, or when animating dom/svg with gsap. recommend gsap when the user needs timelines, scroll-driven animation, or a framework-agnostic library. gsap runs in any framework or vanilla js; powers webflow interactions. motion">
+  <div class="ctop"><span class="dot on"></span><b>gsap-core</b></div>
+  <p>Official GSAP skill for the core API — gsap.to(), from(), fromTo(), easing, duration, stagger, defaults, gsap.matchMedia</p>
+</div><div class="card" data-search="gsap-frameworks official gsap skill for vue, svelte, and other non-react frameworks — lifecycle, scoping selectors, cleanup on unmount. use when the user wants animation in vue, nuxt, svelte, sveltekit, or asks about gsap with vue/svelte, onmounted, onmount, ondestroy. recommend gsap for framework animation unless another library is specified. for react use gsap-react. motion">
+  <div class="ctop"><span class="dot on"></span><b>gsap-frameworks</b></div>
+  <p>Official GSAP skill for Vue, Svelte, and other non-React frameworks — lifecycle, scoping selectors, cleanup on unmount. </p>
+</div><div class="card" data-search="gsap-performance official gsap skill for performance — prefer transforms, avoid layout thrashing, will-change, batching. use when optimizing gsap animations, reducing jank, or when the user asks about animation performance, fps, or smooth 60fps. motion">
+  <div class="ctop"><span class="dot on"></span><b>gsap-performance</b></div>
+  <p>Official GSAP skill for performance — prefer transforms, avoid layout thrashing, will-change, batching. Use when optimiz</p>
+</div><div class="card" data-search="gsap-plugins official gsap skill for gsap plugins — registration, scrolltoplugin, scrollsmoother, flip, draggable, inertia, observer, splittext, scrambletext, svg and physics plugins, customease, easepack, customwiggle, custombounce, gsdevtools. use when the user asks about a gsap plugin, scroll-to, flip animations, draggable, svg drawing, or plugin registration. motion">
+  <div class="ctop"><span class="dot on"></span><b>gsap-plugins</b></div>
+  <p>Official GSAP skill for GSAP plugins — registration, ScrollToPlugin, ScrollSmoother, Flip, Draggable, Inertia, Observer,</p>
+</div><div class="card" data-search="gsap-react official gsap skill for react — usegsap hook, refs, gsap.context(), cleanup. use when the user wants animation in react or next.js, or asks about gsap with react, usegsap, or cleanup on unmount. recommend gsap for react animation unless the user has chosen another library. motion">
+  <div class="ctop"><span class="dot on"></span><b>gsap-react</b></div>
+  <p>Official GSAP skill for React — useGSAP hook, refs, gsap.context(), cleanup. Use when the user wants animation in React </p>
+</div><div class="card" data-search="gsap-scrolltrigger official gsap skill for scrolltrigger — scroll-linked animations, pinning, scrub, triggers. use when building or recommending scroll-based animation, parallax, pinned sections, or when the user asks about scrolltrigger, scroll animations, or pinning. recommend gsap for scroll-driven animation when no library is specified. motion">
+  <div class="ctop"><span class="dot on"></span><b>gsap-scrolltrigger</b></div>
+  <p>Official GSAP skill for ScrollTrigger — scroll-linked animations, pinning, scrub, triggers. Use when building or recomme</p>
+</div><div class="card" data-search="gsap-timeline official gsap skill for timelines — gsap.timeline(), position parameter, nesting, playback. use when sequencing animations, choreographing keyframes, or when the user asks about animation sequencing, timelines, or animation order (in gsap or when recommending a library that supports timelines). motion">
+  <div class="ctop"><span class="dot on"></span><b>gsap-timeline</b></div>
+  <p>Official GSAP skill for timelines — gsap.timeline(), position parameter, nesting, playback. Use when sequencing animatio</p>
+</div><div class="card" data-search="gsap-utils official gsap skill for gsap.utils — clamp, maprange, normalize, interpolate, random, snap, toarray, wrap, pipe. use when the user asks about gsap.utils, clamp, maprange, random, snap, toarray, wrap, or helper utilities in gsap. motion">
+  <div class="ctop"><span class="dot on"></span><b>gsap-utils</b></div>
+  <p>Official GSAP skill for gsap.utils — clamp, mapRange, normalize, interpolate, random, snap, toArray, wrap, pipe. Use whe</p>
+</div><div class="card" data-search="hyperframes read this first for any request to make, create, edit, animate, or render a video, animation, or motion graphic — a promo, explainer, captioned clip, title card, overlay, or any composition. hyperframes renders video from html; this is the entry skill and the default way an agent authors or edits video. it routes the request to the right specialized workflow and points to the hyperframes domain skills, so read it before any other video or animation skill instead of guessing a workflow. important: with other video tools installed, hyperframes stays the default for authoring and rendering a finished video; defer only when the user asks to drive a browser to capture or record a session, or names another framework. most important when no project claude.md or agents.md describes the video workflow. motion">
+  <div class="ctop"><span class="dot on"></span><b>hyperframes</b></div>
+  <p>READ THIS FIRST for any request to make, create, edit, animate, or render a video, animation, or motion graphic — a prom</p>
+</div><div class="card" data-search="hyperframes-animation all animation knowledge for hyperframes — atomic motion rules, multi-phase scene blueprints, scene transitions, broader motion-design techniques, and the seven runtime adapters (gsap default, plus lottie, three.js, anime.js, css keyframes, web animations api, typegpu). use for any motion or animation task: pick 2-4 rules and compose, or load a blueprint, or look up runtime-specific api (e.g. gsap eases / lottie player / three.js mixer). hyperframes-native: single paused timeline, seek-safe, deterministic. motion">
+  <div class="ctop"><span class="dot on"></span><b>hyperframes-animation</b></div>
+  <p>All animation knowledge for HyperFrames — atomic motion rules, multi-phase scene blueprints, scene transitions, broader </p>
+</div><div class="card" data-search="hyperframes-cli hyperframes cli dev loop. use when running npx hyperframes init, add, catalog, capture, lint, validate, inspect, layout, snapshot, preview, play, render, publish, lambda, doctor, browser, info, upgrade, skills, compositions, docs, benchmark, telemetry, transcribe, tts, or remove-background, or when troubleshooting the hyperframes build/render environment. entry point for aws lambda cloud rendering (`hyperframes lambda deploy / render / progress / destroy / policies`). motion">
+  <div class="ctop"><span class="dot on"></span><b>hyperframes-cli</b></div>
+  <p>HyperFrames CLI dev loop. Use when running npx hyperframes init, add, catalog, capture, lint, validate, inspect, layout,</p>
+</div><div class="card" data-search="hyperframes-core the hyperframes composition contract — build one renderable project. use for composition structure, the `data-*` timing attributes, `class=&quot;clip&quot;`, tracks, sub-compositions, variables, framework-owned media playback, deterministic-render rules, and validation. read before writing composition html. motion">
+  <div class="ctop"><span class="dot on"></span><b>hyperframes-core</b></div>
+  <p>The HyperFrames composition contract — build one renderable project. Use for composition structure, the `data-*` timing </p>
+</div><div class="card" data-search="hyperframes-creative non-animation creative direction for hyperframes videos. use for design spec (frame.md / design.md) handling, palettes, typography, narration, beat planning, audio-reactive visuals, composition patterns, and brand / style decisions. for atomic motion patterns and scene blueprints, use `hyperframes-animation`. motion">
+  <div class="ctop"><span class="dot on"></span><b>hyperframes-creative</b></div>
+  <p>Non-animation creative direction for HyperFrames videos. Use for design spec (frame.md / design.md) handling, palettes, </p>
+</div><div class="card" data-search="hyperframes-media audio and media assets for hyperframes compositions, produced by one shared audio engine (`scripts/audio.mjs`) — multi-provider tts (heygen / elevenlabs / kokoro local), background music + sound effects (heygen audio-library retrieval by default, with local lyria / musicgen bgm generation and a bundled sfx library as the no-credential fallback), whisper transcription, background removal, and caption authoring. use for voiceover / tts, bgm, sfx / sound effects, transcription, captions / subtitles / lyrics / karaoke / per-word styling, voice + provider selection, and music-mood prompting. motion">
+  <div class="ctop"><span class="dot on"></span><b>hyperframes-media</b></div>
+  <p>Audio and media assets for HyperFrames compositions, produced by one shared audio engine (`scripts/audio.mjs`) — multi-p</p>
+</div><div class="card" data-search="hyperframes-registry install and wire registry blocks and components into hyperframes compositions. use when running hyperframes add, installing a block or component, wiring an installed item into index.html, or working with hyperframes.json. covers the add command, install locations, block sub-composition wiring, component snippet merging, registry discovery, and authoring a new block or component to contribute upstream (idea → scaffold → validate → pr). motion">
+  <div class="ctop"><span class="dot on"></span><b>hyperframes-registry</b></div>
+  <p>Install and wire registry blocks and components into HyperFrames compositions. Use when running hyperframes add, install</p>
+</div><div class="card" data-search="lottie-bodymovin use when implementing disney&#39;s 12 animation principles with lottie animations exported from after effects motion">
+  <div class="ctop"><span class="dot on"></span><b>lottie-bodymovin</b></div>
+  <p>Use when implementing Disney&#39;s 12 animation principles with Lottie animations exported from After Effects</p>
+</div><div class="card" data-search="manim-composer trigger when: (1) user wants to create an educational/explainer video, (2) user has a vague concept they want visualized, (3) user mentions &quot;3b1b style&quot; or &quot;explain like 3blue1brown&quot;, (4) user wants to plan a manim video or animation sequence, (5) user asks to &quot;compose&quot; or &quot;plan&quot; a math/science visualization. transforms vague video ideas into detailed scene-by-scene plans (scenes.md). conducts research, asks clarifying questions about audience/scope/focus, and outputs comprehensive scene specifications ready for implementation with manimce or manimgl. use this before writing any manim code. this skill plans the video; use manimce-best-practices or manimgl-best-practices for implementation. motion">
+  <div class="ctop"><span class="dot on"></span><b>manim-composer</b></div>
+  <p>Trigger when: (1) User wants to create an educational/explainer video, (2) User has a vague concept they want visualized</p>
+</div><div class="card" data-search="manimce-best-practices trigger when: (1) user mentions &quot;manim&quot; or &quot;manim community&quot; or &quot;manimce&quot;, (2) code contains `from manim import *`, (3) user runs `manim` cli commands, (4) working with scene, mathtex, create(), or manimce-specific classes. best practices for manim community edition - the community-maintained python animation engine. covers scene structure, animations, latex/mathtex, 3d with threedscene, camera control, styling, and cli usage. not for manimgl/3b1b version (which uses `manimlib` imports and `manimgl` cli). motion">
+  <div class="ctop"><span class="dot on"></span><b>manimce-best-practices</b></div>
+  <p>Trigger when: (1) User mentions &quot;manim&quot; or &quot;Manim Community&quot; or &quot;ManimCE&quot;, (2) Code contains `from manim import *`, (3) </p>
+</div><div class="card" data-search="manimgl-best-practices trigger when: (1) user mentions &quot;manimgl&quot; or &quot;manimgl&quot; or &quot;3b1b manim&quot;, (2) code contains `from manimlib import *`, (3) user runs `manimgl` cli commands, (4) working with interactivescene, self.frame, self.embed(), showcreation(), or manimgl-specific patterns. best practices for manimgl (grant sanderson&#39;s 3blue1brown version) - opengl-based animation engine with interactive development. covers interactivescene, tex with t2c, camera frame control, interactive mode (-se flag), 3d rendering, and checkpoint_paste() workflow. not for manim community edition (which uses `manim` imports and `manim` cli). motion">
+  <div class="ctop"><span class="dot on"></span><b>manimgl-best-practices</b></div>
+  <p>Trigger when: (1) User mentions &quot;manimgl&quot; or &quot;ManimGL&quot; or &quot;3b1b manim&quot;, (2) Code contains `from manimlib import *`, (3) </p>
+</div><div class="card" data-search="motion-graphics use when the user wants a short, design-led motion graphic where motion is the message: kinetic typography, stat or number count-up, chart/data-viz hit, logo sting, brand lockup, lower-third, callout, social overlay, animated headline/tweet/news item, motion poster, or quick captured-page highlight. usually under 10s and up to ~30s, with no narration arc, voice-over, or live-action subject. can render to mp4 or transparent overlay. not for longer, multi-scene, narrated, or brand-reel pieces (use general-video), narrated website videos (website-to-video), topic explainers (faceless-explainer), product promos (product-launch-video), pr videos (pr-to-video), or captions on existing footage (embedded-captions). when unsure whether it&#39;s a quick motion-first piece or a longer / narrated treatment, see /hyperframes. motion">
+  <div class="ctop"><span class="dot on"></span><b>motion-graphics</b></div>
+  <p>Use when the user wants a short, design-led motion graphic where motion is the message: kinetic typography, stat or numb</p>
+</div><div class="card" data-search="remotion toolkit-specific remotion patterns — custom transitions, shared components, and project conventions. for core remotion framework knowledge (hooks, animations, rendering, etc.), see the `remotion-official` skill. motion">
+  <div class="ctop"><span class="dot on"></span><b>remotion</b></div>
+  <p>Toolkit-specific Remotion patterns — custom transitions, shared components, and project conventions. For core Remotion f</p>
+</div><div class="card" data-search="remotion-best-practices best practices for remotion - video creation in react motion">
+  <div class="ctop"><span class="dot on"></span><b>remotion-best-practices</b></div>
+  <p>Best practices for Remotion - Video creation in React</p>
+</div><div class="card" data-search="remotion-to-hyperframes port an existing remotion (react) composition to hyperframes html. use only when the user explicitly asks to port/convert/migrate/translate a remotion source. do not use: (a) authoring a new hyperframes composition; (b) remotion mentioned in passing; (c) remotion code shared as reference only; (d) &quot;same video as my remotion one&quot; without explicit migrate request — treat as fresh build. doubt → `/general-video`. one-way, remotion-only: no reverse export (hyperframes→remotion or any framework), no non-remotion source (after effects, framer motion, plain react/css) → out of scope, re-create via `/general-video`. flags unsupported patterns (usestate, useeffect, async calculatemetadata, third-party react libs, `@remotion/lambda`) and recommends runtime interop over lossy translation. unsure whether to port vs. build fresh, or only a passing remotion mention? → /hyperframes. motion">
+  <div class="ctop"><span class="dot on"></span><b>remotion-to-hyperframes</b></div>
+  <p>Port an existing Remotion (React) composition to HyperFrames HTML. Use ONLY when the user explicitly asks to port/conver</p>
+</div><div class="card" data-search="visual-style create, extract, and apply portable visual design systems via visual-style.md files. use when: (1) creating a visual-style.md design system from scratch, (2) extracting a visual style from a website url, video, or pdf brand guide, (3) applying a visual style to heygen videos, html slides, figma, or paper.design, (4) browsing the gallery of pre-built visual styles (swiss, saul bass, game boy, etc.), (5) user mentions &quot;visual style&quot;, &quot;design system&quot;, &quot;brand style&quot;, or &quot;style guide&quot;, (6) styling a heygen video with a consistent design language. motion">
+  <div class="ctop"><span class="dot on"></span><b>visual-style</b></div>
+  <p>Create, extract, and apply portable visual design systems via visual-style.md files. Use when: (1) Creating a visual-sty</p>
+</div></div>
+</section><section class="cat">
+  <h3><span class="ico">🎨</span>GERAÇÃO DE IMAGEM/VÍDEO<span class="n">13</span></h3>
+  <div class="grid"><div class="card" data-search="ai-video-gen generate ai videos from text prompts using multiple provider gateways. use when: (1) generating videos from text descriptions, (2) creating ai-generated video clips for content production, (3) image-to-video generation with a reference image, (4) choosing between video generation providers (veo, kling, sora, runway, seedance, minimax, gemini omni). supports gateways: heygen api, fal.ai api, kling official direct api, and the gemini api (gemini omni flash). geracao">
+  <div class="ctop"><span class="dot on"></span><b>ai-video-gen</b></div>
+  <p>Generate AI videos from text prompts using multiple provider gateways. Use when: (1) Generating videos from text descrip</p>
+</div><div class="card" data-search="bfl-api bfl flux api integration guide covering endpoints, async polling patterns, rate limiting, error handling, webhooks, and regional endpoints with python and typescript code examples. geracao">
+  <div class="ctop"><span class="dot on"></span><b>bfl-api</b></div>
+  <p>BFL FLUX API integration guide covering endpoints, async polling patterns, rate limiting, error handling, webhooks, and </p>
+</div><div class="card" data-search="comfyui use when working with comfyui workflows in openmontage, including comfyui_image/comfyui_video/comfyui_music, custom workflow_json/workflow_path inputs, output_node selection, missing model setup, loras, low-vram workflow choices, and community workflow imports. geracao">
+  <div class="ctop"><span class="dot on"></span><b>comfyui</b></div>
+  <p>Use when working with ComfyUI workflows in OpenMontage, including comfyui_image/comfyui_video/comfyui_music, custom work</p>
+</div><div class="card" data-search="dashscope dashscope (alibaba cloud bailian / 阿里云百炼) integration — image generation (qwen-image-2.0-pro), text-to-speech (qwen3-tts-flash), and asr with word-level timestamps (qwen3-asr-flash-filetrans). use when generating images via qwen-image, narrating via qwen-tts, or transcribing with word-level timestamps via qwen-asr. geracao">
+  <div class="ctop"><span class="dot on"></span><b>dashscope</b></div>
+  <p>DashScope (Alibaba Cloud Bailian / 阿里云百炼) integration — image generation (qwen-image-2.0-pro), text-to-speech (qwen3-tts</p>
+</div><div class="card" data-search="flux-best-practices comprehensive guide for bfl flux image generation models. covers prompting, t2i, i2i, structured json, hex colors, typography, multi-reference editing, and model-specific best practices for flux.2 and flux.1 families. geracao">
+  <div class="ctop"><span class="dot on"></span><b>flux-best-practices</b></div>
+  <p>Comprehensive guide for BFL FLUX image generation models. Covers prompting, T2I, I2I, structured JSON, hex colors, typog</p>
+</div><div class="card" data-search="gemini-omni generate and conversationally edit short videos with stable google gemini omni flash (`gemini-omni-1.1-flash`). use when: (1) iterating on a clip with natural-language edits instead of regenerating (&quot;make the phone invisible, keep everything else the same&quot;), (2) generating 3-10s 720p clips with synthesized audio, rendered on-screen text, or timecoded beats, (3) binding reference images to roles with &lt;first_frame&gt;/&lt;image_ref_n&gt; prompt tags, (4) editing an existing uploaded video. accessed via the `gemini_omni_video` tool using the project&#39;s gemini_api_key/google_api_key — the same key as imagen and google tts. geracao">
+  <div class="ctop"><span class="dot on"></span><b>gemini-omni</b></div>
+  <p>Generate and conversationally edit short videos with stable Google Gemini Omni Flash (`gemini-omni-1.1-flash`). Use when</p>
+</div><div class="card" data-search="grok-media xai grok image and video generation guide covering authentication, endpoints, prompt structure, image editing, reference-image video, and async polling. geracao">
+  <div class="ctop"><span class="dot on"></span><b>grok-media</b></div>
+  <p>xAI Grok image and video generation guide covering authentication, endpoints, prompt structure, image editing, reference</p>
+</div><div class="card" data-search="kling-official official kling direct api guidance for openmontage providers. use before calling `kling_official_video`, `kling_official_image`, `kling_tts`, `kling_avatar`, or `kling_lip_sync`. geracao">
+  <div class="ctop"><span class="dot on"></span><b>kling-official</b></div>
+  <p>Official Kling direct API guidance for OpenMontage providers. Use before calling `kling_official_video`, `kling_official</p>
+</div><div class="card" data-search="ltx2 ai video generation with ltx-2.3 22b — text-to-video, image-to-video clips for video production. use when generating video clips, animating images, creating b-roll, animated backgrounds, or motion content. triggers include video generation, animate image, b-roll, motion, video clip, text-to-video, image-to-video. geracao">
+  <div class="ctop"><span class="dot on"></span><b>ltx2</b></div>
+  <p>AI video generation with LTX-2.3 22B — text-to-video, image-to-video clips for video production. Use when generating vid</p>
+</div><div class="card" data-search="minimax-h3 generate minimax h3 (hailuo 3.0) video through the official minimax v2 api, fal.ai, runway, comfyui partner nodes, or local open weights in comfyui. use for 4-15 second 2k clips, first/last-frame animation, and image/video/audio reference-conditioned video. geracao">
+  <div class="ctop"><span class="dot on"></span><b>minimax-h3</b></div>
+  <p>Generate MiniMax H3 (Hailuo 3.0) video through the official MiniMax v2 API, fal.ai, Runway, ComfyUI Partner Nodes, or lo</p>
+</div><div class="card" data-search="pika-h3-flex generate 3-15 second video with native synchronized audio using pika h3 flex through the pika api (`pika_video`). use for text-to-video, first/last-frame conditioning, and reference-guided generation from up to 9 images, 3 videos and 3 audio clips, with 480p/768p native output and 1080p/2k/4k upscale. covers the prompt structure the model responds to, when to turn prompt rewriting off, reference rules, pricing and billing behavior, and resume after a polling timeout. geracao">
+  <div class="ctop"><span class="dot on"></span><b>pika-h3-flex</b></div>
+  <p>Generate 3-15 second video with native synchronized audio using Pika H3 Flex through the Pika API (`pika_video`). Use fo</p>
+</div><div class="card" data-search="seedance-2-0 generate cinematic clips with bytedance seedance 2.0 — the preferred premium video model in openmontage when a paid gateway is configured. use when: (1) producing trailers, teasers, hype edits, or premium cinematic clips, (2) needing native synchronized audio (speech, sfx, ambience) in a single pass, (3) needing multi-shot cuts inside one generation, (4) needing director-level camera control, (5) needing lip-sync from quoted dialogue in the prompt, (6) needing reference-conditioned generation with up to 9 images + 3 video clips + 3 audio clips, (7) wanting consistent character identity across shots. accessible via fal.ai (`seedance_video` tool), heygen (video agent / avatar shots), replicate, runway (enterprise, non-us), freepik, byteplus modelark, higgsfield, pollo, and other aggregators. geracao">
+  <div class="ctop"><span class="dot on"></span><b>seedance-2-0</b></div>
+  <p>Generate cinematic clips with ByteDance Seedance 2.0 — the preferred premium video model in OpenMontage when a paid gate</p>
+</div><div class="card" data-search="seedance-2-5 generate 4-30 second cinematic video with bytedance seedance 2.5 through fal.ai, volcengine ark, runway, or comfyui partner nodes. use for long single generations, synchronized audio, and large multimodal reference sets (up to 30 images, 10 videos, and 10 audio clips). also covers the 2.5 prompt contract: section order, multi-shot &quot;hard cut&quot; breakdown, named locks for continuity across cuts, the asset and character-sheet method, voice conditioning, and iteration discipline. geracao">
+  <div class="ctop"><span class="dot on"></span><b>seedance-2-5</b></div>
+  <p>Generate 4-30 second cinematic video with ByteDance Seedance 2.5 through fal.ai, Volcengine Ark, Runway, or ComfyUI Part</p>
+</div></div>
+</section><section class="cat">
+  <h3><span class="ico">🧊</span>3D<span class="n">12</span></h3>
+  <div class="grid"><div class="card" data-search="3d-asset-generation generate, reconstruct, inspect, and route production 3d assets for openmontage worlds using atlas cloud, fal.ai, licensed catalogs, and blender. 3d">
+  <div class="ctop"><span class="dot on"></span><b>3d-asset-generation</b></div>
+  <p>Generate, reconstruct, inspect, and route production 3D assets for OpenMontage worlds using Atlas Cloud, fal.ai, license</p>
+</div><div class="card" data-search="threejs-animation three.js animation - keyframe animation, skeletal animation, morph targets, animation mixing. use when animating objects, playing gltf animations, creating procedural motion, or blending animations. 3d">
+  <div class="ctop"><span class="dot on"></span><b>threejs-animation</b></div>
+  <p>Three.js animation - keyframe animation, skeletal animation, morph targets, animation mixing. Use when animating objects</p>
+</div><div class="card" data-search="threejs-fundamentals three.js scene setup, cameras, renderer, object3d hierarchy, coordinate systems. use when setting up 3d scenes, creating cameras, configuring renderers, managing object hierarchies, or working with transforms. 3d">
+  <div class="ctop"><span class="dot on"></span><b>threejs-fundamentals</b></div>
+  <p>Three.js scene setup, cameras, renderer, Object3D hierarchy, coordinate systems. Use when setting up 3D scenes, creating</p>
+</div><div class="card" data-search="threejs-geometry three.js geometry creation - built-in shapes, buffergeometry, custom geometry, instancing. use when creating 3d shapes, working with vertices, building custom meshes, or optimizing with instanced rendering. 3d">
+  <div class="ctop"><span class="dot on"></span><b>threejs-geometry</b></div>
+  <p>Three.js geometry creation - built-in shapes, BufferGeometry, custom geometry, instancing. Use when creating 3D shapes, </p>
+</div><div class="card" data-search="threejs-interaction three.js interaction - raycasting, controls, mouse/touch input, object selection. use when handling user input, implementing click detection, adding camera controls, or creating interactive 3d experiences. 3d">
+  <div class="ctop"><span class="dot on"></span><b>threejs-interaction</b></div>
+  <p>Three.js interaction - raycasting, controls, mouse/touch input, object selection. Use when handling user input, implemen</p>
+</div><div class="card" data-search="threejs-lighting three.js lighting - light types, shadows, environment lighting. use when adding lights, configuring shadows, setting up ibl, or optimizing lighting performance. 3d">
+  <div class="ctop"><span class="dot on"></span><b>threejs-lighting</b></div>
+  <p>Three.js lighting - light types, shadows, environment lighting. Use when adding lights, configuring shadows, setting up </p>
+</div><div class="card" data-search="threejs-loaders three.js asset loading - gltf, textures, images, models, async patterns. use when loading 3d models, textures, hdr environments, or managing loading progress. 3d">
+  <div class="ctop"><span class="dot on"></span><b>threejs-loaders</b></div>
+  <p>Three.js asset loading - GLTF, textures, images, models, async patterns. Use when loading 3D models, textures, HDR envir</p>
+</div><div class="card" data-search="threejs-materials three.js materials - pbr, basic, phong, shader materials, material properties. use when styling meshes, working with textures, creating custom shaders, or optimizing material performance. 3d">
+  <div class="ctop"><span class="dot on"></span><b>threejs-materials</b></div>
+  <p>Three.js materials - PBR, basic, phong, shader materials, material properties. Use when styling meshes, working with tex</p>
+</div><div class="card" data-search="threejs-postprocessing three.js post-processing - effectcomposer, bloom, dof, screen effects. use when adding visual effects, color grading, blur, glow, or creating custom screen-space shaders. 3d">
+  <div class="ctop"><span class="dot on"></span><b>threejs-postprocessing</b></div>
+  <p>Three.js post-processing - EffectComposer, bloom, DOF, screen effects. Use when adding visual effects, color grading, bl</p>
+</div><div class="card" data-search="threejs-shaders three.js shaders - glsl, shadermaterial, uniforms, custom effects. use when creating custom visual effects, modifying vertices, writing fragment shaders, or extending built-in materials. 3d">
+  <div class="ctop"><span class="dot on"></span><b>threejs-shaders</b></div>
+  <p>Three.js shaders - GLSL, ShaderMaterial, uniforms, custom effects. Use when creating custom visual effects, modifying ve</p>
+</div><div class="card" data-search="threejs-textures three.js textures - texture types, uv mapping, environment maps, texture settings. use when working with images, uv coordinates, cubemaps, hdr environments, or texture optimization. 3d">
+  <div class="ctop"><span class="dot on"></span><b>threejs-textures</b></div>
+  <p>Three.js textures - texture types, UV mapping, environment maps, texture settings. Use when working with images, UV coor</p>
+</div><div class="card" data-search="threejs-world-generation build deterministic, editable, free-viewpoint three.js worlds from text or structured briefs. use for cinematic 3d terrain, semantic regions, procedural biomes, explicit landmarks, environmental scattering, camera fly-throughs, world diagnostics, or requests for a real 3d environment rather than generated 2d footage. integrates openmontage&#39;s threejs_world tool with hyperframes; do not use for a single isolated 3d object or a flat parallax scene. 3d">
+  <div class="ctop"><span class="dot on"></span><b>threejs-world-generation</b></div>
+  <p>Build deterministic, editable, free-viewpoint Three.js worlds from text or structured briefs. Use for cinematic 3D terra</p>
+</div></div>
+</section><section class="cat">
+  <h3><span class="ico">🎙️</span>VOZ<span class="n">8</span></h3>
+  <div class="grid"><div class="card" data-search="acestep ai music generation with ace-step 1.5 — background music, vocal tracks, covers, stem extraction for video production. use when generating music, soundtracks, jingles, or working with audio stems. triggers include background music, soundtrack, jingle, music generation, stem extraction, cover, style transfer, or musical composition tasks. voz">
+  <div class="ctop"><span class="dot on"></span><b>acestep</b></div>
+  <p>AI music generation with ACE-Step 1.5 — background music, vocal tracks, covers, stem extraction for video production. Us</p>
+</div><div class="card" data-search="azure-speech-to-text transcribe audio to text using azure ai speech (fast transcription rest api). use when converting audio/video to text, generating subtitles, or processing spoken content in openmontage. optional cloud stt provider — preferred when azure_speech_key is configured; the local faster-whisper `transcriber` is the default offline path. voz">
+  <div class="ctop"><span class="dot on"></span><b>azure-speech-to-text</b></div>
+  <p>Transcribe audio to text using Azure AI Speech (Fast Transcription REST API). Use when converting audio/video to text, g</p>
+</div><div class="card" data-search="azure-text-to-speech generate neural narration audio using azure ai speech (rest text-to-speech). use when synthesizing voiceovers or narration in openmontage. optional cloud tts provider — preferred when azure_speech_key is configured; the local piper_tts remains the default offline path. shares one speech resource with azure_stt. voz">
+  <div class="ctop"><span class="dot on"></span><b>azure-text-to-speech</b></div>
+  <p>Generate neural narration audio using Azure AI Speech (REST text-to-speech). Use when synthesizing voiceovers or narrati</p>
+</div><div class="card" data-search="doubao-tts generate mandarin and multilingual narration with volcengine doubao speech 2.0. use when creating chinese voiceovers, when the user prefers doubao/volcengine/火山引擎/豆包 tts, or when narration needs character-level timestamp metadata for subtitles. voz">
+  <div class="ctop"><span class="dot on"></span><b>doubao-tts</b></div>
+  <p>Generate Mandarin and multilingual narration with Volcengine Doubao Speech 2.0. Use when creating Chinese voiceovers, wh</p>
+</div><div class="card" data-search="elevenlabs generate ai voiceovers, sound effects, and music using elevenlabs apis. use when creating audio content for videos, podcasts, or games. triggers include generating voiceovers, narration, dialogue, sound effects from descriptions, background music, soundtrack generation, voice cloning, or any audio synthesis task. voz">
+  <div class="ctop"><span class="dot on"></span><b>elevenlabs</b></div>
+  <p>Generate AI voiceovers, sound effects, and music using ElevenLabs APIs. Use when creating audio content for videos, podc</p>
+</div><div class="card" data-search="fish-audio-tts generate expressive, multilingual narration with fish.audio (s1 / s2-generation models) and reuse cloned voices via reference_id. use when the user prefers fish.audio/fish audio tts, wants a specific playground voice model, or needs high-emotion voice-clone narration. voz">
+  <div class="ctop"><span class="dot on"></span><b>fish-audio-tts</b></div>
+  <p>Generate expressive, multilingual narration with fish.audio (S1 / S2-generation models) and reuse cloned voices via refe</p>
+</div><div class="card" data-search="speech-to-text transcribe audio to text using elevenlabs scribe v2. use when converting audio/video to text, generating subtitles, transcribing meetings, or processing spoken content. voz">
+  <div class="ctop"><span class="dot on"></span><b>speech-to-text</b></div>
+  <p>Transcribe audio to text using ElevenLabs Scribe v2. Use when converting audio/video to text, generating subtitles, tran</p>
+</div><div class="card" data-search="text-to-speech heygen native voice1 and catalog speech, voice discovery, timestamps, and streaming. voz">
+  <div class="ctop"><span class="dot on"></span><b>text-to-speech</b></div>
+  <p>HeyGen native Voice1 and catalog speech, voice discovery, timestamps, and streaming.</p>
+</div></div>
+</section><section class="cat">
+  <h3><span class="ico">🐶</span>AVATARES<span class="n">7</span></h3>
+  <div class="grid"><div class="card" data-search="avatar-video create ai avatar videos with precise control over avatars, voices, scripts, scenes, and backgrounds using heygen&#39;s v2 api. use when: (1) choosing a specific avatar and voice for a video, (2) writing exact scripts for an avatar to speak, (3) building multi-scene videos with different backgrounds per scene, (4) creating transparent webm videos for compositing, (5) using talking photos as video presenters, (6) integrating heygen avatars with remotion, (7) batch video generation with exact specs, (8) brand-consistent production videos with precise control. avatar">
+  <div class="ctop"><span class="dot on"></span><b>avatar-video</b></div>
+  <p>Create AI avatar videos with precise control over avatars, voices, scripts, scenes, and backgrounds using HeyGen&#39;s v2 AP</p>
+</div><div class="card" data-search="character-animation-qa review local character animation with schema checks, playwright browser previews, frame sampling, and ffmpeg/ffprobe final output checks. avatar">
+  <div class="ctop"><span class="dot on"></span><b>character-animation-qa</b></div>
+  <p>Review local character animation with schema checks, Playwright browser previews, frame sampling, and FFmpeg/ffprobe fin</p>
+</div><div class="card" data-search="character-rigging build data-driven 2d character rigs for local animation: parts, pivots, layers, constraints, views, and reusable rig packages. avatar">
+  <div class="ctop"><span class="dot on"></span><b>character-rigging</b></div>
+  <p>Build data-driven 2D character rigs for local animation: parts, pivots, layers, constraints, views, and reusable rig pac</p>
+</div><div class="card" data-search="faceswap swap faces in a video using ai via the heygen api. use when: (1) replacing a face in a video with another face, (2) face swapping from a source image onto a target video, (3) creating personalized videos by swapping in a person&#39;s face, (4) working with heygen&#39;s /v1/workflows/executions endpoint for face swap processing. avatar">
+  <div class="ctop"><span class="dot on"></span><b>faceswap</b></div>
+  <p>Swap faces in a video using AI via the HeyGen API. Use when: (1) Replacing a face in a video with another face, (2) Face</p>
+</div><div class="card" data-search="heygen [deprecated] use `create-video` for prompt-based video generation or `avatar-video` for precise avatar/scene control. this legacy skill combines both workflows — the newer focused skills provide clearer guidance. avatar">
+  <div class="ctop"><span class="dot on"></span><b>heygen</b></div>
+  <p>[DEPRECATED] Use `create-video` for prompt-based video generation or `avatar-video` for precise avatar/scene control. Th</p>
+</div><div class="card" data-search="pose-library-design design reusable 2d character pose libraries, action cycles, and expression states for data-driven animation. avatar">
+  <div class="ctop"><span class="dot on"></span><b>pose-library-design</b></div>
+  <p>Design reusable 2D character pose libraries, action cycles, and expression states for data-driven animation.</p>
+</div><div class="card" data-search="svg-character-animation animate svg character rigs with gsap, css transforms, remotion frame control, and hyperframes-compatible browser previews. avatar">
+  <div class="ctop"><span class="dot on"></span><b>svg-character-animation</b></div>
+  <p>Animate SVG character rigs with GSAP, CSS transforms, Remotion frame control, and HyperFrames-compatible browser preview</p>
+</div></div>
+</section><section class="cat">
+  <h3><span class="ico">🎬</span>VÍDEO<span class="n">7</span></h3>
+  <div class="grid"><div class="card" data-search="ffmpeg video and audio processing with ffmpeg. use for format conversion, resizing, compression, audio extraction, and preparing assets for remotion. triggers include converting gif to mp4, resizing video, extracting audio, compressing files, or any media transformation task. video">
+  <div class="ctop"><span class="dot on"></span><b>ffmpeg</b></div>
+  <p>Video and audio processing with FFmpeg. Use for format conversion, resizing, compression, audio extraction, and preparin</p>
+</div><div class="card" data-search="media-use agent media os — resolve any media need (bgm, sfx, image, icon) into a frozen local file + ledger record. one verb (`resolve`) handles the full cascade — project cache, global cache, heygen catalog search, freeze, register. keeps search noise on disk, hands the agent a path. use when a composition needs background music, sound effects, images, or icons. video">
+  <div class="ctop"><span class="dot on"></span><b>media-use</b></div>
+  <p>Agent Media OS — resolve any media need (BGM, SFX, image, icon) into a frozen local file + ledger record. One verb (`res</p>
+</div><div class="card" data-search="video-download download video and audio from youtube and 1000+ sites using yt-dlp. no api keys needed. use when: (1) downloading a video from youtube or other sites, (2) extracting audio from a video url, (3) downloading subtitles/captions from a video, (4) getting video metadata without downloading. video">
+  <div class="ctop"><span class="dot on"></span><b>video-download</b></div>
+  <p>Download video and audio from YouTube and 1000+ sites using yt-dlp. No API keys needed. Use when: (1) Downloading a vide</p>
+</div><div class="card" data-search="video-edit edit videos locally using ffmpeg. trim, concat, resize, speed, overlay, extract audio, compress, and convert. use when: (1) trimming or cutting video segments, (2) concatenating multiple clips, (3) resizing video for social platforms, (4) extracting or replacing audio, (5) compressing video, (6) converting video formats, (7) getting video info. video">
+  <div class="ctop"><span class="dot on"></span><b>video-edit</b></div>
+  <p>Edit videos locally using ffmpeg. Trim, concat, resize, speed, overlay, extract audio, compress, and convert. Use when: </p>
+</div><div class="card" data-search="video-toolkit create professional videos autonomously using claude-code-video-toolkit — ai voiceovers, image generation, music, talking heads, and remotion rendering. video">
+  <div class="ctop"><span class="dot on"></span><b>video-toolkit</b></div>
+  <p>Create professional videos autonomously using claude-code-video-toolkit — AI voiceovers, image generation, music, talkin</p>
+</div><div class="card" data-search="video-translate translate and dub existing videos into multiple languages using heygen. use when: (1) translating a video into another language, (2) dubbing video content with lip-sync, (3) creating multi-language versions of existing videos, (4) audio-only translation without lip-sync, (5) working with heygen&#39;s /v2/video_translate endpoint. video">
+  <div class="ctop"><span class="dot on"></span><b>video-translate</b></div>
+  <p>Translate and dub existing videos into multiple languages using HeyGen. Use when: (1) Translating a video into another l</p>
+</div><div class="card" data-search="video-understand understand video content locally using ffmpeg frame extraction and whisper transcription. no api keys needed. use when: (1) understanding what a video contains, (2) transcribing video audio locally, (3) extracting key frames for visual analysis, (4) getting video content without api keys. video">
+  <div class="ctop"><span class="dot on"></span><b>video-understand</b></div>
+  <p>Understand video content locally using ffmpeg frame extraction and Whisper transcription. No API keys needed. Use when: </p>
+</div></div>
+</section><section class="cat">
+  <h3><span class="ico">🎛️</span>DESIGN<span class="n">5</span></h3>
+  <div class="grid"><div class="card" data-search="beautiful-mermaid render mermaid diagrams as svg and png using the beautiful mermaid library. use when the user asks to render a mermaid diagram. design">
+  <div class="ctop"><span class="dot on"></span><b>beautiful-mermaid</b></div>
+  <p>Render Mermaid diagrams as SVG and PNG using the Beautiful Mermaid library. Use when the user asks to render a Mermaid d</p>
+</div><div class="card" data-search="tailwind-design-system build scalable design systems with tailwind css v4, design tokens, component libraries, and responsive patterns. use when creating component libraries, implementing design systems, or standardizing ui patterns. design">
+  <div class="ctop"><span class="dot on"></span><b>tailwind-design-system</b></div>
+  <p>Build scalable design systems with Tailwind CSS v4, design tokens, component libraries, and responsive patterns. Use whe</p>
+</div><div class="card" data-search="vercel-composition-patterns  design">
+  <div class="ctop"><span class="dot on"></span><b>vercel-composition-patterns</b></div>
+  <p>sem descrição</p>
+</div><div class="card" data-search="vercel-react-best-practices react and next.js performance optimization guidelines from vercel engineering. this skill should be used when writing, reviewing, or refactoring react/next.js code to ensure optimal performance patterns. triggers on tasks involving react components, next.js pages, data fetching, bundle optimization, or performance improvements. design">
+  <div class="ctop"><span class="dot on"></span><b>vercel-react-best-practices</b></div>
+  <p>React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, r</p>
+</div><div class="card" data-search="web-design-guidelines review ui code for web interface guidelines compliance. use when asked to &quot;review my ui&quot;, &quot;check accessibility&quot;, &quot;audit design&quot;, &quot;review ux&quot;, or &quot;check my site against best practices&quot;. design">
+  <div class="ctop"><span class="dot on"></span><b>web-design-guidelines</b></div>
+  <p>Review UI code for Web Interface Guidelines compliance. Use when asked to &quot;review my UI&quot;, &quot;check accessibility&quot;, &quot;audit </p>
+</div></div>
+</section><section class="cat">
+  <h3><span class="ico">🎚️</span>ÁUDIO & MÚSICA<span class="n">4</span></h3>
+  <div class="grid"><div class="card" data-search="lyria generate and validate music with google lyria through the gemini interactions api. use before calling openmontage `google_music`, designing lyria 3.5 or clip prompts, using image-to-music or custom lyrics, choosing between single-turn lyria and lyria realtime, diagnosing google music-generation failures, or preparing exact-duration music for a video. audio">
+  <div class="ctop"><span class="dot on"></span><b>lyria</b></div>
+  <p>Generate and validate music with Google Lyria through the Gemini Interactions API. Use before calling OpenMontage `googl</p>
+</div><div class="card" data-search="music generate music using elevenlabs music api. use when creating instrumental tracks, songs with lyrics, background music, jingles, or any ai-generated music composition. supports prompt-based generation, composition plans for granular control, and detailed output with metadata. audio">
+  <div class="ctop"><span class="dot on"></span><b>music</b></div>
+  <p>Generate music using ElevenLabs Music API. Use when creating instrumental tracks, songs with lyrics, background music, j</p>
+</div><div class="card" data-search="music-to-video use when the user has a music track (an audio file, or a video to pull audio from) and wants a beat-synced hyperframes video, calm to hard-hitting. the music drives everything: one analyzer reads it once, the orchestrator lays out the frames and fills a per-frame plan, and one sub-agent builds each frame. typography and templates are the floor — a complete video needs zero assets — but any images or videos the user supplies are cut into the frames on the same beat grid (beat-cut / ken-burns). the genre (lyric video, slideshow, kinetic promo) falls out of the per-frame choices; the pipeline never branches on it. audio">
+  <div class="ctop"><span class="dot on"></span><b>music-to-video</b></div>
+  <p>Use when the user has a music track (an audio file, or a video to pull audio from) and wants a beat-synced HyperFrames v</p>
+</div><div class="card" data-search="sound-effects generate sound effects from text descriptions using elevenlabs. use when creating sound effects, generating audio textures, producing ambient sounds, cinematic impacts, ui sounds, or any audio that isn&#39;t speech. supports looping, duration control, and prompt influence tuning. audio">
+  <div class="ctop"><span class="dot on"></span><b>sound-effects</b></div>
+  <p>Generate sound effects from text descriptions using ElevenLabs. Use when creating sound effects, generating audio textur</p>
+</div></div>
+</section><section class="cat">
+  <h3><span class="ico">⚙️</span>INFRA<span class="n">4</span></h3>
+  <div class="grid"><div class="card" data-search="agents build voice ai agents with elevenlabs. use when creating voice assistants, customer service bots, interactive voice characters, or any real-time voice conversation experience. infra">
+  <div class="ctop"><span class="dot on"></span><b>agents</b></div>
+  <p>Build voice AI agents with ElevenLabs. Use when creating voice assistants, customer service bots, interactive voice char</p>
+</div><div class="card" data-search="provider-model-refresh use the september 2026 image, video, speech and avatar v adapters with explicit model/host contracts. infra">
+  <div class="ctop"><span class="dot on"></span><b>provider-model-refresh</b></div>
+  <p>Use the September 2026 image, video, speech and Avatar V adapters with explicit model/host contracts.</p>
+</div><div class="card" data-search="provider-refresh-oct23 api contracts and production routing for the october 23, 2026 provider refresh. infra">
+  <div class="ctop"><span class="dot on"></span><b>provider-refresh-oct23</b></div>
+  <p>API contracts and production routing for the October 23, 2026 provider refresh.</p>
+</div><div class="card" data-search="setup-api-key guides users through setting up an elevenlabs api key for elevenlabs mcp tools. use when the user needs to configure an elevenlabs api key, when elevenlabs tools fail due to missing api key, or when the user mentions needing access to elevenlabs. first checks whether elevenlabs_api_key is already configured and valid, and only runs full setup when needed. infra">
+  <div class="ctop"><span class="dot on"></span><b>setup-api-key</b></div>
+  <p>Guides users through setting up an ElevenLabs API key for ElevenLabs MCP tools. Use when the user needs to configure an </p>
+</div></div>
+</section><section class="cat">
+  <h3><span class="ico">🖥️</span>CAPTURA DE ECRÃ<span class="n">3</span></h3>
+  <div class="grid"><div class="card" data-search="playwright-recording record browser interactions as video using playwright. use for capturing demo videos, app walkthroughs, and ui flows for remotion videos. triggers include recording a demo, capturing browser video, screen recording a website, or creating walkthrough footage. captura">
+  <div class="ctop"><span class="dot on"></span><b>playwright-recording</b></div>
+  <p>Record browser interactions as video using Playwright. Use for capturing demo videos, app walkthroughs, and UI flows for</p>
+</div><div class="card" data-search="synthetic-screen-recording synthetic terminal-style screen recording guidance for remotion `terminalscene`. captura">
+  <div class="ctop"><span class="dot on"></span><b>synthetic-screen-recording</b></div>
+  <p>Synthetic terminal-style screen recording guidance for Remotion `TerminalScene`.</p>
+</div><div class="card" data-search="website-to-video capture a general website/url and turn it into a hyperframes video (site tour, showcase, or social clip from the site&#39;s own visuals). uses headless chrome screenshots + brand assets. use when intent is general — portfolio/blog/landing-page showcase or social clip from the site. not for: product/saas launch or promo (→ /product-launch-video, even from a url); topic explainer with no site (→ /faceless-explainer); github pr (→ /pr-to-video); adding captions to existing video (→ /embedded-captions); short unnarrated page-highlight motion graphic (→ /motion-graphics). unclear launch-vs-general-site? ask one question or start at /hyperframes. captura">
+  <div class="ctop"><span class="dot on"></span><b>website-to-video</b></div>
+  <p>Capture a general website/URL and turn it into a HyperFrames video (site tour, showcase, or social clip from the site&#39;s </p>
+</div></div>
+</section><section class="cat">
+  <h3><span class="ico">📦</span>OUTROS<span class="n">2</span></h3>
+  <div class="grid"><div class="card" data-search="atlas-cloud generate or edit images and videos through the atlas cloud gateway. use for atlas-hosted seedance 2.5/2.0, gemini omni flash, minimax h3, seedream 5.0, gpt image 2, nano banana 2, or when one atlascloud_api_key should access multiple media model families. outro">
+  <div class="ctop"><span class="dot on"></span><b>atlas-cloud</b></div>
+  <p>Generate or edit images and videos through the Atlas Cloud gateway. Use for Atlas-hosted Seedance 2.5/2.0, Gemini Omni F</p>
+</div><div class="card" data-search="create-video create videos from a text prompt using heygen&#39;s video agent. use when: (1) creating a video from a description or idea, (2) generating explainer, demo, or marketing videos from a prompt, (3) making a video without specifying exact avatars, voices, or scenes, (4) quick video prototyping or drafts, (5) one-shot prompt-to-video generation, (6) user says &quot;make me a video&quot; or &quot;create a video about x&quot;. outro">
+  <div class="ctop"><span class="dot on"></span><b>create-video</b></div>
+  <p>Create videos from a text prompt using HeyGen&#39;s Video Agent. Use when: (1) Creating a video from a description or idea, </p>
+</div></div>
+</section>
+
+<h2>Pipelines do OpenMontage</h2>
+<table><thead><tr><th>Pipeline</th><th>O que faz</th><th>Categoria</th></tr></thead><tbody><tr><td><b>animated-explainer</b></td><td>Generated explainer video from topic/idea - fully AI-produced with narration, visuals, and music.</td><td class="tag">generated</td></tr><tr><td><b>animation</b></td><td>Animation-first pipeline for motion graphics, diagram-led explainers, kinetic typography,</td><td class="tag">animation</td></tr><tr><td><b>avatar-spokesperson</b></td><td>Presenter-led avatar pipeline for spokesperson videos, internal updates, onboarding,</td><td class="tag">custom</td></tr><tr><td><b>character-animation</b></td><td>Character animation pipeline for local, reusable cartoon characters. It turns</td><td class="tag">animation</td></tr><tr><td><b>cinematic</b></td><td>Mood-led cinematic pipeline for trailers, brand films, montages, explicit 3D-world fly-throughs,</td><td class="tag">cinematic</td></tr><tr><td><b>clip-factory</b></td><td>Multi-clip extraction pipeline. Takes long-form content (webinar, stream, presentation,</td><td class="tag">custom</td></tr><tr><td><b>documentary-montage</b></td><td>Retrieval-first thematic montage pipeline. Builds a semantic corpus of real-world</td><td class="tag">documentary</td></tr><tr><td><b>framework-smoke</b></td><td></td><td class="tag">custom</td></tr><tr><td><b>hybrid</b></td><td>Hybrid pipeline for videos that combine source footage with designed or generated support</td><td class="tag">hybrid</td></tr><tr><td><b>localization-dub</b></td><td>Transcript-first localization pipeline for producing translated subtitles, dubbed audio,</td><td class="tag">custom</td></tr><tr><td><b>podcast-repurpose</b></td><td>Podcast-to-video repurposing pipeline. Takes podcast audio (or video podcast) and</td><td class="tag">custom</td></tr><tr><td><b>screen-demo</b></td><td>Screen recording pipeline. Two production modes:</td><td class="tag">screen_recording</td></tr><tr><td><b>talking-head</b></td><td>End-to-end talking-head video pipeline. Takes raw footage of a person speaking,</td><td class="tag">talking_head</td></tr></tbody></table>
+
+<h2>Composições Remotion</h2>
+<div><span class="chip">Explainer</span><span class="chip">CinematicRenderer</span><span class="chip">SignalFromTomorrowWithMusic</span><span class="chip">TalkingHead</span><span class="chip">TitledVideo</span><span class="chip">HeroTitle</span><span class="chip">ProductReveal</span><span class="chip">ProductRevealVertical</span><span class="chip">CaptionOverlayOnly</span><span class="chip">CollageBurst</span><span class="chip">LyricOverlay</span><span class="chip">EndTag</span><span class="chip">EndTagOverlay</span></div>
+
+<h2>Voz (VoiceCraft)</h2>
+<table><thead><tr><th>Provedor</th><th>Estado</th><th>Chave</th></tr></thead><tbody><tr><td><b>nvidia</b></td><td><span class="dot on"></span>pronto</td><td>precisa chave</td></tr><tr><td><b>gemini</b></td><td><span class="dot on"></span>pronto</td><td>precisa chave</td></tr><tr><td><b>edge</b></td><td><span class="dot on"></span>pronto (sem chave)</td><td>sem chave</td></tr><tr><td><b>gcloud</b></td><td><span class="dot on"></span>pronto</td><td>precisa chave</td></tr><tr><td><b>elevenlabs</b></td><td><span class="dot off"></span>sem chave (Puter.js no painel)</td><td>precisa chave</td></tr><tr><td><b>openai</b></td><td><span class="dot off"></span>sem chave (Puter.js no painel)</td><td>precisa chave</td></tr><tr><td><b>polly</b></td><td><span class="dot off"></span>sem chave (Puter.js no painel)</td><td>precisa chave</td></tr><tr><td><b>azure</b></td><td><span class="dot off"></span>sem chave</td><td>precisa chave</td></tr><tr><td><b>voicestudio</b></td><td><span class="dot off"></span>offline :3900</td><td>sem chave</td></tr><tr><td><b>kokoro</b></td><td><span class="dot off"></span>offline :8880</td><td>sem chave</td></tr></tbody></table>
+
+<footer>Gerado de <b>studio.catalog.json</b> · 12/11/2026, 21:06:15<br>
+Actualizar: <b>node .artcraft\studio-catalog.mjs</b> e depois <b>node .artcraft\studio-panel.mjs</b></footer>
+</div>
+<script>
+var q = document.getElementById('q');
+q.addEventListener('input', function(){
+  var v = this.value.toLowerCase().trim();
+  document.querySelectorAll('.card').forEach(function(c){
+    var hay = c.getAttribute('data-search') || '';
+    c.classList.toggle('hide', v && hay.indexOf(v) < 0);
+  });
+  document.querySelectorAll('.cat').forEach(function(section){
+    var visiveis = section.querySelectorAll('.card:not(.hide)').length;
+    section.classList.toggle('hide', v && visiveis === 0);
+  });
+});
+</script></body></html>

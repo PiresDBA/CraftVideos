@@ -1,0 +1,115 @@
+{
+  "version": 2,
+  "created": "2026-11-13",
+  "objectivo": "Banda de cima com mini-videos originais ANIMADOS (tipografia cinetica Remotion), texto embaixo do avatar so com palavras-chave, e voz pt-BR de melhor qualidade. Estrutura clonada, nunca conteudo (zero footage da referencia na banda de cima).",
+  "validado_antes_do_plano": [
+    "Remotion do OpenMontage funciona: render de teste 1080x1080, 61 frames, text_card com spring animation — sem erros (C:\\Users\\Pires\\AppData\\Local\\Temp\\opencode\\remotion-smoke.mp4)",
+    "remotion-composer/ tem node_modules completo (remotion 4.0.484, react 18, @remotion/transitions, google-fonts)",
+    "Scene types prontos: text_card, stat_card, callout, comparison, bar_chart, hero_title, progress_bar — todos com animacao de letras incluida",
+    "VoiceCraft com 3 vozes edge pt-BR gratis: Francisca, Thalita Multilingual (Neural HD), Antonio — sem chave, sem custo",
+    "clone.config.json ja tem tudo parametrizado (vozes por avatar, layout, cards) — as novas opcoes entram aqui, nada fixado no codigo"
+  ],
+  "decisoes_fechadas": [
+    "Engine da banda de cima: Remotion (OpenMontage remotion-composer) — original, livre de direitos, letras animadas com spring",
+    "Banda de cima com footage da referencia (--visuals-video) fica DESLIGADO por defeito; opcao mantida para quem quiser ligar",
+    "Texto embaixo do avatar: so palavras-chave (2-4 palavras), nunca a frase completa"
+  ],
+  "tarefas": [
+    {
+      "id": "T12",
+      "titulo": "Engine Remotion para a banda de cima",
+      "detalhe": "novo ficheiro .artcraft/yt-motion-remotion.mjs: recebe cenas (palavras-chave, tipo de cena, duracao) e renderiza 6 mini-videos 1080x~1094 com tipografia cinetica. clipAlvo por tipo: headline -> text_card, dados -> stat_card, contraste -> comparison, lista -> progress_bar. cores vem de cards.palette do clone.config.json",
+      "estado": "feito"
+    },
+    {
+      "id": "T13",
+      "titulo": "Ligar Remotion ao build como opcao",
+      "detalhe": "clone.config.json: cards.topEngine: \"remotion\" (opcoes mantidas: figcraft|effectcraft|visuals). buildMotionCards usa o engine escolhido; --visuals-video continua disponivel mas nao e o defeito",
+      "estado": "feito"
+    },
+    {
+      "id": "T14",
+      "titulo": "Texto embaixo do avatar = palavras-chave",
+      "detalhe": "cards.belowText: { mode: \"keywords\", maxWords: 3 } — extrai as palavras de acento do texto da cena em vez de escrever a narracao toda; texto completo continua disponivel com mode \"full\"",
+      "estado": "feito"
+    },
+    {
+      "id": "T15",
+      "titulo": "Voz pt-BR trocavel por config",
+      "detalhe": "vozes por avatar/per-idioma ja existem no config; trocar nvidia Magpie Isabela/Louise pela escolha do usuario (edge Francisca/Thalita ou gemini). Sem custo, via clone.config.json + --set",
+      "estado": "feito"
+    },
+    {
+      "id": "T16",
+      "titulo": "Rebuild + verificacao",
+      "detalhe": "build completo com Remotion ligado; frames de QA em 5 pontos; OCR confirma palavras-chave em cima e embaixo; verification-loop ate PASS",
+      "estado": "em-andamento"
+    },
+    {
+      "id": "T17",
+      "titulo": "Fase 2 (aprovacao separada): painel configuravel com previews",
+      "detalhe": "menu no app com mini-previews de letras animadas, vozes, transicoes, tamanho/estilo de fonte, posicao — o usuario escolhe vendo. So comeca quando as tarefas T12-T16 passarem",
+      "estado": "fase-2"
+    },
+    {
+      "id": "T18",
+      "titulo": "Recuperacao do motor yt-clone-build.mjs",
+      "detalhe": "ficheiro truncado (1981 bytes) por escrita concorrente. Reconstruido a partir do historico de tool calls no opencode.db (base = reads integrais de 13/11 08:28 + 33 edits posteriores). Corrigidos: import do modulo Remotion em falta, declaracao REMOTION_TOP_BAND em falta, fontsdir do subtitles filter. node --check passa, dry-run corre.",
+      "estado": "feito"
+    },
+    {
+      "id": "T19",
+      "titulo": "Refatoracao modular (logica pura isolada e testavel)",
+      "detalhe": "novos modulos em .artcraft/clone/lib/: text.mjs (wrap, keyWords v2, highlightRuns, accentRuns, captionChunks), layout.mjs (layoutMetrics, sceneLayout, textAnchorY), ass.mjs (ASS/SRT), runtime.mjs (run com timeout, ffmpeg discovery, http, VRAM), config.mjs (load + defaults + --set + validate). O CLI continua igual, so passa a importar.",
+      "estado": "feito"
+    },
+    {
+      "id": "T20",
+      "titulo": "Corrigir bugs latentes encontrados na leitura do codigo",
+      "detalhe": "httpPost usa require() em ESM; runVastAI/runLambda inexistentes; httpGet ignora headers (key Pexels perdida); manifest diz sempre cards=figcraft; run() sem timeout; arg() aceita flag sem valor; generateDrivingVideo e stubs HeyGen/Synthesia/D-ID sao codigo morto.",
+      "estado": "feito"
+    },
+    {
+      "id": "T21",
+      "titulo": "keyWords v2 (extracao de palavras-chave)",
+      "detalhe": "scene02 ficou so com 'AGENTES'. Nova pontuacao: stopwords pt/en/es mais completas, peso por posicao/tamanho/caixa, no minimo 2 palavras quando a frase permite, ordem original preservada. Configuravel por cards.remotion.maxWords e cards.belowText.maxWords.",
+      "estado": "feito"
+    },
+    {
+      "id": "T22",
+      "titulo": "Validacao de config + modo --validate",
+      "detalhe": "validateConfig() devolve erros e avisos (video, cards, vozes, engine de cards, caminhos). --validate imprime o diagnostico e sai sem escrever nada; --dry-run passa a mostrar o plano completo.",
+      "estado": "feito"
+    },
+    {
+      "id": "T23",
+      "titulo": "Testes automaticos da logica pura",
+      "detalhe": "node:test em .artcraft/clone/lib/*.test.mjs — keyWords, keywordsWithFallback, styleWords, wrap, layout, highlightRuns, ass (cores, tempos, header), validateConfig (com config crua, script externo, conflito caption+motion), redactConfig, rawConfig, cache (impressao digital), runtime (timeout). Correm com node --test '.artcraft/clone/lib/*.test.mjs' — 100 testes, 100 PASS.",
+      "estado": "feito"
+    },
+    {
+      "id": "T24",
+      "titulo": "Rebuild + QA + verification-loop",
+      "detalhe": "build completo do ref5-clone pt-BR (Gemini Leda/Zephyr + Wav2Lip + Remotion), frames de QA em 5 pontos, OCR das palavras-chave, verification-loop ate PASS, manifest/report coerentes.",
+      "estado": "em-andamento"
+    },
+    {
+      "id": "T25",
+      "titulo": "Reserva de palavras-chave (bug 'so AGENTES')",
+      "detalhe": "keyframes v2 so garantizava 2 palavras quando a frase tinha 2+ de conteudo. 'O QUE SÃO AGENTES' (1 de conteudo) e 'O FUTURO ESTÁ AQUI' ficavam com uma palavra so. Novo keywordsWithFallback: quando a frase nao chega ao minimo, entram body/narração da cena como reserva, sem repetir palavras. Aplicado a banda de cima (Remotion), ao texto abaixo do avatar e a frase grande (ASS). Caixa unificada (CAIXA ALTA) nos tres sitios.",
+      "estado": "feito"
+    },
+    {
+      "id": "T26",
+      "titulo": "Cache de narração",
+      "detalhe": "cada rebuild re-sintetizava a narração (quota) e invalidava o cache do Wav2Lip (GPU). Novo modulo cache.mjs: impressão digital do texto + motor + voz + polimento (cadeia inteira, nao booleano); quando não muda, o áudio é reusado e nada se perde. Registo em audio/<idioma>/<cena>.narration-cache.json. 14 testes.",
+      "estado": "feito"
+    },
+    {
+      "id": "T27",
+      "titulo": "Redacção de segredos no manifesto",
+      "detalhe": "manifest.json embute a config inteira; se o utilizador preencher chaves de API, elas saiam no artefacto. redactConfig() substitui valores de chaves/ tokens/ segredos por ***redacted***, sem tocar no resto da config nem no objecto original.",
+      "estado": "feito"
+    }
+  ]
+}
