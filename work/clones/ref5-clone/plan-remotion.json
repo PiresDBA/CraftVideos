@@ -134,6 +134,12 @@
       "titulo": "F1 — Contrato de direcao (active_speaker, estados, banda)",
       "detalhe": "Novo modulo .artcraft/clone/lib/direcao.mjs: o contrato que liga o plano editorial as duas apresentadoras (active_speaker, frida_state, luna_state, top_band_visual), com inferencia conservadora, validacao (erro vs aviso) e fusao da direccao editorial. Novo CLI .artcraft/yt-direcao.mjs. Decisoes tomadas com os dados reais: (1) quem fala e o `avatar` do EDL (4 blocos: Frida p01-p08, Luna p09-p17, Frida p18-p23, Luna p24-p28) e nao a alternancia por posicao, que punha a Luna a falar na apresentacao da Frida; (2) a emocao e a editorial que decide (a inferencia so le a pontuacao da fala); (3) a alternancia dinamica e entrada/saida de cada bloco em plano duplo (8 beats) e miolo em close-up (20 beats). Bug encontrado e corrigido pelo proprio QA: a fusão editorial mudava a emocao mas deixava o driving_template da emocao inferida (a Luna ironica com o driver de escuta). Resultado: plan-direcao.json com 28 beats, 14 Frida / 14 Luna, 8 emocoes distintas, 0 incoerencias emocao->driver, 0 invalidos. 170 testes PASS.",
       "estado": "feito"
+    },
+    {
+      "id": "T32",
+      "titulo": "F2 — Bases v2 de avatares (ComfyUI + IPAdapter)",
+      "detalhe": "Geracao de frida_v2_base.png e luna_v2_base.png (768x768) via ComfyUI + IPAdapter (preset PLUS high strength, dreamshaper_8.safetensors, CLIP-ViT-H, dpmpp_2m/karras, 28 passos, cfg 6.5) com as imagens atuais de referencia como input de identidade. Ficheiros: work/avatars/v2/workflow-base-v2.json (template parametrizado com _parametros e _personagens, nada preso no codigo), work/avatars/v2/gerar-bases-avatares-v2.mjs (runner: copia a referencia para o input do ComfyUI, POST /prompt, poll /history, GET /view, grava PNG; --dry-run e --validate sem rede), work/avatars/v2/validar-avatar-v2.py (valida com o detetor REAL do LivePortrait: insightface humano + XPose animal; reporta se o rosto e detectavel e se o recorte e utilizavel), work/avatars/v2/gerar-bases-avatares-v2.test.mjs (11 testes de funcoes puras). Resultado: Frida e Luna detetadas pelo pipeline humano do LivePortrait (crop 512x512, utilizavel); pipeline de animais indisponivel (falta MultiScaleDeformableAttention/mmcv) mas nao e o caminho do motor. Regras respeitadas: nada pago (modelos locais), estrutura nunca conteudo (sem footage de referencia nos entregaveis), tudo parametrizavel no workflow JSON, Manual de Uso no cabeçalho e comentarios em portugues, node --check + suite + scan de segredos.",
+      "estado": "feito"
     }
   ]
 }

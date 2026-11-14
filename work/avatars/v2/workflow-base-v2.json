@@ -1,0 +1,120 @@
+{
+  "_manual": "WORKFLOW DE BASE v2 — ComfyUI + IPAdapter. Este ficheiro e um TEMPLATE: os valores entre {{ }} sao substituidos pelo gerador (gerar-bases-avatares-v2.mjs) de acordo com _parametros e _personagens. Nao ha nada preso no codigo: mudar o prompt, a semente ou o peso e mexer aqui.",
+  "_formato": "API do ComfyUI (o que o endpoint /prompt espera): um objecto onde cada chave e o id do no e cada valor tem class_type + inputs.",
+  "_nota_memoria": "A GTX 1060 tem 6 GB. O preset PLUS carrega o CLIP-ViT-H (2,4 GB) e o DreamShaper (2 GB): o ComfyUI tem de correr com --lowvram. Se der OOM, baixa _parametros.largura/altura para 768 ou usa o preset STANDARD (medium strength).",
+  "_nota_estilo": "O IPAdapter transfere o CONTEUDO da referencia (a identidade da personagem). Com weight_type 'linear' mantem a identidade; com 'style transfer' so copiaria o estilo e a personagem mudava de cara.",
+
+  "_parametros": {
+    "checkpoint": "dreamshaper_8.safetensors",
+    "largura": 768,
+    "altura": 768,
+    "batch_size": 1,
+    "preset_ipadapter": "PLUS (high strength)",
+    "peso_ipadapter": 0.65,
+    "tipo_peso": "linear",
+    "combinar_embeds": "concat",
+    "inicio": 0.0,
+    "fim": 1.0,
+    "escala_embeds": "V only",
+    "passos": 28,
+    "cfg": 6.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "denoise": 1.0
+  },
+
+  "_personagens": {
+    "frida": {
+      "descricao": "A apresentadora principal. Cão beagle-antropomórfico de pelagem creme, cabelo castanho-avermelhado em bob liso, olhos âmbar grandes, colar de pérolas e blazer bege.",
+      "referencia": "work/avatars/frida.png",
+      "saida": "frida_v2_base.png",
+      "prefixo": "avatar_v2/frida",
+      "seed": 20261114,
+      "prompt_positivo": "anthropomorphic beagle dog presenter, female character, glossy dark auburn bob hairstyle, large expressive amber eyes, black nose, warm subtle closed-mouth smile, cream beige tweed blazer over a pink blouse, pearl necklace, head and shoulders portrait, perfectly centered, facing camera, soft studio lighting, clean light grey seamless background, high detail 3d character render, sharp focus, professional broadcast look",
+      "prompt_negativo": "text, caption, subtitle, watermark, logo, signature, extra ears, extra limbs, deformed, disfigured, blurry, out of focus, cropped head, multiple characters, two faces, open mouth, teeth, flat cartoon shading, low quality, jpeg artifacts, ugly, busy background, harsh shadows"
+    },
+    "luna": {
+      "descricao": "A comentarista. Cão caramelo-antropomórfico de pelagem castanha, cabelo castanho ondulado mais comprido, olhos âmbar, colar dourado e blazer ameixa.",
+      "referencia": "work/avatars/luna.png",
+      "saida": "luna_v2_base.png",
+      "prefixo": "avatar_v2/luna",
+      "seed": 20261115,
+      "prompt_positivo": "anthropomorphic caramel brown dog presenter, female character, shoulder-length wavy dark brown hair, large expressive amber eyes, black nose, warm subtle closed-mouth smile, plum purple blazer over a pink blouse, gold bow pendant necklace, head and shoulders portrait, perfectly centered, facing camera, soft studio lighting, clean light grey seamless background, high detail 3d character render, sharp focus, professional broadcast look",
+      "prompt_negativo": "text, caption, subtitle, watermark, logo, signature, extra ears, extra limbs, deformed, disfigured, blurry, out of focus, cropped head, multiple characters, two faces, open mouth, teeth, flat cartoon shading, low quality, jpeg artifacts, ugly, busy background, harsh shadows"
+    }
+  },
+
+  "workflow": {
+    "1": {
+      "class_type": "CheckpointLoaderSimple",
+      "inputs": { "ckpt_name": "{{checkpoint}}" },
+      "_meta": { "title": "Checkpoint (DreamShaper 8 — SD1.5)" }
+    },
+    "2": {
+      "class_type": "CLIPTextEncode",
+      "inputs": { "text": "{{prompt_positivo}}", "clip": ["1", 1] },
+      "_meta": { "title": "Prompt positivo" }
+    },
+    "3": {
+      "class_type": "CLIPTextEncode",
+      "inputs": { "text": "{{prompt_negativo}}", "clip": ["1", 1] },
+      "_meta": { "title": "Prompt negativo" }
+    },
+    "4": {
+      "class_type": "EmptyLatentImage",
+      "inputs": { "width": "{{largura}}", "height": "{{altura}}", "batch_size": "{{batch_size}}" },
+      "_meta": { "title": "Latente {{largura}}x{{altura}}" }
+    },
+    "5": {
+      "class_type": "LoadImage",
+      "inputs": { "image": "{{imagem_referencia}}" },
+      "_meta": { "title": "Referencia (identidade)" }
+    },
+    "6": {
+      "class_type": "IPAdapterUnifiedLoader",
+      "inputs": { "model": ["1", 0], "preset": "{{preset_ipadapter}}" },
+      "_meta": { "title": "IPAdapter {{preset_ipadapter}}" }
+    },
+    "7": {
+      "class_type": "IPAdapterAdvanced",
+      "inputs": {
+        "model": ["6", 0],
+        "ipadapter": ["6", 1],
+        "image": ["5", 0],
+        "weight": "{{peso_ipadapter}}",
+        "weight_type": "{{tipo_peso}}",
+        "combine_embeds": "{{combinar_embeds}}",
+        "start_at": "{{inicio}}",
+        "end_at": "{{fim}}",
+        "embeds_scaling": "{{escala_embeds}}"
+      },
+      "_meta": { "title": "IPAdapter avancado (peso {{peso_ipadapter}})" }
+    },
+    "8": {
+      "class_type": "KSampler",
+      "inputs": {
+        "model": ["7", 0],
+        "seed": "{{seed}}",
+        "steps": "{{passos}}",
+        "cfg": "{{cfg}}",
+        "sampler_name": "{{sampler}}",
+        "scheduler": "{{scheduler}}",
+        "positive": ["2", 0],
+        "negative": ["3", 0],
+        "latent_image": ["4", 0],
+        "denoise": "{{denoise}}"
+      },
+      "_meta": { "title": "Amostragem ({{sampler}} / {{scheduler}})" }
+    },
+    "9": {
+      "class_type": "VAEDecode",
+      "inputs": { "samples": ["8", 0], "vae": ["1", 2] },
+      "_meta": { "title": "Descodificacao VAE" }
+    },
+    "10": {
+      "class_type": "SaveImage",
+      "inputs": { "images": ["9", 0], "filename_prefix": "{{prefixo}}" },
+      "_meta": { "title": "Gravacao" }
+    }
+  }
+}

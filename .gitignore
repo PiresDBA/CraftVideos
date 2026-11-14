@@ -40,6 +40,16 @@ work/clones/*/*
 # (o que o operador escreve a mao, beat a beat) e o plano ja enriquecido.
 !work/clones/*/direcao-editorial.json
 !work/clones/*/plan-direcao.json
+# as BASES v2 de avatar sao geradas (PNG), mas os programas/JSON que as
+# produzem e validam sao decisao de trabalho: versionam-se. Os PNG ja estao
+# ignorados globalmente por work/* e *.png.
+!work/avatars/
+!work/avatars/v2/
+work/avatars/v2/*
+!work/avatars/v2/*.mjs
+!work/avatars/v2/*.py
+!work/avatars/v2/*.json
+work/avatars/v2/*.png
 backups/
 *.mp4
 *.webm
