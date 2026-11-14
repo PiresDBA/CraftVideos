@@ -128,6 +128,12 @@
       "titulo": "F0 — QA visual do build reconstruido",
       "detalhe": "Rebuild do ref5-clone com o motor saneado: final_pt-BR.mp4 (1080x1920, h264+aac 48kHz stereo, 75.27s, 8.97MB, -14.0 LUFS). QA por frame das 6 cenas: OCR le 'DARK | AGENTES IA | EXECUTAM' etc. sem coordenadas vazadas e 0 alertas; leitura visual confirma que o texto gigante '1728))}AGENTES IA EXECUTAM' do build anterior desapareceu e a frase nao esta duplicada sobre a banda Remotion.",
       "estado": "feito"
+    },
+    {
+      "id": "T31",
+      "titulo": "F1 — Contrato de direcao (active_speaker, estados, banda)",
+      "detalhe": "Novo modulo .artcraft/clone/lib/direcao.mjs: o contrato que liga o plano editorial as duas apresentadoras (active_speaker, frida_state, luna_state, top_band_visual), com inferencia conservadora, validacao (erro vs aviso) e fusao da direccao editorial. Novo CLI .artcraft/yt-direcao.mjs. Decisoes tomadas com os dados reais: (1) quem fala e o `avatar` do EDL (4 blocos: Frida p01-p08, Luna p09-p17, Frida p18-p23, Luna p24-p28) e nao a alternancia por posicao, que punha a Luna a falar na apresentacao da Frida; (2) a emocao e a editorial que decide (a inferencia so le a pontuacao da fala); (3) a alternancia dinamica e entrada/saida de cada bloco em plano duplo (8 beats) e miolo em close-up (20 beats). Bug encontrado e corrigido pelo proprio QA: a fusão editorial mudava a emocao mas deixava o driving_template da emocao inferida (a Luna ironica com o driver de escuta). Resultado: plan-direcao.json com 28 beats, 14 Frida / 14 Luna, 8 emocoes distintas, 0 incoerencias emocao->driver, 0 invalidos. 170 testes PASS.",
+      "estado": "feito"
     }
   ]
 }

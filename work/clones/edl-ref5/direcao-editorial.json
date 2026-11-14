@@ -1,0 +1,122 @@
+{
+  "_manual": "DIRECAO EDITORIAL — edl-ref5 (28 beats). Ficheiro de DECISAO: o que aqui esta escrito vence sempre o que o contrato inferiu. Cada entrada e identificada pelo id do beat. Estados: frida_state / luna_state (emotion, head_action, eye_target, camera_framing). O olhar de quem escuta aponta para o NOME de quem fala ('frida' ou 'luna'), como no Prompt Mestre.",
+  "_estrutura": "p01-p08 ABERTURA (Frida) | p09-p17 COMENTARIO (Luna) | p18-p23 ANALISE (Frida) | p24-p28 FECHO (Luna)",
+  "_catalogoEmocoes": "neutral | happy | surprised | skeptical | excited | serious | curious | ironic | listening",
+  "_catalogoCabeca": "nod | tilt_left_12deg | tilt_right_12deg | shake | listen | still",
+
+  "p01": {
+    "frida_state": { "emotion": "happy", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" },
+    "luna_state": { "emotion": "listening", "head_action": "listen", "eye_target": "frida", "camera_framing": "dual_desk" }
+  },
+  "p02": {
+    "frida_state": { "emotion": "neutral", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" },
+    "luna_state": { "emotion": "listening", "head_action": "listen", "eye_target": "frida", "camera_framing": "dual_desk" }
+  },
+  "p03": {
+    "frida_state": { "emotion": "serious", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" },
+    "luna_state": { "emotion": "listening", "head_action": "listen", "eye_target": "frida", "camera_framing": "dual_desk" }
+  },
+  "p04": {
+    "frida_state": { "emotion": "serious", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" },
+    "luna_state": { "emotion": "listening", "head_action": "listen", "eye_target": "frida", "camera_framing": "dual_desk" }
+  },
+  "p05": {
+    "frida_state": { "emotion": "neutral", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" },
+    "luna_state": { "emotion": "listening", "head_action": "listen", "eye_target": "frida", "camera_framing": "dual_desk" }
+  },
+  "p06": {
+    "frida_state": { "emotion": "neutral", "head_action": "still", "eye_target": "camera", "camera_framing": "medium_closeup" },
+    "luna_state": { "emotion": "listening", "head_action": "listen", "eye_target": "frida", "camera_framing": "dual_desk" }
+  },
+  "p07": {
+    "frida_state": { "emotion": "neutral", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" },
+    "luna_state": { "emotion": "listening", "head_action": "listen", "eye_target": "frida", "camera_framing": "dual_desk" }
+  },
+  "p08": {
+    "frida_state": { "emotion": "excited", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" },
+    "luna_state": { "emotion": "surprised", "head_action": "listen", "eye_target": "frida", "camera_framing": "dual_desk" }
+  },
+
+  "p09": {
+    "frida_state": { "emotion": "listening", "head_action": "listen", "eye_target": "luna", "camera_framing": "dual_desk" },
+    "luna_state": { "emotion": "curious", "head_action": "tilt_left_12deg", "eye_target": "camera", "camera_framing": "medium_closeup" }
+  },
+  "p10": {
+    "frida_state": { "emotion": "listening", "head_action": "listen", "eye_target": "luna", "camera_framing": "dual_desk" },
+    "luna_state": { "emotion": "serious", "head_action": "tilt_left_12deg", "eye_target": "camera", "camera_framing": "medium_closeup" }
+  },
+  "p11": {
+    "frida_state": { "emotion": "listening", "head_action": "listen", "eye_target": "luna", "camera_framing": "dual_desk" },
+    "luna_state": { "emotion": "neutral", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" }
+  },
+  "p12": {
+    "frida_state": { "emotion": "listening", "head_action": "listen", "eye_target": "luna", "camera_framing": "dual_desk" },
+    "luna_state": { "emotion": "neutral", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" }
+  },
+  "p13": {
+    "frida_state": { "emotion": "listening", "head_action": "listen", "eye_target": "luna", "camera_framing": "dual_desk" },
+    "luna_state": { "emotion": "neutral", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" }
+  },
+  "p14": {
+    "frida_state": { "emotion": "listening", "head_action": "listen", "eye_target": "luna", "camera_framing": "dual_desk" },
+    "luna_state": { "emotion": "neutral", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" }
+  },
+  "p15": {
+    "frida_state": { "emotion": "listening", "head_action": "listen", "eye_target": "luna", "camera_framing": "dual_desk" },
+    "luna_state": { "emotion": "neutral", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" }
+  },
+  "p16": {
+    "frida_state": { "emotion": "listening", "head_action": "listen", "eye_target": "luna", "camera_framing": "dual_desk" },
+    "luna_state": { "emotion": "ironic", "head_action": "tilt_left_12deg", "eye_target": "camera", "camera_framing": "medium_closeup" }
+  },
+  "p17": {
+    "frida_state": { "emotion": "surprised", "head_action": "listen", "eye_target": "luna", "camera_framing": "dual_desk" },
+    "luna_state": { "emotion": "ironic", "head_action": "tilt_left_12deg", "eye_target": "camera", "camera_framing": "medium_closeup" }
+  },
+
+  "p18": {
+    "frida_state": { "emotion": "serious", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" },
+    "luna_state": { "emotion": "listening", "head_action": "listen", "eye_target": "frida", "camera_framing": "dual_desk" }
+  },
+  "p19": {
+    "frida_state": { "emotion": "serious", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" },
+    "luna_state": { "emotion": "listening", "head_action": "listen", "eye_target": "frida", "camera_framing": "dual_desk" }
+  },
+  "p20": {
+    "frida_state": { "emotion": "excited", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" },
+    "luna_state": { "emotion": "listening", "head_action": "listen", "eye_target": "frida", "camera_framing": "dual_desk" }
+  },
+  "p21": {
+    "frida_state": { "emotion": "excited", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" },
+    "luna_state": { "emotion": "listening", "head_action": "listen", "eye_target": "frida", "camera_framing": "dual_desk" }
+  },
+  "p22": {
+    "frida_state": { "emotion": "neutral", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" },
+    "luna_state": { "emotion": "listening", "head_action": "listen", "eye_target": "frida", "camera_framing": "dual_desk" }
+  },
+  "p23": {
+    "frida_state": { "emotion": "serious", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" },
+    "luna_state": { "emotion": "listening", "head_action": "listen", "eye_target": "frida", "camera_framing": "dual_desk" }
+  },
+
+  "p24": {
+    "frida_state": { "emotion": "listening", "head_action": "listen", "eye_target": "luna", "camera_framing": "dual_desk" },
+    "luna_state": { "emotion": "happy", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" }
+  },
+  "p25": {
+    "frida_state": { "emotion": "listening", "head_action": "listen", "eye_target": "luna", "camera_framing": "dual_desk" },
+    "luna_state": { "emotion": "happy", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" }
+  },
+  "p26": {
+    "frida_state": { "emotion": "listening", "head_action": "listen", "eye_target": "luna", "camera_framing": "dual_desk" },
+    "luna_state": { "emotion": "excited", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" }
+  },
+  "p27": {
+    "frida_state": { "emotion": "listening", "head_action": "listen", "eye_target": "luna", "camera_framing": "dual_desk" },
+    "luna_state": { "emotion": "excited", "head_action": "nod", "eye_target": "camera", "camera_framing": "medium_closeup" }
+  },
+  "p28": {
+    "frida_state": { "emotion": "happy", "head_action": "listen", "eye_target": "luna", "camera_framing": "dual_desk" },
+    "luna_state": { "emotion": "happy", "head_action": "tilt_left_12deg", "eye_target": "camera", "camera_framing": "medium_closeup" }
+  }
+}

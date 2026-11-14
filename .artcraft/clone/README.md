@@ -18,6 +18,9 @@ nestes módulos, sem I/O e sem estado global, para poder ser testada.
   config.mjs   loadConfig, withDefaults, applyOverride, validateConfig,
                redactConfig, rawConfig
   cache.mjs    narrationFingerprint, readNarrationCache, writeNarrationCache
+  direcao.mjs  o CONTRATO DE DIRECAO: active_speaker, frida_state, luna_state,
+               top_band_visual; inferencia, validacao, fusao da editorial,
+               enquadramentosDoPlano (a alternancia dinamica)
 ```
 
 ## Porquê
@@ -79,6 +82,69 @@ sem secção `script`, `--script` inexistente e `--slug` com traversal.
 Não toca no workspace: a config e o guião vivem no `%TEMP%` e são removidos
 no fim.
 
+## O contrato de direção (F1 — 14-11-2026)
+
+O contrato liga o plano editorial (os beats `p01..p28` do EDL) às duas
+apresentadoras. Responde a três perguntas por beat:
+
+| Pergunta | Onde vive | Quem decide |
+|---|---|---|
+| Quem fala? | `active_speaker` | `active_speaker` escrito → `avatar` do EDL → regra de posição |
+| Com que emoção? | `frida_state` / `luna_state` | `direcao-editorial.json` → inferência pela pontuação da fala |
+| Onde olham e como aparecem? | `eye_target`, `camera_framing`, `driving_template` | editorial → inferência |
+
+### Módulos e ficheiros
+
+| Ficheiro | Papel |
+|---|---|
+| `.artcraft/clone/lib/direcao.mjs` | o contrato: catálogos, inferência, validação, fusão da editorial |
+| `.artcraft/clone/lib/direcao.test.mjs` | 49 testes do contrato |
+| `.artcraft/clone/lib/direcao-cli.test.mjs` | 8 testes de fumo do CLI |
+| `.artcraft/yt-direcao.mjs` | CLI: enriquece um plano e valida o contrato |
+| `work/clones/edl-ref5/direcao-editorial.json` | a decisão escrita à mão (28 beats) |
+| `work/clones/edl-ref5/plan-direcao.json` | o plano com o contrato materializado |
+
+### Como se usa
+
+```sh
+# 1) inferir o contrato a partir do plano do EDL
+node .artcraft/yt-direcao.mjs \
+  --plan work/clones/edl-ref5/plan.json \
+  --direcao work/clones/edl-ref5/direcao-editorial.json \
+  --out work/clones/edl-ref5/plan-direcao.json
+
+# 2) validar sem escrever nada
+node .artcraft/yt-direcao.mjs \
+  --plan work/clones/edl-ref5/plan-direcao.json --validate
+```
+
+O plano de entrada **nunca** é alterado: o EDL pode ser re-executado a
+qualquer momento e o contrato volta a ser aplicado sobre o resultado.
+
+### Três decisões que a inferência não podia adivinhar
+
+1. **Quem fala: o `avatar` do EDL manda.** A primeira regra (alternar Frida
+   e Luna por posição) punha a Luna a falar na apresentação da Frida. Os
+   dados reais do `edl-ref5` são 4 blocos — abertura da Frida (`p01..p08`),
+   comentário da Luna (`p09..p17`), análise da Frida (`p18..p23`), fecho da
+   Luna (`p24..p28`) — e o `avatar` do beat é exactamente esse mapa.
+2. **Emoção: a editorial decide.** A inferência só lê a pontuação da fala
+   (`!` → `excited`, `?` → `curious`/`skeptical`) e é deliberadamente
+   conservadora: uma Frida neutra é melhor do que uma Frida excitada no
+   sítio errado.
+3. **Enquadramento: alternância por bloco.** A entrada e a saída de cada
+   bloco de falante ficam em plano duplo (8 beats) e o miolo em close-up da
+   falante activa (20 beats). É a "alternância dinâmica" que foi pedida, e
+   é uma regra determinística que a F4 vai obedecer.
+
+### O bug do driver trocado
+
+A inferência escolhe o `driving_template` a partir da emoção **inferida**.
+Quando a editorial mudava a emoção (ex.: `ironic`), o driver continuava a
+ser o da inferência — a Luna fazia a cara de quem ouve com a ironia pedida.
+A fusão editorial volta agora a ligar `emoção → driver` depois de aplicar
+as decisões escritas à mão. Um driver escrito explicitamente continua a
+mandar.
 
 ## Comandos
 
@@ -93,11 +159,16 @@ node .artcraft/yt-clone-build.mjs --slug ref5-clone \
   --set 'languages.subtitleLanguages=["pt-BR"]' \
   --wav2lip --driving-video D:\CRAFT\work\reference\ref5\ref1080.mp4
 
+# contrato de direcao: enriquecer um plano e valida-lo
+node .artcraft/yt-direcao.mjs --plan work/clones/edl-ref5/plan.json \
+  --direcao work/clones/edl-ref5/direcao-editorial.json \
+  --out work/clones/edl-ref5/plan-direcao.json
+
 # testes (PowerShell / bash — as aspas contam no Windows)
 node --test ".artcraft/clone/lib/*.test.mjs"
 ```
 
-113 testes (100 da biblioteca + 13 de fumo da CLI).
+170 testes (113 do motor e da biblioteca + 49 do contrato + 8 de fumo do CLI).
 
 ## Regras que os módulos respeitam
 

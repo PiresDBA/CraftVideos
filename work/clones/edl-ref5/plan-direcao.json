@@ -1,0 +1,1323 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-13T10:39:22.975Z",
+  "grade": "A7 — ritmo de corte da referencia",
+  "source": {
+    "shots": "D:\\CRAFT\\work\\reference\\ref5\\shots-merged.json",
+    "script": "D:\\CRAFT\\clone.config.json",
+    "shotsDerived": false
+  },
+  "reference": {
+    "shots": 33,
+    "seconds": 60.23,
+    "cutsPerMinute": 31.9,
+    "medianShot": 1.8
+  },
+  "plan": {
+    "minShot": 0.6,
+    "maxBeats": 40,
+    "narration": "split",
+    "folds": 5,
+    "warnings": {
+      "presenterTop": 1,
+      "beatsWithoutNarration": 0,
+      "scenesWithoutBeat": 0
+    }
+  },
+  "summary": {
+    "beats": 28,
+    "cutsPerMinute": 26.9,
+    "medianSeconds": 1.92,
+    "shortest": 0.7,
+    "longest": 4.57,
+    "totalSeconds": 60.23,
+    "layouts": {
+      "full": 12,
+      "split": 16
+    },
+    "framings": {
+      "wide": 6,
+      "headline": 6,
+      "pull-out": 5,
+      "body": 4,
+      "drift-left": 4,
+      "drift-right": 3
+    }
+  },
+  "kicker": "DARK · IA",
+  "scenes": [
+    {
+      "id": "p01",
+      "parent": "s01",
+      "sourceShot": 1,
+      "seconds": 1.57,
+      "layout": "full",
+      "textSide": "bottom",
+      "avatar": "frida",
+      "kicker": "DARK · IA",
+      "headline": "O QUE ELES NAO CONTAM",
+      "body": "Canal 100% IA: avatar, voz sintetizada e montagem automatica.",
+      "text": "O QUE ELES NAO CONTAM",
+      "narration": "Ola,",
+      "framing": "wide",
+      "motion": {
+        "kenBurns": {
+          "from": 1,
+          "to": 1.06
+        }
+      },
+      "active_speaker": "frida",
+      "frida_state": {
+        "emotion": "happy",
+        "driving_template": "work/avatars/driving_templates/frida_anchor_emphatic_nod.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "luna_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "listen",
+        "eye_target": "frida",
+        "camera_framing": "dual_desk"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "dual_desk"
+    },
+    {
+      "id": "p02",
+      "parent": "s01",
+      "sourceShot": 3,
+      "seconds": 0.7,
+      "layout": "full",
+      "textSide": "bottom",
+      "avatar": "frida",
+      "kicker": "DARK · IA",
+      "headline": "O QUE ELES NAO CONTAM",
+      "body": "Canal 100% IA: avatar, voz sintetizada e montagem automatica.",
+      "text": "O QUE ELES NAO CONTAM",
+      "narration": "eu sou a",
+      "framing": "headline",
+      "motion": {
+        "crop": {
+          "y0": 0.03,
+          "h": 0.52
+        },
+        "kenBurns": {
+          "from": 1.02,
+          "to": 1.14
+        },
+        "pan": "up"
+      },
+      "active_speaker": "frida",
+      "frida_state": {
+        "emotion": "neutral",
+        "driving_template": "work/avatars/driving_templates/frida_anchor_neutral_breathing.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "luna_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "listen",
+        "eye_target": "frida",
+        "camera_framing": "dual_desk"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p03",
+      "parent": "s01",
+      "sourceShot": 4,
+      "seconds": 2.43,
+      "layout": "full",
+      "textSide": "bottom",
+      "avatar": "frida",
+      "kicker": "DARK · IA",
+      "headline": "O QUE ELES NAO CONTAM",
+      "body": "Canal 100% IA: avatar, voz sintetizada e montagem automatica.",
+      "text": "O QUE ELES NAO CONTAM",
+      "narration": "Frida. Este canal nao",
+      "framing": "pull-out",
+      "motion": {
+        "kenBurns": {
+          "from": 1.32,
+          "to": 1.02
+        }
+      },
+      "active_speaker": "frida",
+      "frida_state": {
+        "emotion": "serious",
+        "driving_template": "work/avatars/driving_templates/frida_anchor_neutral_breathing.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "luna_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "listen",
+        "eye_target": "frida",
+        "camera_framing": "dual_desk"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p04",
+      "parent": "s01",
+      "sourceShot": 5,
+      "seconds": 1.67,
+      "layout": "full",
+      "textSide": "bottom",
+      "avatar": "frida",
+      "kicker": "DARK · IA",
+      "headline": "O QUE ELES NAO CONTAM",
+      "body": "Canal 100% IA: avatar, voz sintetizada e montagem automatica.",
+      "text": "O QUE ELES NAO CONTAM",
+      "narration": "tem apresentador humano:",
+      "framing": "body",
+      "motion": {
+        "crop": {
+          "y0": 0.46,
+          "h": 0.48
+        },
+        "kenBurns": {
+          "from": 1.14,
+          "to": 1
+        },
+        "pan": "down"
+      },
+      "active_speaker": "frida",
+      "frida_state": {
+        "emotion": "serious",
+        "driving_template": "work/avatars/driving_templates/frida_anchor_neutral_breathing.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "luna_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "listen",
+        "eye_target": "frida",
+        "camera_framing": "dual_desk"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p05",
+      "parent": "s01",
+      "sourceShot": 6,
+      "seconds": 1.8,
+      "layout": "split",
+      "splitRatio": 0.55,
+      "textSide": "mid",
+      "avatar": "frida",
+      "kicker": "DARK · IA",
+      "headline": "O QUE ELES NAO CONTAM",
+      "body": "Canal 100% IA: avatar, voz sintetizada e montagem automatica.",
+      "text": "O QUE ELES NAO CONTAM",
+      "narration": "o rosto e um avatar,",
+      "framing": "drift-left",
+      "motion": {
+        "kenBurns": {
+          "from": 1.14,
+          "to": 1.14
+        },
+        "pan": "left"
+      },
+      "active_speaker": "frida",
+      "frida_state": {
+        "emotion": "neutral",
+        "driving_template": "work/avatars/driving_templates/frida_anchor_neutral_breathing.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "luna_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "listen",
+        "eye_target": "frida",
+        "camera_framing": "dual_desk"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p06",
+      "parent": "s01",
+      "sourceShot": 7,
+      "seconds": 0.81,
+      "layout": "split",
+      "splitRatio": 0.48,
+      "textSide": "top",
+      "avatar": "frida",
+      "kicker": "DARK · IA",
+      "headline": "O QUE ELES NAO CONTAM",
+      "body": "Canal 100% IA: avatar, voz sintetizada e montagem automatica.",
+      "text": "O QUE ELES NAO CONTAM",
+      "narration": "a",
+      "framing": "drift-right",
+      "motion": {
+        "crop": {
+          "y0": 0,
+          "h": 0.86
+        },
+        "kenBurns": {
+          "from": 1.06,
+          "to": 1.18
+        },
+        "pan": "right"
+      },
+      "active_speaker": "frida",
+      "frida_state": {
+        "emotion": "neutral",
+        "driving_template": "work/avatars/driving_templates/frida_anchor_neutral_breathing.mp4",
+        "head_action": "still",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "luna_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "listen",
+        "eye_target": "frida",
+        "camera_framing": "dual_desk"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p07",
+      "parent": "s01",
+      "sourceShot": 8,
+      "seconds": 2,
+      "layout": "split",
+      "splitRatio": 0.572,
+      "textSide": "top",
+      "avatar": "frida",
+      "kicker": "DARK · IA",
+      "headline": "O QUE ELES NAO CONTAM",
+      "body": "Canal 100% IA: avatar, voz sintetizada e montagem automatica.",
+      "text": "O QUE ELES NAO CONTAM",
+      "narration": "voz e sintetizada",
+      "framing": "wide",
+      "motion": {
+        "kenBurns": {
+          "from": 1,
+          "to": 1.06
+        }
+      },
+      "active_speaker": "frida",
+      "frida_state": {
+        "emotion": "neutral",
+        "driving_template": "work/avatars/driving_templates/frida_anchor_neutral_breathing.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "luna_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "listen",
+        "eye_target": "frida",
+        "camera_framing": "dual_desk"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p08",
+      "parent": "s01",
+      "sourceShot": 9,
+      "seconds": 4.57,
+      "layout": "split",
+      "splitRatio": 0.699,
+      "textSide": "mid",
+      "avatar": "frida",
+      "kicker": "DARK · IA",
+      "headline": "O QUE ELES NAO CONTAM",
+      "body": "Canal 100% IA: avatar, voz sintetizada e montagem automatica.",
+      "text": "O QUE ELES NAO CONTAM",
+      "narration": "e a montagem corre sozinha durante a noite.",
+      "framing": "headline",
+      "motion": {
+        "crop": {
+          "y0": 0.03,
+          "h": 0.52
+        },
+        "kenBurns": {
+          "from": 1.02,
+          "to": 1.14
+        },
+        "pan": "up"
+      },
+      "active_speaker": "frida",
+      "frida_state": {
+        "emotion": "excited",
+        "driving_template": "work/avatars/driving_templates/frida_anchor_emphatic_nod.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "luna_state": {
+        "emotion": "surprised",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_curious_headtilt.mp4",
+        "head_action": "listen",
+        "eye_target": "frida",
+        "camera_framing": "dual_desk"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "dual_desk"
+    },
+    {
+      "id": "p09",
+      "parent": "s02",
+      "sourceShot": 10,
+      "seconds": 3.5,
+      "layout": "split",
+      "splitRatio": 0.454,
+      "textSide": "top",
+      "avatar": "luna",
+      "kicker": "COMENTARIO · LUNA",
+      "headline": "BOT, GUIAO, AVATAR",
+      "body": "De madrugada: noticias, guiao, voz, edicao, publicacao.",
+      "text": "BOT, GUIAO, AVATAR",
+      "narration": "Eu sou a Luna. O fluxo",
+      "framing": "wide",
+      "motion": {
+        "kenBurns": {
+          "from": 1,
+          "to": 1.06
+        }
+      },
+      "active_speaker": "luna",
+      "frida_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/frida_listening_to_luna.mp4",
+        "head_action": "listen",
+        "eye_target": "luna",
+        "camera_framing": "dual_desk"
+      },
+      "luna_state": {
+        "emotion": "curious",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_curious_headtilt.mp4",
+        "head_action": "tilt_left_12deg",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "dual_desk"
+    },
+    {
+      "id": "p10",
+      "parent": "s02",
+      "sourceShot": 11,
+      "seconds": 1.87,
+      "layout": "full",
+      "textSide": "bottom",
+      "avatar": "luna",
+      "kicker": "COMENTARIO · LUNA",
+      "headline": "BOT, GUIAO, AVATAR",
+      "body": "De madrugada: noticias, guiao, voz, edicao, publicacao.",
+      "text": "BOT, GUIAO, AVATAR",
+      "narration": "e sempre o mesmo:",
+      "framing": "headline",
+      "motion": {
+        "crop": {
+          "y0": 0.03,
+          "h": 0.52
+        },
+        "kenBurns": {
+          "from": 1.02,
+          "to": 1.14
+        },
+        "pan": "up"
+      },
+      "active_speaker": "luna",
+      "frida_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/frida_listening_to_luna.mp4",
+        "head_action": "listen",
+        "eye_target": "luna",
+        "camera_framing": "dual_desk"
+      },
+      "luna_state": {
+        "emotion": "serious",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "tilt_left_12deg",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p11",
+      "parent": "s02",
+      "sourceShot": 13,
+      "seconds": 2.6,
+      "layout": "split",
+      "splitRatio": 0.501,
+      "textSide": "mid",
+      "avatar": "luna",
+      "kicker": "COMENTARIO · LUNA",
+      "headline": "BOT, GUIAO, AVATAR",
+      "body": "De madrugada: noticias, guiao, voz, edicao, publicacao.",
+      "text": "BOT, GUIAO, AVATAR",
+      "narration": "um robo apanha",
+      "framing": "pull-out",
+      "motion": {
+        "kenBurns": {
+          "from": 1.32,
+          "to": 1.02
+        }
+      },
+      "active_speaker": "luna",
+      "frida_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/frida_listening_to_luna.mp4",
+        "head_action": "listen",
+        "eye_target": "luna",
+        "camera_framing": "dual_desk"
+      },
+      "luna_state": {
+        "emotion": "neutral",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p12",
+      "parent": "s02",
+      "sourceShot": 14,
+      "seconds": 1.47,
+      "layout": "split",
+      "splitRatio": 0.55,
+      "textSide": "bottom",
+      "avatar": "luna",
+      "kicker": "COMENTARIO · LUNA",
+      "headline": "BOT, GUIAO, AVATAR",
+      "body": "De madrugada: noticias, guiao, voz, edicao, publicacao.",
+      "text": "BOT, GUIAO, AVATAR",
+      "narration": "as noticias do dia,",
+      "framing": "body",
+      "motion": {
+        "crop": {
+          "y0": 0.46,
+          "h": 0.48
+        },
+        "kenBurns": {
+          "from": 1.14,
+          "to": 1
+        },
+        "pan": "down"
+      },
+      "active_speaker": "luna",
+      "frida_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/frida_listening_to_luna.mp4",
+        "head_action": "listen",
+        "eye_target": "luna",
+        "camera_framing": "dual_desk"
+      },
+      "luna_state": {
+        "emotion": "neutral",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p13",
+      "parent": "s02",
+      "sourceShot": 15,
+      "seconds": 1.47,
+      "layout": "full",
+      "textSide": "bottom",
+      "avatar": "luna",
+      "kicker": "COMENTARIO · LUNA",
+      "headline": "BOT, GUIAO, AVATAR",
+      "body": "De madrugada: noticias, guiao, voz, edicao, publicacao.",
+      "text": "BOT, GUIAO, AVATAR",
+      "narration": "escreve o guiao,",
+      "framing": "drift-left",
+      "motion": {
+        "kenBurns": {
+          "from": 1.14,
+          "to": 1.14
+        },
+        "pan": "left"
+      },
+      "active_speaker": "luna",
+      "frida_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/frida_listening_to_luna.mp4",
+        "head_action": "listen",
+        "eye_target": "luna",
+        "camera_framing": "dual_desk"
+      },
+      "luna_state": {
+        "emotion": "neutral",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p14",
+      "parent": "s02",
+      "sourceShot": 16,
+      "seconds": 2.84,
+      "layout": "full",
+      "textSide": "bottom",
+      "avatar": "luna",
+      "kicker": "COMENTARIO · LUNA",
+      "headline": "BOT, GUIAO, AVATAR",
+      "body": "De madrugada: noticias, guiao, voz, edicao, publicacao.",
+      "text": "BOT, GUIAO, AVATAR",
+      "narration": "o avatar",
+      "framing": "drift-right",
+      "motion": {
+        "crop": {
+          "y0": 0,
+          "h": 0.86
+        },
+        "kenBurns": {
+          "from": 1.06,
+          "to": 1.18
+        },
+        "pan": "right"
+      },
+      "active_speaker": "luna",
+      "frida_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/frida_listening_to_luna.mp4",
+        "head_action": "listen",
+        "eye_target": "luna",
+        "camera_framing": "dual_desk"
+      },
+      "luna_state": {
+        "emotion": "neutral",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p15",
+      "parent": "s02",
+      "sourceShot": 17,
+      "seconds": 1.66,
+      "layout": "split",
+      "splitRatio": 0.587,
+      "textSide": "mid",
+      "avatar": "luna",
+      "kicker": "COMENTARIO · LUNA",
+      "headline": "BOT, GUIAO, AVATAR",
+      "body": "De madrugada: noticias, guiao, voz, edicao, publicacao.",
+      "text": "BOT, GUIAO, AVATAR",
+      "narration": "fala e a",
+      "framing": "wide",
+      "motion": {
+        "kenBurns": {
+          "from": 1,
+          "to": 1.06
+        }
+      },
+      "active_speaker": "luna",
+      "frida_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/frida_listening_to_luna.mp4",
+        "head_action": "listen",
+        "eye_target": "luna",
+        "camera_framing": "dual_desk"
+      },
+      "luna_state": {
+        "emotion": "neutral",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p16",
+      "parent": "s02",
+      "sourceShot": 18,
+      "seconds": 3.11,
+      "layout": "split",
+      "splitRatio": 0.728,
+      "textSide": "mid",
+      "avatar": "luna",
+      "kicker": "COMENTARIO · LUNA",
+      "headline": "BOT, GUIAO, AVATAR",
+      "body": "De madrugada: noticias, guiao, voz, edicao, publicacao.",
+      "text": "BOT, GUIAO, AVATAR",
+      "narration": "edicao publica sem ninguem tocar",
+      "framing": "headline",
+      "motion": {
+        "crop": {
+          "y0": 0.03,
+          "h": 0.52
+        },
+        "kenBurns": {
+          "from": 1.02,
+          "to": 1.14
+        },
+        "pan": "up"
+      },
+      "active_speaker": "luna",
+      "frida_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/frida_listening_to_luna.mp4",
+        "head_action": "listen",
+        "eye_target": "luna",
+        "camera_framing": "dual_desk"
+      },
+      "luna_state": {
+        "emotion": "ironic",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_skeptical_ironic.mp4",
+        "head_action": "tilt_left_12deg",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p17",
+      "parent": "s02",
+      "sourceShot": 19,
+      "seconds": 1.4,
+      "layout": "split",
+      "splitRatio": 0.698,
+      "textSide": "mid",
+      "avatar": "luna",
+      "kicker": "COMENTARIO · LUNA",
+      "headline": "BOT, GUIAO, AVATAR",
+      "body": "De madrugada: noticias, guiao, voz, edicao, publicacao.",
+      "text": "BOT, GUIAO, AVATAR",
+      "narration": "em nada.",
+      "framing": "pull-out",
+      "motion": {
+        "kenBurns": {
+          "from": 1.32,
+          "to": 1.02
+        }
+      },
+      "active_speaker": "luna",
+      "frida_state": {
+        "emotion": "surprised",
+        "driving_template": "work/avatars/driving_templates/frida_anchor_emphatic_nod.mp4",
+        "head_action": "listen",
+        "eye_target": "luna",
+        "camera_framing": "dual_desk"
+      },
+      "luna_state": {
+        "emotion": "ironic",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_skeptical_ironic.mp4",
+        "head_action": "tilt_left_12deg",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "dual_desk"
+    },
+    {
+      "id": "p18",
+      "parent": "s03",
+      "sourceShot": 20,
+      "seconds": 2.53,
+      "layout": "full",
+      "textSide": "top",
+      "avatar": "frida",
+      "kicker": "ANALISE · FRIDA",
+      "headline": "A ESTRUTURA COPIA-SE",
+      "body": "FigCraft desenha, o TTS narra, o ffmpeg monta.",
+      "text": "A ESTRUTURA COPIA-SE",
+      "narration": "E o que interessa e isto:",
+      "framing": "wide",
+      "motion": {
+        "kenBurns": {
+          "from": 1,
+          "to": 1.06
+        }
+      },
+      "active_speaker": "frida",
+      "frida_state": {
+        "emotion": "serious",
+        "driving_template": "work/avatars/driving_templates/frida_anchor_neutral_breathing.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "luna_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "listen",
+        "eye_target": "frida",
+        "camera_framing": "dual_desk"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "dual_desk"
+    },
+    {
+      "id": "p19",
+      "parent": "s03",
+      "sourceShot": 22,
+      "seconds": 2.67,
+      "layout": "split",
+      "splitRatio": 0.788,
+      "textSide": "mid",
+      "avatar": "frida",
+      "kicker": "ANALISE · FRIDA",
+      "headline": "A ESTRUTURA COPIA-SE",
+      "body": "FigCraft desenha, o TTS narra, o ffmpeg monta.",
+      "text": "A ESTRUTURA COPIA-SE",
+      "narration": "a estrutura",
+      "framing": "headline",
+      "motion": {
+        "crop": {
+          "y0": 0.03,
+          "h": 0.52
+        },
+        "kenBurns": {
+          "from": 1.02,
+          "to": 1.14
+        },
+        "pan": "up"
+      },
+      "active_speaker": "frida",
+      "frida_state": {
+        "emotion": "serious",
+        "driving_template": "work/avatars/driving_templates/frida_anchor_neutral_breathing.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "luna_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "listen",
+        "eye_target": "frida",
+        "camera_framing": "dual_desk"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p20",
+      "parent": "s03",
+      "sourceShot": 24,
+      "seconds": 3.84,
+      "layout": "full",
+      "textSide": "bottom",
+      "avatar": "frida",
+      "kicker": "ANALISE · FRIDA",
+      "headline": "A ESTRUTURA COPIA-SE",
+      "body": "FigCraft desenha, o TTS narra, o ffmpeg monta.",
+      "text": "A ESTRUTURA COPIA-SE",
+      "narration": "copia-se. Cartoes tipograficos, narracao sintetizada e",
+      "framing": "pull-out",
+      "motion": {
+        "kenBurns": {
+          "from": 1.32,
+          "to": 1.02
+        }
+      },
+      "active_speaker": "frida",
+      "frida_state": {
+        "emotion": "excited",
+        "driving_template": "work/avatars/driving_templates/frida_anchor_emphatic_nod.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "luna_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "listen",
+        "eye_target": "frida",
+        "camera_framing": "dual_desk"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p21",
+      "parent": "s03",
+      "sourceShot": 25,
+      "seconds": 1.97,
+      "layout": "split",
+      "splitRatio": 0.588,
+      "textSide": "top",
+      "avatar": "frida",
+      "kicker": "ANALISE · FRIDA",
+      "headline": "A ESTRUTURA COPIA-SE",
+      "body": "FigCraft desenha, o TTS narra, o ffmpeg monta.",
+      "text": "A ESTRUTURA COPIA-SE",
+      "narration": "montagem deterministica.",
+      "framing": "body",
+      "motion": {
+        "crop": {
+          "y0": 0.46,
+          "h": 0.48
+        },
+        "kenBurns": {
+          "from": 1.14,
+          "to": 1
+        },
+        "pan": "down"
+      },
+      "active_speaker": "frida",
+      "frida_state": {
+        "emotion": "excited",
+        "driving_template": "work/avatars/driving_templates/frida_anchor_emphatic_nod.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "luna_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "listen",
+        "eye_target": "frida",
+        "camera_framing": "dual_desk"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p22",
+      "parent": "s03",
+      "sourceShot": 27,
+      "seconds": 1.03,
+      "layout": "split",
+      "splitRatio": 0.591,
+      "textSide": "mid",
+      "avatar": "frida",
+      "kicker": "ANALISE · FRIDA",
+      "headline": "A ESTRUTURA COPIA-SE",
+      "body": "FigCraft desenha, o TTS narra, o ffmpeg monta.",
+      "text": "A ESTRUTURA COPIA-SE",
+      "narration": "O tema muda,",
+      "framing": "drift-left",
+      "motion": {
+        "kenBurns": {
+          "from": 1.14,
+          "to": 1.14
+        },
+        "pan": "left"
+      },
+      "active_speaker": "frida",
+      "frida_state": {
+        "emotion": "neutral",
+        "driving_template": "work/avatars/driving_templates/frida_anchor_neutral_breathing.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "luna_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "listen",
+        "eye_target": "frida",
+        "camera_framing": "dual_desk"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p23",
+      "parent": "s03",
+      "sourceShot": 28,
+      "seconds": 2.67,
+      "layout": "split",
+      "splitRatio": 0.578,
+      "textSide": "mid",
+      "avatar": "frida",
+      "kicker": "ANALISE · FRIDA",
+      "headline": "A ESTRUTURA COPIA-SE",
+      "body": "FigCraft desenha, o TTS narra, o ffmpeg monta.",
+      "text": "A ESTRUTURA COPIA-SE",
+      "narration": "o pipeline fica.",
+      "framing": "drift-right",
+      "motion": {
+        "crop": {
+          "y0": 0,
+          "h": 0.86
+        },
+        "kenBurns": {
+          "from": 1.06,
+          "to": 1.18
+        },
+        "pan": "right"
+      },
+      "active_speaker": "frida",
+      "frida_state": {
+        "emotion": "serious",
+        "driving_template": "work/avatars/driving_templates/frida_anchor_neutral_breathing.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "luna_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "listen",
+        "eye_target": "frida",
+        "camera_framing": "dual_desk"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "dual_desk"
+    },
+    {
+      "id": "p24",
+      "parent": "s04",
+      "sourceShot": 29,
+      "seconds": 2.97,
+      "layout": "split",
+      "splitRatio": 0.57,
+      "textSide": "mid",
+      "avatar": "luna",
+      "kicker": "FECHO · LUNA",
+      "headline": "DUAS VOZES, UM PIPELINE",
+      "body": "Frida apresenta, Luna comenta, o sistema entrega.",
+      "text": "DUAS VOZES, UM PIPELINE",
+      "narration": "Duas vozes, um pipeline. Eu comento,",
+      "framing": "wide",
+      "motion": {
+        "kenBurns": {
+          "from": 1,
+          "to": 1.06
+        }
+      },
+      "active_speaker": "luna",
+      "frida_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/frida_listening_to_luna.mp4",
+        "head_action": "listen",
+        "eye_target": "luna",
+        "camera_framing": "dual_desk"
+      },
+      "luna_state": {
+        "emotion": "happy",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "dual_desk"
+    },
+    {
+      "id": "p25",
+      "parent": "s04",
+      "sourceShot": 30,
+      "seconds": 2.41,
+      "layout": "full",
+      "textSide": "bottom",
+      "avatar": "luna",
+      "kicker": "FECHO · LUNA",
+      "headline": "DUAS VOZES, UM PIPELINE",
+      "body": "Frida apresenta, Luna comenta, o sistema entrega.",
+      "text": "DUAS VOZES, UM PIPELINE",
+      "narration": "a Frida apresenta,",
+      "framing": "headline",
+      "motion": {
+        "crop": {
+          "y0": 0.03,
+          "h": 0.52
+        },
+        "kenBurns": {
+          "from": 1.02,
+          "to": 1.14
+        },
+        "pan": "up"
+      },
+      "active_speaker": "luna",
+      "frida_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/frida_listening_to_luna.mp4",
+        "head_action": "listen",
+        "eye_target": "luna",
+        "camera_framing": "dual_desk"
+      },
+      "luna_state": {
+        "emotion": "happy",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p26",
+      "parent": "s04",
+      "sourceShot": 31,
+      "seconds": 1.73,
+      "layout": "full",
+      "textSide": "bottom",
+      "avatar": "luna",
+      "kicker": "FECHO · LUNA",
+      "headline": "DUAS VOZES, UM PIPELINE",
+      "body": "Frida apresenta, Luna comenta, o sistema entrega.",
+      "text": "DUAS VOZES, UM PIPELINE",
+      "narration": "e o sistema entrega",
+      "framing": "pull-out",
+      "motion": {
+        "kenBurns": {
+          "from": 1.32,
+          "to": 1.02
+        }
+      },
+      "active_speaker": "luna",
+      "frida_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/frida_listening_to_luna.mp4",
+        "head_action": "listen",
+        "eye_target": "luna",
+        "camera_framing": "dual_desk"
+      },
+      "luna_state": {
+        "emotion": "excited",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_curious_headtilt.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p27",
+      "parent": "s04",
+      "sourceShot": 32,
+      "seconds": 1.1,
+      "layout": "split",
+      "splitRatio": 0.477,
+      "textSide": "mid",
+      "avatar": "luna",
+      "kicker": "FECHO · LUNA",
+      "headline": "DUAS VOZES, UM PIPELINE",
+      "body": "Frida apresenta, Luna comenta, o sistema entrega.",
+      "text": "DUAS VOZES, UM PIPELINE",
+      "narration": "o video pronto",
+      "framing": "body",
+      "motion": {
+        "crop": {
+          "y0": 0.46,
+          "h": 0.48
+        },
+        "kenBurns": {
+          "from": 1.14,
+          "to": 1
+        },
+        "pan": "down"
+      },
+      "active_speaker": "luna",
+      "frida_state": {
+        "emotion": "listening",
+        "driving_template": "work/avatars/driving_templates/frida_listening_to_luna.mp4",
+        "head_action": "listen",
+        "eye_target": "luna",
+        "camera_framing": "dual_desk"
+      },
+      "luna_state": {
+        "emotion": "excited",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_curious_headtilt.mp4",
+        "head_action": "nod",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "closeup"
+    },
+    {
+      "id": "p28",
+      "parent": "s04",
+      "sourceShot": 33,
+      "seconds": 1.84,
+      "layout": "full",
+      "textSide": "bottom",
+      "avatar": "luna",
+      "kicker": "FECHO · LUNA",
+      "headline": "DUAS VOZES, UM PIPELINE",
+      "body": "Frida apresenta, Luna comenta, o sistema entrega.",
+      "text": "DUAS VOZES, UM PIPELINE",
+      "narration": "em tres idiomas.",
+      "framing": "drift-left",
+      "motion": {
+        "kenBurns": {
+          "from": 1.14,
+          "to": 1.14
+        },
+        "pan": "left"
+      },
+      "active_speaker": "luna",
+      "frida_state": {
+        "emotion": "happy",
+        "driving_template": "work/avatars/driving_templates/frida_anchor_emphatic_nod.mp4",
+        "head_action": "listen",
+        "eye_target": "luna",
+        "camera_framing": "dual_desk"
+      },
+      "luna_state": {
+        "emotion": "happy",
+        "driving_template": "work/avatars/driving_templates/luna_cohost_listening_react.mp4",
+        "head_action": "tilt_left_12deg",
+        "eye_target": "camera",
+        "camera_framing": "medium_closeup"
+      },
+      "top_band_visual": {
+        "engine": "remotion",
+        "preset": "E2_caption_top",
+        "broll_query": ""
+      },
+      "camera_framing": "dual_desk"
+    }
+  ],
+  "direcao": {
+    "versao": 1,
+    "geradoPor": "yt-direcao.mjs",
+    "geradoEm": "2026-11-14T12:37:24.932Z",
+    "fonte": "plan.json",
+    "editorial": "direcao-editorial.json",
+    "falantes": [
+      "frida",
+      "luna"
+    ],
+    "motorBanda": "remotion"
+  }
+}

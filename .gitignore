@@ -36,6 +36,10 @@ work/clones/*/*
 # o PLANO e' decisao de trabalho: versiona-se (comentario numa linha propria,
 # porque o git ignora o resto da linha quando o padrao tem texto a seguir)
 !work/clones/*/plan-remotion.json
+# o CONTRATO DE DIRECAO tambem e' decisao de trabalho: o ficheiro editorial
+# (o que o operador escreve a mao, beat a beat) e o plano ja enriquecido.
+!work/clones/*/direcao-editorial.json
+!work/clones/*/plan-direcao.json
 backups/
 *.mp4
 *.webm
