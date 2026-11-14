@@ -1536,7 +1536,10 @@ async function buildSceneClips(cfg, cards, tracks, avatarClips, scenes, broll, s
 
     // Which presenter is in this scene?
     const wanted = (scenes[i] && (scenes[i].avatar || scenes[i].presenter)) || defaultAvatar;
-    const avatar = wanted && avatarClips ? avatarClips[wanted] : null;
+    // F5: usar o clip lipsynced especifico desta cena (se Wav2Lip ativo)
+    const sceneKey = 'scene' + String(i + 1).padStart(2, '0');
+    const lipSynced = lipSyncByLang[lang]?.[sceneKey];
+    const avatar = lipSynced || (wanted && avatarClips ? avatarClips[wanted] : null);
     const hasAvatar = !!(avatar && avatar.file && fs.existsSync(avatar.file));
 
     // Per-shot geometry: a whiteboard scene is full frame, a talking-head scene is split at
@@ -2444,38 +2447,73 @@ async function main() {
     for (const t of tracks) console.log('    ' + t.scene + ': ' + (t.file ? t.duration.toFixed(2) + 's (' + t.engine + ')' : 'sem voz'));
   }
 
-  // 4.5 Wav2Lip — re-sintetiza os labios do avatar para bater com a narracao de cada idioma.
-  //     Sem isso o LivePortrait e' apenas um driving generico (boca mexe ao acaso).
+  // 4.5 Wav2Lip — re-sintetiza os labios do avatar PARA CADA CENA
+  //     usando o audio da PRÓPRIA cena e o driving template do active_speaker.
+  //     Antes usava o primeiro audio para todos os avatares — agora e' por cena.
   console.log('4.5/6 lipsync (Wav2Lip)');
   const w2lEnabled = FLAG_WAV2LIP || !!(cfg.w2l && cfg.w2l.enabled);
   const lipSyncByLang = {};
   if (w2lEnabled && avatarMode && Object.keys(avatarClips).length && FFMPEG) {
-    const lang0 = languages[0];
     for (const lang of languages) {
       lipSyncByLang[lang] = {};
       const tracks = allTracks[lang] || [];
-      const audioFile = tracks.find((t) => t.file && fs.existsSync(t.file))?.file;
-      if (!audioFile) {
-        console.log('    ' + lang + ': sem arquivo de audio — pulando lipsync');
-        continue;
-      }
-      for (const key of Object.keys(avatarClips)) {
-        const clip = avatarClips[key];
-        if (!clip || !clip.file || !fs.existsSync(clip.file)) continue;
-        const out = path.join(dir, 'avatar', key + '_' + lang.replace(/[^A-Za-z0-9]/g, '_') + '_lipsync.mp4');
-        const fresh = fs.existsSync(out) && fs.statSync(out).mtimeMs > fs.statSync(clip.file).mtimeMs && fs.statSync(out).mtimeMs > fs.statSync(audioFile).mtimeMs;
-        if (fresh) {
-          console.log('    ' + lang + '/' + key + ': cache reutilizado');
-          lipSyncByLang[lang][key] = clip; // ja existe, reusa o original
+      for (let i = 0; i < script.scenes.length; i++) {
+        const sc = script.scenes[i];
+        const track = tracks[i];
+        if (!track || !track.file || !fs.existsSync(track.file)) {
+          console.log('    ' + lang + ' cena ' + (i + 1) + ': sem audio — pulando lipsync');
           continue;
         }
+
+        // Quem fala nesta cena? Vem do contrato de direcao (F1)
+        const activeSpeaker = sc.active_speaker;
+        if (!activeSpeaker || !avatarClips[activeSpeaker]?.file) {
+          console.log('    ' + lang + ' cena ' + (i + 1) + ': active_speaker ' + activeSpeaker + ' sem avatar clip — pulando');
+          continue;
+        }
+
+        const clip = avatarClips[activeSpeaker];
+        if (!clip.file || !fs.existsSync(clip.file)) continue;
+
+        // Driving template correto para a emocao do orador ativo
+        const stateKey = activeSpeaker + '_state';
+        const drivingTemplate = sc[stateKey]?.driving_template;
+        if (!drivingTemplate || !fs.existsSync(drivingTemplate)) {
+          console.log('    ' + lang + ' cena ' + (i + 1) + ': driving template em falta — pulando');
+          continue;
+        }
+
+        const audioFile = track.file;
+        const out = path.join(dir, 'avatar', activeSpeaker + '_' + lang.replace(/[^A-Za-z0-9]/g, '_') + '_scene' + String(i + 1).padStart(2, '0') + '_lipsync.mp4');
+        const fresh = fs.existsSync(out) && fs.statSync(out).mtimeMs > fs.statSync(clip.file).mtimeMs && fs.statSync(out).mtimeMs > fs.statSync(audioFile).mtimeMs && fs.statSync(out).mtimeMs > fs.statSync(drivingTemplate).mtimeMs;
+        if (fresh) {
+          console.log('    ' + lang + ' cena ' + (i + 1) + ' (' + activeSpeaker + '): cache reutilizado');
+          lipSyncByLang[lang]['scene' + String(i + 1).padStart(2, '0')] = Object.assign({}, clip, { file: out, scene: i, activeSpeaker });
+          continue;
+        }
+
+        // Gerar avatar com LivePortrait usando o driving template correto
+        // Precisamos regenerar o clip do orador com o driving template correto
+        const tempDrivingDir = path.join(dir, 'build', 'lp-scene' + String(i + 1).padStart(2, '0'));
+        fs.mkdirSync(tempDrivingDir, { recursive: true });
+        const tempOut = path.join(tempDrivingDir, activeSpeaker + '_lipsync.mp4');
+
         try {
-          await wav2lipSync(cfg, clip.file, audioFile, out, dir);
-          console.log('    ' + lang + '/' + key + ': lipsync ok -> ' + path.basename(out));
-          lipSyncByLang[lang][key] = Object.assign({}, clip, { file: out });
+          // Re-animar o orador ativo com o driving template correto
+          const lpCfg = Object.assign({}, cfg.avatar, {
+            liveportrait: Object.assign({}, cfg.avatar.liveportrait, { drivingVideo: drivingTemplate })
+          });
+          const sourceImage = cfg.avatar.avatars[activeSpeaker].sourceImage;
+          await runLivePortrait(cfg, lpCfg, sourceImage, drivingTemplate, tempOut, dir);
+
+          // Agora sincronizar labios com Wav2Lip
+          await wav2lipSync(cfg, tempOut, audioFile, out, dir);
+
+          console.log('    ' + lang + ' cena ' + (i + 1) + ' (' + activeSpeaker + '): lipsync ok -> ' + path.basename(out));
+          lipSyncByLang[lang]['scene' + String(i + 1).padStart(2, '0')] = Object.assign({}, clip, { file: out, scene: i, activeSpeaker });
         } catch (e) {
-          console.log('    ' + lang + '/' + key + ': lipsync FALHOU — ' + e.message + ' (usa avatar sem sincronia)');
-          lipSyncByLang[lang][key] = clip;
+          console.log('    ' + lang + ' cena ' + (i + 1) + ' (' + activeSpeaker + '): lipsync FALHOU — ' + e.message + ' (usa avatar sem sincronia)');
+          lipSyncByLang[lang]['scene' + String(i + 1).padStart(2, '0')] = clip;
         }
       }
     }
