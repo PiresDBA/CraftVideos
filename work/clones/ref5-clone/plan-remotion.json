@@ -140,6 +140,18 @@
       "titulo": "F2 — Bases v2 de avatares (ComfyUI + IPAdapter)",
       "detalhe": "Geracao de frida_v2_base.png e luna_v2_base.png (768x768) via ComfyUI + IPAdapter (preset PLUS high strength, dreamshaper_8.safetensors, CLIP-ViT-H, dpmpp_2m/karras, 28 passos, cfg 6.5) com as imagens atuais de referencia como input de identidade. Ficheiros: work/avatars/v2/workflow-base-v2.json (template parametrizado com _parametros e _personagens, nada preso no codigo), work/avatars/v2/gerar-bases-avatares-v2.mjs (runner: copia a referencia para o input do ComfyUI, POST /prompt, poll /history, GET /view, grava PNG; --dry-run e --validate sem rede), work/avatars/v2/validar-avatar-v2.py (valida com o detetor REAL do LivePortrait: insightface humano + XPose animal; reporta se o rosto e detectavel e se o recorte e utilizavel), work/avatars/v2/gerar-bases-avatares-v2.test.mjs (11 testes de funcoes puras). Resultado: Frida e Luna detetadas pelo pipeline humano do LivePortrait (crop 512x512, utilizavel); pipeline de animais indisponivel (falta MultiScaleDeformableAttention/mmcv) mas nao e o caminho do motor. Regras respeitadas: nada pago (modelos locais), estrutura nunca conteudo (sem footage de referencia nos entregaveis), tudo parametrizavel no workflow JSON, Manual de Uso no cabeçalho e comentarios em portugues, node --check + suite + scan de segredos.",
       "estado": "feito"
+    },
+    {
+      "id": "T33",
+      "titulo": "F3 — Drivers procedurais (6 templates LivePortrait)",
+      "detalhe": "Geracao dos 6 driving templates em work/avatars/driving_templates/ usando as bases v2 + driving nativos do LivePortrait: frida_anchor_neutral_breathing.mp4 (d0), frida_anchor_emphatic_nod.mp4 (d13), frida_listening_to_luna.mp4 (d0), luna_cohost_listening_react.mp4 (d13), luna_cohost_curious_headtilt.mp4 (d6), luna_cohost_skeptical_ironic.mp4 (d9). Todos validados pelo detector REAL do LivePortrait (crop 512x512, utilizavel). Mapeamento 1:1 com CATALOGO_DRIVERS do contrato de direcao (9 emocoes x 2 apresentadoras).",
+      "estado": "feito"
+    },
+    {
+      "id": "T34",
+      "titulo": "F4 — Layout dinâmico (dual_desk / closeup por camera_framing)",
+      "detalhe": "Modificacao da composicao do avatar em yt-clone-build.mjs para ler scenes[i].camera_framing (do contrato F1): 'dual_desk' = ambos apresentadores lado a lado na banda inferior; 'closeup' = so o orador ativo, maior. Implementado em yt-clone-build.mjs linhas ~1596-1666: bloco dual_desk compoe ambos avatares lado a lado (45% largura cada, gap 3%), com backdrop blur comum; fallback para closeup original quando so ha um avatar ou framing e closeup. O campo camera_framing vem do plan-direcao.json (8 dual_desk + 20 closeup).",
+      "estado": "feito"
     }
   ]
 }

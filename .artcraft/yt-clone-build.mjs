@@ -36,6 +36,16 @@ import { writeSceneASS, buildASS, buildSRT } from './clone/lib/ass.mjs';
 import { narrationFingerprint, readNarrationCache, writeNarrationCache } from './clone/lib/cache.mjs';
 import { sceneVisual } from './clone/lib/media.mjs';
 
+// ---- OPUS 5.5 REFERENCE-FIRST PHASE (import dinamico para path Windows)
+let _opus5 = null;
+async function carregarOpus5() {
+  if (!_opus5) {
+    const mod = await import('file:///D:/CRAFT/work/opus5-reference/index.mjs');
+    _opus5 = mod;
+  }
+  return _opus5;
+}
+
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 
 // A raiz do workspace e a pasta que contem este ficheiro (.artcraft/).
@@ -1583,7 +1593,79 @@ async function buildSceneClips(cfg, cards, tracks, avatarClips, scenes, broll, s
       let boxY;
       let avatarComposited = false;
 
-      if (LM.split) {
+      // ---- F4: camera_framing decide o layout da banda inferior
+      // scenes[i].camera_framing vem do contrato de direcao (F1): 'dual_desk' | 'closeup'
+      const framing = (scenes[i] && scenes[i].camera_framing) || 'closeup';
+      const activeKey = wanted; // quem fala nesta cena
+      const otherKey = Object.keys(avatarClips || {}).find((k) => k !== activeKey) || null;
+
+      if (framing === 'dual_desk' && LM.split && otherKey && avatarClips[otherKey]?.file) {
+        // ===== DUAL DESK: dois apresentadores lado a lado =====
+        const avatarA = avatarClips[activeKey];
+        const avatarB = avatarClips[otherKey];
+        const hasA = avatarA && fs.existsSync(avatarA.file);
+        const hasB = avatarB && fs.existsSync(avatarB.file);
+        if (hasA && hasB) {
+          // Ambos lado a lado: cada um ocupa ~45% da largura, com gap central
+          const gap = Math.round(LM.W * 0.03);
+          const totalW = LM.W - gap;
+          const boxW = Math.round(totalW / 2);
+          const boxH = Math.round(boxW * aspect);
+          const boxY = LM.cardH + Math.max(0, LM.botH - boxH);
+
+          // Avatar A (esquerda - quem fala)
+          const boxXA = Math.round((LM.W - totalW) / 2);
+          // Avatar B (direita - quem escuta)
+          const boxXB = boxXA + boxW + gap;
+
+          // Backdrop comum (blur do avatar ativo)
+          const backdrop = (comp.bandBackdrop || 'blur') !== 'color';
+          if (backdrop) {
+            filterParts.push(
+              '[' + videoInputIdx + ':v]crop=iw:ih*' + panelR.toFixed(4) + ':0:ih*' + padTopR.toFixed(4) +
+              ',split=2[avbgraw][avfgraw]'
+            );
+            filterParts.push(
+              '[avbgraw]scale=' + LM.W + ':' + LM.botH + ':force_original_aspect_ratio=increase,setsar=1,' +
+              'crop=' + LM.W + ':' + LM.botH + ',eq=brightness=-0.10:saturation=0.85,gblur=sigma=28[avbg]'
+            );
+            filterParts.push('[avfgraw]scale=' + boxW + ':' + boxH + ':flags=lanczos,setsar=1[avpanelA]');
+            filterParts.push('[' + lastVideo + '][avbg]overlay=0:' + LM.cardH + '[vb1]');
+            videoInputIdx++;
+          }
+
+          // Avatar A (ativo - esquerda)
+          filterParts.push(
+            '[' + videoInputIdx + ':v]crop=iw:ih*' + panelR.toFixed(4) + ':0:ih*' + padTopR.toFixed(4) +
+            ',scale=' + boxW + ':' + boxH + ':flags=lanczos,setsar=1[avpanelA]'
+          );
+          if (avatar.chromaKey) {
+            filterParts.push('[avpanelA]chromakey=0x00FF00:0.08:0.2[avckA]');
+            filterParts.push('[vb1][avckA]overlay=' + boxXA + ':' + boxY + '[vA]');
+          } else {
+            filterParts.push('[vb1][avpanelA]overlay=' + boxXA + ':' + boxY + '[vA]');
+          }
+          lastVideo = 'vA';
+          videoInputIdx++;
+
+          // Avatar B (ouvinte - direita)
+          filterParts.push(
+            '[' + videoInputIdx + ':v]crop=iw:ih*' + panelR.toFixed(4) + ':0:ih*' + padTopR.toFixed(4) +
+            ',scale=' + boxW + ':' + boxH + ':flags=lanczos,setsar=1[avpanelB]'
+          );
+          if (avatar.chromaKey) {
+            filterParts.push('[avpanelB]chromakey=0x00FF00:0.08:0.2[avckB]');
+            filterParts.push('[vA][avckB]overlay=' + boxXB + ':' + boxY + '[vpresenter]');
+          } else {
+            filterParts.push('[vA][avpanelB]overlay=' + boxXB + ':' + boxY + '[vpresenter]');
+          }
+          lastVideo = 'vpresenter';
+          videoInputIdx++;
+          avatarComposited = true;
+        }
+      }
+
+      if (!avatarComposited && LM.split) {
         // Presenter inside the bottom band. The band gets its own backdrop made from the
         // avatar itself (cover + heavy blur), so there is no grey studio box floating in a
         // dark band: the edges of the portrait bleed into the frame.
@@ -2124,6 +2206,63 @@ async function runRunPodCloudAvatar(cfg, runpodCfg, avatarCfg, cards, scenes, di
   return null;
 }
 
+// ---------------------------------------------------------------- OPUS 5.5 REFERENCE-FIRST PHASE
+/**
+ * Consulta a biblioteca Opus 5.5 para prompts relevantes antes de gerar.
+ * Esta fase e obrigatoria (reference-first): antes de gerar qualquer video
+ * ou animacao, o motor pesquisa prompts relevantes na biblioteca de 703
+ * prompts do repositorio awesome-opus5-5-videos.
+ *
+ * @param {object} cfg - configuracao carregada
+ * @returns {object} { referencias: Array, adaptacoes: Array }
+ */
+async function consultarReferenciasOpus5(cfg) {
+  console.log('\n=== FASE REFERENCE-FIRST: Opus 5.5 ===');
+  const { estatisticas, buscarPrompts, adaptarPrompt } = await carregarOpus5();
+  const stats = estatisticas();
+  console.log(`  Catalogo: ${stats.total} prompts (${Object.entries(stats.byCategory).map(([k,v])=>k+':'+v).join(', ')})`);
+
+  // Determinar tecnologias alvo baseadas na config
+  const topEngine = cfg.cards?.topEngine || 'effectcraft';
+  const techsAlvo = topEngine === 'remotion' ? ['canvas', 'gsap', 'svg'] :
+                    topEngine === 'effectcraft' ? ['svg', 'gsap', 'canvas'] :
+                    ['canvas', 'svg'];
+
+  // Categorias relevantes para o tipo de video
+  const categorias = cfg.cards?.belowText?.mode === 'keywords' ? ['motion', 'explainer'] :
+                     topEngine === 'remotion' ? ['motion', '3d', 'interactive'] :
+                     ['motion', 'explainer'];
+
+  const referencias = [];
+  const adaptacoes = [];
+
+  for (const cat of categorias) {
+    for (const tech of techsAlvo) {
+      const prompts = buscarPrompts({ category: cat, tech: [tech], limit: 2 });
+      for (const p of prompts) {
+        if (!referencias.some(r => r.slug === p.slug)) {
+          referencias.push(p);
+          // Gerar adaptacao automatica para o contexto atual
+          const langArr = Array.isArray(cfg.languages?.supported) ? cfg.languages.supported : [cfg.languages?.supported || 'pt-BR'];
+          const contexto = `Clone video: ${cfg.script?.kicker || cfg.script?.headline || 'Dark IA'} - ${langArr.join(', ')}`;
+          const adapt = adaptarPrompt(p.slug, contexto, techsAlvo);
+          if (adapt) adaptacoes.push(adapt);
+        }
+      }
+    }
+  }
+
+  console.log(`  Referencias coletadas: ${referencias.length} prompts unicos`);
+  console.log(`  Adaptacoes geradas: ${adaptacoes.length}`);
+
+  // Log das top 3 referencias
+  for (const r of referencias.slice(0, 3)) {
+    console.log(`    - ${r.slug} (${r.category}/${r.tech_tags.join(',')}): ${r.prompt_preview.slice(0, 100)}...`);
+  }
+
+  return { referencias, adaptacoes };
+}
+
 // ---------------------------------------------------------------- main
 
 async function main() {
@@ -2149,6 +2288,12 @@ async function main() {
   FFMPEG = findFfmpeg('ffmpeg', cfg.paths?.ffmpeg || '');
   FFPROBE = findFfmpeg('ffprobe', cfg.paths?.ffprobe || '');
 
+  // FASE REFERENCE-FIRST: consultar biblioteca Opus 5.5
+  const { referencias, adaptacoes } = await consultarReferenciasOpus5(cfg);
+  // As adaptacoes ficam disponiveis para o resto do pipeline via closure
+  // (podem ser usadas por EffectCraft, Remotion, cards, etc.)
+  cfg._opus5Refs = { referencias, adaptacoes };
+
   // --validate: diagnostico da config e nada mais. Sem ficheiros, sem rede,
   // sem custo — e o que se corre antes de cada build para apanhar typos.
   if (VALIDATE) {
@@ -2159,7 +2304,7 @@ async function main() {
     console.log('cenas       : ' + (loadScenes(cfg).scenes.length));
     console.log('banda de cima: ' + topEngineOf(cfg));
     console.log('voz         : ' + cfg.voice.engine);
-    console.log('idiomas     : ' + (cfg.languages.supported || []).join(', '));
+    console.log('idiomas     : ' + (Array.isArray(cfg.languages.supported) ? cfg.languages.supported : [cfg.languages.supported || 'pt-BR']).join(', '));
     if (report.errors.length) {
       console.error('\nERROS (' + report.errors.length + '):');
       for (const e of report.errors) console.error('  x ' + e);
