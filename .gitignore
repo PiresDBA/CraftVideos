@@ -50,6 +50,15 @@ work/avatars/v2/*
 !work/avatars/v2/*.py
 !work/avatars/v2/*.json
 work/avatars/v2/*.png
+!work/avatars/v3/
+work/avatars/v3/*
+!work/avatars/v3/*.py
+!work/avatars/v3/*.md
+work/avatars/v3/__pycache__/
+!work/avatars/frida.json
+!work/avatars/luna.json
+work/avatars/*.png
+work/avatars/*.mp4
 backups/
 *.mp4
 *.webm
