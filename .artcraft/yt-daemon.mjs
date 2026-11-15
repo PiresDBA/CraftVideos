@@ -492,7 +492,15 @@ const server = http.createServer((req, res) => {
       res.end('dashboard not built. Run: node D:\\CRAFT\\.artcraft\\yt-dashboard.mjs');
       return;
     }
-    res.writeHead(200, { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' });
+    res.writeHead(200, {
+      'content-type': 'text/html; charset=utf-8',
+      // Hard anti-cache. A stale dashboard in the browser keeps the OLD inline
+      // script, so every button (filters, clone, collect) silently dies.
+      'cache-control': 'no-store, no-cache, must-revalidate, max-age=0',
+      'pragma': 'no-cache',
+      'expires': '0',
+      'x-dashboard-version': String(Date.now()),
+    });
     res.end(fs.readFileSync(DASH));
     return;
   }

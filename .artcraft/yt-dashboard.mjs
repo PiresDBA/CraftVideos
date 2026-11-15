@@ -1771,6 +1771,39 @@ function generateHTML(videos, referenceManager, cloneManager, dataInfo = {}) {
       }, 4000);
     }
   </script>
+
+  <!-- WATCHDOG: separate script tag on purpose. If the block above fails to
+       parse (stale cached page, broken escape), THIS block still runs and
+       tells the user exactly what to do instead of leaving dead buttons. -->
+  <script>
+  (function () {
+    var missing = [];
+    var required = ['setFilter','applyFilters','openVideoModal','cloneFromCard','createClone',
+                    'startCloneJobReal','startCollectTargets','showToast'];
+    for (var i = 0; i < required.length; i++) {
+      if (typeof window[required[i]] !== 'function') missing.push(required[i]);
+    }
+    if (!missing.length) return;
+
+    var bar = document.createElement('div');
+    bar.setAttribute('id', 'stalePageWarning');
+    bar.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:#b91c1c;color:#fff;' +
+      'padding:14px 20px;font-family:Segoe UI,Tahoma,sans-serif;font-size:15px;line-height:1.5;' +
+      'box-shadow:0 4px 18px rgba(0,0,0,.35);';
+    var reloadFn = 'location.replace(location.pathname + String.fromCharCode(63) + ' +
+                   'String.fromCharCode(118) + String.fromCharCode(61) + Date.now())';
+    bar.innerHTML =
+      '<strong>⚠️ Esta página está com uma versão antiga em cache — os botões não vão funcionar.</strong><br>' +
+      'Funções que faltam: <code>' + missing.join(', ') + '</code><br>' +
+      '<button id="staleReloadBtn" style="margin-top:8px;background:#fff;color:#b91c1c;border:none;' +
+      'padding:8px 16px;border-radius:6px;font-weight:700;cursor:pointer;">' +
+      '🔄 Recarregar agora (versão nova)</button> ' +
+      '<span style="opacity:.9;font-size:13px;">ou feche a aba e abra pelo launch-dashboard.bat (Ctrl+F5 também resolve)</span>';
+    document.body.appendChild(bar);
+    var btn = document.getElementById('staleReloadBtn');
+    if (btn) btn.addEventListener('click', function () { eval(reloadFn); });
+  })();
+  </script>
 </body>
 </html>`;
 
