@@ -201,6 +201,21 @@ async function selectAvatarEngine(cfg) {
 async function runLivePortrait(cfg, avatarCfg, sourceImage, drivingVideo, outFile, dir) {
   const lp = avatarCfg.liveportrait || {};
   const mode = lp.mode || 'python';
+  // driving templates e source images podem vir RELATIVOS (ex.: vindos do
+  // contrato de direcao / scenes[].*.driving_template), mas o LivePortrait
+  // resolve contra o proprio cwd (repoPath). Normaliza para absoluto aqui.
+  const resolvePathSafe = (p) => {
+    if (!p) return p;
+    return path.isAbsolute(p) ? p : path.resolve(CC, p);
+  };
+  sourceImage = resolvePathSafe(sourceImage);
+  drivingVideo = resolvePathSafe(drivingVideo);
+  if (!sourceImage || !fs.existsSync(sourceImage)) {
+    throw new Error('source image not found: ' + sourceImage);
+  }
+  if (!drivingVideo || !fs.existsSync(drivingVideo)) {
+    throw new Error('driving template not found: ' + drivingVideo);
+  }
   const device = lp.device === 'auto' ? (await detectVRAM() >= 6 ? 'cuda' : 'cpu') : (lp.device || 'cpu');
   const res = Number(lp.resolution || 512);
   const stitching = lp.stitching !== false;
