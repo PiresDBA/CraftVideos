@@ -43,7 +43,8 @@ import { aplicarDirecaoAoPlano } from './clone/lib/direcao.mjs';
 let _opus5 = null;
 async function carregarOpus5() {
   if (!_opus5) {
-    const mod = await import('file:///D:/CRAFT/work/opus5-reference/index.mjs');
+    const urlHref = 'file:///' + path.join(CC, 'tools', 'opus5-reference', 'index.mjs').replace(/\\/g, '/');
+    const mod = await import(urlHref);
     _opus5 = mod;
   }
   return _opus5;
@@ -2565,15 +2566,22 @@ async function main() {
     if (!fs.existsSync(outDriving)) {
       // topRatio = onde termina a banda de cima e comeÃ§a a do apresentador (medido: ~57%)
       const topRatio = Number((cfg.layout && cfg.layout.topRatio) || 0.55);
-      const cropH = Math.max(100, Math.round(1920 * (1 - topRatio)));
-      const cropY = Math.round(1920 * topRatio);
+      let srcW = 1080, srcH = 1920;
+      try {
+        const d = await run(FFPROBE, ['-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=width,height', '-of', 'csv=p=0', DRIVING_VIDEO], { timeoutMs: TIMEOUT.ffprobe });
+        const mobj = String((d && (d.out || d.stdout || d.stderr || '')) || '').trim().match(/(\d+)\s*,\s*(\d+)/);
+        if (mobj) { srcW = Number(mobj[1]); srcH = Number(mobj[2]); }
+      } catch { /* keep 1080x1920 */ }
+      const cropW = srcW;
+      const cropH = Math.max(100, Math.round(srcH * (1 - topRatio)));
+      const cropY = Math.round(srcH * topRatio);
       // Driving video com duracao completa da referencia para o avatar nao ficar fixo
       // ao fazer loop. Usa ate 60s (ou o que o video tiver).
       const r = await run(FFMPEG, [
         '-y', '-v', 'error',
         '-i', DRIVING_VIDEO,
         '-filter_complex',
-        '[0:v]crop=1080:' + cropH + ':0:' + cropY + ',scale=720:-2:flags=lanczos,setsar=1[drv]',
+        '[0:v]crop=' + cropW + ':' + cropH + ':0:' + cropY + ',scale=720:-2:flags=lanczos,setsar=1[drv]',
         '-map', '[drv]', '-an',
         '-c:v', 'libx264', '-crf', '18', '-preset', 'medium', '-pix_fmt', 'yuv420p',
         '-t', '60',
