@@ -96,8 +96,10 @@ if (!fs.existsSync(DASH)) {
 
   // --- required elements ---------------------------------------------------
   const requiredIds = [
-    'telemetryPanel', 'tCurrentStep', 'tElapsed', 'tEta', 'tOutput',
-    'tSteps', 'tLog', 'tArtifacts', 'collectBtn', 'collectStatus',
+    'telemetryPanel', 'tmDot', 'tmTitle', 'tmStatus', 'tmJobId', 'tmClock',
+    'tmBar', 'tmPct', 'tmElapsed', 'tmEta', 'tmSteps', 'tmCurrent',
+    'tmProject', 'tmOutput', 'tmStepCount', 'tmTimeline', 'tmLog', 'tmArtifacts',
+    'collectBtn', 'collectStatus',
     'videoModal', 'modalVideoIframe', 'cloneName', 'sourceVideo', 'referenceVideo',
   ];
   const missingIds = requiredIds.filter(id => !html.includes('id="' + id + '"'));

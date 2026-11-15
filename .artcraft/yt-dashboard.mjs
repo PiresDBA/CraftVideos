@@ -887,12 +887,123 @@ function generateHTML(videos, referenceManager, cloneManager, dataInfo = {}) {
       background: #5a3a99;
     }
     #cloneStatus {
-      margin-top: 14px;
-      min-height: 55px;
-      background: #f8f9fa;
-      padding: 14px;
-      border-radius: 6px;
+      margin-top: 16px;
     }
+
+    /* ---- Telemetria: painel de "mission control" ---- */
+    .tm {
+      background: linear-gradient(180deg, #101826 0%, #0b1220 100%);
+      color: #dbe4f0;
+      border: 1px solid #1f2b3d;
+      border-radius: 16px;
+      box-shadow: 0 18px 48px rgba(8, 15, 28, .28), inset 0 1px 0 rgba(255,255,255,.04);
+      overflow: hidden;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+    .tm-head {
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+      padding: 16px 20px;
+      background: rgba(255,255,255,.025);
+      border-bottom: 1px solid #1f2b3d;
+    }
+    .tm-title { font-size: 14px; font-weight: 700; letter-spacing: .3px; color: #f1f5f9; display: flex; align-items: center; gap: 9px; }
+    .tm-title .dot { width: 8px; height: 8px; border-radius: 50%; background: #64748b; flex: none; }
+    .tm-title .dot.run { background: #38bdf8; box-shadow: 0 0 0 0 rgba(56,189,248,.7); animation: tmPulse 1.8s infinite; }
+    .tm-title .dot.ok  { background: #34d399; }
+    .tm-title .dot.err { background: #f87171; }
+    @keyframes tmPulse { 70% { box-shadow: 0 0 0 9px rgba(56,189,248,0); } 100% { box-shadow: 0 0 0 0 rgba(56,189,248,0); } }
+    .tm-pill {
+      font-size: 11px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase;
+      padding: 5px 11px; border-radius: 999px; border: 1px solid #2b3a52; color: #94a3b8; background: #131d2e;
+      white-space: nowrap;
+    }
+    .tm-pill.run { color: #7dd3fc; border-color: #1d4ed8; background: rgba(37,99,235,.16); }
+    .tm-pill.ok  { color: #6ee7b7; border-color: #15803d; background: rgba(21,128,61,.18); }
+    .tm-pill.err { color: #fca5a5; border-color: #b91c1c; background: rgba(185,28,28,.20); }
+    .tm-pill.ghost { color: #64748b; }
+    .tm-spacer { flex: 1 1 auto; }
+
+    .tm-bar-wrap { padding: 16px 20px 6px; }
+    .tm-bar {
+      position: relative; height: 9px; border-radius: 999px;
+      background: #16213a; overflow: hidden; border: 1px solid #22304a;
+    }
+    .tm-bar > i {
+      display: block; height: 100%; width: 0%;
+      background: linear-gradient(90deg, #2563eb 0%, #38bdf8 55%, #34d399 100%);
+      border-radius: 999px; transition: width .6s cubic-bezier(.4,0,.2,1);
+      box-shadow: 0 0 14px rgba(56,189,248,.55);
+    }
+    .tm-bar.indet > i { width: 34% !important; animation: tmSlide 1.6s ease-in-out infinite; }
+    @keyframes tmSlide { 0% { transform: translateX(-110%); } 100% { transform: translateX(330%); } }
+    .tm-bar.err > i { background: linear-gradient(90deg,#b91c1c,#f87171); box-shadow:none; }
+    .tm-bar.ok  > i { background: linear-gradient(90deg,#15803d,#34d399); box-shadow:none; }
+    .tm-bar-meta { display:flex; justify-content:space-between; gap:10px; margin-top:9px; font-size:12px; color:#93a4bd; flex-wrap:wrap; }
+    .tm-bar-meta b { color:#e2e8f0; font-weight:600; }
+
+    .tm-steps { display:flex; gap:6px; flex-wrap:wrap; padding: 12px 20px 16px; }
+    .tm-step-pill {
+      display:flex; align-items:center; gap:6px;
+      font-size:11px; font-weight:600; letter-spacing:.2px;
+      padding:6px 11px; border-radius:999px;
+      border:1px solid #23304a; background:#121c2e; color:#64748b; white-space:nowrap;
+    }
+    .tm-step-pill .s { width:7px; height:7px; border-radius:50%; background:#334155; flex:none; }
+    .tm-step-pill.done { color:#a7f3d0; border-color:#14532d; background:rgba(20,83,45,.35); }
+    .tm-step-pill.done .s { background:#34d399; }
+    .tm-step-pill.active {
+      color:#e0f2fe; border-color:#2563eb; background:rgba(37,99,235,.24);
+      box-shadow:0 0 0 3px rgba(37,99,235,.12);
+    }
+    .tm-step-pill.active .s { background:#38bdf8; box-shadow:0 0 8px #38bdf8; }
+
+    .tm-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:1px; background:#1f2b3d; border-top:1px solid #1f2b3d; border-bottom:1px solid #1f2b3d; }
+    .tm-cell { background:#0d1524; padding:14px 20px; }
+    .tm-cell .k { font-size:10px; text-transform:uppercase; letter-spacing:1.2px; color:#64748b; margin-bottom:7px; font-weight:700; }
+    .tm-cell .v { font-size:14px; color:#f1f5f9; font-weight:600; line-height:1.4; word-break:break-word; }
+    .tm-cell .v small { display:block; font-size:11px; color:#7f8ea6; font-weight:400; margin-top:5px; }
+
+    .tm-section { padding: 14px 20px; border-bottom:1px solid #1f2b3d; }
+    .tm-section:last-child { border-bottom:none; }
+    .tm-section h4 {
+      margin:0 0 10px; font-size:11px; font-weight:700; letter-spacing:1.2px;
+      text-transform:uppercase; color:#64748b; display:flex; align-items:center; gap:8px;
+    }
+    .tm-section h4 .btn-mini {
+      margin-left:auto; font-size:11px; font-weight:600; letter-spacing:0; text-transform:none;
+      background:#18243a; border:1px solid #27354d; color:#9fb0c8; padding:4px 10px; border-radius:6px; cursor:pointer;
+    }
+    .tm-section h4 .btn-mini:hover { background:#1f2d47; color:#e2e8f0; }
+    .tm-timeline { max-height:190px; overflow:auto; }
+    .tm-tl-row { display:flex; gap:10px; padding:5px 0; font-size:12.5px; border-bottom:1px dashed #1c2739; color:#b6c4d6; }
+    .tm-tl-row:last-child { border-bottom:none; }
+    .tm-tl-row .t { color:#64748b; font-variant-numeric:tabular-nums; flex:none; }
+    .tm-tl-row.now { color:#7dd3fc; font-weight:600; }
+    .tm-log {
+      background:#070c16; border:1px solid #1c2739; border-radius:9px; padding:12px 14px;
+      font-family:'Cascadia Mono',Consolas,'Courier New',monospace; font-size:11.5px; line-height:1.65;
+      white-space:pre-wrap; word-break:break-word; color:#a9b8cc; max-height:320px; overflow:auto;
+    }
+    .tm-log .err { color:#fca5a5; }
+    .tm-log .ok  { color:#86efac; }
+    .tm-art-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
+    .tm-art { background:#0d1524; border:1px solid #1f2b3d; border-radius:9px; overflow:hidden; }
+    .tm-art img, .tm-art video { width:100%; display:block; background:#05080f; max-height:190px; object-fit:cover; }
+    .tm-art .cap { padding:7px 9px; font-size:11px; color:#93a4bd; display:flex; justify-content:space-between; gap:8px; }
+    .tm-art .cap a { color:#7dd3fc; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .tm-files { max-height:180px; overflow:auto; font-size:11.5px; }
+    .tm-files a { color:#93c5fd; text-decoration:none; display:flex; gap:8px; padding:3px 0; }
+    .tm-files a:hover { text-decoration:underline; }
+    .tm-files .sz { margin-left:auto; color:#5b6b84; flex:none; }
+    .tm-empty { color:#54637a; font-size:12px; font-style:italic; }
+    .tm-actions { display:flex; gap:8px; flex-wrap:wrap; padding: 14px 20px; background:rgba(255,255,255,.02); }
+    .tm-btn {
+      background:#18243a; border:1px solid #27354d; color:#cbd5e1; padding:8px 13px;
+      border-radius:8px; cursor:pointer; font-size:12px; font-weight:600; transition:.15s;
+    }
+    .tm-btn:hover { background:#1f2d47; border-color:#3b4d6b; color:#fff; }
+    .tm-btn.primary { background:linear-gradient(180deg,#2563eb,#1d4ed8); border-color:#3b82f6; color:#fff; }
+    .tm-btn.primary:hover { filter:brightness(1.12); }
 
     /* Recent Clones */
     .recent-section {
@@ -1071,25 +1182,60 @@ function generateHTML(videos, referenceManager, cloneManager, dataInfo = {}) {
           <button onclick="createClone()">▶ Iniciar Clone (com telemetria)</button>
         </div>
         <div id="cloneStatus" style="margin-top:12px;">
-          <div class="telemetry-panel" id="telemetryPanel">
-            <div class="telemetry-header">
-              <div style="font-weight:700;color:#fff;">📡 Telemetria do Clone</div>
-              <div class="telemetry-badges" id="telemetryBadges"><span class="t-badge">Aguardando</span></div>
+          <div class="tm" id="telemetryPanel">
+            <div class="tm-head">
+              <div class="tm-title"><span class="dot" id="tmDot"></span><span id="tmTitle">Painel de telemetria</span></div>
+              <span class="tm-pill ghost" id="tmStatus">AGUARDANDO</span>
+              <span class="tm-pill ghost" id="tmJobId">sem job</span>
+              <span class="tm-spacer"></span>
+              <span class="tm-pill ghost" id="tmClock">00:00</span>
             </div>
-            <div id="telemetryProgress" class="t-progress" style="display:none;"><div></div></div>
-            <div class="telemetry-grid">
-              <div class="t-card"><div class="k">Status / Passo atual</div><div class="v" id="tCurrentStep">Nenhum clone iniciado ainda.</div></div>
-              <div class="t-card"><div class="k">Tempo decorrido</div><div class="v" id="tElapsed">-</div></div>
-              <div class="t-card"><div class="k">Estimativa restante</div><div class="v" id="tEta">-</div></div>
-              <div class="t-card"><div class="k">Projeto / Saída</div><div class="v" id="tOutput">-</div></div>
+
+            <div class="tm-bar-wrap">
+              <div class="tm-bar" id="tmBar"><i></i></div>
+              <div class="tm-bar-meta">
+                <span id="tmPct">0%</span>
+                <span>Decorrido <b id="tmElapsed">-</b> · Restante <b id="tmEta">-</b></span>
+              </div>
             </div>
-            <div class="t-steps" id="tSteps"><div class="t-step">Os passos aparecerão aqui quando o clone iniciar.</div></div>
-            <div class="t-log" id="tLog">Aguardando início... (abra pelo launcher/painel em http://127.0.0.1:8799 para executar)</div>
-            <div class="t-actions">
-              <button class="t-btn" onclick="refreshCloneTelemetry()">🔄 Atualizar telemetria</button>
-              <button class="t-btn" onclick="openCloneOutputFolder()">📁 Abrir pasta de saída</button>
+
+            <div class="tm-steps" id="tmSteps"></div>
+
+            <div class="tm-grid">
+              <div class="tm-cell">
+                <div class="k">A fazer agora</div>
+                <div class="v" id="tmCurrent">Nenhum clone iniciado</div>
+              </div>
+              <div class="tm-cell">
+                <div class="k">Projeto</div>
+                <div class="v" id="tmProject">-<small id="tmOutput">-</small></div>
+              </div>
+              <div class="tm-cell">
+                <div class="k">Etapas executadas</div>
+                <div class="v" id="tmStepCount">0</div>
+              </div>
             </div>
-            <div class="t-artifacts" id="tArtifacts"></div>
+
+            <div class="tm-section">
+              <h4>Histórico de etapas <button class="btn-mini" onclick="toggleTmTimeline()">mostrar/ocultar</button></h4>
+              <div class="tm-timeline" id="tmTimeline"></div>
+            </div>
+
+            <div class="tm-section">
+              <h4>Log em tempo real <button class="btn-mini" onclick="toggleTmLog()">mostrar/ocultar</button><button class="btn-mini" onclick="copyTmLog()">copiar</button></h4>
+              <div class="tm-log" id="tmLog">Aguardando início do clone…</div>
+            </div>
+
+            <div class="tm-section">
+              <h4>Ficheiros gerados</h4>
+              <div class="tm-art-grid" id="tmArtifacts"></div>
+            </div>
+
+            <div class="tm-actions">
+              <button class="tm-btn primary" onclick="refreshCloneTelemetry()">🔄 Atualizar telemetria</button>
+              <button class="tm-btn" onclick="openCloneOutputFolder()">📁 Pasta de saída</button>
+              <button class="tm-btn" onclick="scrollToTelemetry()">⬆ Ver telemetria</button>
+            </div>
           </div>
         </div>
       </div>
@@ -1429,97 +1575,174 @@ function generateHTML(videos, referenceManager, cloneManager, dataInfo = {}) {
     }
 
     function renderCloneTelemetry(job) {
-      var badges = document.getElementById('telemetryBadges');
-      var prog = document.getElementById('telemetryProgress');
-      var stepEl = document.getElementById('tCurrentStep');
-      var elapsedEl = document.getElementById('tElapsed');
-      var etaEl = document.getElementById('tEta');
-      var outEl = document.getElementById('tOutput');
-      var stepsEl = document.getElementById('tSteps');
-      var logEl = document.getElementById('tLog');
-      var artEl = document.getElementById('tArtifacts');
+      var el = function (id) { return document.getElementById(id); };
       if (!job) return;
 
       var status = job.status || 'unknown';
-      var badgeClass = status === 'done' ? 'ok' : (status === 'failed' ? 'err' : 'run');
-      if (badges) badges.innerHTML = '<span class="t-badge ' + badgeClass + '">' + String(status).toUpperCase() + '</span>' + (job.id ? '<span class="t-badge">ID: ' + escapeHtml(String(job.id)) + '</span>' : '');
-      if (prog) {
-        prog.style.display = 'block';
-        prog.className = 't-progress' + (status === 'done' ? ' done' : (status === 'failed' ? ' err' : ''));
-      }
-      if (stepEl) stepEl.textContent = job.currentStep || (status === 'running' ? 'Executando...' : 'Sem passo atual');
-      if (elapsedEl) elapsedEl.textContent = job.elapsedText || '-';
-      if (etaEl) etaEl.textContent = job.etaText || '-';
-      if (outEl) outEl.textContent = (job.slug ? (job.slug + '  •  ') : '') + (job.outputDir || '-');
-      currentCloneOutDir = job.outputDir || '';
+      var running = status === 'running';
+      var pct = Math.max(0, Math.min(100, Number(job.progress || 0)));
 
+      // ---- header --------------------------------------------------------
+      var dot = el('tmDot');
+      if (dot) dot.className = 'dot ' + (status === 'done' ? 'ok' : status === 'failed' ? 'err' : running ? 'run' : '');
+      var title = el('tmTitle');
+      if (title) title.textContent = running ? 'Clone em execução' : status === 'done' ? 'Clone concluído' : status === 'failed' ? 'Clone falhou' : 'Painel de telemetria';
+      var st = el('tmStatus');
+      if (st) { st.textContent = String(status).toUpperCase(); st.className = 'tm-pill ' + (status === 'done' ? 'ok' : status === 'failed' ? 'err' : running ? 'run' : 'ghost'); }
+      var jid = el('tmJobId');
+      if (jid) jid.textContent = job.id ? 'job ' + job.id : 'sem job';
+
+      // ---- bar ------------------------------------------------------------
+      var bar = el('tmBar');
+      if (bar) {
+        bar.className = 'tm-bar' + (status === 'done' ? ' ok' : status === 'failed' ? ' err' : (!pct ? ' indet' : ''));
+        var fill = bar.querySelector('i');
+        if (fill) fill.style.width = (status === 'done' ? 100 : pct) + '%';
+      }
+      var pctEl = el('tmPct');
+      if (pctEl) pctEl.textContent = status === 'done' ? '100% — concluído' : (pct ? pct + '%' : (running ? 'a arrancar…' : '—'));
+      var clock = el('tmClock');
+      if (clock) clock.textContent = job.elapsedText || '00:00';
+
+      // ---- stepper --------------------------------------------------------
+      var stepsEl = el('tmSteps');
       if (stepsEl) {
-        var steps = Array.isArray(job.steps) ? job.steps.slice(-20) : [];
-        if (!steps.length) {
-          stepsEl.innerHTML = '<div class="t-step">Nenhum passo registrado ainda...</div>';
+        var phases = Array.isArray(job.phases) ? job.phases : [];
+        if (!phases.length) {
+          stepsEl.innerHTML = '<div class="tm-step-pill"><span class="s"></span>aguardando início</div>';
         } else {
-          stepsEl.innerHTML = steps.map(function(s){
-            var t = s && s.at ? new Date(s.at).toLocaleTimeString('pt-BR') : '';
-            var m = s && s.msg ? s.msg : JSON.stringify(s);
-            return '<div class="t-step"><b>' + escapeHtml(t) + '</b> — ' + escapeHtml(String(m)) + '</div>';
+          stepsEl.innerHTML = phases.map(function (p) {
+            var cls = 'tm-step-pill ' + (p.state || 'pending');
+            return '<div class="' + cls + '"><span class="s"></span>' + escapeHtml(p.label) + '</div>';
           }).join('');
-          stepsEl.scrollTop = stepsEl.scrollHeight;
         }
       }
 
-      if (logEl) {
-        var logText = job.logTail || (Array.isArray(job.logLines) ? job.logLines.join('\\n') : '') || 'Sem logs ainda...';
-        logEl.textContent = logText;
-        logEl.scrollTop = logEl.scrollHeight;
+      // ---- cells ----------------------------------------------------------
+      var cur = el('tmCurrent');
+      if (cur) cur.textContent = job.currentStep || (running ? 'Executando…' : '—');
+      var proj = el('tmProject');
+      if (proj) proj.innerHTML = escapeHtml(job.slug || '—') + '<small>' + escapeHtml(job.outputDir || '') + '</small>';
+      var cnt = el('tmStepCount');
+      if (cnt) cnt.textContent = String((job.steps || []).length);
+
+      var elapsedEl = el('tmElapsed');
+      if (elapsedEl) elapsedEl.textContent = job.elapsedText || '-';
+      var etaEl = el('tmEta');
+      if (etaEl) etaEl.textContent = job.etaText || '-';
+
+      // ---- timeline -------------------------------------------------------
+      var tl = el('tmTimeline');
+      if (tl) {
+        var steps = Array.isArray(job.steps) ? job.steps.slice(-40).reverse() : [];
+        if (!steps.length) {
+          tl.innerHTML = '<div class="tm-empty">Sem etapas registadas ainda.</div>';
+        } else {
+          tl.innerHTML = steps.map(function (s, i) {
+            var t = s && s.at ? new Date(s.at).toLocaleTimeString('pt-BR') : '';
+            var m = s && s.msg ? s.msg : JSON.stringify(s);
+            return '<div class="tm-tl-row' + (i === 0 ? ' now' : '') + '"><span class="t">' + escapeHtml(t) + '</span><span>' + escapeHtml(String(m)) + '</span></div>';
+          }).join('');
+        }
       }
 
+      // ---- log ------------------------------------------------------------
+      var logEl = el('tmLog');
+      if (logEl) {
+        var lines = Array.isArray(job.logLines) && job.logLines.length ? job.logLines : (job.logTail ? String(job.logTail).split('\\n') : []);
+        if (!lines.length) {
+          logEl.textContent = 'Sem log ainda…';
+        } else {
+          logEl.innerHTML = lines.slice(-260).map(function (l) {
+            var safe = escapeHtml(String(l));
+            var cls = l.indexOf('[erro]') === 0 ? 'err' : (l.indexOf('ok ->') >= 0 || l.indexOf('PREFLIGHT: OK') >= 0 ? 'ok' : '');
+            return cls ? '<span class="' + cls + '">' + safe + '</span>' : safe;
+          }).join('\\n');
+          logEl.scrollTop = logEl.scrollHeight;
+        }
+      }
+
+      // ---- artifacts ------------------------------------------------------
+      var artEl = el('tmArtifacts');
       if (artEl) {
         var html = '';
         var a = job.artifacts || {};
         var prev = a.previews || {};
         var base = '/clones/' + encodeURIComponent(job.slug || '');
+        var any = false;
         if (prev.videos && prev.videos.length) {
-          html += '<div class="t-art"><h4>🎬 Vídeo(s) gerado(s)</h4>';
-          prev.videos.forEach(function(f){
+          any = true;
+          prev.videos.slice(0, 4).forEach(function (f) {
             var url = base + '/' + encodeURI(f.rel || f.name);
-            html += '<div style="margin-bottom:8px;"><a href="' + url + '" target="_blank">Abrir: ' + escapeHtml(f.rel || f.name) + '</a><video controls src="' + url + '"></video></div>';
+            html += '<div class="tm-art"><video controls preload="metadata" src="' + url + '"></video><div class="cap"><a href="' + url + '" target="_blank">' + escapeHtml(f.rel || f.name) + '</a></div></div>';
           });
-          html += '</div>';
         }
         if (prev.images && prev.images.length) {
-          html += '<div class="t-art"><h4>🖼️ Imagens / prévias</h4>';
-          prev.images.slice(0,4).forEach(function(f){
+          any = true;
+          prev.images.slice(0, 6).forEach(function (f) {
             var url = base + '/' + encodeURI(f.rel || f.name);
-            html += '<div style="margin-bottom:8px;"><a href="' + url + '" target="_blank">' + escapeHtml(f.rel || f.name) + '</a><img src="' + url + '" alt="preview"></div>';
+            html += '<div class="tm-art"><img src="' + url + '" alt=""><div class="cap"><a href="' + url + '" target="_blank">' + escapeHtml(f.rel || f.name) + '</a></div></div>';
           });
-          html += '</div>';
         }
         if (a.files && a.files.length) {
-          html += '<div class="t-art"><h4>📄 Arquivos de saída (' + a.files.length + ')</h4><div style="max-height:220px;overflow:auto;font-size:0.82em;line-height:1.5;">';
-          a.files.slice(0,30).forEach(function(f){
+          var rest = a.files.filter(function (f) {
+            if (!prev.videos) return true;
+            if (prev.images) return true;
+            return true;
+          });
+          html += '<div class="tm-art" style="grid-column:1/-1;padding:12px 14px;"><div class="cap" style="padding:0 0 8px;">' + a.files.length + ' ficheiro(s) na pasta</div><div class="tm-files">';
+          a.files.slice(0, 60).forEach(function (f) {
             var url = base + '/' + encodeURI(f.rel || f.name);
-            html += '<div><a href="' + url + '" target="_blank">' + escapeHtml(f.rel || f.name) + '</a> <span style="color:#94a3b8;">(' + Math.round((f.size||0)/1024) + ' KB)</span></div>';
+            html += '<a href="' + url + '" target="_blank">' + escapeHtml(f.rel || f.name) + '<span class="sz">' + Math.round((f.size || 0) / 1024) + ' KB</span></a>';
           });
           html += '</div></div>';
-        } else {
-          html += '<div class="t-art"><h4>📄 Arquivos de saída</h4><div style="color:#94a3b8;font-size:0.85em;">Ainda não há arquivos detectados. Eles aparecerão aqui conforme forem gerados.</div></div>';
         }
-        if (job.outputDir) {
-          html += '<div class="t-art"><h4>📁 Pasta</h4><div style="font-size:0.85em;color:#cbd5e1;word-break:break-all;">' + escapeHtml(job.outputDir) + '</div></div>';
-        }
+        if (!any) html = '<div class="tm-empty">Ainda não há ficheiros. Aparecem aqui assim que o pipeline os escreve.</div>';
         artEl.innerHTML = html;
       }
+
+      currentCloneOutDir = job.outputDir || '';
+    }
+
+    function toggleTmTimeline() {
+      var tl = document.getElementById('tmTimeline');
+      if (tl) tl.style.display = (tl.style.display === 'none') ? '' : 'none';
+    }
+    function toggleTmLog() {
+      var lg = document.getElementById('tmLog');
+      if (lg) lg.style.display = (lg.style.display === 'none') ? '' : 'none';
+    }
+    function copyTmLog() {
+      var lg = document.getElementById('tmLog');
+      if (!lg) return;
+      var txt = lg.innerText || '';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(txt).then(function(){ showToast('Log copiado.'); }, function(){ showToast('Não foi possível copiar.'); });
+      } else {
+        showToast('Clipboard indisponível neste browser.');
+      }
+    }
+    function scrollToTelemetry() {
+      var p = document.getElementById('telemetryPanel');
+      if (p) p.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
     function renderCloneError(message) {
-      var badges = document.getElementById('telemetryBadges');
-      var stepEl = document.getElementById('tCurrentStep');
-      var logEl = document.getElementById('tLog');
-      var prog = document.getElementById('telemetryProgress');
-      if (badges) badges.innerHTML = '<span class="t-badge err">ERRO</span>';
-      if (prog) { prog.style.display = 'block'; prog.className = 't-progress err'; }
-      if (stepEl) stepEl.textContent = 'Não foi possível iniciar/acompanhar o clone';
-      if (logEl) logEl.textContent = String(message || 'Erro desconhecido');
+      var el = function (id) { return document.getElementById(id); };
+      var dot = el('tmDot');
+      if (dot) dot.className = 'dot err';
+      var title = el('tmTitle');
+      if (title) title.textContent = 'Não foi possível iniciar o clone';
+      var st = el('tmStatus');
+      if (st) { st.textContent = 'ERRO'; st.className = 'tm-pill err'; }
+      var bar = el('tmBar');
+      if (bar) { bar.className = 'tm-bar err'; var f = bar.querySelector('i'); if (f) f.style.width = '100%'; }
+      var cur = el('tmCurrent');
+      if (cur) cur.textContent = 'Erro ao iniciar/acompanhar o clone';
+      var logEl = el('tmLog');
+      if (logEl) logEl.innerHTML = '<span class="err">' + escapeHtml(String(message || 'Erro desconhecido')) + '</span>';
+      var tl = el('tmTimeline');
+      if (tl) tl.innerHTML = '<div class="tm-tl-row now"><span class="t">' + new Date().toLocaleTimeString('pt-BR') + '</span><span>' + escapeHtml(String(message || 'Erro desconhecido')) + '</span></div>';
     }
 
     async function pollCloneStatus(jobId) {
@@ -1557,12 +1780,16 @@ function generateHTML(videos, referenceManager, cloneManager, dataInfo = {}) {
         showToast('Selecione/adicione um vídeo de referência primeiro.');
         return;
       }
-      var prog = document.getElementById('telemetryProgress');
-      var logEl = document.getElementById('tLog');
-      var stepsEl = document.getElementById('tSteps');
-      if (prog) { prog.style.display = 'block'; prog.className = 't-progress'; }
-      if (logEl) logEl.textContent = 'Iniciando clone...\\nEnviando solicitação para o servidor local...';
-      if (stepsEl) stepsEl.innerHTML = '<div class="t-step">Solicitando início do clone...</div>';
+      var bar = document.getElementById('tmBar');
+      var logEl = document.getElementById('tmLog');
+      var stepsEl = document.getElementById('tmSteps');
+      var st = document.getElementById('tmStatus');
+      var dot = document.getElementById('tmDot');
+      if (bar) { bar.className = 'tm-bar indet'; }
+      if (st) { st.textContent = 'A INICIAR'; st.className = 'tm-pill run'; }
+      if (dot) dot.className = 'dot run';
+      if (logEl) logEl.textContent = 'A enviar o pedido de clone ao servidor local...';
+      if (stepsEl) stepsEl.innerHTML = '<div class="tm-step-pill active"><span class="s"></span>a iniciar</div>';
       try {
         var res = await fetch('/clone/start', {
           method: 'POST',
@@ -1942,13 +2169,17 @@ function main() {
       const m = /(\d+)/.exec(b.message);
       if (m) {
         const ln = parseInt(m[1], 10) - 1;
-        const ctx = b.preview.split('\n').slice(Math.max(0, ln - 2), ln + 2).join('\n');
+        const ctx = b.preview.split('\\n').slice(Math.max(0, ln - 2), ln + 2).join('\n');
         console.error('   contexto:\n' + ctx);
       }
     });
     console.error('\n   Causa provável: "\\n" dentro do template literal precisa ser "\\\\n".');
     console.error('   O arquivo NÃO foi escrito para não publicar uma página quebrada.\n');
-    process.exit(1);
+        if (process.env.ARTCRAFT_FORCE_DASH === '1') {
+      console.error('   ARTCRAFT_FORCE_DASH=1 -> a escrever mesmo assim (modo debug).\n');
+    } else {
+      process.exit(1);
+    }
   }
   // -----------------------------------------------------------------------
 

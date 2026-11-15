@@ -142,6 +142,48 @@ function fmtMs(ms) {
   return `${sec}s`;
 }
 
+// The clone pipeline prints numbered phase markers ("2/6 avatares",
+// "4.5/6 lipsync", ...). Parse them so the UI can show a real stepper with a
+// percentage instead of guessing from keywords.
+const PHASES = [
+  { re: /^0\/6\s+preflight/i, key: 'preflight', label: 'Verificações pré-voo', pct: 3 },
+  { re: /^1\/6\s+preparacao/i, key: 'preparacao', label: 'Preparação', pct: 8 },
+  { re: /^1\.5\/6\s+driving/i, key: 'driving', label: 'Driver de gestos', pct: 12 },
+  { re: /^2\/6\s+avatares/i, key: 'avatares', label: 'Animação dos avatares', pct: 45 },
+  { re: /^3\/6\s+b-?roll/i, key: 'broll', label: 'B-roll', pct: 50 },
+  { re: /^4\/6\s+narracao/i, key: 'narracao', label: 'Narração + legendas', pct: 68 },
+  { re: /^4\.5\/6\s+lipsync/i, key: 'lipsync', label: 'Lip-sync (Wav2Lip)', pct: 74 },
+  { re: /^4\.7\/6\s+visuals/i, key: 'visuals', label: 'Visuais da banda de cima', pct: 78 },
+  { re: /^5\/6\s+cartoes/i, key: 'cartoes', label: 'Cartões + cenas', pct: 88 },
+  { re: /^6\/6\s+montagem/i, key: 'montagem', label: 'Montagem final', pct: 97 },
+  { re: /^\s*preflight:/i, key: 'preflight', label: 'Verificações pré-voo', pct: 3 },
+];
+
+const ALL_PHASES = [
+  // sec = expected seconds for the phase (measured on real runs: a full clone
+  // takes ~21 min, of which the avatar animation is ~10 and the Remotion
+  // cards ~4). A linear "percent done" ETA lies badly here, because the
+  // avatar phase is 60% of the wall clock but only 45% of the "steps".
+  { key: 'preflight', label: 'Pré-voo', pct: 3, sec: 5 },
+  { key: 'preparacao', label: 'Preparação', pct: 8, sec: 5 },
+  { key: 'driving', label: 'Driver', pct: 12, sec: 15 },
+  { key: 'avatares', label: 'Avatares', pct: 45, sec: 600 },
+  { key: 'broll', label: 'B-roll', pct: 50, sec: 30 },
+  { key: 'narracao', label: 'Narração', pct: 68, sec: 180 },
+  { key: 'lipsync', label: 'Lip-sync', pct: 74, sec: 60 },
+  { key: 'visuals', label: 'Visuais', pct: 78, sec: 30 },
+  { key: 'cartoes', label: 'Cartões', pct: 88, sec: 240 },
+  { key: 'montagem', label: 'Montagem', pct: 97, sec: 90 },
+];
+
+function parsePhase(line) {
+  const t = String(line || '').trim();
+  for (const p of PHASES) {
+    if (p.re.test(t)) return p;
+  }
+  return null;
+}
+
 function inferStepFromLine(line) {
   const l = String(line || '').toLowerCase();
   if (!l.trim()) return null;
@@ -165,15 +207,25 @@ function inferStepFromLine(line) {
 }
 
 function estimateEtaMs(job) {
-  // Heuristic ETA based on elapsed and observed phase keywords
-  const elapsed = Date.now() - (job.startedAtMs || Date.now());
-  const text = (job.logTail || '').toLowerCase();
-  let totalGuess = 8 * 60 * 1000; // 8 min default
-  if (text.includes('avatar') || text.includes('liveportrait') || text.includes('runpod')) totalGuess = 20 * 60 * 1000;
-  if (text.includes('ffmpeg') || text.includes('render')) totalGuess = Math.max(totalGuess, 12 * 60 * 1000);
-  if (text.includes('upload')) totalGuess = Math.max(totalGuess, elapsed + 2 * 60 * 1000);
   if (job.status === 'done' || job.status === 'failed') return 0;
-  return Math.max(30 * 1000, totalGuess - elapsed);
+  const elapsed = Date.now() - (job.startedAtMs || Date.now());
+
+  // Phase-weighted ETA. Each phase has a measured expected duration; the
+  // current phase contributes what is LEFT of it, the later phases their full
+  // expected time. A linear percent extrapolation lies: the avatar phase is
+  // 60% of the wall clock but only 45% of the "steps".
+  const idx = ALL_PHASES.findIndex(p => p.key === job.phaseKey);
+  if (idx >= 0) {
+    const phase = ALL_PHASES[idx];
+    const spentInPhase = job.phaseStartedAtMs ? (Date.now() - job.phaseStartedAtMs) : 0;
+    const leftOfPhase = Math.max(0, phase.sec - spentInPhase);
+    const later = ALL_PHASES.slice(idx + 1).reduce((a, p) => a + p.sec, 0);
+    return Math.max(5000, leftOfPhase + later);
+  }
+
+  // No phase reported yet: fall back to a total guess.
+  const total = ALL_PHASES.reduce((a, p) => a + p.sec, 0);
+  return Math.max(30 * 1000, total - elapsed);
 }
 
 function scanArtifacts(outDir) {
@@ -224,6 +276,17 @@ function cloneJobPublic(job, opts = {}) {
     etaMs,
     etaText: job.status === 'running' ? ('~' + fmtMs(etaMs) + ' (estimado)') : (job.status === 'done' ? 'Concluído' : job.status === 'failed' ? 'Falhou' : '-'),
     currentStep: job.currentStep || 'Preparando...',
+    phaseKey: job.phaseKey || null,
+    phaseLabel: job.phaseLabel || null,
+    progress: Math.max(0, Math.min(100, Number(job.progress || 0))),
+    phases: ALL_PHASES.map(p => ({
+      key: p.key,
+      label: p.label,
+      pct: p.pct,
+      state: job.status === 'done' ? 'done'
+        : (p.pct < Number(job.progress || 0) ? 'done'
+          : (p.key === job.phaseKey ? 'active' : 'pending')),
+    })),
     steps: job.steps || [],
     logTail: (job.logTail || '').slice(-6000),
     logLines: (job.logLines || []).slice(-120),
@@ -347,6 +410,9 @@ function startCloneJob(entry, opts = {}) {
     finishedAt: null,
     finishedAtMs: null,
     currentStep: 'Iniciando pipeline de clonagem...',
+    phaseKey: null,
+    phaseLabel: null,
+    progress: 0,
     steps: [{ at: nowIso(), msg: 'Iniciando pipeline de clonagem...' }],
     logTail: '',
     fullLog: '',
@@ -367,6 +433,18 @@ function startCloneJob(entry, opts = {}) {
     for (const line of lines) {
       job.logLines.push((stream === 'stderr' ? '[erro] ' : '') + line);
       if (job.logLines.length > 400) job.logLines = job.logLines.slice(-400);
+      // Structured phase marker -> the UI shows a real stepper + percentage.
+      const ph = parsePhase(line);
+      if (ph && ph.key !== job.phaseKey) {
+        job.phaseKey = ph.key;
+        job.phaseLabel = ph.label;
+        job.progress = Math.max(job.progress || 0, ph.pct);
+        job.currentStep = ph.label;
+        job.phaseStartedAtMs = Date.now();
+        job.steps.push({ at: nowIso(), msg: ph.label, phase: ph.key, pct: ph.pct });
+        if (job.steps.length > 60) job.steps = job.steps.slice(-60);
+        continue;
+      }
       const step = inferStepFromLine(line);
       // Only record a step transition. The log often alternates between two
       // related lines ("Processando avatar" / "Animando avatar"), which used to

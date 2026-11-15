@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Dark channel clone pipeline — full featured.
+ * Dark channel clone pipeline â€” full featured.
  *
  * Turns a script into finished videos (one per language) using:
  *   FigCraft  : typographic cards (PNG) + thumbnail
@@ -35,6 +35,9 @@ import { layoutMetrics, sceneLayout, textAnchorY } from './clone/lib/layout.mjs'
 import { writeSceneASS, buildASS, buildSRT } from './clone/lib/ass.mjs';
 import { narrationFingerprint, readNarrationCache, writeNarrationCache } from './clone/lib/cache.mjs';
 import { sceneVisual } from './clone/lib/media.mjs';
+import { runPreflight, formatPreflight, resolvePath as resolveProjectPath } from './clone/lib/preflight.mjs';
+import { ensureSeamlessLoop, probeDuration as probeMediaDuration } from './clone/lib/seamless.mjs';
+import { aplicarDirecaoAoPlano } from './clone/lib/direcao.mjs';
 
 // ---- OPUS 5.5 REFERENCE-FIRST PHASE (import dinamico para path Windows)
 let _opus5 = null;
@@ -50,7 +53,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 
 // A raiz do workspace e a pasta que contem este ficheiro (.artcraft/).
 // Antes era "D:\\CRAFT" fixo, o que partia o motor em qualquer outra
-// maquina — num repo publico isso e fatal. Resolver a partir do proprio
+// maquina â€” num repo publico isso e fatal. Resolver a partir do proprio
 // ficheiro torna o pipeline portavel: clona-se a pasta e funciona.
 const CC = path.resolve(HERE, '..');
 
@@ -77,15 +80,15 @@ function argAll(name) {
 const FLAG = (name) => process.argv.includes('--' + name);
 
 // Timeouts dos processos (ms). Sem estes limites, um ffmpeg, um TTS ou um
-// script Python encravado pendura o build para sempre — e nao ha forma de
+// script Python encravado pendura o build para sempre â€” e nao ha forma de
 // saber se o processo vai acabar. O runtime.mjs termina a arvore de
 // processos (taskkill /T /F no Windows) quando o tempo expira.
 const TIMEOUT = {
-  ffprobe: 60 * 1000,          // 1 min — so le metadados
-  ffmpeg: 15 * 60 * 1000,      // 15 min — um render de cena
-  tts: 5 * 60 * 1000,          // 5 min — uma locucao
-  python: 30 * 60 * 1000,      // 30 min — LivePortrait/Wav2Lip sao lentos
-  cli: 10 * 60 * 1000,         // 10 min — EffectCraft/FigCraft/FilmCraft
+  ffprobe: 60 * 1000,          // 1 min â€” so le metadados
+  ffmpeg: 15 * 60 * 1000,      // 15 min â€” um render de cena
+  tts: 5 * 60 * 1000,          // 5 min â€” uma locucao
+  python: 30 * 60 * 1000,      // 30 min â€” LivePortrait/Wav2Lip sao lentos
+  cli: 10 * 60 * 1000,         // 10 min â€” EffectCraft/FigCraft/FilmCraft
 };
 
 const CONFIG_PATH = arg('config', path.join(CC, 'clone.config.json'));
@@ -162,10 +165,10 @@ async function selectAvatarEngine(cfg) {
     if (!engCfg.enabled) continue;
 
     const minVRAM = {
-      liveportrait: engCfg.mode === 'cpu' ? 0 : 6,  // 6GB mínimo com otimizações
+      liveportrait: engCfg.mode === 'cpu' ? 0 : 6,  // 6GB mÃ­nimo com otimizaÃ§Ãµes
       musetalk: 16,
       hunyuan: 24,
-      cloud: 0,  // cloud não precisa VRAM local
+      cloud: 0,  // cloud nÃ£o precisa VRAM local
       cards: 0
     }[engine] || 999;
 
@@ -176,7 +179,7 @@ async function selectAvatarEngine(cfg) {
     console.log('  avatar engine: ' + engine + ' pulado (VRAM: ' + vram.toFixed(1) + ' < ' + minVRAM + ')');
   }
 
-  console.log('  avatar engine: cards (fallback - nenhum engine viável)');
+  console.log('  avatar engine: cards (fallback - nenhum engine viÃ¡vel)');
   return 'cards';
 }
 
@@ -185,7 +188,7 @@ async function selectAvatarEngine(cfg) {
  *
  * LivePortrait's CLI takes a DIRECTORY in -o, not a file: it names the output itself
  * (source--driving.mp4). So we pass a scratch dir and resolve the file afterwards.
- * `source-max-dim` is the VRAM lever — 512 keeps a 6 GB card out of trouble.
+ * `source-max-dim` is the VRAM lever â€” 512 keeps a 6 GB card out of trouble.
  */
 async function runLivePortrait(cfg, avatarCfg, sourceImage, drivingVideo, outFile, dir) {
   const lp = avatarCfg.liveportrait || {};
@@ -243,7 +246,7 @@ async function runLivePortrait(cfg, avatarCfg, sourceImage, drivingVideo, outFil
     ];
   } else {
     // Python mode: use the interpreter that already has a working CUDA build
-    // (e.g. the ComfyUI venv — installing torch from scratch is a 2.5 GB detour).
+    // (e.g. the ComfyUI venv â€” installing torch from scratch is a 2.5 GB detour).
     cmd = lp.pythonPath || 'python';
     cwd = lp.repoPath || path.join(CC, 'tools', 'LivePortrait');
     args = [path.join(cwd, 'inference.py')].concat(inferArgs);
@@ -281,10 +284,10 @@ function findLivePortraitOutput(scratchDir) {
   return best;
 }
 
-/** Wav2Lip — re-rende os lábios do avatar para bater com o áudio da narração.
+/** Wav2Lip â€” re-rende os lÃ¡bios do avatar para bater com o Ã¡udio da narraÃ§Ã£o.
  *
- * Entrada: vídeo do avatar (LivePortrait) + áudio da narração.
- * Saída: mesmo vídeo com boca sincronizada palavra-a-palavra.
+ * Entrada: vÃ­deo do avatar (LivePortrait) + Ã¡udio da narraÃ§Ã£o.
+ * SaÃ­da: mesmo vÃ­deo com boca sincronizada palavra-a-palavra.
  *
  * Requisitos de ambiente (ja verificados localmente):
  *   - Python: D:\Comfy\ComfyUI\venv\Scripts\python.exe  (NAO o python do PATH)
@@ -328,7 +331,7 @@ async function generateDrivingVideo(cfg, audioFile, outFile, dir) {
   // Simple approach: create a silent video with face landmarks matching audio duration
   // For now, use a pre-recorded driving video or generate from first card
   // TODO: implement proper driving generation from audio landmarks
-  console.log('  Driving video: usando fonte padrão (precisa driving real para lip-sync perfeito)');
+  console.log('  Driving video: usando fonte padrÃ£o (precisa driving real para lip-sync perfeito)');
   return { ok: true, file: outFile };
 }
 
@@ -343,17 +346,17 @@ async function runCloudAvatar(cfg, avatarCfg, engine, params, dir) {
   // e' melhor do que um ReferenceError em producao.
   if (provider === 'vastai' || provider === 'lambda') {
     throw new Error(
-      'cloud.provider "' + provider + '" ainda nao tem integracao implementada — ' +
+      'cloud.provider "' + provider + '" ainda nao tem integracao implementada â€” ' +
       'use "runpod" ou ponha avatar.engine = "cards" para working sem cloud'
     );
   }
 
-  throw new Error('Cloud provider não suportado: ' + provider);
+  throw new Error('Cloud provider nÃ£o suportado: ' + provider);
 }
 
 /** RunPod integration - create pod, upload files, run inference, download result. */
 async function runRunPod(cfg, runpodCfg, engine, params, dir) {
-  if (!runpodCfg.apiKey) throw new Error('RunPod API key não configurada');
+  if (!runpodCfg.apiKey) throw new Error('RunPod API key nÃ£o configurada');
   
   const baseUrl = 'https://api.runpod.io/graphql';
   const headers = { 'Authorization': 'Bearer ' + runpodCfg.apiKey, 'Content-Type': 'application/json' };
@@ -386,7 +389,7 @@ async function runRunPod(cfg, runpodCfg, engine, params, dir) {
   const podRes = await httpPost(baseUrl, headers, { query: createPodMutation, variables: { input: podInput } });
   if (!podRes.ok) throw new Error('RunPod create pod falhou: ' + podRes.error);
   const podId = podRes.data?.podCreate?.id;
-  if (!podId) throw new Error('RunPod: pod ID não retornado');
+  if (!podId) throw new Error('RunPod: pod ID nÃ£o retornado');
   
   console.log('  RunPod: pod ' + podId + ' criado, aguardando RUNNING...');
   
@@ -406,7 +409,7 @@ async function runRunPod(cfg, runpodCfg, engine, params, dir) {
   }
   if (podStatus !== 'RUNNING') {
     await terminatePod(baseUrl, headers, podId);
-    throw new Error('RunPod: pod não subiu a tempo (status: ' + podStatus + ')');
+    throw new Error('RunPod: pod nÃ£o subiu a tempo (status: ' + podStatus + ')');
   }
   
   // 3. Get pod connection info (SSH/HTTP)
@@ -418,7 +421,7 @@ async function runRunPod(cfg, runpodCfg, engine, params, dir) {
   const conn = await httpPost(baseUrl, headers, { query: connQuery, variables: { id: podId } });
   const ports = conn.data?.pod?.runtime?.ports || [];
   const httpPort = ports.find(p => p.privatePort === 8000 && p.isIpPublic);
-  if (!httpPort) throw new Error('RunPod: porta 8000 não exposta');
+  if (!httpPort) throw new Error('RunPod: porta 8000 nÃ£o exposta');
   const podUrl = 'http://' + httpPort.ip + ':' + httpPort.publicPort;
   
   console.log('  RunPod: pod rodando em ' + podUrl);
@@ -584,7 +587,7 @@ async function buildMotionCards(cfg, scenes, dir, avatarMode, lang, durations) {
     const SH = SL.cardH;
 
     // Each card lives as long as its narration, so the animation is not a 3 s sticker
-    // followed by a frozen frame — it breathes with the voice track.
+    // followed by a frozen frame â€” it breathes with the voice track.
     const told = Number(durations && durations[i] ? durations[i] : 0);
     const sceneSeconds = Math.min(14, Math.max(2, told > 0 ? told + 0.3 : seconds));
 
@@ -594,7 +597,7 @@ async function buildMotionCards(cfg, scenes, dir, avatarMode, lang, durations) {
     });
 
     // Media for the top band. Imported as footage, dropped at the centre of the band and
-    // scaled to the band width — the comp frame crops the overflow, so it reads as a
+    // scaled to the band width â€” the comp frame crops the overflow, so it reads as a
     // full-bleed shot instead of a letterboxed thumbnail.
     const visual = sceneVisual(scenes, dir, i, { ignoreVisualsFolder: topEngineOf(cfg) === 'remotion' });
     const onMedia = !!visual;
@@ -623,7 +626,7 @@ async function buildMotionCards(cfg, scenes, dir, avatarMode, lang, durations) {
     const body = say(Array.isArray(sc.body) ? sc.body.join(' ') : sc.body);
 
     // In caption mode the big single phrase is burned later as one ASS layer over the whole
-    // frame, presenter included — a card can only paint inside its own band. BUT the card
+    // frame, presenter included â€” a card can only paint inside its own band. BUT the card
     // still needs its own kicker + headline layers in the top band, otherwise the scene
     // renders an empty cream rectangle (the bug that made ref5-clone's top band blank).
     // So: in caption mode we SKIP ONLY the body (redundant with the ASS headline), not the
@@ -679,7 +682,7 @@ async function buildRemotionCards(cfg, scenes, dir, avatarMode, lang, durations)
   const fps = Number(cfg.video.fps);
   const cardsDir = path.join(dir, 'cards', String(lang || 'pt-BR'));
   fs.mkdirSync(cardsDir, { recursive: true });
-  if (!remotionAvailable()) throw new Error('remotion-composer nao encontrado em ' + REMOTION_COMPOSER + ' — use cards.topEngine: "effectcraft" ou "figcraft"');
+  if (!remotionAvailable()) throw new Error('remotion-composer nao encontrado em ' + REMOTION_COMPOSER + ' â€” use cards.topEngine: "effectcraft" ou "figcraft"');
 
   const REMO = C.remotion || {};
   const TS = C.textStyle || {};
@@ -690,13 +693,13 @@ async function buildRemotionCards(cfg, scenes, dir, avatarMode, lang, durations)
     const sc = scenes[i];
     const SL = sceneLayout(cfg, sc);
     // O cartao vive o tempo da narracao (como no EffectCraft) e o build segura o
-    // ultimo estado — aqui o float continuo nunca deixa a banda ficar parada.
+    // ultimo estado â€” aqui o float continuo nunca deixa a banda ficar parada.
     const told = Number(durations && durations[i] ? durations[i] : 0);
     const seconds = Math.min(14, Math.max(2, told > 0 ? told + 0.3 : 4));
 
     // So as palavras mais interessantes: headline/texto da cena, depois a
     // reserva (body + narracao) para quando a frase curta nao chega a 2.
-    // Sem isto "O QUE SÃO AGENTES" desenhava so "AGENTES" na banda de cima.
+    // Sem isto "O QUE SÃƒO AGENTES" desenhava so "AGENTES" na banda de cima.
     const raw = Array.isArray(sc.headline) ? sc.headline.join(' ') : (sc.headline || sc.text || sc.caption || '');
     const words = keywordsWithFallback(
       raw,
@@ -704,7 +707,7 @@ async function buildRemotionCards(cfg, scenes, dir, avatarMode, lang, durations)
       REMO.maxWords || 5
     );
     // A banda de cima e tipografia cinetica: uma unica caixa. As palavras do
-    // titulo ja vem em CAIXA ALTA, as de reserva nao — sem isto a cena ficava
+    // titulo ja vem em CAIXA ALTA, as de reserva nao â€” sem isto a cena ficava
     // "AGENTES | Programas | autonomously" a meio caminho.
     const bandWords = styleWords(words, TS);
     const kicker = sceneKicker(sc, cfg, { uppercase: TS.uppercase !== false });
@@ -725,9 +728,11 @@ async function buildRemotionCards(cfg, scenes, dir, avatarMode, lang, durations)
       fontSize: Number(REMO.fontSize || (C.headline && C.headline.size) || 96),
       stagger: Number(REMO.stagger || 7),
       accentEvery: Number(REMO.accentEvery || 3),
+      layout: REMO.layout || 'editorial',
+      signature: REMO.signature || '',
     });
     if (!ok) throw new Error('remotion (cena ' + (i + 1) + '): render falhou');
-    console.log('    ' + path.basename(out) + ': ' + (bandWords.join(' ') || '(sem palavras)') + ' — ' + seconds.toFixed(1) + 's');
+    console.log('    ' + path.basename(out) + ': ' + (bandWords.join(' ') || '(sem palavras)') + ' â€” ' + seconds.toFixed(1) + 's');
     cards.push({ scene: sc.id || 's' + (i + 1), name: 'R' + String(i + 1).padStart(2, '0'), file: out, motion: true });
   }
 
@@ -735,7 +740,7 @@ async function buildRemotionCards(cfg, scenes, dir, avatarMode, lang, durations)
 }
 
 /**
- * Two passes, because FigCraft's `node.create` needs a real numeric parent id — you cannot
+ * Two passes, because FigCraft's `node.create` needs a real numeric parent id â€” you cannot
  * name the parent, so the frames have to exist before their text does.
  */
 async function buildCards(cfg, scenes, dir, avatarMode, lang) {
@@ -762,7 +767,7 @@ async function buildCards(cfg, scenes, dir, avatarMode, lang) {
   const cardIds = scenes.map((s, i) => 'c' + String(i + 1).padStart(2, '0') + '_' + String(s.id || 's' + (i + 1)).replace(/[^A-Za-z0-9_-]/g, ''));
   const thumbName = 'thumbnail';
 
-  // pass 1 — frames
+  // pass 1 â€” frames
   const p1 = [];
   for (let i = 0; i < scenes.length; i++) {
     p1.push({ command: 'node.create', params: { type: 'frame', width: W, height: H, name: cardIds[i], props: { fill: C.palette.bg } } });
@@ -788,7 +793,7 @@ async function buildCards(cfg, scenes, dir, avatarMode, lang) {
   const frameIds = r1.ids.slice(0, scenes.length);
   const thumbId = r1.ids[r1.ids.length - 1];
 
-  // pass 2 — text, now that the frames have ids
+  // pass 2 â€” text, now that the frames have ids
   const p2 = [];
   for (let i = 0; i < scenes.length; i++) {
     const s = scenes[i];
@@ -878,7 +883,7 @@ async function buildCards(cfg, scenes, dir, avatarMode, lang) {
 
 // ---------------------------------------------------------------- TTS engines
 
-/** Windows SAPI — offline, pt-BR voice available. */
+/** Windows SAPI â€” offline, pt-BR voice available. */
 async function sapiSay(text, outWav, v, dirBuild) {
   const txt = path.join(dirBuild, 'tts-' + path.basename(outWav, '.wav') + '.txt');
   fs.writeFileSync(txt, text, 'utf8');
@@ -896,7 +901,7 @@ async function sapiSay(text, outWav, v, dirBuild) {
   return { ok: fs.existsSync(outWav) && fs.statSync(outWav).size > 1000, err: r.stderr };
 }
 
-/** FilmCraft TTS — `tts.preview` writes a file. */
+/** FilmCraft TTS â€” `tts.preview` writes a file. */
 async function filmcraftSay(text, outWav, v) {
   const job = path.join(path.dirname(outWav), path.basename(outWav, '.wav') + '.jsonl');
   fs.writeFileSync(job, JSON.stringify({
@@ -908,7 +913,7 @@ async function filmcraftSay(text, outWav, v) {
 }
 
 /**
- * Edge TTS — Microsoft's neural voices via the free public endpoint.
+ * Edge TTS â€” Microsoft's neural voices via the free public endpoint.
  *
  * This is the "humanised" option: Francisca/Thalita (pt-BR), Aria/Ava (en-US),
  * Elvira/Ximena (es-ES). No API key, no billing, and vastly better than the
@@ -935,8 +940,8 @@ async function edgeSay(text, outFile, v, cfg) {
 /**
  * Voice mastering with SoundCraft.
  *
- * The TTS reaches us clean but flat and a little sterile. This chain — high-pass,
- * corrective EQ, gentle compression, de-esser, a touch of saturation and a limiter —
+ * The TTS reaches us clean but flat and a little sterile. This chain â€” high-pass,
+ * corrective EQ, gentle compression, de-esser, a touch of saturation and a limiter â€”
  * is what a voice-over engineer would do before publishing, and it is the difference
  * between "computer reading" and "person talking".
  *
@@ -980,7 +985,7 @@ async function polishVoice(cfg, inputFile, outputFile) {
 }
 
 /**
- * VoiceCraft — the local TTS studio on :8090.
+ * VoiceCraft â€” the local TTS studio on :8090.
  *
  * It fronts ten providers with a cascade, so one call can land on NVIDIA Magpie
  * (the most natural pt-BR we have), Gemini, or Edge when the quotas run out. It also
@@ -1057,7 +1062,7 @@ async function elevenlabsSay(text, outWav, v) {
   });
 }
 
-/** XTTS (Coqui) — local or HTTP. Expects a CLI `xtts` or Python script. */
+/** XTTS (Coqui) â€” local or HTTP. Expects a CLI `xtts` or Python script. */
 async function xttsSay(text, outWav, v) {
   if (!v.speakerWav || !fs.existsSync(v.speakerWav)) return { ok: false, err: 'XTTS: speakerWav nao encontrado' };
   // Try local CLI first
@@ -1079,7 +1084,7 @@ async function xttsSay(text, outWav, v) {
   return { ok: r2.code === 0 && fs.existsSync(outWav) && fs.statSync(outWav).size > 1000, err: r2.stderr };
 }
 
-/** Kokoro — local CLI or Python. */
+/** Kokoro â€” local CLI or Python. */
 async function kokoroSay(text, outWav, v) {
   const cli = v.cli || 'kokoro';
   const args = ['--text', text, '--voice', v.voice || 'pt-br-female-1', '--output', outWav];
@@ -1094,7 +1099,7 @@ async function kokoroSay(text, outWav, v) {
   return { ok: r2.code === 0 && fs.existsSync(outWav) && fs.statSync(outWav).size > 1000, err: r2.stderr };
 }
 
-/** Custom CLI — user provides command template with {text} {out} placeholders. */
+/** Custom CLI â€” user provides command template with {text} {out} placeholders. */
 async function customSay(text, outWav, v) {
   if (!v.command) return { ok: false, err: 'Custom TTS: comando vazio' };
   const cmd = v.command.replace('{text}', text).replace('{out}', outWav);
@@ -1126,7 +1131,7 @@ async function buildNarrationForLanguage(cfg, scenes, dir, lang, alreadyLocalize
     const presenter = s.avatar || s.presenter;
     // A voz por apresentador so faz sentido com o avatar ligado. Com avatar.enabled=false
     // (testes de ritmo, builds sem cara) a voz do apresentador arrastava o TTS para o
-    // engine dele — VoiceCraft na rede para um video que nao tem apresentador nenhum.
+    // engine dele â€” VoiceCraft na rede para um video que nao tem apresentador nenhum.
     const avCfg = cfg.avatar?.enabled && presenter && cfg.avatar?.avatars?.[presenter];
     // voice may be keyed by language ({ "pt-BR": {...} }) or flat ({ engine, voice })
     let avVoice = null;
@@ -1140,7 +1145,7 @@ async function buildNarrationForLanguage(cfg, scenes, dir, lang, alreadyLocalize
     if (!alreadyLocalized && text && cfg.languages?.autoTranslate && lang !== cfg.languages?.default && cfg.languages?.translateEngine !== 'none') {
       const translated = await translateText(text, cfg.languages.default, lang, cfg.languages.translateEngine);
       if (translated) text = translated;
-      else console.error('  aviso: traducao falhou para ' + lang + ' cena ' + name + ' — usando original');
+      else console.error('  aviso: traducao falhou para ' + lang + ' cena ' + name + ' â€” usando original');
     }
 
     if (DRY || sceneEngine === 'none' || !text) {
@@ -1203,7 +1208,7 @@ async function buildNarrationForLanguage(cfg, scenes, dir, lang, alreadyLocalize
     const nWords = text.trim().split(/\s+/).filter(Boolean).length;
     const expected = Math.max(1.2, nWords * 0.10);
     if (r.ok && duration > 0 && duration < expected && sceneEngine !== 'edge') {
-      console.log('      audio truncado (' + duration.toFixed(2) + 's para ' + nWords + ' palavras) — a repetir pelo Edge');
+      console.log('      audio truncado (' + duration.toFixed(2) + 's para ' + nWords + ' palavras) â€” a repetir pelo Edge');
       const fb = (cfg.voice && cfg.voice.fallback && cfg.voice.fallback.perLanguage && cfg.voice.fallback.perLanguage[lang]) || 'pt-BR-FranciscaNeural';
       const r2 = await edgeSay(text, audioPathFor('edge'), { engine: 'edge', voice: fb }, cfg);
       if (r2.ok) {
@@ -1212,7 +1217,7 @@ async function buildNarrationForLanguage(cfg, scenes, dir, lang, alreadyLocalize
       }
     }
     if (!r.ok || !duration) {
-      console.error('  aviso: narracao ' + lang + ' falhou em ' + name + (r.err ? ' — ' + String(r.err).slice(0, 160) : ''));
+      console.error('  aviso: narracao ' + lang + ' falhou em ' + name + (r.err ? ' â€” ' + String(r.err).slice(0, 160) : ''));
       tracks.push({ scene: name, file: null, duration: 0, engine: 'silent', presenter: presenter || null, text });
       continue;
     }
@@ -1377,24 +1382,24 @@ async function prepareAvatar(cfg, dir) {
   }
 
   if (type === 'heygen' && cfg.avatar.heygen?.apiKey && cfg.avatar.heygen?.avatarId) {
-    // HeyGen API — generate avatar video for each scene text
-    console.log('  HeyGen avatar generation not fully implemented — using local fallback');
+    // HeyGen API â€” generate avatar video for each scene text
+    console.log('  HeyGen avatar generation not fully implemented â€” using local fallback');
     return null;
   }
 
   if (type === 'synthesia' && cfg.avatar.synthesia?.apiKey && cfg.avatar.synthesia?.avatarId) {
-    console.log('  Synthesia avatar generation not fully implemented — using local fallback');
+    console.log('  Synthesia avatar generation not fully implemented â€” using local fallback');
     return null;
   }
 
   if (type === 'did' && cfg.avatar.did?.apiKey && cfg.avatar.did?.presenterId) {
-    console.log('  D-ID avatar generation not fully implemented — using local fallback');
+    console.log('  D-ID avatar generation not fully implemented â€” using local fallback');
     return null;
   }
 
   if (type === 'generated') {
     // Craft Anything or external video generator
-    console.log('  AI avatar generation not fully implemented — using local fallback');
+    console.log('  AI avatar generation not fully implemented â€” using local fallback');
     return null;
   }
 
@@ -1448,7 +1453,7 @@ async function fetchBroll(cfg, scenes, dir) {
         }
       }
     } else if (source === 'local') {
-      // Use local folder — pick random files
+      // Use local folder â€” pick random files
       const localDir = cfg.pipeline.broll.localDir || path.join(CC, 'work', 'broll');
       if (fs.existsSync(localDir)) {
         const files = fs.readdirSync(localDir).filter(f => /\.(mp4|mov|webm)$/i.test(f));
@@ -1495,7 +1500,7 @@ function sceneFilter(cfg, frames, outW, outH, scene) {
     'format=' + cfg.video.pixFmt
   );
 }
-async function buildSceneClips(cfg, cards, tracks, avatarClips, scenes, broll, subtitles, dir, lang) {
+async function buildSceneClips(cfg, cards, tracks, avatarClips, scenes, broll, subtitles, dir, lang, lipSyncScenes, avatarTemplates) {
   const buildDir = path.join(dir, 'build', lang);
   fs.mkdirSync(buildDir, { recursive: true });
   const clips = [];
@@ -1507,7 +1512,7 @@ async function buildSceneClips(cfg, cards, tracks, avatarClips, scenes, broll, s
     const t = tracks[i] || { duration: 0 };
     // Duracao: narracao manda, excepto quando a cena traz `seconds` (plano de EDL).
     // Um plano de 1,8 s nao pode ser esticado pelo minSeconds global de 4 s, e uma
-    // narracao mais longa que o plano nunca pode ser cortada a meio — o atrim comeria a
+    // narracao mais longa que o plano nunca pode ser cortada a meio â€” o atrim comeria a
     // ultima palavra. Logo: max(pedido, narracao) e o clamps passa a incluir o pedido.
     const need = (t.duration || 0) + Number(cfg.scene?.padSeconds || 0.4);
     const asked = Number((scenes[i] && scenes[i].seconds) || 0);
@@ -1520,7 +1525,7 @@ async function buildSceneClips(cfg, cards, tracks, avatarClips, scenes, broll, s
     // Tempo-fit: um guiao mais denso do que o plano empurra cada corte para a frente e o
     // ritmo medido desaparece (26 planos -> 76 s em vez de 60 s). Quando o plano manda na
     // duracao, a narracao e' acelerada/abrandada dentro de limites audiveis para caber no
-    // plano; se o limite nao chega, o plano cresce — nunca se corta uma palavra a meio.
+    // plano; se o limite nao chega, o plano cresce â€” nunca se corta uma palavra a meio.
     let tempo = 1;
     const fit = asked > 0 && respect && !!t.file && (cfg.scene?.fitNarration !== false);
     if (fit) {
@@ -1536,10 +1541,20 @@ async function buildSceneClips(cfg, cards, tracks, avatarClips, scenes, broll, s
 
     // Which presenter is in this scene?
     const wanted = (scenes[i] && (scenes[i].avatar || scenes[i].presenter)) || defaultAvatar;
-    // F5: usar o clip lipsynced especifico desta cena (se Wav2Lip ativo)
+    // F5: usar o clip lipsynced especifico desta cena (se Wav2Lip ativo).
+    // lipSyncScenes chega por parametro: mapa { scene01: clip, ... } por idioma.
+    // (Antes isto lia `lipSyncByLang`, que so existe dentro de main() -> ReferenceError
+    //  que matava o pipeline no passo 5/6, depois de 20+ minutos de trabalho.)
     const sceneKey = 'scene' + String(i + 1).padStart(2, '0');
-    const lipSynced = lipSyncByLang[lang]?.[sceneKey];
-    const avatar = lipSynced || (wanted && avatarClips ? avatarClips[wanted] : null);
+    const lipSynced = lipSyncScenes && lipSyncScenes[sceneKey];
+    // Driver do BEAT: o contrato de direcao escolhe um template por emocao
+    // (work/avatars/driving_templates). Usar o clip do driver certo e o que
+    // faz o avatar "falar" com a expressao da cena em vez do driver generico.
+    const beatDriver = (scenes[i] && scenes[i][wanted + '_state'] && scenes[i][wanted + '_state'].driving_template) || '';
+    const beatClip = beatDriver && avatarTemplates && avatarTemplates[wanted]
+      ? avatarTemplates[wanted][resolveProjectPath(beatDriver)]
+      : null;
+    const avatar = lipSynced || beatClip || (wanted && avatarClips ? avatarClips[wanted] : null);
     const hasAvatar = !!(avatar && avatar.file && fs.existsSync(avatar.file));
 
     // Per-shot geometry: a whiteboard scene is full frame, a talking-head scene is split at
@@ -1761,7 +1776,7 @@ async function buildSceneClips(cfg, cards, tracks, avatarClips, scenes, broll, s
 
     // ---- frase da cena (titulo/caption/headline), normalizada
     // Declarada aqui, ANTES de qualquer uso: antes vivia em baixo, no bloco
-    // das legendas, e o bloco do texto abaixo do avatar usava-a primeiro —
+    // das legendas, e o bloco do texto abaixo do avatar usava-a primeiro â€”
     // com uma cena sem texto, isso era um ReferenceError (TDZ) que matava o
     // build inteiro.
     const scene = scenes[i] || {};
@@ -1775,7 +1790,7 @@ async function buildSceneClips(cfg, cards, tracks, avatarClips, scenes, broll, s
       const BELOW = (cfg.cards && cfg.cards.belowText) || {};
       const belowMode = String(BELOW.mode || 'keywords').toLowerCase();
       const rawBelow = String(t.text || phrase || '');
-      // Reserva: quando a frase da cena so da 1 palavra ("O QUE SÃO AGENTES"),
+      // Reserva: quando a frase da cena so da 1 palavra ("O QUE SÃƒO AGENTES"),
       // o texto de apoio e a narracao entram para o avatar nao ficar sozinho
       // com uma palavra solta.
       const belowScene = scenes[i] || {};
@@ -1839,7 +1854,7 @@ async function buildSceneClips(cfg, cards, tracks, avatarClips, scenes, broll, s
     if (subsEnabled && (t.text || phrase)) {
       // O P0 da revisao: esta chamada decide o estilo das legendas (tinta sobre
       // o cartao creme vs branco sobre imagem). Com a banda de cima em Remotion,
-      // a pasta visuals/ (footage da referencia) NAO pode contar — senao o
+      // a pasta visuals/ (footage da referencia) NAO pode contar â€” senao o
       // footage volta a entrar no video. O scene.visual explicito conta sempre.
       const hasSceneVisual = !!sceneVisual(scenes, dir, i, {
         ignoreVisualsFolder: topEngineOf(cfg) === 'remotion',
@@ -1854,7 +1869,7 @@ async function buildSceneClips(cfg, cards, tracks, avatarClips, scenes, broll, s
           phraseFallbacks: [scene.body, scene.narration],
           // Com a banda de cima em Remotion, a frase JA esta pintada na banda
           // (tipografia cinetica com as mesmas palavras-chave). A camada ASS
-          // duplicava-a por cima — a banda ficava ilegivel.
+          // duplicava-a por cima â€” a banda ficava ilegivel.
           phraseInBand: topEngineOf(cfg) === 'remotion',
         }
       );
@@ -1863,7 +1878,7 @@ async function buildSceneClips(cfg, cards, tracks, avatarClips, scenes, broll, s
         // A legenda vai para a pasta de build DA CENA, nao para a raiz do
         // workspace: o filtro `subtitles=` recebe um nome relativo e o ffmpeg
         // resolve-o contra o cwd do processo. Com a legenda na raiz, o build
-        // so funcionava se o motor fosse lancado a partir de D:\CRAFT —
+        // so funcionava se o motor fosse lancado a partir de D:\CRAFT â€”
         // a partir de outro directorio, a primeira cena falhava com
         // "Unable to open sub_pt_BR_01.ass". O cwd do ffmpeg e fixado abaixo.
         fs.copyFileSync(sceneAss, path.join(buildDir, simpleName));
@@ -1872,7 +1887,7 @@ async function buildSceneClips(cfg, cards, tracks, avatarClips, scenes, broll, s
         // style font (which exists on this Windows) libass finds it via the native Windows
         // font provider.
         // (O literal "1075)}" que aparecia no video nao era deste filtro: era o
-        // campo "Effect" em falta na linha Dialogue — corrigido em
+        // campo "Effect" em falta na linha Dialogue â€” corrigido em
         // clone/lib/ass.mjs, com teste de regressao em ass.test.mjs.)
         filterParts.push('[' + lastVideo + ']subtitles=' + simpleName + '[vsub]');
         lastVideo = 'vsub';
@@ -1906,7 +1921,7 @@ async function buildSceneClips(cfg, cards, tracks, avatarClips, scenes, broll, s
       '-c:a', cfg.video.audioCodec, '-b:a', cfg.video.audioBitrate, '-ar', String(cfg.video.sampleRate), '-ac', '2',
       '-shortest', out
     );
-    // cwd: buildDir — o filtro de legendas usa o nome relativo do .ass, que
+    // cwd: buildDir â€” o filtro de legendas usa o nome relativo do .ass, que
     // o ffmpeg resolve contra o cwd do processo.
     const r = await run(FFMPEG, args, { cwd: buildDir, timeoutMs: TIMEOUT.ffmpeg });
     if (r.code !== 0) throw new Error('ffmpeg (cena ' + (i + 1) + ' ' + lang + '): ' + String(r.stderr).slice(-800));
@@ -1942,6 +1957,9 @@ async function generateAvatarClips(cfg, dir, scenes, drivingVideoFile) {
   }
 
   const clips = {};
+  // templates[avatar][templatePath] = clip  -> cada beat usa o SEU driver
+  const templates = {};
+
   for (const key of wanted) {
     const a = registry[key];
     if (!a) {
@@ -1953,61 +1971,128 @@ async function generateAvatarClips(cfg, dir, scenes, drivingVideoFile) {
       console.log('  avatar ' + key + ': sourceImage em falta (' + sourceImage + ')');
       continue;
     }
-    // Prioridade: driving video extraido do referencia > drivingVideo do avatar > global
-    const driving = drivingVideoFile || a.drivingVideo || cfg.avatar.liveportrait?.drivingVideo;
-    if (!driving || !fs.existsSync(driving)) {
+
+    // ---- drivers que este avatar usa, por beat -------------------------------
+    // O contrato de direcao (direcao.mjs) poe `driving_template` no estado de
+    // cada beat: work/avatars/driving_templates/<avatar>_<emocao>.mp4. Esse e
+    // o MODELO DE AVATAR do projeto. Sem isto o motor usava o driver generico
+    // do LivePortrait (d13.pkl) e o avatar saia com a cara errada.
+    const beatDrivers = [];
+    for (const sc of scenes) {
+      const who = sc.avatar || sc.presenter;
+      const state = sc[key + '_state'];
+      const tpl = state && state.driving_template;
+      if (!tpl) continue;
+      const abs = resolveProjectPath(tpl);
+      if (!beatDrivers.includes(abs)) beatDrivers.push(abs);
+    }
+    const drivers = beatDrivers.filter(d => fs.existsSync(d));
+    const missingDrivers = beatDrivers.filter(d => !fs.existsSync(d));
+
+    // Prioridade: drivers do contrato de direcao > driving video extraido do
+    // referencia > drivingVideo do avatar > global.
+    const fallback = drivingVideoFile || a.drivingVideo || cfg.avatar.liveportrait?.drivingVideo;
+    const plan = [];
+    for (const d of drivers) plan.push({ driver: d, key: key + '__' + path.basename(d, path.extname(d)) });
+    if (!plan.length && fallback && fs.existsSync(fallback)) {
+      plan.push({ driver: fallback, key: key });
+    }
+
+    if (!plan.length) {
       console.log('  avatar ' + key + ': drivingVideo em falta');
       continue;
     }
-
-    const outFile = path.join(outDir, key + '.mp4');
-    const fresh =
-      fs.existsSync(outFile) &&
-      fs.statSync(outFile).mtimeMs > fs.statSync(sourceImage).mtimeMs &&
-      fs.statSync(outFile).mtimeMs > fs.statSync(driving).mtimeMs;
-
-    if (fresh) {
-      console.log('  avatar ' + key + ': cache reutilizado (' + path.basename(outFile) + ')');
-    } else {
-      console.log('  avatar ' + key + ': a animar com LivePortrait...');
-      const lpCfg = Object.assign({}, cfg.avatar, { liveportrait: Object.assign({}, cfg.avatar.liveportrait, a.liveportrait || {}) });
-      try {
-        await runLivePortrait(cfg, lpCfg, sourceImage, driving, outFile, dir);
-        console.log('  avatar ' + key + ': ok -> ' + outFile);
-      } catch (e) {
-        console.log('  avatar ' + key + ': FALHOU — ' + e.message);
-        continue;
-      }
+    if (missingDrivers.length) {
+      console.log('  avatar ' + key + ': ' + missingDrivers.length + ' driving_template(s) do beat em falta -> ' +
+        missingDrivers.map(m => path.basename(m)).join(', '));
+    }
+    if (drivers.length) {
+      console.log('  avatar ' + key + ': ' + drivers.length + ' driver(s) do contrato de direcao: ' +
+        drivers.map(d => path.basename(d)).join(', '));
     }
 
-    // Geometry of the usable panel inside the padded canvas, so the scene can crop
-    // the letterbox away instead of showing grey bars.
-    const sidecar = sourceImage.replace(/\.[^.]+$/, '.json');
-    let padTopRatio = 0;
-    let panelHeightRatio = 1;
-    let clipAspect = 1;
-    if (fs.existsSync(sidecar)) {
-      try {
-        const geo = JSON.parse(fs.readFileSync(sidecar, 'utf8'));
-        if (geo.height) {
-          padTopRatio = Number(geo.padTop || 0) / Number(geo.height);
-          panelHeightRatio = Number(geo.panelHeight || geo.height) / Number(geo.height);
-          // altura/largura do painel util: serve para dimensionar a caixa
-          clipAspect = Number(geo.panelHeight || geo.height) / Number(geo.panelWidth || geo.width || 1);
+    const perTemplate = {};
+    let primeiro = null;
+
+    for (const item of plan) {
+      const driving = item.driver;
+      const outFile = path.join(outDir, item.key + '.mp4');
+      const fresh =
+        fs.existsSync(outFile) &&
+        fs.statSync(outFile).mtimeMs > fs.statSync(sourceImage).mtimeMs &&
+        fs.statSync(outFile).mtimeMs > fs.statSync(driving).mtimeMs;
+
+      if (fresh) {
+        console.log('  avatar ' + key + ': cache reutilizado (' + path.basename(outFile) + ')');
+      } else {
+        console.log('  avatar ' + key + ': a animar com LivePortrait... [' + path.basename(driving) + ']');
+        const lpCfg = Object.assign({}, cfg.avatar, { liveportrait: Object.assign({}, cfg.avatar.liveportrait, a.liveportrait || {}) });
+        try {
+          await runLivePortrait(cfg, lpCfg, sourceImage, driving, outFile, dir);
+          console.log('  avatar ' + key + ': ok -> ' + outFile);
+        } catch (e) {
+          console.log('  avatar ' + key + ': FALHOU â€” ' + e.message);
+          continue;
         }
-      } catch { /* keep defaults */ }
+      }
+
+      // Geometry of the usable panel inside the padded canvas, so the scene can crop
+      // the letterbox away instead of showing grey bars.
+      const sidecar = sourceImage.replace(/\.[^.]+$/, '.json');
+      let padTopRatio = 0;
+      let panelHeightRatio = 1;
+      let clipAspect = 1;
+      if (fs.existsSync(sidecar)) {
+        try {
+          const geo = JSON.parse(fs.readFileSync(sidecar, 'utf8'));
+          if (geo.height) {
+            padTopRatio = Number(geo.padTop || 0) / Number(geo.height);
+            panelHeightRatio = Number(geo.panelHeight || geo.height) / Number(geo.height);
+            // altura/largura do painel util: serve para dimensionar a caixa
+            clipAspect = Number(geo.panelHeight || geo.height) / Number(geo.panelWidth || geo.width || 1);
+          }
+        } catch { /* keep defaults */ }
+      }
+
+      const clipObj = {
+        file: outFile,
+        name: a.name || key,
+        role: a.role || '',
+        chromaKey: a.chromaKey || false,
+        padTopRatio,
+        panelHeightRatio,
+        panelAspect: clipAspect,
+        driver: driving,
+      };
+
+      // Loop sem costura: a cena faz -stream_loop -1, que e um CORTE SECO a
+      // cada repeticiao. Com um template curto (3.1s) o avatar piscava a
+      // cada ~3 segundos. O ping-pong (clip + invertido)remove o corte.
+      try {
+        const target = Number(cfg.scene?.maxSeconds || 18);
+        const looped = await ensureSeamlessLoop(FFMPEG, FFPROBE, outFile, target);
+        if (looped !== outFile) {
+          const dOrig = await probeMediaDuration(FFPROBE, outFile);
+          const dLoop = await probeMediaDuration(FFPROBE, looped);
+          console.log('  avatar ' + key + ': loop sem costura (' + dOrig.toFixed(1) + 's -> ' + dLoop.toFixed(1) + 's)');
+          clipObj.file = looped;
+          clipObj.loopFile = looped;
+        } else {
+          const d = await probeMediaDuration(FFPROBE, outFile);
+          if (d) console.log('  avatar ' + key + ': ' + d.toFixed(1) + 's, sem loop necessario');
+        }
+      } catch (e) {
+        console.log('  avatar ' + key + ': nao foi possivel criar loop sem costura â€” ' + e.message);
+      }
+
+      perTemplate[driving] = clipObj;
+      if (!primeiro) primeiro = clipObj;
     }
 
-    clips[key] = {
-      file: outFile,
-      name: a.name || key,
-      role: a.role || '',
-      chromaKey: a.chromaKey || false,
-      padTopRatio,
-      panelHeightRatio,
-      panelAspect: clipAspect,
-    };
+    templates[key] = perTemplate;
+    if (primeiro) clips[key] = primeiro;
   }
+  clips._templates = templates;
   return clips;
 }
 
@@ -2088,7 +2173,7 @@ async function uploadToYouTube(cfg, videoFile, metadata) {
   if (!cfg.advanced?.uploadToYoutube) return null;
   const yt = cfg.advanced.youtube || {};
   if (!yt.clientId || !yt.clientSecret || !yt.refreshToken) return null;
-  console.log('  YouTube upload not fully implemented — requires OAuth2 token refresh flow');
+  console.log('  YouTube upload not fully implemented â€” requires OAuth2 token refresh flow');
   return null;
 }
 
@@ -2106,7 +2191,7 @@ async function generateLivePortraitAvatar(cfg, avatarCfg, cards, scenes, dir) {
     sourceImage = cards[0].file; // Use first typographic card as reference
   }
   if (!sourceImage || !fs.existsSync(sourceImage)) {
-    console.log('  LivePortrait: sem imagem fonte válida');
+    console.log('  LivePortrait: sem imagem fonte vÃ¡lida');
     return null;
   }
   
@@ -2117,7 +2202,7 @@ async function generateLivePortraitAvatar(cfg, avatarCfg, cards, scenes, dir) {
     // For now, use a placeholder - in production would generate from audio landmarks
     drivingVideo = path.join(CC, 'tools', 'LivePortrait', 'assets', 'examples', 'driving', 'd0.mp4');
     if (!fs.existsSync(drivingVideo)) {
-      console.log('  LivePortrait: driving video padrão não encontrado');
+      console.log('  LivePortrait: driving video padrÃ£o nÃ£o encontrado');
       return null;
     }
   }
@@ -2145,13 +2230,13 @@ async function generateMuseTalkAvatar(cfg, avatarCfg, cards, scenes, dir) {
   const baseVideo = path.join(dir, 'build', 'base_for_musetalk.mp4');
   // TODO: create base video from cards + narration
   if (!fs.existsSync(baseVideo)) {
-    console.log('  MuseTalk: base video não disponível');
+    console.log('  MuseTalk: base video nÃ£o disponÃ­vel');
     return null;
   }
   
   const outFile = path.join(avatarDir, 'musetalk_avatar.mp4');
   // TODO: implement MuseTalk inference
-  console.log('  MuseTalk: não implementado ainda');
+  console.log('  MuseTalk: nÃ£o implementado ainda');
   return null;
 }
 
@@ -2170,14 +2255,14 @@ async function generateCloudAvatar(cfg, avatarCfg, cards, scenes, dir) {
     return await runRunPodCloudAvatar(cfg, cloud.runpod, avatarCfg, cards, scenes, dir);
   }
   // Add vastai, lambda later
-  console.log('  Cloud provider ' + provider + ' não implementado');
+  console.log('  Cloud provider ' + provider + ' nÃ£o implementado');
   return null;
 }
 
 /** RunPod cloud avatar generation. */
 async function runRunPodCloudAvatar(cfg, runpodCfg, avatarCfg, cards, scenes, dir) {
   if (!runpodCfg.apiKey) {
-    console.log('  RunPod: API key não configurada');
+    console.log('  RunPod: API key nÃ£o configurada');
     return null;
   }
   
@@ -2284,7 +2369,7 @@ async function main() {
   });
 
   // ffmpeg/ffprobe: a config pode apontar para um binario proprio
-  // (paths.ffmpeg / paths.ffprobe). Antes estes campos eram decorativos —
+  // (paths.ffmpeg / paths.ffprobe). Antes estes campos eram decorativos â€”
   // o motor procurava sempre no PATH do utilizador e no do hermes, e a
   // mensagem de erro mandava "preenche paths.ffmpeg na config" sem que
   // isso tivesse qualquer efeito. Agora a config e honrada.
@@ -2298,7 +2383,7 @@ async function main() {
   cfg._opus5Refs = { referencias, adaptacoes };
 
   // --validate: diagnostico da config e nada mais. Sem ficheiros, sem rede,
-  // sem custo — e o que se corre antes de cada build para apanhar typos.
+  // sem custo â€” e o que se corre antes de cada build para apanhar typos.
   if (VALIDATE) {
     const report = validateConfig(cfg, rawConfig(cfg), {
       hasExternalScript: !!(SCRIPT_PATH && fs.existsSync(SCRIPT_PATH)),
@@ -2324,6 +2409,38 @@ async function main() {
   if (!script.scenes.length) {
     console.error('sem cenas: usa --script <cenas.json> ou preenche script.scenes na config');
     process.exit(2);
+  }
+
+  // 0-A CONTRATO DE DIRECAO — o motor precisa do estado de cada beat
+  //     (active_speaker, frida_state/luna_state com emotion e driving_template).
+  //     Sem isto o avatar usava SEMPRE o driver generico do LivePortrait e
+  //     perdia a expressao da cena. O que estiver escrito a mao no beat
+  //     vence a inferencia (normalizarDirecao nao sobrescreve).
+  if (cfg.direction?.enabled !== false && cfg.avatar?.avatars && Object.keys(cfg.avatar.avatars).length >= 2) {
+    try {
+      const comDirecao = aplicarDirecaoAoPlano({ scenes: script.scenes }, {
+        falantes: Object.keys(cfg.avatar.avatars),
+      });
+      let comAvatar = 0;
+      for (const sc of comDirecao.scenes) {
+        // A cena tem de saber QUEM fala: o motor le sc.avatar / sc.presenter.
+        if (!sc.avatar && !sc.presenter && sc.active_speaker) sc.avatar = sc.active_speaker;
+        if (sc.avatar || sc.presenter) comAvatar++;
+      }
+      script.scenes = comDirecao.scenes;
+      const drivers = new Set();
+      for (const sc of script.scenes) {
+        for (const k of Object.keys(sc)) {
+          if (!k.endsWith('_state')) continue;
+          const t = sc[k] && sc[k].driving_template;
+          if (t) drivers.add(path.basename(t));
+        }
+      }
+      console.log('direcao     : ' + comAvatar + '/' + script.scenes.length + ' cenas com apresentador | ' +
+        (drivers.size ? [...drivers].join(', ') : 'sem driving_template'));
+    } catch (e) {
+      console.log('direcao     : nao aplicada — ' + e.message);
+    }
   }
 
   // Translation is rate-limited on the free endpoints: localize once per language.
@@ -2359,17 +2476,30 @@ async function main() {
   console.log('b-roll      : ' + (cfg.pipeline?.broll?.enabled ? cfg.pipeline.broll.source : 'desativado'));
   console.log('ffmpeg      : ' + (FFMPEG || 'NAO ENCONTRADO'));
 
+  // 0/6 PREFLIGHT â€” o hook que evita perder 22 minutos.
+  //     Um clone morreu no passo 5/6 depois de 22 min de LivePortrait+TTS com
+  //     "lipSyncByLang is not defined"; outro passou mas com avatares feios
+  //     porque usava o driver generico e a base errada. Aqui apanha-se isso em
+  //     segundos, antes de gastar GPU, rede e tempo.
+  console.log('\n0/6 preflight');
+  const preflight = runPreflight(cfg, script, { slug });
+  console.log(formatPreflight(preflight));
+  if (!preflight.ok) {
+    console.error('\nPREFLIGHT FALHOU â€” nada foi gerado. Corrige o que estÃ¡ acima e volta a correr.');
+    process.exit(3);
+  }
+
   if (DRY) {
     console.log('\n--dry-run: nada foi escrito.');
     return;
   }
-  if (!FFMPEG) throw new Error('ffmpeg nao encontrado — instala ou aponta paths.ffmpeg na config');
+  if (!FFMPEG) throw new Error('ffmpeg nao encontrado â€” instala ou aponta paths.ffmpeg na config');
 
   // 1. Cards are built per language later, after the text is translated
   console.log('\n1/6 preparacao');
   const avatarMode = !!(cfg.avatar && cfg.avatar.enabled);
 
-  // 1.5 Driving video da referencia — extrai a parte do apresentador do video de
+  // 1.5 Driving video da referencia â€” extrai a parte do apresentador do video de
   //     referencia (regiao inferior, abaixo da linha de divisao) para usar como -d
   //     do LivePortrait. Assim o avatar copia os gestos e movimentos de cabeca do
   //     cara do short original, em vez de usar um driver generico (d13.pkl).
@@ -2379,7 +2509,7 @@ async function main() {
   if (DRIVING_VIDEO && fs.existsSync(DRIVING_VIDEO)) {
     const outDriving = path.join(dir, 'driving_ref.mp4');
     if (!fs.existsSync(outDriving)) {
-      // topRatio = onde termina a banda de cima e começa a do apresentador (medido: ~57%)
+      // topRatio = onde termina a banda de cima e comeÃ§a a do apresentador (medido: ~57%)
       const topRatio = Number((cfg.layout && cfg.layout.topRatio) || 0.55);
       const cropH = Math.max(100, Math.round(1920 * (1 - topRatio)));
       const cropY = Math.round(1920 * topRatio);
@@ -2395,7 +2525,7 @@ async function main() {
         '-t', '60',
         outDriving,
       ], { timeoutMs: TIMEOUT.ffmpeg });
-      if (r.code !== 0) console.log('    falha ao extrair driving video — ' + String(r.stderr).slice(-200));
+      if (r.code !== 0) console.log('    falha ao extrair driving video â€” ' + String(r.stderr).slice(-200));
     } else {
       console.log('    driving video ja existe, reutilizado');
     }
@@ -2404,7 +2534,7 @@ async function main() {
   } else if (DRIVING_VIDEO) {
     console.log('    video de referencia para driving nao encontrado: ' + DRIVING_VIDEO);
   } else {
-    console.log('    sem --driving-video (avatar usa driver generico d13.pkl — gestos nao sao do referencia)');
+    console.log('    sem --driving-video (avatar usa driver generico d13.pkl â€” gestos nao sao do referencia)');
   }
 
   // 2. Avatar engine selection + generation
@@ -2416,7 +2546,7 @@ async function main() {
     if (engine === 'liveportrait') {
       avatarClips = await generateAvatarClips(cfg, dir, script.scenes, drivingVideoFile);
     } else if (engine === 'cloud' || engine === 'hunyuan' || engine === 'musetalk') {
-      console.log('  engine ' + engine + ' ainda nao ligado — a usar cartoes');
+      console.log('  engine ' + engine + ' ainda nao ligado â€” a usar cartoes');
     }
     const names = Object.keys(avatarClips);
     console.log('  apresentadores: ' + (names.length ? names.join(', ') : 'nenhum (cartoes)'));
@@ -2447,9 +2577,9 @@ async function main() {
     for (const t of tracks) console.log('    ' + t.scene + ': ' + (t.file ? t.duration.toFixed(2) + 's (' + t.engine + ')' : 'sem voz'));
   }
 
-  // 4.5 Wav2Lip — re-sintetiza os labios do avatar PARA CADA CENA
-  //     usando o audio da PRÓPRIA cena e o driving template do active_speaker.
-  //     Antes usava o primeiro audio para todos os avatares — agora e' por cena.
+  // 4.5 Wav2Lip â€” re-sintetiza os labios do avatar PARA CADA CENA
+  //     usando o audio da PRÃ“PRIA cena e o driving template do active_speaker.
+  //     Antes usava o primeiro audio para todos os avatares â€” agora e' por cena.
   console.log('4.5/6 lipsync (Wav2Lip)');
   const w2lEnabled = FLAG_WAV2LIP || !!(cfg.w2l && cfg.w2l.enabled);
   const lipSyncByLang = {};
@@ -2461,14 +2591,14 @@ async function main() {
         const sc = script.scenes[i];
         const track = tracks[i];
         if (!track || !track.file || !fs.existsSync(track.file)) {
-          console.log('    ' + lang + ' cena ' + (i + 1) + ': sem audio — pulando lipsync');
+          console.log('    ' + lang + ' cena ' + (i + 1) + ': sem audio â€” pulando lipsync');
           continue;
         }
 
         // Quem fala nesta cena? Vem do contrato de direcao (F1)
         const activeSpeaker = sc.active_speaker;
         if (!activeSpeaker || !avatarClips[activeSpeaker]?.file) {
-          console.log('    ' + lang + ' cena ' + (i + 1) + ': active_speaker ' + activeSpeaker + ' sem avatar clip — pulando');
+          console.log('    ' + lang + ' cena ' + (i + 1) + ': active_speaker ' + activeSpeaker + ' sem avatar clip â€” pulando');
           continue;
         }
 
@@ -2479,7 +2609,7 @@ async function main() {
         const stateKey = activeSpeaker + '_state';
         const drivingTemplate = sc[stateKey]?.driving_template;
         if (!drivingTemplate || !fs.existsSync(drivingTemplate)) {
-          console.log('    ' + lang + ' cena ' + (i + 1) + ': driving template em falta — pulando');
+          console.log('    ' + lang + ' cena ' + (i + 1) + ': driving template em falta â€” pulando');
           continue;
         }
 
@@ -2512,7 +2642,7 @@ async function main() {
           console.log('    ' + lang + ' cena ' + (i + 1) + ' (' + activeSpeaker + '): lipsync ok -> ' + path.basename(out));
           lipSyncByLang[lang]['scene' + String(i + 1).padStart(2, '0')] = Object.assign({}, clip, { file: out, scene: i, activeSpeaker });
         } catch (e) {
-          console.log('    ' + lang + ' cena ' + (i + 1) + ' (' + activeSpeaker + '): lipsync FALHOU — ' + e.message + ' (usa avatar sem sincronia)');
+          console.log('    ' + lang + ' cena ' + (i + 1) + ' (' + activeSpeaker + '): lipsync FALHOU â€” ' + e.message + ' (usa avatar sem sincronia)');
           lipSyncByLang[lang]['scene' + String(i + 1).padStart(2, '0')] = clip;
         }
       }
@@ -2522,7 +2652,7 @@ async function main() {
     for (const lang of languages) lipSyncByLang[lang] = avatarClips;
   }
 
-  // 4.7 Visuals da banda de cima — extrai um clipe de video curto do ponto medio de cada cena
+  // 4.7 Visuals da banda de cima â€” extrai um clipe de video curto do ponto medio de cada cena
   //     do video de referencia, cortado apenas na top band (splitRatio da cena), para que o
   //     top band nao fique vazio (cor solida) e sim mostre mini-videos rodando enquanto o
   //     avatar fala embaixo. So roda com --visuals-video.
@@ -2547,7 +2677,7 @@ async function main() {
           '-c:v', 'libx264', '-crf', '20', '-preset', 'medium', '-pix_fmt', 'yuv420p',
           out,
         ], { timeoutMs: TIMEOUT.ffmpeg });
-        if (r.code !== 0) console.log('    cena ' + (i + 1) + ': falha ao extrair clipe — ' + String(r.stderr).slice(-200));
+        if (r.code !== 0) console.log('    cena ' + (i + 1) + ': falha ao extrair clipe â€” ' + String(r.stderr).slice(-200));
       } else {
         console.log('    cena ' + (i + 1) + ': clipe ja existe, reutilizado');
       }
@@ -2581,7 +2711,7 @@ async function main() {
       : await buildCards(cfg, localized, dir, avatarMode, lang);
     builtByLang[lang] = cards;
     if (lang === languages[0]) console.log('    cartoes: ' + path.dirname(cards.cards[0].file));
-    const clips = await buildSceneClips(cfg, cards.cards, allTracks[lang], lipSyncByLang[lang] || avatarClips, localized, broll, allSubtitles, dir, lang);
+    const clips = await buildSceneClips(cfg, cards.cards, allTracks[lang], avatarClips, localized, broll, allSubtitles, dir, lang, lipSyncByLang[lang] || {}, (avatarClips && avatarClips._templates) || {});
     allClips[lang] = clips;
     console.log('  ' + lang + ': ' + clips.length + ' clipes, ' + clips.reduce((a, c) => a + c.duration, 0).toFixed(1) + 's');
   }
@@ -2652,26 +2782,26 @@ async function main() {
   // Report
   const rel = (p) => path.relative(dir, p).replace(/\\/g, '/');
   const R = [];
-  R.push('# Clone — ' + slug);
+  R.push('# Clone â€” ' + slug);
   R.push('');
   R.push('Gerado: ' + manifest.generatedAt);
   R.push('Idiomas: ' + languages.join(', '));
   R.push('Alvo: ' + (cfg.target && cfg.target.channel ? '[' + cfg.target.channel + '](' + (cfg.target.url || '') + ')' : 'sem alvo definido'));
   R.push('');
-  R.push('| Idioma | Vídeo final | Duração | Tamanho |');
+  R.push('| Idioma | VÃ­deo final | DuraÃ§Ã£o | Tamanho |');
   R.push('|---|---|---|---|');
   for (const lang of languages) {
     const o = outputs[lang];
     R.push('| ' + lang + ' | `' + rel(o.file) + '` | ' + o.duration.toFixed(1) + 's | ' + (o.bytes / 1024 / 1024).toFixed(2) + ' MB |');
   }
   R.push('');
-  R.push('| Peça | Ficheiro |');
+  R.push('| PeÃ§a | Ficheiro |');
   R.push('|---|---|');
   R.push('| Thumbnail | `' + rel(thumbOut) + '` |');
   for (const [k, v] of Object.entries(avatarClips)) R.push('| Apresentador ' + k + ' | `' + rel(v.file) + '` |');
   manifest.broll.forEach(b => b.files.forEach(f => R.push('| B-roll cena ' + (b.scene + 1) + ' | `' + rel(f) + '` |')));
   R.push('');
-  R.push('## Parâmetros usados');
+  R.push('## ParÃ¢metros usados');
   R.push('');
   R.push('```json');
   R.push(JSON.stringify({
@@ -2680,7 +2810,7 @@ async function main() {
     voice: cfg.voice.engine,
     // redactConfig: o report.md e um artefacto legivel e facil de partilhar.
     // A config de avatar pode ter chaves de API (runpod, vastai, lambda,
-    // musetalk) — no manifest.json ja eram redigidas, aqui nao ficavam.
+    // musetalk) â€” no manifest.json ja eram redigidas, aqui nao ficavam.
     avatar: redactConfig(cfg.avatar),
     languages: cfg.languages,
     motion: cfg.motion,
@@ -2697,7 +2827,7 @@ async function main() {
   R.push('```');
   fs.writeFileSync(path.join(dir, 'report.md'), R.join('\n'), 'utf8');
 
-  console.log('\n✅ Concluído!');
+  console.log('\nâœ… ConcluÃ­do!');
   console.log('pasta       : ' + dir);
   for (const lang of languages) {
     console.log('  ' + lang + ': ' + outputs[lang].file);

@@ -246,7 +246,13 @@
     },
     "scaffold": {
       "enabled": true,
-      "archetypes": ["whiteboard", "neon_grid", "ui_panel", "panel_stack", "full_graphic"],
+      "archetypes": [
+        "whiteboard",
+        "neon_grid",
+        "ui_panel",
+        "panel_stack",
+        "full_graphic"
+      ],
       "_help": {
         "o que e": "desenha o cartao com o kit do explainer (whiteboard, grelha neon, painel de UI, paineis sobrepostos, grafico full) em vez de um retangulo de cor lisa.",
         "zonas": "o grafico ocupa a metade de cima e o texto a de baixo; cada arquetipo traz o seu proprio kickerY/headlineY/bodyY, por isso o texto nunca cai em cima do desenho.",
@@ -418,15 +424,15 @@
       },
       "drivingOption": "expression-friendly",
       "detThresh": 0.1,
-      "drivingVideo": "D:\\CRAFT\\tools\\LivePortrait\\assets\\examples\\driving\\d13.pkl",
-      "drivingNote": "d13 = apresentador a falar (boca abre). d0 era so olhar e sorriso."
+      "drivingVideo": "D:\\CRAFT\\work\\avatars\\driving_templates\\frida_anchor_neutral_breathing.mp4",
+      "drivingNote": "Fallback global = o template do apresentador por defeito. O motor prefere o driving_template de cada beat (work/avatars/driving_templates)."
     },
     "avatars": {
       "frida": {
         "name": "Frida",
         "role": "apresentadora",
-        "sourceImage": "D:\\CRAFT\\work\\avatars\\frida.png",
-        "drivingVideo": "D:\\CRAFT\\tools\\LivePortrait\\assets\\examples\\driving\\d13.pkl",
+        "sourceImage": "D:\\CRAFT\\work\\avatars\\v2\\frida_v2_base.png",
+        "drivingVideo": "D:\\CRAFT\\work\\avatars\\driving_templates\\frida_anchor_neutral_breathing.mp4",
         "voice": {
           "pt-BR": {
             "engine": "voicecraft",
@@ -451,8 +457,8 @@
       "luna": {
         "name": "Luna",
         "role": "comentarista",
-        "sourceImage": "D:\\CRAFT\\work\\avatars\\luna.png",
-        "drivingVideo": "D:\\CRAFT\\tools\\LivePortrait\\assets\\examples\\driving\\d13.pkl",
+        "sourceImage": "D:\\CRAFT\\work\\avatars\\v2\\luna_v2_base.png",
+        "drivingVideo": "D:\\CRAFT\\work\\avatars\\driving_templates\\luna_cohost_listening_react.mp4",
         "voice": {
           "pt-BR": {
             "engine": "voicecraft",
