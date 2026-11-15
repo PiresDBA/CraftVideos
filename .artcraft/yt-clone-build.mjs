@@ -92,7 +92,8 @@ const TIMEOUT = {
 };
 
 const CONFIG_PATH = arg('config', path.join(CC, 'clone.config.json'));
-const SCRIPT_PATH = arg('script', '');
+const SCRIPT_PATH_ARGV = arg('script', '');
+let SCRIPT_PATH = SCRIPT_PATH_ARGV;
 const OUT_DIR = arg('out', '');
 const SLUG = arg('slug', '');
 const VOICE = arg('voice', '');
@@ -103,6 +104,13 @@ const VALIDATE = FLAG('validate');
 const W2L = FLAG('wav2lip');
 const VISUALS_VIDEO = arg('visuals-video', '');
 const DRIVING_VIDEO = arg('driving-video', '');
+// --url / --video <ficheiro>: a referencia a clonar. Sem isto o build usava
+// SEMPRE as cenas do clone.config.json e a referencia era ignorada — foi
+// por isso que o clone de 2026-11-15 saiu generico e desligado da origem.
+const URL_REF = arg('url', '');
+const VIDEO_REF = arg('video', '');
+const REF_SCENES = Number(arg('ref-scenes', '6'));
+const REF_TOPIC = arg('ref-topic', '');
 
 // ---------------------------------------------------------------- config
 
@@ -2405,6 +2413,33 @@ async function main() {
     process.exit(report.ok ? 0 : 1);
   }
 
+  // ---- 0-A REFERENCE INGEST -----------------------------------------
+  // Quando --url/--video e dado, a referencia e o script: analisada aqui
+  // (anatomia, corts, geometria, OCR, faces) e o seu script.json e usado.
+  // Sem esta fase o motor produzia SEMPRE o clone generico da config —
+  // o clone de 2026-11-15 saiu desligado da origem por isto.
+  if (!SCRIPT_PATH && (URL_REF || VIDEO_REF)) {
+    console.log('\n0-A/6 referencia');
+    const slugRef = SLUG || (VIDEO_REF ? path.basename(VIDEO_REF, path.extname(VIDEO_REF)) : 'clone-' + Date.now());
+    const refArgs = [path.join(HERE, 'yt-ref-analyze.mjs')];
+    if (VIDEO_REF) refArgs.push('--video', VIDEO_REF);
+    else refArgs.push('--url', URL_REF);
+    refArgs.push('--slug', slugRef, '--scenes', String(REF_SCENES), '--presenters', 'frida,luna');
+    if (REF_TOPIC) refArgs.push('--script', '--topic', REF_TOPIC);
+    console.log('  a analisar a referencia: ' + (URL_REF || VIDEO_REF));
+    const t0 = Date.now();
+    const r = await run(process.execPath, refArgs, { timeoutMs: 20 * 60 * 1000 });
+    const outTxt = String(r.out || r.err || '').trim();
+    if (outTxt) console.log(outTxt.slice(-1600));
+    const candidate = path.join(CC, 'work', 'clones', slugRef, 'script.json');
+    if (r.code !== 0 || !fs.existsSync(candidate)) {
+      console.error('a analise da referencia falhou (codigo ' + r.code + '). nada foi gerado.');
+      process.exit(4);
+    }
+    SCRIPT_PATH = candidate;
+    console.log('  referencia analisada em ' + ((Date.now() - t0) / 1000).toFixed(0) + 's -> ' + candidate);
+  }
+
   const script = loadScenes(cfg);
   if (!script.scenes.length) {
     console.error('sem cenas: usa --script <cenas.json> ou preenche script.scenes na config');
@@ -2766,7 +2801,7 @@ async function main() {
     config: redactConfig(cfg),
     cards: Object.fromEntries(Object.entries(builtByLang).map(([l, b]) => [l, b.cards])),
     thumbnail: thumbOut,
-    avatars: Object.fromEntries(Object.entries(avatarClips).map(([k, v]) => [k, v.file])),
+    avatars: Object.fromEntries(Object.entries(avatarClips).filter(([k]) => !k.startsWith('_')).map(([k, v]) => [k, v.file])),
     broll: broll.map(b => ({ scene: b.scene, files: b.files })),
     narration: allTracks,
     subtitles: allSubtitles,
@@ -2798,7 +2833,10 @@ async function main() {
   R.push('| PeÃ§a | Ficheiro |');
   R.push('|---|---|');
   R.push('| Thumbnail | `' + rel(thumbOut) + '` |');
-  for (const [k, v] of Object.entries(avatarClips)) R.push('| Apresentador ' + k + ' | `' + rel(v.file) + '` |');
+  for (const [k, v] of Object.entries(avatarClips)) {
+    if (k.startsWith('_')) continue; // _templates é um map interno, não um apresentador
+    R.push('| Apresentador ' + k + ' | `' + rel(v.file) + '` |');
+  }
   manifest.broll.forEach(b => b.files.forEach(f => R.push('| B-roll cena ' + (b.scene + 1) + ' | `' + rel(f) + '` |')));
   R.push('');
   R.push('## ParÃ¢metros usados');

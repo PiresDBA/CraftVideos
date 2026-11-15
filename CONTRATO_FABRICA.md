@@ -2,7 +2,13 @@
 
 > Documento de referência. Qualquer modelo/agente que entre no projeto deve ler **só este
 > ficheiro** para saber o que estamos a construir, o que já existe e o que falta.
-> Última actualização: 2026-11-13.
+> Última actualização: 2026-11-15.
+
+---
+
+> **LLM local DESACTIVADA.** Ollama não funciona nesta máquina (quebrado/instalado mas sem
+> modelos). A geração de guiões e qualquer inferência local de texto usa **OpenRouter com
+> modelos FREE** — ver §13. Nunca usar Ollama. Nunca usar modelos PAGOS.
 
 ---
 
@@ -94,7 +100,7 @@ reutilizado do YouTube) e cria identidade própria.
 | M2b | **Anatomia da referência → plano + tarefas** | ✅ feito | `.artcraft/yt-ref-analyze.mjs` (`§3.3`) |
 | M3 | **Mesclagem de canais** | ❌ não começou | — |
 | M4 | **Watcher de notícias** | ❌ não começou | — |
-| M5 | **Roteiro** | 🟡 gerado pela análise | `yt-ref-analyze.mjs` → `script.json` (+ `yt-script.mjs --script`) |
+| M5 | **Roteiro** | ✅ gera via OpenRouter FREE | `.artcraft/yt-script.mjs` (verificado 2026-11-15); integrado no §3.3.1 |
 | M6 | **Voz (TTS)** | ✅ resolveu | VoiceCraft :8090 (10 provedores) |
 | M7 | **Avatar/apresentador** | ✅ funciona | LivePortrait + Frida/Luna |
 | M8 | **Motion / composição** | ✅ kit pronto | `work/clone-tooling/explainer-effects.mjs` — 9 comps verificadas (`§3.4`) |
@@ -158,6 +164,19 @@ node .artcraft\yt-ref-analyze.mjs --video ref1080.mp4 --slug ref5-clone --scenes
 #           --workers 4  --script (narração original via yt-script.mjs, modelos FREE)
 ```
 
+**E o `yt-clone-build.mjs` agora corre a análise por omissão** (2026-11-15):
+`--url <youtube-url>` ou `--video <ficheiro>` fazem o build executar este analisador no
+passo **0-A/6 referencia** antes de qualquer fase, e o `script.json` produzido (cenas
+medidas: `layout`, `splitRatio`, `textSide`, `start`, `seconds`, `avatar`, `narration`)
+substitui as cenas do `clone.config.json`. Sem `--url`/`--video`, o comportamento é
+inalterado (usa as cenas do config). O daemon passa `--url` automaticamente quando o
+dashboard clona com um URL de referência.
+
+**Sem este passo, o clone de 2026-11-15 ("yryryr") saiu 100% desligado da origem:** o
+dashboard mandou `url`/`sourceVideoId`, mas o motor nunca lia `params.url` — a narrativa
+saiu do config (genérica sobre avatares), o aspecto visual idem, e `target.url` ficou
+`""`. Nada de errado com o render: só faltava este passo. Detalhe do desastre em §3.3.1.
+
 Escreve três ficheiros em `work/clones/<slug>/`:
 
 | Ficheiro | Conteúdo |
@@ -186,6 +205,40 @@ Detalhes de implementação que já custaram tempo e não devem ser revertidos:
   são caras humanas para o S3FD.
 - **Frase da cena** = a linha mais longa sem interferências (`growsembly`, `script.md`), em
   maiúsculas. É a manchete, não o rodapé.
+- **Todos os `run()` devolvem `{code, out, err}`, nunca `.stderr`** (2026-11-15). Dois
+  pontos chamavam `(r.stderr || …)` com resultado `undefined` → `TypeError: … reading
+  'slice'` no meio do pipeline, escondido atrás de uma mensagem genérica.
+
+### 3.3.1 O clone saía desligado da origem — causa raiz medida e corrigida
+
+**Incidente "yryryr" (2026-11-15).** O dashboard enviou um clone com
+`{"prompt":"yryryr","sourceVideoId":"UTubvRLX2j4","url":"https://www.youtube.com/shorts/UTubvRLX2j4"}`.
+O `manifest.json` resultante prova a causa: `target.url = ""`,
+`script.source = "clone.config.json"` — ou seja, **o vídeo `yt-clone-build.mjs` nunca lia a
+referência**: a narrativa saiu das 4 cenas genéricas do config (sobre avatares de IA), a
+voz idem, o texto e as imagens idem. Não foi falha do render nem do avatar — foi ausência
+de qualquer passo de análise.
+
+**Fix (agora integrado):** `yt-clone-build.mjs` aceita `--url`/`--video` e, na fase
+`0-A/6 referencia`, chama `yt-ref-analyze.mjs` para produzir `script.json` (cenas
+medidas). O daemon (`buildCloneArgs`) passa `--url` automaticamente quando o dashboard
+clona com um URL do YouTube.
+
+**Teste medido (referência Guney Topcu / AI Made Easy — whiteboard explainer):**
+`node .artcraft/yt-ref-analyze.mjs --video work/...f788.mp4 --slug verify-ref --scenes 6`
+→ `analysis/plan.json` (33 planos, 31.9 cortes/min, plano médio 1.82s, layoutMix
+`{full: 2, split: 4}`, splitLineMedian 0.58, faceRatio 0.69, 125/181 amostras com cara
+125/181, OCR 217 linhas em 33/33 planos) e `script.json` com as 6 cenas medidas.
+
+**Bloqueio do download (honesto):** a referência por URL devolve **HTTP 403 Forbidden**
+desta máquina (YouTube bloqueia este IP / sem JS runtime). O caminho local funciona —
+quem quiser um clone por URL precisa baixar o vídeo via browser para a máquina e usar
+`--video <ficheiro>`, ou reconfigurar o canal de download.
+
+**Narração.** Sem `--script`, a narração vem da frase medida na tela (OCR). Para texto
+original com o mesmo formato (estrutura, não cópia), usar `--script --topic "tema"`:
+`yt-script.mjs` escreve via **OpenRouter FREE** — testado: `cohere/north-mini-code:free`
+respondeu em 19,7 s, 6 cenas, 170 palavras, JSON válido.
 
 
 ---
@@ -344,6 +397,7 @@ sem chave): `pt-BR-FranciscaNeural`, `pt-BR-ThalitaMultilingualNeural`,
 | MuseTalk (16 GB) | ❌ não corre local → só cloud |
 | HunyuanVideo (24 GB) | ❌ não corre local → só cloud |
 | ffmpeg | 9.0.1 em `%LOCALAPPDATA%\hermes\tools\...\bin` (fora do PATH de propósito) |
+| GPU LLM | nenhuma (Ollama quebrado, modelos não instalados) — LLM = **OpenRouter FREE** (§13) |
 
 **Custos invisíveis já pagos:** 6 GB + Pascal obriga a CUDA 11.8/12.6 antigo; detectores
 de cara falham em personagens estilizados (resolvido com `detThresh 0.10`); legendas SRT
@@ -384,7 +438,7 @@ D:\CRAFT\
 ```
 
 ### Pipeline de produção (o que `yt-clone-build.mjs` faz hoje)
-0. **Analisa a referência primeiro** (`yt-ref-analyze.mjs`) e produz o plano + as tarefas
+0. **Analisa a referência primeiro** (`yt-ref-analyze.mjs`, agora chamado automaticamente em `0-A/6 referencia` de `yt-clone-build.mjs` por `--url`/`--video`) — baixa a referência, mede anatomia, OCR e rostos, produz o plano + as tarefas + **script.json medido**
 1. **Traduz** o guião para os idiomas alvo (Google → fallback MyMemory, com cache)
 2. **Cartões por idioma** — banda de cima: media + motion graphics + texto animado
 3. **Avatares** — LivePortrait anima Frida e Luna uma vez, fica em cache
@@ -525,9 +579,85 @@ Um vídeo só é publicado se:
 4. **Mesclagem**: preferes juntar 2–3 canais do mesmo tema ou de temas diferentes?
 5. **Publicação**: automática ou sempre com revisão tua antes de subir?
 
+> **LLM — sem decisão necessária:** Ollama está quebrado e sem modelos; a LLM é
+> **OpenRouter com modelos FREE** (medida e já em uso no `yt-script.mjs`, entrada em §13).
+> Nada pago. Nada local. Não revertas isto sem a tua aprovação.
+
 ---
 
-## 13. Nota sobre o tempo
+## 13. LLM — OpenRouter com modelos FREE (OBRIGATÓRIO)
+
+**Estado medido em 2026-11-15:** Ollama está **quebrado/não utilizado** nesta máquina —
+o servidor `ollama serve` não sobe com os modelos configurados e **nenhum modelo está
+instalado** (a pasta `C:\ollamaModels` é um junction para `E:\ollamaModels` e o drive E:
+não existe). Não usar Ollama. Não sugerir uma instalação.
+
+**A LLM deste projeto é o OpenRouter com modelos FREE** — disponível, com chave já no
+`.env` do VoiceCraft. Nada pago, nunca. A regra de ouro está implementada em
+`.artcraft/yt-script.mjs`: rejeita qualquer modelo que não seja FREE.
+
+### 13.1 Problema tratado
+M5 (guião) e qualquer passo de geração de texto precisam de uma LLM. Sem local e sem
+modelos instalados, a única fonte válida é o **OpenRouter** com modelos cujo `prompt` e
+`completion` custam **zero**.
+
+### 13.2 Configuração real (verificada ao vivo 2026-11-15)
+| Item | Valor |
+|---|---|
+| Chave | `VoiceCraft/.env → OPENROUTER_API_KEY` (nunca no código) |
+| Modelo por defeito | `OPENROUTER_MODEL=openrouter/free` (routing → um free vigente) |
+| Endpoint | `https://openrouter.ai/api/v1/chat/completions` |
+| Catálogo ao vivo | `https://openrouter.ai/api/v1/models` (filtro `pricing.prompt == 0 && pricing.completion == 0`) |
+| Gerador de guião | `.artcraft/yt-script.mjs` (M5) — usa `openrouter/free` + cadeia FREE de fallback |
+| Teste | `node .artcraft\yt-script.mjs --topic "..." --out work\test\script.json` — verificado 7s, JSON válido |
+
+### 13.3 Modelos FREE disponíveis nesta conta (lista 2026-11-15)
+Consulta ao vivo (`models?provider=openrouter&limit=100&offset=100`). Ordenar/actualizar
+sempre com o catálogo real — os ids mudam a cada ~2 meses.
+
+| Modelo | Tipo | Nota |
+|---|---|---|
+| `openrouter/free` | router | **padrão do projeto** — escolhe o melhor free vigente |
+| `openrouter/auto` | router | auto-routing gratuito |
+| `openrouter/openrouter/fusion` | router | free |
+| `openrouter/openrouter/pareto-code` | router/código | free |
+| `openrouter/openrouter/bodybuilder` | router | free |
+| `openrouter/google/gemma-4-26b-a4b-it:free` | 26B MoE | melhor raciocínio free |
+| `openrouter/google/lyria-3-clip-preview` | áudio | free (gerar música) |
+| `openrouter/cohere/north-mini-code:free` | código, 30B | forte em JSON estructurado |
+| `openrouter/liquid/lfm-3-1.7b:free` | 1.7B | rápido, fraco; usar só em fallback |
+| `openrouter/thinkingmachines/inkling-2-small:free` | small | alternativa leve |
+| `openrouter/particle-ai/particle-1:free` | small | free |
+| `openrouter/recursive/flint-v1.0:free` | small | free |
+
+### 13.4 Regra de ouro — nunca fugir dos FREE
+O `yt-script.mjs` valida cada pedido contra o catálogo **ao vivo** e aborta se o modelo
+pedido não for FREE (mensagens `RECUSADO`). Para `--model X` novo, a regra continua:
+`--model` só é aceite se `pricing.prompt === 0 && pricing.completion === 0`.
+
+### 13.5 Modos de falha e como reagir
+| Falha | Causa | Reacção |
+|---|---|---|
+| 429 | limite temporário do provedor | o código espera 4s e retenta; se persiste, modelo seguinte na cadeia |
+| Resposta vazia / JSON inválido | modelo fraco | o código extrai o 1º `{...}` balanceado e revalida `scenes[]`; se falhar, modelo seguinte |
+| Chave ausente | `.env` lido de `VoiceCraft/` | `yt-script.mjs` aborta com mensagem; nunca hardcode |
+| Modelo RFC novo não FREE | mudança de preços | o script recusa: confirmar sempre o catálogo ao vivo |
+
+### 13.6 Responsável
+Todo agente que precise de inferência de texto no projeto DEVE usar esta infra.
+**Não propor Ollama. Não instalar modelos. Não usar endpoint pago.** Se o OpenRouter
+estiver indisponível, reportar como `blocked` no plano — nunca substituir por guess.
+
+### 13.7 Em uso real, agora
+O `yt-script.mjs` já foi executado com `openrouter/free` (teste de 2026-11-15):
+tema → 2 cenas em ~7 s, JSON válido, 513+1586 tokens, ficheiro em
+`work/research/audit/script-openrouter-test.json`. Nenhum modelo local foi usado.
+
+(Sem duplicação Ollama — ver §12 sobre voz.)
+
+---
+
+## 14. Nota sobre o tempo
 
 As 4 horas de hoje foram **infraestrutura de uma vez só**: descobrir a stack CUDA que
 funciona em Pascal, pôr o LivePortrait a detectar personagens estilizados, resolver

@@ -429,5 +429,37 @@ bar.style.width = (1 / pages.length * 100) + '%';
 pnum.textContent = '01 / ' + String(pages.length).padStart(2, '0');
 animateNumbers(pages[0]);
 </script>
+
+  <!-- 9. ESTADO 2026-11-15 -->
+  <section class="page">
+    <div class="inner">
+      <div class="kicker">Estado real — 2026-11-15</div>
+      <h2>O que foi <span>corrigido</span></h2>
+      <div class="grid g2" style="margin-top:20px">
+        <div class="card"><h3><span class="ico">🫠</span>Clone desligado da origem</h3>
+          <p>Incidente yryryr: origem enviada pelo painel, motor nunca leu. Agora
+          <code>--url</code> / <code>--video</code> ao clone → análise no passo 0-A →
+          cenas medidas. Download por URL: bloqueado (HTTP 403 nesta máquina).
+          Usar <code>--video</code> local ou reconfigurar a rota de download.</p></div>
+        <div class="card"><h3><span class="ico">👄</span>Boca não seguia a voz</h3>
+          <p>Wav2Lip disponível (<code>--wav2lip</code>). O driver de voz
+          <code>driver_audio</code> existe; activasse por <code>wav2lip.enabled=true</code>.</p></div>
+        <div class="card"><h3><span class="ico">🔀</span>Avatar sem movimento</h3>
+          <p>Loop sem costura (ping-pong) + bases v2 + driving templates próprios por beat
+          (<code>work/avatars/driving_templates/</code>). Avatar agora fala com a expressão certa.</p></div>
+        <div class="card"><h3><span class="ico">📡</span>Telemetria cega</h3>
+          <p>Stepper de 10 fases com % real, ETA ponderado por duração real de
+          cada fase, timeline deduplicada, link aos ficheiros gerados.</p></div>
+        <div class="card"><h3><span class="ico">🤖</span>LLM: OpenRouter FREE</h3>
+          <p>Ollama quebrado + sem modelos. A LLM é <code>openrouter/free</code> —
+          nunca pago. Escreveu 6 cenas do roteiro whiteboard em 19,7 s.</p></div>
+        <div class="card"><h3><span class="ico">🎬</span>Telemetria de render</h3>
+          <p><code>node .artcraft/yt-audit.mjs</code>: 17 verificações, 0 falhas.
+          <code>node .artcraft/yt-lint-scope.mjs</code>: caça vazamento de escopo
+          (o bug do lipSyncByLang).</p></div>
+      </div>
+    </div>
+  </section>
+
 </body>
 </html>

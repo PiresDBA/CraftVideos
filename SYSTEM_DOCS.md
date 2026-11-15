@@ -1,4 +1,13 @@
 # 🎬 ArtCraft Dark Channel Clone System — Documentação Completa
+> **Atualização 2026-11-15:** a referência agora entra no build (passo 0-A) —
+> `--url`/`--video` ao `yt-clone-build.mjs`. Incidente yryryr: clonado sem a origem
+> porque a referência era ignorada; corrigido. LLM = OpenRouter FREE (`openrouter/free`,
+> nunca pago); Ollama quebrado + sem modelos. Telemetria completa no dashboard
+> (10 fases, % real, ETA ponderado, timeline deduplicada, artefatos com link).
+> Pipeline de clonagem corrigido (lipsync param, _templates no manifest, report.md).
+> Wav2Lip disponível (`--wav2lip`). Avatar: loop sem costura + driving templates
+> por beat. OpenMontage: **92 skills** (não 98); **13 pipelines**; **13
+> composições Remotion**.
 
 > **Sistema 100% Open Source (MIT/Apache-2.0)** — Radar diário de canais YouTube "Dark" (100% IA) + Pipeline de clone multi-idioma com avatar, TTS, legendas e cloud GPU sob demanda.
 

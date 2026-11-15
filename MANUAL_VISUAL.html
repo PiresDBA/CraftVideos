@@ -329,6 +329,48 @@
     </div>
   </div>
 
+
+  <h2 style="margin-top:36px;">⚠️ ESTADO 2026-11-15 — Correções medidas</h2>
+  <div class="move">
+    <span class="k">A</span>
+    <h4>🫠 O clone saía desligado da origem</h4>
+    <p>Incidente do clone <code>yryryr</code> (2026-11-15): o painel enviou a URL/ID do vídeo e o
+      motor nunca leu esses parâmetros — a narrativa saiu do <code>clone.config.json</code> genérico,
+      o <code>target.url</code> ficou vazio. Agora <code>--url</code>/<code>--video</code> fazem o
+      build correr <code>yt-ref-analyze.mjs</code> no passo 0-A e o guião vem da anatomia medida
+      (download bloqueado por 403 do YouTube: usar <code>--video</code> local ou reconfigurar o
+      download).</p>
+    <span class="tag">CORRIGIDO</span>
+  </div>
+  <div class="move">
+    <span class="k">B</span>
+    <h4>👄 Boca não seguia a voz</h4>
+    <p>Wav2Lip estava desativado; voltou a ser a ferramenta de sincronia (<code>--wav2lip</code> /
+      <code>wav2lip.enabled=true</code>) com 6 cenas medidas.</p>
+    <span class="tag">DISPONÍVEL</span>
+  </div>
+  <div class="move">
+    <span class="k">C</span>
+    <h4>🔀 Avatar — loop do driving template</h4>
+    <p>Loop sem costura (ping-pong) aplicado aos clips do avatar para eliminar o corte seco do
+      <code>-stream_loop -1</code>; bases v2 + driving templates próprios por beat.</p>
+    <span class="tag">CORRIGIDO</span>
+  </div>
+  <div class="move">
+    <span class="k">D</span>
+    <h4>📡 Telemetria completa</h4>
+    <p>Stepper de 10 fases com % real, ETA ponderado por duração medida de cada fase,
+      timeline deduplicada, artefatos com link clicável.</p>
+    <span class="tag">CORRIGIDO</span>
+  </div>
+  <div class="move">
+    <span class="k">E</span>
+    <h4>🤖 LLM: OpenRouter com modelos FREE</h4>
+    <p>Ollama está quebrado e sem modelos (drive E: não existe). A LLM é
+      <code>openrouter/free</code> — nunca pago.</p>
+    <span class="tag">CORRIGIDO</span>
+  </div>
+
   <footer>
     Manual visual da Fábrica de Canais · ArtCraft<br>
     Contrato completo: <code>CONTRATO_FABRICA.md</code> · Motor: <code>yt-clone-build.mjs</code>

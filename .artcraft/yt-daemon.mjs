@@ -308,6 +308,10 @@ function buildCloneArgs(entry) {
   const outDir = params.outDir || path.join(OUTDIR, slug);
   const args = [path.join(ROOT, '.artcraft', 'yt-clone-build.mjs'), '--slug', slug, '--out', outDir];
 
+  // --url: a referencia a clonar — analisada antes do build (yt-ref-analyze).
+  if (entry.url && /youtube|youtu\.be/.test(entry.url)) args.push('--url', entry.url);
+  else if (entry.reference) args.push('--url', entry.reference);
+
   if (params.script) args.push('--script', params.script);
   if (params.voiceEngine) args.push('--voice', params.voiceEngine);
   else if (typeof params.voice === 'string') args.push('--voice', params.voice);

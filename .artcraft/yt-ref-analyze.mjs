@@ -109,7 +109,7 @@ async function acquire() {
   ]);
   if (!fs.existsSync(raw)) {
     const r2 = await run(YTDLP, ['-f', 'b', '-o', raw, URL]);
-    if (!fs.existsSync(raw)) throw new Error('download falhou: ' + (r.stderr || r2.stderr).slice(-400));
+    if (!fs.existsSync(raw)) throw new Error('download falhou: ' + ((r && (r.err || r.out)) || (r2 && (r2.err || r2.out)) || 'sem saida').slice(-400));
   }
   log('1/8 video    : ' + mb(raw));
   return raw;
@@ -128,7 +128,7 @@ async function anatomy(video) {
   }
   log('2/8 anatomia : cortes, geometria, texto...');
   const r = await run(process.execPath, [ANATOMY, '--video', video, '--out', out]);
-  if (!fs.existsSync(out)) throw new Error('anatomia falhou: ' + (r.stderr || r.out).slice(-500));
+  if (!fs.existsSync(out)) throw new Error('anatomia falhou: ' + ((r && (r.err || r.out)) || 'sem saida').slice(-500));
   const a = JSON.parse(fs.readFileSync(out, 'utf8'));
   log('              ' + a.shots.length + ' planos, ' + a.summary.cutsPerMinute + ' cortes/min, plano medio ' + a.summary.avgShotSeconds + 's');
   return a;
