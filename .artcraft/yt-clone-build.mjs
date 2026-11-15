@@ -2573,8 +2573,15 @@ async function main() {
         if (mobj) { srcW = Number(mobj[1]); srcH = Number(mobj[2]); }
       } catch { /* keep 1080x1920 */ }
       const cropW = srcW;
-      const cropH = Math.max(100, Math.round(srcH * (1 - topRatio)));
-      const cropY = Math.round(srcH * topRatio);
+      // Onde esta o apresentador? Se a referencia for talking-head (a cara
+      // ocupa quase o quadro todo), cortar a 55% deitava fora o rosto e o
+      // LivePortrait animava um pedaco de camisa. Usa a linha de divisao
+      // MEDIDA no plano; so corta quando existe mesmo uma banda superior.
+      const measuredSplit = Number(script._measured && script._measured.splitLineMedian);
+      const split = Number.isFinite(measuredSplit) && measuredSplit > 0.2 ? measuredSplit : 0;
+      const cropH = split > 0 ? Math.max(100, Math.round(srcH * (1 - split))) : srcH;
+      const cropY = split > 0 ? Math.round(srcH * split) : 0;
+      console.log('    referencia ' + srcW + 'x' + srcH + ' | split medido ' + (split > 0 ? Math.round(split * 100) + '%' : 'nenhum (talking-head, quadro inteiro)'));
       // Driving video com duracao completa da referencia para o avatar nao ficar fixo
       // ao fazer loop. Usa ate 60s (ou o que o video tiver).
       const r = await run(FFMPEG, [
