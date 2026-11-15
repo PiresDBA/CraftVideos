@@ -41,11 +41,20 @@ export function resolvePath(p) {
   return path.join(ROOT, p);
 }
 
+/** A cena "none" significa SEM apresentador (full-frame). Nunca é um avatar. */
+export function speakerOf(sc) {
+  for (const c of [sc.active_speaker, sc.avatar, sc.presenter]) {
+    const v = String(c || '').trim();
+    if (v && v.toLowerCase() !== 'none') return v;
+  }
+  return '';
+}
+
 /** Templates referenciados pelos beats de um script. */
 export function templatesDoScript(scenes) {
   const out = new Map(); // templatePath -> { avatar, beats: [] }
   for (const sc of scenes || []) {
-    const who = sc.avatar || sc.presenter || sc.active_speaker;
+    const who = speakerOf(sc);
     for (const key of Object.keys(sc || {})) {
       if (!key.endsWith('_state')) continue;
       const st = sc[key];
@@ -74,7 +83,7 @@ export function runPreflight(cfg, script, opts = {}) {
   const registry = (cfg && cfg.avatar && cfg.avatar.avatars) || {};
   const speakers = new Set();
   for (const sc of scenes) {
-    const who = sc.avatar || sc.presenter || sc.active_speaker;
+    const who = speakerOf(sc);
     if (who) speakers.add(who);
   }
   if (!speakers.size && cfg && cfg.avatar && cfg.avatar.default) speakers.add(cfg.avatar.default);

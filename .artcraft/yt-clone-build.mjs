@@ -35,7 +35,7 @@ import { layoutMetrics, sceneLayout, textAnchorY } from './clone/lib/layout.mjs'
 import { writeSceneASS, buildASS, buildSRT } from './clone/lib/ass.mjs';
 import { narrationFingerprint, readNarrationCache, writeNarrationCache } from './clone/lib/cache.mjs';
 import { sceneVisual } from './clone/lib/media.mjs';
-import { runPreflight, formatPreflight, resolvePath as resolveProjectPath } from './clone/lib/preflight.mjs';
+import { runPreflight, formatPreflight, resolvePath as resolveProjectPath, speakerOf } from './clone/lib/preflight.mjs';
 import { ensureSeamlessLoop, probeDuration as probeMediaDuration } from './clone/lib/seamless.mjs';
 import { aplicarDirecaoAoPlano } from './clone/lib/direcao.mjs';
 
@@ -1548,7 +1548,11 @@ async function buildSceneClips(cfg, cards, tracks, avatarClips, scenes, broll, s
     const out = path.join(buildDir, 'scene' + String(i + 1).padStart(2, '0') + '.mp4');
 
     // Which presenter is in this scene?
-    const wanted = (scenes[i] && (scenes[i].avatar || scenes[i].presenter)) || defaultAvatar;
+    // "none" is a sentinel for "no presenter" (full-frame card). Fall back to the
+    // default presenter only when the scene does not say anything at all.
+    const speaker = scenes[i] ? speakerOf(scenes[i]) : '';
+    const wantsNone = scenes[i] && String(scenes[i].presenter || scenes[i].avatar || '').trim().toLowerCase() === 'none';
+    const wanted = wantsNone ? null : (speaker || defaultAvatar);
     // F5: usar o clip lipsynced especifico desta cena (se Wav2Lip ativo).
     // lipSyncScenes chega por parametro: mapa { scene01: clip, ... } por idioma.
     // (Antes isto lia `lipSyncByLang`, que so existe dentro de main() -> ReferenceError
@@ -1954,7 +1958,7 @@ async function generateAvatarClips(cfg, dir, scenes, drivingVideoFile) {
   const def = cfg.avatar?.default;
   if (def) wanted.add(def);
   for (const sc of scenes) {
-    const who = sc.avatar || sc.presenter;
+    const who = speakerOf(sc);
     if (who) wanted.add(who);
   }
   if (!wanted.size) {
