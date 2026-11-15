@@ -2811,7 +2811,7 @@ async function main() {
     subtitles: allSubtitles,
     scenes: {},
     output: outputs,
-    tools: { ffmpeg: FFMPEG, cards: topEngineGlobal || 'figcraft', voice: cfg.voice.engine, avatar: cfg.avatar?.engine || 'none', presenters: Object.keys(avatarClips) },
+    tools: { ffmpeg: FFMPEG, cards: topEngineGlobal || 'figcraft', voice: cfg.voice.engine, avatar: cfg.avatar?.engine || 'none', presenters: Object.keys(avatarClips).filter(k => !k.startsWith('_')) },
   };
   for (const lang of languages) {
     manifest.scenes[lang] = allClips[lang].map((c, i) => ({ file: c.file, seconds: Number(c.duration.toFixed(3)), voice: allTracks[lang][i]?.engine || 'silent', presenter: c.presenter || null }));
