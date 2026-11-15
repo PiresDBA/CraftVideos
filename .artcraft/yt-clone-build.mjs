@@ -2676,7 +2676,9 @@ async function main() {
 
         // Driving template correto para a emocao do orador ativo
         const stateKey = activeSpeaker + '_state';
-        const drivingTemplate = sc[stateKey]?.driving_template;
+        const rawTemplate = sc[stateKey]?.driving_template;
+        // caminho relativo do script.json -> normaliza para absoluto
+        const drivingTemplate = rawTemplate ? resolveProjectPath(rawTemplate) : '';
         if (!drivingTemplate || !fs.existsSync(drivingTemplate)) {
           console.log('    ' + lang + ' cena ' + (i + 1) + ': driving template em falta â€” pulando');
           continue;

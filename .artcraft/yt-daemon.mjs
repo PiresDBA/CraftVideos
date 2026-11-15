@@ -178,8 +178,27 @@ const ALL_PHASES = [
 
 function parsePhase(line) {
   const t = String(line || '').trim();
-  for (const p of PHASES) {
-    if (p.re.test(t)) return p;
+  const m = t.match(/^(\d+(?:\.\d+)?)\/6\s+(.+)$/i);
+  if (!m) return null;
+  const num = parseFloat(m[1]);
+  const label = m[2].trim().toLowerCase();
+  // 1.5/6 e 4.5/6 e 4.7/6 sao sub-passos: mapeia para a fase principal
+  const table = [
+    { re: /^0(\b|\/)/, key: 'preflight',  label: 'Verificações pré-voo', pct: 3 },
+    { re: /^1(\b|\.)/, key: 'preparacao', label: 'Preparação',           pct: 8 },
+    { re: /^2(\b|\/)/, key: 'avatares',   label: 'Animação dos avatares',pct: 45 },
+    { re: /^3(\b|\/)/, key: 'broll',      label: 'B-roll',               pct: 52 },
+    { re: /^4(\b|\.)/, key: 'narracao',   label: 'Narração + legendas',   pct: 68 },
+    { re: /^5(\b|\/)/, key: 'cartoes',    label: 'Cartões + cenas',       pct: 88 },
+    { re: /^6(\b|\/)/, key: 'montagem',   label: 'Montagem final',        pct: 97 },
+  ];
+  for (const row of table) {
+    if (row.re.test(String(num))) {
+      // sub-passos 4.5 (lipsync) e 4.7 (visuals) tem fase propria
+      if (num === 4.5 && /lipsync|wav2lip/i.test(label)) return { key: 'lipsync', label: 'Lip-sync (Wav2Lip)', pct: 74 };
+      if (num === 4.7 && /visual/i.test(label)) return { key: 'visuals', label: 'Visuais da banda de cima', pct: 78 };
+      return { key: row.key, label: row.label, pct: row.pct };
+    }
   }
   return null;
 }
@@ -201,7 +220,9 @@ function inferStepFromLine(line) {
   if (l.includes('thumbnail') || l.includes('capa')) return 'Gerando thumbnail/capa';
   if (l.includes('subtitle') || l.includes('legenda')) return 'Gerando legendas';
   if (l.includes('loudness') || l.includes('normalize') || l.includes('r128')) return 'Normalizando áudio';
-  if (l.includes('upload') || l.includes('youtube')) return 'Enviando/publicando';
+  // 'youtube' sozinho apanhava linhas como 'FASE REFERENCE-FIRST ... YouTube' e
+  // reportava 'Enviando/publicando' como passo atual. Exige verbo de envio.
+  if (/\b(upload|enviando|publicando|publicar|subindo)\b/.test(l) && !l.includes('fase reference')) return 'Enviando/publicando';
   if (l.includes('erro') || l.includes('error') || l.includes('falhou') || l.includes('failed')) return 'Atenção/erro detectado (veja o log)';
   return null;
 }
