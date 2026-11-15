@@ -368,10 +368,17 @@ function startCloneJob(entry, opts = {}) {
       job.logLines.push((stream === 'stderr' ? '[erro] ' : '') + line);
       if (job.logLines.length > 400) job.logLines = job.logLines.slice(-400);
       const step = inferStepFromLine(line);
+      // Only record a step transition. The log often alternates between two
+      // related lines ("Processando avatar" / "Animando avatar"), which used to
+      // spam the timeline with duplicates, so we ignore a step that already
+      // appeared in the recent entries.
       if (step && step !== job.currentStep) {
-        job.currentStep = step;
-        job.steps.push({ at: nowIso(), msg: step });
-        if (job.steps.length > 60) job.steps = job.steps.slice(-60);
+        const recent = job.steps.slice(-3).map(s => s.msg);
+        if (!recent.includes(step)) {
+          job.currentStep = step;
+          job.steps.push({ at: nowIso(), msg: step });
+          if (job.steps.length > 60) job.steps = job.steps.slice(-60);
+        }
       }
     }
   };

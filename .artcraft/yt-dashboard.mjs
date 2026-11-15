@@ -1561,7 +1561,7 @@ function generateHTML(videos, referenceManager, cloneManager, dataInfo = {}) {
       var logEl = document.getElementById('tLog');
       var stepsEl = document.getElementById('tSteps');
       if (prog) { prog.style.display = 'block'; prog.className = 't-progress'; }
-      if (logEl) logEl.textContent = 'Iniciando clone...\nEnviando solicitação para o servidor local...';
+      if (logEl) logEl.textContent = 'Iniciando clone...\\nEnviando solicitação para o servidor local...';
       if (stepsEl) stepsEl.innerHTML = '<div class="t-step">Solicitando início do clone...</div>';
       try {
         var res = await fetch('/clone/start', {
@@ -1887,11 +1887,44 @@ function main() {
   const videos = data.videos || [];
 
   const html = generateHTML(videos, referenceManager, cloneManager, data);
+
+  // ---- SAFETY GATE -------------------------------------------------------
+  // The browser script lives inside a template literal, so a stray "\n" in the
+  // source turns into a REAL newline in the emitted JS and silently kills
+  // EVERY function on the page (filters, clone, collect...). Never ship that.
+  // We parse the emitted inline script and refuse to write a broken page.
+  const inlineScripts = [...html.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)].map(m => m[1]);
+  const broken = [];
+  inlineScripts.forEach((js, i) => {
+    try {
+      new Function(js); // throws SyntaxError on malformed JS
+    } catch (err) {
+      broken.push({ index: i, message: String(err.message), preview: js.slice(0, 120) });
+    }
+  });
+  if (broken.length) {
+    console.error('\n❌ ABORTADO: o JavaScript inline do dashboard tem erro de sintaxe.');
+    broken.forEach(b => {
+      console.error(`   script[${b.index}]: ${b.message}`);
+      const m = /(\d+)/.exec(b.message);
+      if (m) {
+        const ln = parseInt(m[1], 10) - 1;
+        const ctx = b.preview.split('\n').slice(Math.max(0, ln - 2), ln + 2).join('\n');
+        console.error('   contexto:\n' + ctx);
+      }
+    });
+    console.error('\n   Causa provável: "\\n" dentro do template literal precisa ser "\\\\n".');
+    console.error('   O arquivo NÃO foi escrito para não publicar uma página quebrada.\n');
+    process.exit(1);
+  }
+  // -----------------------------------------------------------------------
+
   fs.writeFileSync(path.join(CONFIG.outDir, 'index.html'), html, 'utf8');
 
   console.log('Enhanced YT Dashboard generated');
   console.log('Mode:', data.mode);
   console.log('Videos:', videos.length);
+  console.log('Inline JS: OK (' + inlineScripts.length + ' script tag(s) validated)');
   console.log('Output:', path.join(CONFIG.outDir, 'index.html'));
 }
 
