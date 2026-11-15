@@ -391,7 +391,9 @@ sem chave): `pt-BR-FranciscaNeural`, `pt-BR-ThalitaMultilingualNeural`,
 
 | Item | Valor |
 |------|-------|
-| GPU | GTX 1060 6 GB — Pascal sm_61 |
+| GPU | GTX 1060 6 GB - Pascal sm_61 |
+| RAM | **32 GB** — o Wav2Lip cabe inteiro em CPU/RAM; 6 GB VRAM só para o modelo LivePortrait |
+| Wav2Lip | `tools/Wav2Lip/checkpoints/wav2lip_gan.pth` (435 MB) — sincronia palavra a palavra, wired no `yt-clone-build.mjs` via `--wav2lip` (passo 4.5/6) |
 | Stack GPU que funciona | PyTorch **2.6.0+cu126** (a do ComfyUI em `D:\Comfy\ComfyUI\venv`) |
 | LivePortrait | ✅ 512–720 px, fp16, ~50 s por avatar (cacheado) |
 | MuseTalk (16 GB) | ❌ não corre local → só cloud |
@@ -560,7 +562,8 @@ Um vídeo só é publicado se:
 |-------|-----------|
 | CTR / cliques | **impossível** obter; é analytics privado do YouTube Studio |
 | Direitos | clonar conteúdo = violação; clonar **estrutura** é legítimo |
-| 6 GB VRAM | MuseTalk/Hunyuan só em cloud |
+| 6 GB VRAM / 32 GB RAM | Wav2Lip cabe em RAM; MuseTalk/Hunyuan prosseguir em cloud |
+| VRAM vs RAM | LivePortrait: fp16 + `--source-max-dim 720`; Wav2Lip: CPU/RAM, modelo 435 MB |
 | Licenças | HeyGem/Duix tem licença com limite de utilizadores → **excluído** |
 | Detector de cara | falha em personagens estilizados; exige `detThresh` por avatar |
 | Tradução grátis | Google limita (429) → fallback MyMemory, com cache |
