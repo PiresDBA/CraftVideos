@@ -102,3 +102,38 @@ VoiceCraft/
 SoundCraft/
 tools/
 node_modules/
+
+# -----------------------------------------------------------------
+# work/frida-luna/ - producao do episodio 'O Parque dos Pets'
+# Versionam-se PROGRAMAS e PLANOS (decisao de trabalho). Midia (png/wav/mp3/mp4)
+# continua ignorada pelas regras globais de extensao.
+# -----------------------------------------------------------------
+!work/frida-luna/
+work/frida-luna/*
+!work/frida-luna/*.py
+!work/frida-luna/*.md
+!work/frida-luna/*.json
+!work/frida-luna/chars/
+work/frida-luna/chars/*
+!work/frida-luna/chars/*.py
+!work/frida-luna/chars/*.json
+!work/frida-luna/chars/*.md
+!work/frida-luna/bg/
+work/frida-luna/bg/*
+!work/frida-luna/bg/*.py
+!work/frida-luna/bg/*.json
+!work/frida-luna/audio/
+work/frida-luna/audio/*
+!work/frida-luna/audio/*.json
+!work/frida-luna/audio/*.md
+
+# -----------------------------------------------------------------
+# graphify: versiona-se o RESULTADO (graph.json, relatorio, html),
+# nao a cache de extracao (regeneravel) nem caminhos da maquina
+# -----------------------------------------------------------------
+graphify-out/cache/
+graphify-out/.graphify_python
+graphify-out/.graphify_root
+# rascunhos de um so uso (prefixo _) nao entram no repositorio
+work/frida-luna/_*.py
+work/frida-luna/*/_*.py

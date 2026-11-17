@@ -1,0 +1,36 @@
+{
+ "fonte": "voz.wav",
+ "fps": 30,
+ "totalFrames": 5882,
+ "janelaAnaliseMs": 40,
+ "pisoPercentil": 10,
+ "topoPercentil": 98,
+ "pisoRms": 0.00053,
+ "topoRms": 0.2857,
+ "rmsPercentis": {
+  "10": 0.00053,
+  "25": 0.01188,
+  "50": 0.09493,
+  "75": 0.16271,
+  "90": 0.21563,
+  "98": 0.2857,
+  "99": 0.30828
+ },
+ "aberturaMedia": 0.3495,
+ "aberturaP95": 0.8772,
+ "limiarMeia": 0.34,
+ "limiarAberta": 0.67,
+ "framesPorNivel": {
+  "0": 2986,
+  "1": 2014,
+  "2": 882
+ },
+ "percentagemPorNivel": {
+  "0": 50.77,
+  "1": 34.24,
+  "2": 14.99
+ },
+ "transicoesDeNivel": 1576,
+ "jitterMedio": 0.1128,
+ "metodo": "RMS em janela de 40 ms centrada no frame, normalizado entre percentis 10 e 98 do stem de voz."
+}

@@ -1,0 +1,341 @@
+[
+  {
+    "scene": "hook",
+    "from": 0,
+    "durationInFrames": 505,
+    "layers": [
+      "fundo-papel-creme",
+      "parallax-montanha-russa-de-osso",
+      "parallax-roda-gigante-de-petiscos",
+      "particulas-de-papel",
+      "personagem-frida",
+      "personagem-luna",
+      "tipografia-de-cartao",
+      "grao-e-vinheta"
+    ],
+    "transition_in": "abertura-desde-papel",
+    "index": 1,
+    "beats": [
+      1,
+      2,
+      3
+    ],
+    "seconds": 16.833,
+    "bg": "cartao de titulo, fundo creme, particulas",
+    "camera": "push-in lento",
+    "temperatura": {
+      "cor": "#FFF1DC",
+      "opacidade": 0.08,
+      "nota": "manha de papel"
+    }
+  },
+  {
+    "scene": "abertura",
+    "from": 505,
+    "durationInFrames": 350,
+    "layers": [
+      "ceu-claro-e-nuvens",
+      "parallax-entrada-do-parque",
+      "parallax-arvores-de-meio-termo",
+      "chao-e-relva",
+      "personagem-frida",
+      "personagem-luna",
+      "tipografia-e-legenda",
+      "grao-e-vinheta"
+    ],
+    "transition_in": "ponte-de-papel",
+    "index": 2,
+    "beats": [
+      4,
+      5,
+      6
+    ],
+    "seconds": 11.667,
+    "bg": "entrada do parque, ceu claro",
+    "camera": "fixa",
+    "temperatura": {
+      "cor": "#FFF6E6",
+      "opacidade": 0.06,
+      "nota": "manha clara"
+    }
+  },
+  {
+    "scene": "portao",
+    "from": 855,
+    "durationInFrames": 472,
+    "layers": [
+      "ceu-de-manha",
+      "parallax-arvores-de-meio-termo",
+      "portao-de-madeira",
+      "letreiro-parque-dos-petes",
+      "chao-e-caminho-de-terra",
+      "personagem-frida",
+      "personagem-luna",
+      "brilhos-de-sonho",
+      "tipografia-e-legenda",
+      "grao-e-vinheta"
+    ],
+    "transition_in": "arrasto-lateral",
+    "index": 3,
+    "beats": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "seconds": 15.733,
+    "bg": "portao grande de madeira e letreiro",
+    "camera": "pan esquerda->direita",
+    "temperatura": {
+      "cor": "#FCEFD8",
+      "opacidade": 0.08,
+      "nota": "manha tardia"
+    }
+  },
+  {
+    "scene": "montanha",
+    "from": 1327,
+    "durationInFrames": 995,
+    "layers": [
+      "ceu-e-nuvens",
+      "parallax-montanha-russa-de-biscoitos",
+      "parallax-carrinho-de-osso",
+      "linhas-de-velocidade",
+      "chao-e-relva",
+      "personagem-frida",
+      "personagem-luna",
+      "tipografia-e-legenda",
+      "grao-e-vinheta"
+    ],
+    "transition_in": "arrasto-lateral",
+    "index": 4,
+    "beats": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "seconds": 33.167,
+    "bg": "montanha-russa de biscoitos, nuvens",
+    "camera": "push-in + tilt up",
+    "temperatura": {
+      "cor": "#FFF3DE",
+      "opacidade": 0.04,
+      "nota": "meio-dia alto"
+    }
+  },
+  {
+    "scene": "roda",
+    "from": 2322,
+    "durationInFrames": 505,
+    "layers": [
+      "ceu-de-tarde",
+      "parallax-roda-gigante-de-tigelas",
+      "chao-e-relva",
+      "personagem-frida",
+      "personagem-luna",
+      "tipografia-e-legenda",
+      "grao-e-vinheta"
+    ],
+    "transition_in": "ponte-de-papel",
+    "index": 5,
+    "beats": [
+      19,
+      20,
+      21,
+      22
+    ],
+    "seconds": 16.833,
+    "bg": "roda gigante de tigelas, tarde",
+    "camera": "tilt up lento",
+    "temperatura": {
+      "cor": "#FFE3B8",
+      "opacidade": 0.12,
+      "nota": "tarde dourada"
+    }
+  },
+  {
+    "scene": "carrossel",
+    "from": 2827,
+    "durationInFrames": 528,
+    "layers": [
+      "ceu-de-tarde-quente",
+      "parallax-carrossel-de-pelucias",
+      "luzes-do-carrossel",
+      "chao-e-relva",
+      "personagem-frida",
+      "personagem-luna",
+      "tipografia-e-legenda",
+      "grao-e-vinheta"
+    ],
+    "transition_in": "arrasto-lateral",
+    "index": 6,
+    "beats": [
+      23,
+      24,
+      25,
+      26
+    ],
+    "seconds": 17.6,
+    "bg": "carrossel com pelucias, luzes quentes",
+    "camera": "orbita curta",
+    "temperatura": {
+      "cor": "#FFCF9E",
+      "opacidade": 0.16,
+      "nota": "fim de tarde quente"
+    }
+  },
+  {
+    "scene": "bolinhas",
+    "from": 3355,
+    "durationInFrames": 456,
+    "layers": [
+      "fundo-piscina-de-bolinhas",
+      "parallax-bolinhas-de-tenis",
+      "personagem-frida",
+      "personagem-luna",
+      "bolinhas-em-voo",
+      "tipografia-e-legenda",
+      "grao-e-vinheta"
+    ],
+    "transition_in": "corte-seco",
+    "index": 7,
+    "beats": [
+      27,
+      28,
+      29
+    ],
+    "seconds": 15.2,
+    "bg": "piscina de bolinhas amarelas",
+    "camera": "fixa, zoom leve",
+    "temperatura": {
+      "cor": "#FFF0C8",
+      "opacidade": 0.08,
+      "nota": "amarelo reflectido"
+    }
+  },
+  {
+    "scene": "tunel",
+    "from": 3811,
+    "durationInFrames": 438,
+    "layers": [
+      "fundo-tunel-de-grama",
+      "parallax-arcos-de-grama",
+      "luzinhas-do-tunel",
+      "personagem-frida",
+      "personagem-luna",
+      "tipografia-e-legenda",
+      "grao-e-vinheta"
+    ],
+    "transition_in": "arrasto-lateral",
+    "index": 8,
+    "beats": [
+      30,
+      31,
+      32
+    ],
+    "seconds": 14.6,
+    "bg": "tunel de grama com luzinhas",
+    "camera": "travelling lateral",
+    "temperatura": {
+      "cor": "#D9C79E",
+      "opacidade": 0.18,
+      "nota": "sombra de relva"
+    }
+  },
+  {
+    "scene": "espelhos",
+    "from": 4249,
+    "durationInFrames": 462,
+    "layers": [
+      "fundo-casa-dos-espelhos",
+      "parallax-espelhos-deformantes",
+      "reflexo-deformado-da-frida",
+      "personagem-frida",
+      "personagem-luna",
+      "tipografia-e-legenda",
+      "grao-e-vinheta"
+    ],
+    "transition_in": "ponte-de-papel",
+    "index": 9,
+    "beats": [
+      33,
+      34,
+      35
+    ],
+    "seconds": 15.4,
+    "bg": "casa dos espelhos, reflexos",
+    "camera": "fixa com wobble",
+    "temperatura": {
+      "cor": "#C9BBA6",
+      "opacidade": 0.22,
+      "nota": "interior neutro"
+    }
+  },
+  {
+    "scene": "moral",
+    "from": 4711,
+    "durationInFrames": 382,
+    "layers": [
+      "ceu-de-por-do-sol",
+      "silhuetas-do-parque",
+      "chao-e-relva",
+      "personagem-frida",
+      "personagem-luna",
+      "coracoes-a-subir",
+      "tipografia-e-legenda",
+      "grao-e-vinheta"
+    ],
+    "transition_in": "escurecer-para-creme",
+    "index": 10,
+    "beats": [
+      36,
+      37,
+      38
+    ],
+    "seconds": 12.733,
+    "bg": "por do sol, silhuetas do parque",
+    "camera": "push-in lento",
+    "temperatura": {
+      "cor": "#FFB877",
+      "opacidade": 0.26,
+      "nota": "por-do-sol"
+    }
+  },
+  {
+    "scene": "final",
+    "from": 5093,
+    "durationInFrames": 789,
+    "layers": [
+      "fundo-papel-creme",
+      "coracoes-a-subir",
+      "personagem-frida",
+      "personagem-luna",
+      "botoes-like-e-inscrever",
+      "tipografia-de-cartao",
+      "grao-e-vinheta"
+    ],
+    "transition_in": "ponte-de-papel",
+    "index": 11,
+    "beats": [
+      39,
+      40,
+      41,
+      42,
+      43,
+      44
+    ],
+    "seconds": 26.3,
+    "bg": "cartao final, coracoes",
+    "camera": "fixa",
+    "temperatura": {
+      "cor": "#F7DCC0",
+      "opacidade": 0.14,
+      "nota": "cartao final ambar"
+    }
+  }
+]

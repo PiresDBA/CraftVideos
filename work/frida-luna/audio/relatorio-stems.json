@@ -1,0 +1,31 @@
+{
+ "metodo": "demucs",
+ "demucsDisponivel": true,
+ "demucsVersaoOuErro": "4.1.0",
+ "modelo": "htdemucs",
+ "fpsDaAnimacao": 30,
+ "duracaoSegundos": 196.069,
+ "amostras": 8646656,
+ "original": {
+  "rmsFala": 0.14934,
+  "rmsPausa": 0.07975,
+  "contrasteDb": 5.45,
+  "pico": 0.9029
+ },
+ "voz": {
+  "rmsFala": 0.14534,
+  "rmsPausa": 0.02149,
+  "contrasteDb": 16.6,
+  "pico": 0.9007
+ },
+ "musica": {
+  "rmsFala": 0.03097,
+  "rmsPausa": 0.07593,
+  "contrasteDb": -7.79,
+  "pico": 0.8449
+ },
+ "contrasteGanhoDb": 11.15,
+ "erroReconstrucaoRms": 0.001969,
+ "tamanhoVozBytes": 34586668,
+ "tamanhoMusicaBytes": 34586668
+}

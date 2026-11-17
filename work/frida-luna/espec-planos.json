@@ -1,0 +1,3669 @@
+{
+ "_manual": {
+  "ficheiro": "espec-planos.json",
+  "gerado_por": "build_espec_planos.mjs",
+  "papel": "Curador-Prompts",
+  "para_quem": [
+   "Diretor-Arte (Sequence Remotion)",
+   "Dev-Motion-QA (timeline/render)",
+   "Dev-3D-Craft (parallax)"
+  ],
+  "fonte_tempos": "beats.json — t0/t1/dur/scene/speaker/cam/bg/action NÃO são editados aqui",
+  "resolucao": [
+   1920,
+   1080
+  ],
+  "fps": 30,
+  "convencoes": {
+   "x": "centro horizontal do sprite em px (0..1920)",
+   "y": "LINHA DOS PÉS em px; topo da cabeça = y - h; pode exceder 1080 em closes (intencional)",
+   "h": "altura de pé a topo da cabeça em px; h_pct = h/1080",
+   "plano": "o plano cobre da fala até ao t0 do beat seguinte (silêncios incluídos)",
+   "hero": "plano que carrega a emoção do bloco; renderizar com prioridade e sem cortes internos"
+  },
+  "unidades_camara": {
+   "push-in/pull-out": "escala de 1.00 a `para` (multiplicador), pivot indicado em `eixo`",
+   "pan": "px de deslocamento horizontal",
+   "tilt": "px de deslocamento vertical (positivo = sobe)",
+   "orbita": "graus de rotação aparente (2.5D: skew/rotate limitado a ±25°)",
+   "wobble": "amplitude em px, senoidal, só no fundo/reflexo"
+  }
+ },
+ "video": "O Parque dos Pets",
+ "source": "https://www.youtube.com/watch?v=1kxFAThSKas",
+ "duration": 196.069,
+ "fps": 30,
+ "total_planos": 44,
+ "total_hero": 9,
+ "cpm_global": 13.5,
+ "cpm_original": 0.3,
+ "personagens": {
+  "frida": "Bulldog ingles, creme, colar de perolas",
+  "luna": "Salsicha (dachshund), castanho, bandana roxa"
+ },
+ "arco_de_luz": [
+  {
+   "scene": "hook",
+   "temp": "quente-neutra (5000 K)",
+   "hora": "sem hora — cartão gráfico",
+   "direcao": "luz de topo suave, sem sombra projetada",
+   "nota": "fundo creme com vinheta; partículas douradas a subir devagar"
+  },
+  {
+   "scene": "abertura",
+   "temp": "quente (5200 K)",
+   "hora": "manhã, 08h30",
+   "direcao": "sol atrás-direita a 25°, sombras para a esquerda",
+   "nota": "céu azul-claro lavado; rim light no pelo dos dois"
+  },
+  {
+   "scene": "portao",
+   "temp": "quente (5400 K)",
+   "hora": "manhã, 09h00",
+   "direcao": "sol atrás-direita a 30°, sombras compridas",
+   "nota": "madeira do portão satura para laranja; musgo verde-frio no granito"
+  },
+  {
+   "scene": "montanha",
+   "temp": "quente (5800 K)",
+   "hora": "meio-dia, 12h00",
+   "direcao": "sol alto à direita, sombras curtas e duras",
+   "nota": "nuvens a contraluz por baixo (o carrinho dispara \"para dentro\" delas)"
+  },
+  {
+   "scene": "roda",
+   "temp": "quente-dourada (4600 K)",
+   "hora": "tarde, 16h30",
+   "direcao": "sol baixo à esquerda, contraluz",
+   "nota": "céu pêssego→azul; a roda fica em contraluz e as cabines brilham por dentro"
+  },
+  {
+   "scene": "carrossel",
+   "temp": "quente dupla (3400 K bulbos + sol 4400 K)",
+   "hora": "tarde, 17h30",
+   "direcao": "sol baixo atrás + 24 bulbos quentes no teto do carrossel",
+   "nota": "god rays suaves; pelúcias com rim light; é a cena mais \"doce\" do vídeo"
+  },
+  {
+   "scene": "bolinhas",
+   "temp": "quente rasante (4200 K)",
+   "hora": "fim de tarde, 18h15",
+   "direcao": "sol rasante à direita, 10° acima do chão",
+   "nota": "amarelo das bolinhas saturado ao máximo; contraluz atravessa-as (semi-translúcidas)"
+  },
+  {
+   "scene": "tunel",
+   "temp": "fria com acentos quentes (hora azul + luzinhas)",
+   "hora": "hora azul, 19h00",
+   "direcao": "ambiente azul 8000 K + luzinhas ciano/magenta do túnel a iluminar o chão",
+   "nota": "único plano do vídeo com luz fria dominante — use-se como \"respiro\" cromático"
+  },
+  {
+   "scene": "espelhos",
+   "temp": "fria (4500 K)",
+   "hora": "noite a cair, 19h40",
+   "direcao": "luz fria verde-azulada da porta; spotlight quente reservado ao reflexo",
+   "nota": "o reflexo é sempre mais quente que o original — é a pista de que \"é outro\""
+  },
+  {
+   "scene": "moral",
+   "temp": "quente-âmbar (2200 K)",
+   "hora": "pôr do sol, 20h10",
+   "direcao": "contraluz frontal-baixo, silhuetas + fill frontal de 30%",
+   "nota": "gradiente âmbar→rosa→azul; sem fill não há olhos, com fill a mais perde-se a silhueta"
+  },
+  {
+   "scene": "final",
+   "temp": "quente de estúdio (3200 K)",
+   "hora": "noite, 21h00",
+   "direcao": "key quente frontal + fundo azul-marinho",
+   "nota": "volta ao \"cartão\" do início para fechar o círculo; corações rosa a subir"
+  }
+ ],
+ "cenas": [
+  {
+   "scene": "hook",
+   "planos": 3,
+   "t0": 0,
+   "t1": 16.84,
+   "dur": 16.84,
+   "cpm": 10.7,
+   "luz": {
+    "temp": "quente-neutra (5000 K)",
+    "hora": "sem hora — cartão gráfico",
+    "direcao": "luz de topo suave, sem sombra projetada",
+    "nota": "fundo creme com vinheta; partículas douradas a subir devagar"
+   }
+  },
+  {
+   "scene": "abertura",
+   "planos": 3,
+   "t0": 16.84,
+   "t1": 28.5,
+   "dur": 11.66,
+   "cpm": 15.4,
+   "luz": {
+    "temp": "quente (5200 K)",
+    "hora": "manhã, 08h30",
+    "direcao": "sol atrás-direita a 25°, sombras para a esquerda",
+    "nota": "céu azul-claro lavado; rim light no pelo dos dois"
+   }
+  },
+  {
+   "scene": "portao",
+   "planos": 4,
+   "t0": 28.5,
+   "t1": 44.22,
+   "dur": 15.72,
+   "cpm": 15.3,
+   "luz": {
+    "temp": "quente (5400 K)",
+    "hora": "manhã, 09h00",
+    "direcao": "sol atrás-direita a 30°, sombras compridas",
+    "nota": "madeira do portão satura para laranja; musgo verde-frio no granito"
+   }
+  },
+  {
+   "scene": "montanha",
+   "planos": 8,
+   "t0": 44.22,
+   "t1": 77.4,
+   "dur": 33.18,
+   "cpm": 14.5,
+   "luz": {
+    "temp": "quente (5800 K)",
+    "hora": "meio-dia, 12h00",
+    "direcao": "sol alto à direita, sombras curtas e duras",
+    "nota": "nuvens a contraluz por baixo (o carrinho dispara \"para dentro\" delas)"
+   }
+  },
+  {
+   "scene": "roda",
+   "planos": 4,
+   "t0": 77.4,
+   "t1": 94.22,
+   "dur": 16.82,
+   "cpm": 14.3,
+   "luz": {
+    "temp": "quente-dourada (4600 K)",
+    "hora": "tarde, 16h30",
+    "direcao": "sol baixo à esquerda, contraluz",
+    "nota": "céu pêssego→azul; a roda fica em contraluz e as cabines brilham por dentro"
+   }
+  },
+  {
+   "scene": "carrossel",
+   "planos": 4,
+   "t0": 94.22,
+   "t1": 111.84,
+   "dur": 17.62,
+   "cpm": 13.6,
+   "luz": {
+    "temp": "quente dupla (3400 K bulbos + sol 4400 K)",
+    "hora": "tarde, 17h30",
+    "direcao": "sol baixo atrás + 24 bulbos quentes no teto do carrossel",
+    "nota": "god rays suaves; pelúcias com rim light; é a cena mais \"doce\" do vídeo"
+   }
+  },
+  {
+   "scene": "bolinhas",
+   "planos": 3,
+   "t0": 111.84,
+   "t1": 127.02,
+   "dur": 15.18,
+   "cpm": 11.9,
+   "luz": {
+    "temp": "quente rasante (4200 K)",
+    "hora": "fim de tarde, 18h15",
+    "direcao": "sol rasante à direita, 10° acima do chão",
+    "nota": "amarelo das bolinhas saturado ao máximo; contraluz atravessa-as (semi-translúcidas)"
+   }
+  },
+  {
+   "scene": "tunel",
+   "planos": 3,
+   "t0": 127.02,
+   "t1": 141.64,
+   "dur": 14.62,
+   "cpm": 12.3,
+   "luz": {
+    "temp": "fria com acentos quentes (hora azul + luzinhas)",
+    "hora": "hora azul, 19h00",
+    "direcao": "ambiente azul 8000 K + luzinhas ciano/magenta do túnel a iluminar o chão",
+    "nota": "único plano do vídeo com luz fria dominante — use-se como \"respiro\" cromático"
+   }
+  },
+  {
+   "scene": "espelhos",
+   "planos": 3,
+   "t0": 141.64,
+   "t1": 157.02,
+   "dur": 15.38,
+   "cpm": 11.7,
+   "luz": {
+    "temp": "fria (4500 K)",
+    "hora": "noite a cair, 19h40",
+    "direcao": "luz fria verde-azulada da porta; spotlight quente reservado ao reflexo",
+    "nota": "o reflexo é sempre mais quente que o original — é a pista de que \"é outro\""
+   }
+  },
+  {
+   "scene": "moral",
+   "planos": 3,
+   "t0": 157.02,
+   "t1": 169.78,
+   "dur": 12.76,
+   "cpm": 14.1,
+   "luz": {
+    "temp": "quente-âmbar (2200 K)",
+    "hora": "pôr do sol, 20h10",
+    "direcao": "contraluz frontal-baixo, silhuetas + fill frontal de 30%",
+    "nota": "gradiente âmbar→rosa→azul; sem fill não há olhos, com fill a mais perde-se a silhueta"
+   }
+  },
+  {
+   "scene": "final",
+   "planos": 6,
+   "t0": 169.78,
+   "t1": 196.069,
+   "dur": 26.289,
+   "cpm": 13.7,
+   "luz": {
+    "temp": "quente de estúdio (3200 K)",
+    "hora": "noite, 21h00",
+    "direcao": "key quente frontal + fundo azul-marinho",
+    "nota": "volta ao \"cartão\" do início para fechar o círculo; corações rosa a subir"
+   }
+  }
+ ],
+ "planos": [
+  {
+   "i": 1,
+   "scene": "hook",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 3.86,
+    "t1": 7.94,
+    "dur": 4.08,
+    "frames": [
+     116,
+     238
+    ]
+   },
+   "plano": {
+    "t0": 0,
+    "t1": 8.16,
+    "dur": 8.16,
+    "frames": [
+     0,
+     245
+    ],
+    "gap_fala_fim": 0.22
+   },
+   "enquadramento": "GRÁF",
+   "texto": "E se os animais tivessem um parque de diversões todinho para eles?",
+   "acao": "cartao de titulo: interrogacao grande",
+   "bg": "cartao de titulo, fundo creme, particulas",
+   "cam_origem": "push-in lento",
+   "frida": {
+    "x": 400,
+    "y": 1050,
+    "h": 340,
+    "h_pct": 0.315,
+    "expressao": "surprised",
+    "olhar": "↑20° à direita, para o \"?\" ao centro; cabeça inclinada 8° (surprised)",
+    "nota": "entra em cena já em pose; orelhas a tremer 1×"
+   },
+   "luna": {
+    "x": 1520,
+    "y": 1050,
+    "h": 300,
+    "h_pct": 0.278,
+    "expressao": "excited",
+    "olhar": "↑18° à esquerda, para o \"?\"; língua de fora 1 ping (excited)",
+    "nota": "rabo a abanar 3 Hz"
+   },
+   "luz": {
+    "temp": "quente-neutra (5000 K)",
+    "hora": "sem hora — cartão gráfico",
+    "direcao": "luz de topo suave, sem sombra projetada",
+    "nota": "fundo creme com vinheta; partículas douradas a subir devagar"
+   },
+   "camara": {
+    "tipo": "push-in lento",
+    "texto": "push-in 1.00→1.05 · pivot (960,470)",
+    "de": 1,
+    "para": 1.05,
+    "eixo": "pivot (960, 470)",
+    "ease": "ease-out",
+    "extra": null,
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.15,
+    "medio": 0.35,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "fade de creme 10f (o plano já existe desde 0,00 s)",
+    "pacing": "respiro",
+    "nota": "pré-roll de 3,86 s sem fala: usar para assentar o \"?\" e as partículas"
+   },
+   "overlay": "\"E SE...\" + \"?\" gigante em (960,400) h≈420 px; título na base (960, 760)",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 2,
+   "scene": "hook",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 8.16,
+    "t1": 12.7,
+    "dur": 4.54,
+    "frames": [
+     245,
+     381
+    ]
+   },
+   "plano": {
+    "t0": 8.16,
+    "t1": 13.08,
+    "dur": 4.92,
+    "frames": [
+     245,
+     392
+    ],
+    "gap_fala_fim": 0.38
+   },
+   "enquadramento": "GRÁF",
+   "texto": "Já imaginou montanha-russa de ossinho e roda gigante de petiscos?",
+   "acao": "montanha-russa de ossinho desenhada a aparecer",
+   "bg": "cartao de titulo, fundo creme, particulas",
+   "cam_origem": "push-in lento",
+   "frida": {
+    "x": 430,
+    "y": 1050,
+    "h": 350,
+    "h_pct": 0.324,
+    "expressao": "excited",
+    "olhar": "↑25° à direita, para o topo da montanha de osso (excited)",
+    "nota": "inclina-se para a frente 6°"
+   },
+   "luna": {
+    "x": 1500,
+    "y": 1050,
+    "h": 310,
+    "h_pct": 0.287,
+    "expressao": "happy",
+    "olhar": "↑20° à esquerda, para a roda gigante de petiscos (happy)",
+    "nota": "duas patas no ar a \"apontar\""
+   },
+   "luz": {
+    "temp": "quente-neutra (5000 K)",
+    "hora": "sem hora — cartão gráfico",
+    "direcao": "luz de topo suave, sem sombra projetada",
+    "nota": "fundo creme com vinheta; partículas douradas a subir devagar"
+   },
+   "camara": {
+    "tipo": "push-in lento",
+    "texto": "push-in 1.02→1.08 (herda o anterior)",
+    "de": 1.02,
+    "para": 1.08,
+    "eixo": "pivot (960, 430)",
+    "ease": "ease-out",
+    "extra": "sem corte: herda a escala do plano 1 e continua a subir",
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.15,
+    "medio": 0.4,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte seco (fim da pergunta)",
+    "pacing": "normal",
+    "nota": "a montanha de osso desenha-se da esquerda para a direita em 1,4 s; a roda entra aos 2,8 s"
+   },
+   "overlay": "",
+   "hero": true,
+   "hero_nota": "É a imagem-promessa (serve de miniatura): osso + petisco desenhados dizem o tema do vídeo em 1 segundo, sem uma palavra."
+  },
+  {
+   "i": 3,
+   "scene": "hook",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 13.08,
+    "t1": 15.34,
+    "dur": 2.26,
+    "frames": [
+     392,
+     460
+    ]
+   },
+   "plano": {
+    "t0": 13.08,
+    "t1": 16.84,
+    "dur": 3.76,
+    "frames": [
+     392,
+     505
+    ],
+    "gap_fala_fim": 1.5
+   },
+   "enquadramento": "GRÁF",
+   "texto": "Pois venha ver essa aventura maluca!",
+   "acao": "rodape a correr, letras a saltar",
+   "bg": "cartao de titulo, fundo creme, particulas",
+   "cam_origem": "push-in lento",
+   "frida": {
+    "x": 520,
+    "y": 1060,
+    "h": 420,
+    "h_pct": 0.389,
+    "expressao": "silly",
+    "olhar": "para a câmara, 0° (silly)",
+    "nota": "cabeça rodada 12°, orelha caída"
+   },
+   "luna": {
+    "x": 1400,
+    "y": 1060,
+    "h": 380,
+    "h_pct": 0.352,
+    "expressao": "excited",
+    "olhar": "para a câmara, -4° (excited)",
+    "nota": "salta 2× curto, 10f cada"
+   },
+   "luz": {
+    "temp": "quente-neutra (5000 K)",
+    "hora": "sem hora — cartão gráfico",
+    "direcao": "luz de topo suave, sem sombra projetada",
+    "nota": "fundo creme com vinheta; partículas douradas a subir devagar"
+   },
+   "camara": {
+    "tipo": "push-in lento",
+    "texto": "push-in 1.05→1.12 (acelera)",
+    "de": 1.05,
+    "para": 1.12,
+    "eixo": "pivot (960, 480)",
+    "ease": "ease-in",
+    "extra": null,
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.15,
+    "medio": 0.4,
+    "chao": 1,
+    "primeiro_plano": 1.25
+   },
+   "corte": {
+    "entrada": "corte seco (na interjeição \"Pois\")",
+    "pacing": "staccato",
+    "nota": "plano curto de arranque; letras saltam com squash 0,8→1,15→1,0"
+   },
+   "overlay": "rodapé a correr na base (y 980) + \"AVENTURA MALUCA\" com letras a saltar em (960, 560)",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 4,
+   "scene": "abertura",
+   "speaker": "frida",
+   "fala": {
+    "t0": 16.84,
+    "t1": 17.86,
+    "dur": 1.02,
+    "frames": [
+     505,
+     536
+    ]
+   },
+   "plano": {
+    "t0": 16.84,
+    "t1": 18.5,
+    "dur": 1.66,
+    "frames": [
+     505,
+     555
+    ],
+    "gap_fala_fim": 0.64
+   },
+   "enquadramento": "GERAL",
+   "texto": "Olha, pessoal!",
+   "acao": "as duas a entrar em quadro",
+   "bg": "entrada do parque, ceu claro",
+   "cam_origem": "fixa",
+   "frida": {
+    "x": 700,
+    "y": 1010,
+    "h": 300,
+    "h_pct": 0.278,
+    "expressao": "happy",
+    "olhar": "frente-direita 10°, para a câmara/público (happy)",
+    "nota": "entra em quadro pela esquerda a correr, para no frame 8"
+   },
+   "luna": {
+    "x": 1180,
+    "y": 1010,
+    "h": 260,
+    "h_pct": 0.241,
+    "expressao": "happy",
+    "olhar": "frente-esquerda 10°, para a câmara (happy)",
+    "nota": "entra 3f depois da Frida (atraso cómico)"
+   },
+   "luz": {
+    "temp": "quente (5200 K)",
+    "hora": "manhã, 08h30",
+    "direcao": "sol atrás-direita a 25°, sombras para a esquerda",
+    "nota": "céu azul-claro lavado; rim light no pelo dos dois"
+   },
+   "camara": {
+    "tipo": "fixa",
+    "texto": "fixa (micro-settle 1,5 px)",
+    "de": 1,
+    "para": 1,
+    "eixo": "fixa",
+    "ease": "nenhum",
+    "extra": "micro-settle de 1,5 px no arranque",
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.2,
+    "medio": 0.5,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte seco + 2f de flash (cartão creme → céu azul)",
+    "pacing": "staccato",
+    "nota": "1,02 s: funciona como respiro de 1 segundo entre o cartão e a apresentação"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 5,
+   "scene": "abertura",
+   "speaker": "frida",
+   "fala": {
+    "t0": 18.5,
+    "t1": 20.78,
+    "dur": 2.28,
+    "frames": [
+     555,
+     623
+    ]
+   },
+   "plano": {
+    "t0": 18.5,
+    "t1": 21.24,
+    "dur": 2.74,
+    "frames": [
+     555,
+     637
+    ],
+    "gap_fala_fim": 0.46
+   },
+   "enquadramento": "CONJ",
+   "texto": "Que alegria ter vocês aqui com a gente hoje!",
+   "acao": "abraco de boas-vindas",
+   "bg": "entrada do parque, ceu claro",
+   "cam_origem": "fixa",
+   "frida": {
+    "x": 860,
+    "y": 1080,
+    "h": 620,
+    "h_pct": 0.574,
+    "expressao": "loved",
+    "olhar": "para a Luna, direita 8° / ligeiro baixo (loved)",
+    "nota": "braço por cima do ombro da Luna"
+   },
+   "luna": {
+    "x": 1120,
+    "y": 1080,
+    "h": 520,
+    "h_pct": 0.481,
+    "expressao": "shy",
+    "olhar": "para a Frida, esquerda 8° (shy)",
+    "nota": "focinho apoiado no ombro da Frida"
+   },
+   "luz": {
+    "temp": "quente (5200 K)",
+    "hora": "manhã, 08h30",
+    "direcao": "sol atrás-direita a 25°, sombras para a esquerda",
+    "nota": "céu azul-claro lavado; rim light no pelo dos dois"
+   },
+   "camara": {
+    "tipo": "fixa",
+    "texto": "fixa + micro push 1.00→1.02",
+    "de": 1,
+    "para": 1.02,
+    "eixo": "pivot (960, 700)",
+    "ease": "ease-out",
+    "extra": null,
+    "desvio": "o beat pede \"fixa\"; fica fixa com 2% de push — dois planos fixos seguidos parecem um slide"
+   },
+   "parallax": {
+    "fundo": 0.25,
+    "medio": 0.55,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte no gesto (as duas já abraçadas no frame 0)",
+    "pacing": "respiro",
+    "nota": "não animar o abraço do zero: entrar no abraço feito, só respirar 2×"
+   },
+   "overlay": "",
+   "hero": true,
+   "hero_nota": "O primeiro abraço é o contrato emocional do vídeo: é aqui que a criança decide gostar das duas, e é o primeiro dos dois abraços entre elas (o outro é o da moral, plano 37)."
+  },
+  {
+   "i": 6,
+   "scene": "abertura",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 21.24,
+    "t1": 27.64,
+    "dur": 6.4,
+    "frames": [
+     637,
+     829
+    ]
+   },
+   "plano": {
+    "t0": 21.24,
+    "t1": 28.5,
+    "dur": 7.26,
+    "frames": [
+     637,
+     855
+    ],
+    "gap_fala_fim": 0.86
+   },
+   "enquadramento": "GERAL",
+   "texto": "Vamos embarcar em uma história super divertida sobre a Luna e a Frida em um parque de diversões incrível!",
+   "acao": "apresentacao: as duas lado a lado",
+   "bg": "entrada do parque, ceu claro",
+   "cam_origem": "fixa",
+   "frida": {
+    "x": 700,
+    "y": 1000,
+    "h": 420,
+    "h_pct": 0.389,
+    "expressao": "proud",
+    "olhar": "frente 5° para a câmara (proud)",
+    "nota": "peito para fora, acena aos 1,2 s"
+   },
+   "luna": {
+    "x": 1220,
+    "y": 1000,
+    "h": 370,
+    "h_pct": 0.343,
+    "expressao": "excited",
+    "olhar": "frente -5° para a câmara (excited)",
+    "nota": "rabo 3 Hz; salto pequeno aos 4,0 s"
+   },
+   "luz": {
+    "temp": "quente (5200 K)",
+    "hora": "manhã, 08h30",
+    "direcao": "sol atrás-direita a 25°, sombras para a esquerda",
+    "nota": "céu azul-claro lavado; rim light no pelo dos dois"
+   },
+   "camara": {
+    "tipo": "fixa",
+    "texto": "fixa + push 1.00→1.03 (linear)",
+    "de": 1,
+    "para": 1.03,
+    "eixo": "pivot (960, 620)",
+    "ease": "linear",
+    "extra": null,
+    "desvio": "o beat pede \"fixa\"; 3% de push ao longo de 6,4 s mantém o plano vivo sem ser movimento percetível"
+   },
+   "parallax": {
+    "fundo": 0.2,
+    "medio": 0.5,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "respiro",
+    "nota": "6,4 s de narração: precisa de 2 marcas de ação (aceno 1,2 s, salto 4,0 s) para não parecer slide"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 7,
+   "scene": "portao",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 28.5,
+    "t1": 34.42,
+    "dur": 5.92,
+    "frames": [
+     855,
+     1033
+    ]
+   },
+   "plano": {
+    "t0": 28.5,
+    "t1": 34.82,
+    "dur": 6.32,
+    "frames": [
+     855,
+     1045
+    ],
+    "gap_fala_fim": 0.4
+   },
+   "enquadramento": "GERAL",
+   "texto": "A Luninha e a Fridoka caminhavam bem distraídas pelo parque quando viram um portão enorme.",
+   "acao": "caminhada distraida, fundo de parque",
+   "bg": "portao grande de madeira e letreiro",
+   "cam_origem": "pan esquerda->direita",
+   "frida": {
+    "x": 760,
+    "y": 1000,
+    "h": 380,
+    "h_pct": 0.352,
+    "expressao": "calm",
+    "olhar": "para a frente-direita 15°, caminhando (calm)",
+    "nota": "ciclo de passo de 24f"
+   },
+   "luna": {
+    "x": 1150,
+    "y": 1000,
+    "h": 330,
+    "h_pct": 0.306,
+    "expressao": "curious",
+    "olhar": "frente-esquerda 10°, focinho no chão (curious)",
+    "nota": "passos mais rápidos (18f), fareja 3×"
+   },
+   "luz": {
+    "temp": "quente (5400 K)",
+    "hora": "manhã, 09h00",
+    "direcao": "sol atrás-direita a 30°, sombras compridas",
+    "nota": "madeira do portão satura para laranja; musgo verde-frio no granito"
+   },
+   "camara": {
+    "tipo": "pan esquerda->direita",
+    "texto": "pan 180 px esq→dir (30 px/s)",
+    "de": 1,
+    "para": 1,
+    "eixo": "pan lateral 0→180 px (esq→dir)",
+    "ease": "linear",
+    "extra": "o pan é o \"corte invisível\" deste plano",
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.25,
+    "medio": 0.6,
+    "chao": 1,
+    "primeiro_plano": 1.15
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "normal",
+    "nota": "pan lento a 30 px/s; o portão só cabe inteiro no fim do movimento"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 8,
+   "scene": "portao",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 34.82,
+    "t1": 37.54,
+    "dur": 2.72,
+    "frames": [
+     1045,
+     1126
+    ]
+   },
+   "plano": {
+    "t0": 34.82,
+    "t1": 37.8,
+    "dur": 2.98,
+    "frames": [
+     1045,
+     1134
+    ],
+    "gap_fala_fim": 0.26
+   },
+   "enquadramento": "GERAL↑",
+   "texto": "Em cima estava escrito Parque dos Petes.",
+   "acao": "letreiro 'Parque dos Petes' a entrar",
+   "bg": "portao grande de madeira e letreiro",
+   "cam_origem": "pan esquerda->direita",
+   "frida": {
+    "x": 720,
+    "y": 1030,
+    "h": 400,
+    "h_pct": 0.37,
+    "expressao": "surprised",
+    "olhar": "↑40° à direita, para o letreiro (surprised)",
+    "nota": "boca aberta 2f depois do letreiro entrar"
+   },
+   "luna": {
+    "x": 1140,
+    "y": 1030,
+    "h": 350,
+    "h_pct": 0.324,
+    "expressao": "surprised",
+    "olhar": "↑45° à direita, para o letreiro (surprised)",
+    "nota": "orelhas sobem 6 px, rabo para"
+   },
+   "luz": {
+    "temp": "quente (5400 K)",
+    "hora": "manhã, 09h00",
+    "direcao": "sol atrás-direita a 30°, sombras compridas",
+    "nota": "madeira do portão satura para laranja; musgo verde-frio no granito"
+   },
+   "camara": {
+    "tipo": "pan esquerda->direita",
+    "texto": "tilt up 0→60 px + push 1.00→1.03",
+    "de": 1,
+    "para": 1.03,
+    "eixo": "tilt up 0→60 px",
+    "ease": "ease-out",
+    "extra": "letreiro cai 20 px com overshoot de 8%",
+    "desvio": "o beat pede pan esq→dir; o letreiro está ACIMA da linha do olhar, por isso o pan vira tilt (a entrada pela esquerda mantém-se no objeto, não na câmara)"
+   },
+   "parallax": {
+    "fundo": 0.2,
+    "medio": 0.5,
+    "chao": 1,
+    "primeiro_plano": 1.15
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "normal",
+    "nota": "segurar 12f depois da palavra \"Petes\" para a criança ler o letreiro"
+   },
+   "overlay": "LETREIRO: \"PARQUE DOS PETES\" (texto errado de propósito, vem da narração)",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 9,
+   "scene": "portao",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 37.8,
+    "t1": 40.5,
+    "dur": 2.7,
+    "frames": [
+     1134,
+     1215
+    ]
+   },
+   "plano": {
+    "t0": 37.8,
+    "t1": 40.96,
+    "dur": 3.16,
+    "frames": [
+     1134,
+     1229
+    ],
+    "gap_fala_fim": 0.46
+   },
+   "enquadramento": "MÉDIO↓",
+   "texto": "A Salsicha Luna deu pulinhos de pura alegria.",
+   "acao": "Luna a dar pulinhos de alegria",
+   "bg": "portao grande de madeira e letreiro",
+   "cam_origem": "pan esquerda->direita",
+   "frida": {
+    "x": 640,
+    "y": 1090,
+    "h": 640,
+    "h_pct": 0.593,
+    "expressao": "happy",
+    "olhar": "↓15° à direita, para a Luna (happy)",
+    "nota": "ri, mão na barriga"
+   },
+   "luna": {
+    "x": 1200,
+    "y": 1010,
+    "h": 560,
+    "h_pct": 0.519,
+    "expressao": "jump",
+    "olhar": "para a câmara -6°, no ar (jump)",
+    "nota": "3 saltos de 14f, 90 px de altura"
+   },
+   "luz": {
+    "temp": "quente (5400 K)",
+    "hora": "manhã, 09h00",
+    "direcao": "sol atrás-direita a 30°, sombras compridas",
+    "nota": "madeira do portão satura para laranja; musgo verde-frio no granito"
+   },
+   "camara": {
+    "tipo": "pan esquerda->direita",
+    "texto": "fixa, 20 cm do chão",
+    "de": 1,
+    "para": 1,
+    "eixo": "fixa, 20 cm do chão (contra-picado leve)",
+    "ease": "nenhum",
+    "extra": null,
+    "desvio": "o beat pede pan; a câmara fica fixa porque o movimento é o salto da Luna — um pan a acompanhar o salto duplica a energia e cansa"
+   },
+   "parallax": {
+    "fundo": 0.25,
+    "medio": 0.55,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "staccato",
+    "nota": "o ritmo vem dos 3 saltos, não da câmara: não mexer na câmara"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 10,
+   "scene": "portao",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 40.96,
+    "t1": 42.82,
+    "dur": 1.86,
+    "frames": [
+     1229,
+     1285
+    ]
+   },
+   "plano": {
+    "t0": 40.96,
+    "t1": 44.22,
+    "dur": 3.26,
+    "frames": [
+     1229,
+     1327
+    ],
+    "gap_fala_fim": 1.4
+   },
+   "enquadramento": "CLOSE-2",
+   "texto": "Era um sonho virando realidade.",
+   "acao": "brilhos a volta das duas",
+   "bg": "portao grande de madeira e letreiro",
+   "cam_origem": "pan esquerda->direita",
+   "frida": {
+    "x": 780,
+    "y": 1240,
+    "h": 900,
+    "h_pct": 0.833,
+    "expressao": "loved",
+    "olhar": "para a Luna → para a câmara nos últimos 12f (loved)",
+    "nota": "olhos húmidos 2f de brilho"
+   },
+   "luna": {
+    "x": 1150,
+    "y": 1240,
+    "h": 820,
+    "h_pct": 0.759,
+    "expressao": "loved",
+    "olhar": "para a Frida → para a câmara nos últimos 12f (loved)",
+    "nota": "cabeça encosta no ombro"
+   },
+   "luz": {
+    "temp": "quente (5400 K)",
+    "hora": "manhã, 09h00",
+    "direcao": "sol atrás-direita a 30°, sombras compridas",
+    "nota": "madeira do portão satura para laranja; musgo verde-frio no granito"
+   },
+   "camara": {
+    "tipo": "pan esquerda->direita",
+    "texto": "push-in 1.00→1.06 · pivot (960,560)",
+    "de": 1,
+    "para": 1.06,
+    "eixo": "pivot (960, 560), entre as duas caras",
+    "ease": "ease-out",
+    "extra": null,
+    "desvio": "o beat pede pan esq→dir; num close a dois rostos o pan corta um deles, por isso o plano é push-in"
+   },
+   "parallax": {
+    "fundo": 0.3,
+    "medio": 0.6,
+    "chao": 1,
+    "primeiro_plano": 1.3
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "respiro",
+    "nota": "1,86 s: é o silêncio antes da montanha-russa; 12–18 partículas-brilho por segundo"
+   },
+   "overlay": "",
+   "hero": true,
+   "hero_nota": "Único close frontal dos dois no primeiro terço: os olhos viram para a lente e a narração passa a ser promessa em vez de descrição."
+  },
+  {
+   "i": 11,
+   "scene": "montanha",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 44.22,
+    "t1": 49.64,
+    "dur": 5.42,
+    "frames": [
+     1327,
+     1489
+    ]
+   },
+   "plano": {
+    "t0": 44.22,
+    "t1": 50.2,
+    "dur": 5.98,
+    "frames": [
+     1327,
+     1506
+    ],
+    "gap_fala_fim": 0.56
+   },
+   "enquadramento": "GERAL↓",
+   "texto": "Logo na entrada, a Bulldog Frida olhou para a montanha-russa de biscoitos gigantes.",
+   "acao": "Frida olha para a montanha-russa de biscoitos",
+   "bg": "montanha-russa de biscoitos, nuvens",
+   "cam_origem": "push-in + tilt up",
+   "frida": {
+    "x": 620,
+    "y": 1010,
+    "h": 400,
+    "h_pct": 0.37,
+    "expressao": "surprised",
+    "olhar": "↑38° à direita, para o topo da montanha (surprised)",
+    "nota": "pescoço esticado, orelhas para trás"
+   },
+   "luna": {
+    "x": 980,
+    "y": 1010,
+    "h": 350,
+    "h_pct": 0.324,
+    "expressao": "excited",
+    "olhar": "↑32° à direita (excited)",
+    "nota": "patas da frente a bater no chão"
+   },
+   "luz": {
+    "temp": "quente (5800 K)",
+    "hora": "meio-dia, 12h00",
+    "direcao": "sol alto à direita, sombras curtas e duras",
+    "nota": "nuvens a contraluz por baixo (o carrinho dispara \"para dentro\" delas)"
+   },
+   "camara": {
+    "tipo": "push-in + tilt up",
+    "texto": "push-in 1.00→1.06 + tilt up 0→70 px",
+    "de": 1,
+    "para": 1.06,
+    "eixo": "tilt up 0→70 px",
+    "ease": "ease-out",
+    "extra": "a montanha só entra inteira no quadro aos 2,2 s",
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.15,
+    "medio": 0.45,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte seco + 3f de whip vertical (simula o tilt a arrancar)",
+    "pacing": "normal",
+    "nota": "plano de chegada: o tilt é o argumento, não a personagem"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 12,
+   "scene": "montanha",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 50.2,
+    "t1": 52.74,
+    "dur": 2.54,
+    "frames": [
+     1506,
+     1582
+    ]
+   },
+   "plano": {
+    "t0": 50.2,
+    "t1": 53.18,
+    "dur": 2.98,
+    "frames": [
+     1506,
+     1595
+    ],
+    "gap_fala_fim": 0.44
+   },
+   "enquadramento": "MÉDIO",
+   "texto": "O carrinho era em formato de osso voador.",
+   "acao": "carrinho em forma de osso a chegar",
+   "bg": "montanha-russa de biscoitos, nuvens",
+   "cam_origem": "push-in + tilt up",
+   "frida": {
+    "x": 700,
+    "y": 1070,
+    "h": 480,
+    "h_pct": 0.444,
+    "expressao": "excited",
+    "olhar": "direita 25° + acima 15°, para o carrinho (excited)",
+    "nota": "orelhas levantam 4 px"
+   },
+   "luna": {
+    "x": 1080,
+    "y": 1070,
+    "h": 420,
+    "h_pct": 0.389,
+    "expressao": "happy",
+    "olhar": "direita 30° + acima 10°, para o carrinho (happy)",
+    "nota": "inclina a cabeça para seguir"
+   },
+   "luz": {
+    "temp": "quente (5800 K)",
+    "hora": "meio-dia, 12h00",
+    "direcao": "sol alto à direita, sombras curtas e duras",
+    "nota": "nuvens a contraluz por baixo (o carrinho dispara \"para dentro\" delas)"
+   },
+   "camara": {
+    "tipo": "push-in + tilt up",
+    "texto": "fixa",
+    "de": 1,
+    "para": 1,
+    "eixo": "fixa",
+    "ease": "nenhum",
+    "extra": "carrinho entra pela direita: 700 px em 1,2 s, ease-out, 2 balanços de 4°",
+    "desvio": "o beat pede push-in + tilt up; a câmara fica fixa para o carrinho entrar em velocidade — se a câmara se mover, perde-se a referência de rapidez"
+   },
+   "parallax": {
+    "fundo": 0.2,
+    "medio": 0.5,
+    "chao": 1,
+    "primeiro_plano": 1.15
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "normal",
+    "nota": "câmara fixa de propósito: o movimento é todo do objeto"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 13,
+   "scene": "montanha",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 53.18,
+    "t1": 56.2,
+    "dur": 3.02,
+    "frames": [
+     1595,
+     1686
+    ]
+   },
+   "plano": {
+    "t0": 53.18,
+    "t1": 56.2,
+    "dur": 3.02,
+    "frames": [
+     1595,
+     1686
+    ],
+    "gap_fala_fim": 0
+   },
+   "enquadramento": "MÉDIO",
+   "texto": "Ela ajeitou as orelhas e chamou a amiga para correr.",
+   "acao": "Frida ajeita as orelhas e chama a Luna",
+   "bg": "montanha-russa de biscoitos, nuvens",
+   "cam_origem": "push-in + tilt up",
+   "frida": {
+    "x": 760,
+    "y": 1100,
+    "h": 720,
+    "h_pct": 0.667,
+    "expressao": "proud",
+    "olhar": "←20° para a Luna e depois à direita a chamar (proud)",
+    "nota": "ajeita as duas orelhas 2×, 8f cada"
+   },
+   "luna": {
+    "x": 1420,
+    "y": 1020,
+    "h": 420,
+    "h_pct": 0.389,
+    "expressao": "happy",
+    "olhar": "←15° para a Frida (happy)",
+    "nota": "desfoque 2 px: está atrás do plano de foco"
+   },
+   "luz": {
+    "temp": "quente (5800 K)",
+    "hora": "meio-dia, 12h00",
+    "direcao": "sol alto à direita, sombras curtas e duras",
+    "nota": "nuvens a contraluz por baixo (o carrinho dispara \"para dentro\" delas)"
+   },
+   "camara": {
+    "tipo": "push-in + tilt up",
+    "texto": "push-in 1.00→1.04 · pivot (760,620)",
+    "de": 1,
+    "para": 1.04,
+    "eixo": "pivot (760, 620)",
+    "ease": "ease-out",
+    "extra": null,
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.25,
+    "medio": 0.55,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "normal",
+    "nota": "plano de foco na Frida: a Luna desfocada é intencional, não bug"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 14,
+   "scene": "montanha",
+   "speaker": "frida",
+   "fala": {
+    "t0": 56.2,
+    "t1": 59.44,
+    "dur": 3.24,
+    "frames": [
+     1686,
+     1783
+    ]
+   },
+   "plano": {
+    "t0": 56.2,
+    "t1": 60.42,
+    "dur": 4.22,
+    "frames": [
+     1686,
+     1813
+    ],
+    "gap_fala_fim": 0.98
+   },
+   "enquadramento": "CLOSE",
+   "texto": "Vamos ver quem chega primeiro na bilheteria.",
+   "acao": "fala da Frida: 'vamos ver quem chega primeiro'",
+   "bg": "montanha-russa de biscoitos, nuvens",
+   "cam_origem": "push-in + tilt up",
+   "frida": {
+    "x": 820,
+    "y": 1280,
+    "h": 1000,
+    "h_pct": 0.926,
+    "expressao": "mischievous",
+    "olhar": "quase câmara, -8° (mischievous)",
+    "nota": "sobrancelha sobe 3 px; fala em 3/4"
+   },
+   "luna": {
+    "x": 1480,
+    "y": 1080,
+    "h": 560,
+    "h_pct": 0.519,
+    "expressao": "silly",
+    "olhar": "←18° para a Frida (silly)",
+    "nota": "meio corpo, fora de foco (4 px)"
+   },
+   "luz": {
+    "temp": "quente (5800 K)",
+    "hora": "meio-dia, 12h00",
+    "direcao": "sol alto à direita, sombras curtas e duras",
+    "nota": "nuvens a contraluz por baixo (o carrinho dispara \"para dentro\" delas)"
+   },
+   "camara": {
+    "tipo": "push-in + tilt up",
+    "texto": "push-in 1.02→1.06 · pivot (820,520)",
+    "de": 1.02,
+    "para": 1.06,
+    "eixo": "pivot (820, 520)",
+    "ease": "ease-out",
+    "extra": null,
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.3,
+    "medio": 0.6,
+    "chao": 1,
+    "primeiro_plano": 1.3
+   },
+   "corte": {
+    "entrada": "corte seco no INÍCIO da fala (nunca no fim)",
+    "pacing": "normal",
+    "nota": "cortar no início do diálogo dá 3,24 s limpos de lip-sync — é o plano de fala mais longo do vídeo"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 15,
+   "scene": "montanha",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 60.42,
+    "t1": 63.64,
+    "dur": 3.22,
+    "frames": [
+     1813,
+     1909
+    ]
+   },
+   "plano": {
+    "t0": 60.42,
+    "t1": 63.9,
+    "dur": 3.48,
+    "frames": [
+     1813,
+     1917
+    ],
+    "gap_fala_fim": 0.26
+   },
+   "enquadramento": "GERAL↓",
+   "texto": "As duas subiram correndo no carrinho de osso.",
+   "acao": "as duas a correr para o carrinho",
+   "bg": "montanha-russa de biscoitos, nuvens",
+   "cam_origem": "push-in + tilt up",
+   "frida": {
+    "x": 700,
+    "y": 1000,
+    "h": 380,
+    "h_pct": 0.352,
+    "expressao": "excited",
+    "olhar": "→25°, a correr em 3/4 (excited)",
+    "nota": "corre atrás da Luna, 40 px atrás"
+   },
+   "luna": {
+    "x": 1010,
+    "y": 1000,
+    "h": 330,
+    "h_pct": 0.306,
+    "expressao": "excited",
+    "olhar": "→30°, a correr (excited)",
+    "nota": "à frente da Frida (ela \"ganha\" a corrida)"
+   },
+   "luz": {
+    "temp": "quente (5800 K)",
+    "hora": "meio-dia, 12h00",
+    "direcao": "sol alto à direita, sombras curtas e duras",
+    "nota": "nuvens a contraluz por baixo (o carrinho dispara \"para dentro\" delas)"
+   },
+   "camara": {
+    "tipo": "push-in + tilt up",
+    "texto": "push-in 1.00→1.05 + tilt up 0→40 px",
+    "de": 1,
+    "para": 1.05,
+    "eixo": "tilt up 0→40 px",
+    "ease": "ease-out",
+    "extra": null,
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.2,
+    "medio": 0.55,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "normal",
+    "nota": "o carrinho está no fundo à direita: é o destino visível da corrida"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 16,
+   "scene": "montanha",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 63.9,
+    "t1": 68.04,
+    "dur": 4.14,
+    "frames": [
+     1917,
+     2041
+    ]
+   },
+   "plano": {
+    "t0": 63.9,
+    "t1": 68.62,
+    "dur": 4.72,
+    "frames": [
+     1917,
+     2059
+    ],
+    "gap_fala_fim": 0.58
+   },
+   "enquadramento": "MÉDIO",
+   "texto": "A alavanca puxou com força e o carrinho disparou pelas nuvens.",
+   "acao": "arranque: linhas de velocidade no fundo",
+   "bg": "montanha-russa de biscoitos, nuvens",
+   "cam_origem": "push-in + tilt up",
+   "frida": {
+    "x": 760,
+    "y": 1130,
+    "h": 760,
+    "h_pct": 0.704,
+    "expressao": "scared",
+    "olhar": "para a câmara, +5° (scared)",
+    "nota": "orelhas para trás, boca aberta, segura a barra"
+   },
+   "luna": {
+    "x": 1150,
+    "y": 1130,
+    "h": 660,
+    "h_pct": 0.611,
+    "expressao": "scared",
+    "olhar": "para a câmara (scared)",
+    "nota": "orelhas a voar na horizontal"
+   },
+   "luz": {
+    "temp": "quente (5800 K)",
+    "hora": "meio-dia, 12h00",
+    "direcao": "sol alto à direita, sombras curtas e duras",
+    "nota": "nuvens a contraluz por baixo (o carrinho dispara \"para dentro\" delas)"
+   },
+   "camara": {
+    "tipo": "push-in + tilt up",
+    "texto": "push-in 1.00→1.10 (ease-in, 8f)",
+    "de": 1,
+    "para": 1.1,
+    "eixo": "pivot (960, 640)",
+    "ease": "ease-in (acelera nos primeiros 8f)",
+    "extra": "motion blur 2f a 180° de shutter; linhas de velocidade a 12 px/f",
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.1,
+    "medio": 0.35,
+    "chao": 1,
+    "primeiro_plano": 1.4
+   },
+   "corte": {
+    "entrada": "corte seco + 4f de whip",
+    "pacing": "staccato",
+    "nota": "sem corte interno: a aceleração é feita no mov e no blur, não na montagem"
+   },
+   "overlay": "",
+   "hero": true,
+   "hero_nota": "É o único pico de adrenalina real do vídeo: dois pares de olhos abertos e orelhas para trás valem mais que qualquer efeito, e é o frame que segura quem já ia sair."
+  },
+  {
+   "i": 17,
+   "scene": "montanha",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 68.62,
+    "t1": 73.96,
+    "dur": 5.34,
+    "frames": [
+     2059,
+     2219
+    ]
+   },
+   "plano": {
+    "t0": 68.62,
+    "t1": 74.26,
+    "dur": 5.64,
+    "frames": [
+     2059,
+     2228
+    ],
+    "gap_fala_fim": 0.3
+   },
+   "enquadramento": "MÉDIO",
+   "texto": "A Luna latiu de emoção enquanto o vento balançava suas orelhinhas compridas de Dachun.",
+   "acao": "Luna a latir, orelhas a voar",
+   "bg": "montanha-russa de biscoitos, nuvens",
+   "cam_origem": "push-in + tilt up",
+   "frida": {
+    "x": 1250,
+    "y": 1050,
+    "h": 520,
+    "h_pct": 0.481,
+    "expressao": "excited",
+    "olhar": "←20° para a Luna (excited)",
+    "nota": "ri com a boca aberta"
+   },
+   "luna": {
+    "x": 780,
+    "y": 1110,
+    "h": 640,
+    "h_pct": 0.593,
+    "expressao": "silly",
+    "olhar": "para a câmara -4°, a latir (silly)",
+    "nota": "orelhas com 2 oscilações de 0,5 s"
+   },
+   "luz": {
+    "temp": "quente (5800 K)",
+    "hora": "meio-dia, 12h00",
+    "direcao": "sol alto à direita, sombras curtas e duras",
+    "nota": "nuvens a contraluz por baixo (o carrinho dispara \"para dentro\" delas)"
+   },
+   "camara": {
+    "tipo": "push-in + tilt up",
+    "texto": "push-in 1.02→1.08 + tilt up 0→50 px",
+    "de": 1.02,
+    "para": 1.08,
+    "eixo": "tilt up 0→50 px",
+    "ease": "ease-out",
+    "extra": null,
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.15,
+    "medio": 0.45,
+    "chao": 1,
+    "primeiro_plano": 1.3
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "normal",
+    "nota": "3 \"batidas\" de orelha a 1,6 s marcam o ritmo interno do plano"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 18,
+   "scene": "montanha",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 74.26,
+    "t1": 75.94,
+    "dur": 1.68,
+    "frames": [
+     2228,
+     2278
+    ]
+   },
+   "plano": {
+    "t0": 74.26,
+    "t1": 77.4,
+    "dur": 3.14,
+    "frames": [
+     2228,
+     2322
+    ],
+    "gap_fala_fim": 1.46
+   },
+   "enquadramento": "MÉDIO-2",
+   "texto": "Que velocidade maluca!",
+   "acao": "texto 'que velocidade maluca!'",
+   "bg": "montanha-russa de biscoitos, nuvens",
+   "cam_origem": "push-in + tilt up",
+   "frida": {
+    "x": 520,
+    "y": 1180,
+    "h": 860,
+    "h_pct": 0.796,
+    "expressao": "excited",
+    "olhar": "↑15° à direita (excited)",
+    "nota": "só cabeça e patas no canto inferior esquerdo"
+   },
+   "luna": {
+    "x": 1400,
+    "y": 1180,
+    "h": 780,
+    "h_pct": 0.722,
+    "expressao": "excited",
+    "olhar": "↑15° à esquerda (excited)",
+    "nota": "canto inferior direito, espelhada"
+   },
+   "luz": {
+    "temp": "quente (5800 K)",
+    "hora": "meio-dia, 12h00",
+    "direcao": "sol alto à direita, sombras curtas e duras",
+    "nota": "nuvens a contraluz por baixo (o carrinho dispara \"para dentro\" delas)"
+   },
+   "camara": {
+    "tipo": "push-in + tilt up",
+    "texto": "push-in 1.06→1.10",
+    "de": 1.06,
+    "para": 1.1,
+    "eixo": "pivot (960, 600)",
+    "ease": "ease-in",
+    "extra": null,
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.1,
+    "medio": 0.3,
+    "chao": 1,
+    "primeiro_plano": 1.4
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "staccato",
+    "nota": "plano mais curto da cena (1,68 s): é o \"grito\" da montanha-russa"
+   },
+   "overlay": "\"QUE VELOCIDADE MALUCA!\" em 3 blocos a entrar com squash (0,7→1,2→1,0)",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 19,
+   "scene": "roda",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 77.4,
+    "t1": 82.78,
+    "dur": 5.38,
+    "frames": [
+     2322,
+     2483
+    ]
+   },
+   "plano": {
+    "t0": 77.4,
+    "t1": 82.78,
+    "dur": 5.38,
+    "frames": [
+     2322,
+     2483
+    ],
+    "gap_fala_fim": 0
+   },
+   "enquadramento": "GERAL↓",
+   "texto": "Depois da descida radical, pararam em frente a roda gigante de potinhos de ração.",
+   "acao": "roda gigante de potinhos de racao",
+   "bg": "roda gigante de tigelas, tarde",
+   "cam_origem": "tilt up lento",
+   "frida": {
+    "x": 640,
+    "y": 1020,
+    "h": 390,
+    "h_pct": 0.361,
+    "expressao": "calm",
+    "olhar": "↑40° à direita, para a roda (calm)",
+    "nota": "ainda com o pelo revoltado da descida"
+   },
+   "luna": {
+    "x": 1090,
+    "y": 1020,
+    "h": 340,
+    "h_pct": 0.315,
+    "expressao": "curious",
+    "olhar": "↑45° à direita (curious)",
+    "nota": "cabeça inclinada 8°, uma pata no ar"
+   },
+   "luz": {
+    "temp": "quente-dourada (4600 K)",
+    "hora": "tarde, 16h30",
+    "direcao": "sol baixo à esquerda, contraluz",
+    "nota": "céu pêssego→azul; a roda fica em contraluz e as cabines brilham por dentro"
+   },
+   "camara": {
+    "tipo": "tilt up lento",
+    "texto": "tilt up 0→90 px (17 px/s)",
+    "de": 1,
+    "para": 1,
+    "eixo": "tilt up 0→90 px, lento (17 px/s)",
+    "ease": "linear",
+    "extra": null,
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.15,
+    "medio": 0.45,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "respiro",
+    "nota": "a câmara sobe devagar: é a chegada, não a ação"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 20,
+   "scene": "roda",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 82.78,
+    "t1": 87.2,
+    "dur": 4.42,
+    "frames": [
+     2483,
+     2616
+    ]
+   },
+   "plano": {
+    "t0": 82.78,
+    "t1": 87.64,
+    "dur": 4.86,
+    "frames": [
+     2483,
+     2629
+    ],
+    "gap_fala_fim": 0.44
+   },
+   "enquadramento": "MÉDIO",
+   "texto": "Cada cabine parecia uma tigela colorida cheia de bolinhas a borcar.",
+   "acao": "cabines em forma de tigela colorida",
+   "bg": "roda gigante de tigelas, tarde",
+   "cam_origem": "tilt up lento",
+   "frida": {
+    "x": 800,
+    "y": 1120,
+    "h": 620,
+    "h_pct": 0.574,
+    "expressao": "surprised",
+    "olhar": "↑30° à direita, para a cabine (surprised)",
+    "nota": "boca em \"o\" 6f"
+   },
+   "luna": {
+    "x": 1230,
+    "y": 1120,
+    "h": 540,
+    "h_pct": 0.5,
+    "expressao": "surprised",
+    "olhar": "↑33° à direita, segue a cabine (surprised)",
+    "nota": "cabeça roda 12° no sentido da cabine"
+   },
+   "luz": {
+    "temp": "quente-dourada (4600 K)",
+    "hora": "tarde, 16h30",
+    "direcao": "sol baixo à esquerda, contraluz",
+    "nota": "céu pêssego→azul; a roda fica em contraluz e as cabines brilham por dentro"
+   },
+   "camara": {
+    "tipo": "tilt up lento",
+    "texto": "tilt up 40→90 px (herda o plano 19)",
+    "de": 1,
+    "para": 1,
+    "eixo": "tilt up 40→90 px (herda o tilt do plano 19, sem reset)",
+    "ease": "linear",
+    "extra": null,
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.15,
+    "medio": 0.45,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "normal",
+    "nota": "continuidade de eixo: o tilt continua do plano anterior, a câmara nunca \"volta atrás\""
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 21,
+   "scene": "roda",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 87.64,
+    "t1": 90.18,
+    "dur": 2.54,
+    "frames": [
+     2629,
+     2705
+    ]
+   },
+   "plano": {
+    "t0": 87.64,
+    "t1": 90.88,
+    "dur": 3.24,
+    "frames": [
+     2629,
+     2726
+    ],
+    "gap_fala_fim": 0.7
+   },
+   "enquadramento": "CLOSE",
+   "texto": "A Frida suspirou o babando de vontade.",
+   "acao": "Frida a babar de vontade",
+   "bg": "roda gigante de tigelas, tarde",
+   "cam_origem": "tilt up lento",
+   "frida": {
+    "x": 780,
+    "y": 1300,
+    "h": 1020,
+    "h_pct": 0.944,
+    "expressao": "loved",
+    "olhar": "↑35° à direita (loved)",
+    "nota": "3 oscilações do fio de baba, 0,8 s cada"
+   },
+   "luna": {
+    "x": 1420,
+    "y": 1120,
+    "h": 600,
+    "h_pct": 0.556,
+    "expressao": "silly",
+    "olhar": "←18° para a Frida (silly)",
+    "nota": "ri, uma pata na boca"
+   },
+   "luz": {
+    "temp": "quente-dourada (4600 K)",
+    "hora": "tarde, 16h30",
+    "direcao": "sol baixo à esquerda, contraluz",
+    "nota": "céu pêssego→azul; a roda fica em contraluz e as cabines brilham por dentro"
+   },
+   "camara": {
+    "tipo": "tilt up lento",
+    "texto": "tilt up 0→20 px residual",
+    "de": 1,
+    "para": 1,
+    "eixo": "tilt up residual 0→20 px",
+    "ease": "linear",
+    "extra": null,
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.3,
+    "medio": 0.6,
+    "chao": 1,
+    "primeiro_plano": 1.3
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "staccato",
+    "nota": "gag curta: entra, baba, sai. 2,54 s"
+   },
+   "overlay": "",
+   "hero": true,
+   "hero_nota": "Gag físico de um segundo: o fio de baba a brilhar em contraluz é o plano que faz rir — e é o único close da Frida entre a fala dela (56,20 s) e o abraço final."
+  },
+  {
+   "i": 22,
+   "scene": "roda",
+   "speaker": "frida",
+   "fala": {
+    "t0": 90.88,
+    "t1": 93.2,
+    "dur": 2.32,
+    "frames": [
+     2726,
+     2796
+    ]
+   },
+   "plano": {
+    "t0": 90.88,
+    "t1": 94.22,
+    "dur": 3.34,
+    "frames": [
+     2726,
+     2827
+    ],
+    "gap_fala_fim": 1.02
+   },
+   "enquadramento": "MÉDIO↑",
+   "texto": "Dá para ver o parque inteiro lá de cima.",
+   "acao": "fala da Frida: 'da para ver o parque inteiro'",
+   "bg": "roda gigante de tigelas, tarde",
+   "cam_origem": "tilt up lento",
+   "frida": {
+    "x": 820,
+    "y": 1140,
+    "h": 760,
+    "h_pct": 0.704,
+    "expressao": "happy",
+    "olhar": "↑40°, para o parque inteiro (happy)",
+    "nota": "aponta para cima com a pata"
+   },
+   "luna": {
+    "x": 1180,
+    "y": 1090,
+    "h": 600,
+    "h_pct": 0.556,
+    "expressao": "excited",
+    "olhar": "↑35° (excited)",
+    "nota": "patas na borda da cabine, inclinada para fora 8°"
+   },
+   "luz": {
+    "temp": "quente-dourada (4600 K)",
+    "hora": "tarde, 16h30",
+    "direcao": "sol baixo à esquerda, contraluz",
+    "nota": "céu pêssego→azul; a roda fica em contraluz e as cabines brilham por dentro"
+   },
+   "camara": {
+    "tipo": "tilt up lento",
+    "texto": "tilt up 20→50 px + push 1.00→1.03",
+    "de": 1,
+    "para": 1.03,
+    "eixo": "tilt up 20→50 px (nunca desce)",
+    "ease": "ease-out",
+    "extra": null,
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.2,
+    "medio": 0.5,
+    "chao": 1,
+    "primeiro_plano": 1.25
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "normal",
+    "nota": "a cena inteira é uma subida contínua: 0→50 px de tilt ao longo de 4 planos"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 23,
+   "scene": "carrossel",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 94.22,
+    "t1": 97.92,
+    "dur": 3.7,
+    "frames": [
+     2827,
+     2938
+    ]
+   },
+   "plano": {
+    "t0": 94.22,
+    "t1": 98.32,
+    "dur": 4.1,
+    "frames": [
+     2827,
+     2950
+    ],
+    "gap_fala_fim": 0.4
+   },
+   "enquadramento": "GERAL",
+   "texto": "A próxima parada foi o carrossel mágico do parque.",
+   "acao": "carrossel magico a girar",
+   "bg": "carrossel com pelucias, luzes quentes",
+   "cam_origem": "orbita curta",
+   "frida": {
+    "x": 640,
+    "y": 1020,
+    "h": 380,
+    "h_pct": 0.352,
+    "expressao": "happy",
+    "olhar": "→20°, para o carrossel (happy)",
+    "nota": "braço a apontar"
+   },
+   "luna": {
+    "x": 1060,
+    "y": 1020,
+    "h": 330,
+    "h_pct": 0.306,
+    "expressao": "happy",
+    "olhar": "→22° (happy)",
+    "nota": "salta 1× ao ver o carrossel"
+   },
+   "luz": {
+    "temp": "quente dupla (3400 K bulbos + sol 4400 K)",
+    "hora": "tarde, 17h30",
+    "direcao": "sol baixo atrás + 24 bulbos quentes no teto do carrossel",
+    "nota": "god rays suaves; pelúcias com rim light; é a cena mais \"doce\" do vídeo"
+   },
+   "camara": {
+    "tipo": "orbita curta",
+    "texto": "órbita 0→7° · pivot carrossel",
+    "de": 1,
+    "para": 1.03,
+    "eixo": "órbita curta 0→7°, pivot no centro do carrossel (960, 640)",
+    "ease": "ease-in-out",
+    "extra": null,
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.2,
+    "medio": 0.55,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "normal",
+    "nota": "o carrossel a girar já dá movimento: a câmara só acompanha 7°"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 24,
+   "scene": "carrossel",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 98.32,
+    "t1": 104.74,
+    "dur": 6.42,
+    "frames": [
+     2950,
+     3142
+    ]
+   },
+   "plano": {
+    "t0": 98.32,
+    "t1": 105.2,
+    "dur": 6.88,
+    "frames": [
+     2950,
+     3156
+    ],
+    "gap_fala_fim": 0.46
+   },
+   "enquadramento": "CONJ",
+   "texto": "Em vez de cavalos, os bichinhos giravam em cima de almofadas gigantes e pelúcias de roedores de brinquedo.",
+   "acao": "almofadas gigantes e pelucias de roedores",
+   "bg": "carrossel com pelucias, luzes quentes",
+   "cam_origem": "orbita curta",
+   "frida": {
+    "x": 760,
+    "y": 1090,
+    "h": 600,
+    "h_pct": 0.556,
+    "expressao": "excited",
+    "olhar": "→10° (excited)",
+    "nota": "roda em cima da almofada aos 4,6 s"
+   },
+   "luna": {
+    "x": 1180,
+    "y": 1090,
+    "h": 520,
+    "h_pct": 0.481,
+    "expressao": "loved",
+    "olhar": "para a Frida (loved)",
+    "nota": "abraça a pelúcia de roedor aos 2,0 s"
+   },
+   "luz": {
+    "temp": "quente dupla (3400 K bulbos + sol 4400 K)",
+    "hora": "tarde, 17h30",
+    "direcao": "sol baixo atrás + 24 bulbos quentes no teto do carrossel",
+    "nota": "god rays suaves; pelúcias com rim light; é a cena mais \"doce\" do vídeo"
+   },
+   "camara": {
+    "tipo": "orbita curta",
+    "texto": "órbita 7→14° + push 1.03→1.05",
+    "de": 1.03,
+    "para": 1.05,
+    "eixo": "órbita 7→14°, lento",
+    "ease": "linear",
+    "extra": "almofadas passam em primeiro plano a 0,9× com 3 px de desfoque",
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.2,
+    "medio": 0.55,
+    "chao": 1,
+    "primeiro_plano": 1.35
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "respiro",
+    "nota": "6,42 s: 2 marcas de ação obrigatórias (abraço 2,0 s, volta 4,6 s)"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 25,
+   "scene": "carrossel",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 105.2,
+    "t1": 108.32,
+    "dur": 3.12,
+    "frames": [
+     3156,
+     3250
+    ]
+   },
+   "plano": {
+    "t0": 105.2,
+    "t1": 108.74,
+    "dur": 3.54,
+    "frames": [
+     3156,
+     3262
+    ],
+    "gap_fala_fim": 0.42
+   },
+   "enquadramento": "CLOSE",
+   "texto": "A Luninha tentou morder o ar de tanta fofura.",
+   "acao": "Luna tenta morder o ar",
+   "bg": "carrossel com pelucias, luzes quentes",
+   "cam_origem": "orbita curta",
+   "frida": {
+    "x": 1480,
+    "y": 1120,
+    "h": 620,
+    "h_pct": 0.574,
+    "expressao": "silly",
+    "olhar": "←18° para a Luna (silly)",
+    "nota": "desfoque 4 px"
+   },
+   "luna": {
+    "x": 900,
+    "y": 1250,
+    "h": 980,
+    "h_pct": 0.907,
+    "expressao": "silly",
+    "olhar": "↑15° à direita, a morder o ar (silly)",
+    "nota": "3 bocadas de 12f, 26 px de avanço"
+   },
+   "luz": {
+    "temp": "quente dupla (3400 K bulbos + sol 4400 K)",
+    "hora": "tarde, 17h30",
+    "direcao": "sol baixo atrás + 24 bulbos quentes no teto do carrossel",
+    "nota": "god rays suaves; pelúcias com rim light; é a cena mais \"doce\" do vídeo"
+   },
+   "camara": {
+    "tipo": "orbita curta",
+    "texto": "órbita 14→18° + push 1.05→1.07",
+    "de": 1.05,
+    "para": 1.07,
+    "eixo": "órbita 14→18°",
+    "ease": "linear",
+    "extra": null,
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.3,
+    "medio": 0.6,
+    "chao": 1,
+    "primeiro_plano": 1.3
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "staccato",
+    "nota": "as 3 bocadas dão o ritmo: 1 por cada 1,04 s"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 26,
+   "scene": "carrossel",
+   "speaker": "luna",
+   "fala": {
+    "t0": 108.74,
+    "t1": 110.78,
+    "dur": 2.04,
+    "frames": [
+     3262,
+     3323
+    ]
+   },
+   "plano": {
+    "t0": 108.74,
+    "t1": 111.84,
+    "dur": 3.1,
+    "frames": [
+     3262,
+     3355
+    ],
+    "gap_fala_fim": 1.06
+   },
+   "enquadramento": "MÉDIO",
+   "texto": "Girar assim dá uma tontura boa.",
+   "acao": "fala da Luna: 'girar da uma tontura boa'",
+   "bg": "carrossel com pelucias, luzes quentes",
+   "cam_origem": "orbita curta",
+   "frida": {
+    "x": 1420,
+    "y": 1120,
+    "h": 560,
+    "h_pct": 0.519,
+    "expressao": "happy",
+    "olhar": "←15° para a Luna (happy)",
+    "nota": "desfoque 3 px"
+   },
+   "luna": {
+    "x": 960,
+    "y": 1160,
+    "h": 760,
+    "h_pct": 0.704,
+    "expressao": "confused",
+    "olhar": "para a câmara, -5°, olhos em espiral (confused)",
+    "nota": "cabeça oscila 6°, 2 voltas de espiral"
+   },
+   "luz": {
+    "temp": "quente dupla (3400 K bulbos + sol 4400 K)",
+    "hora": "tarde, 17h30",
+    "direcao": "sol baixo atrás + 24 bulbos quentes no teto do carrossel",
+    "nota": "god rays suaves; pelúcias com rim light; é a cena mais \"doce\" do vídeo"
+   },
+   "camara": {
+    "tipo": "orbita curta",
+    "texto": "órbita 18→22° + tilt 8 px + wobble 4 px",
+    "de": 1,
+    "para": 1.02,
+    "eixo": "órbita 18→22° + tilt 8 px",
+    "ease": "linear",
+    "extra": "wobble de 4 px na câmara, 2 ciclos (a \"tontura\" é da câmara também)",
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.25,
+    "medio": 0.55,
+    "chao": 1,
+    "primeiro_plano": 1.25
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "staccato",
+    "nota": "2,04 s: fala curta da Luna, plano curto"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 27,
+   "scene": "bolinhas",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 111.84,
+    "t1": 117.42,
+    "dur": 5.58,
+    "frames": [
+     3355,
+     3523
+    ]
+   },
+   "plano": {
+    "t0": 111.84,
+    "t1": 117.64,
+    "dur": 5.8,
+    "frames": [
+     3355,
+     3529
+    ],
+    "gap_fala_fim": 0.22
+   },
+   "enquadramento": "GERAL",
+   "texto": "O melhor de tudo foi a enorme piscina cheia de milhares de bolinhas de tênis amarelas.",
+   "acao": "piscina de bolinhas de tenis amarelas",
+   "bg": "piscina de bolinhas amarelas",
+   "cam_origem": "fixa, zoom leve",
+   "frida": {
+    "x": 700,
+    "y": 1010,
+    "h": 370,
+    "h_pct": 0.343,
+    "expressao": "surprised",
+    "olhar": "↓20° à direita, para a piscina (surprised)",
+    "nota": "boca aberta 8f"
+   },
+   "luna": {
+    "x": 1100,
+    "y": 1010,
+    "h": 320,
+    "h_pct": 0.296,
+    "expressao": "surprised",
+    "olhar": "↓25° à direita (surprised)",
+    "nota": "uma pata a testar a borda"
+   },
+   "luz": {
+    "temp": "quente rasante (4200 K)",
+    "hora": "fim de tarde, 18h15",
+    "direcao": "sol rasante à direita, 10° acima do chão",
+    "nota": "amarelo das bolinhas saturado ao máximo; contraluz atravessa-as (semi-translúcidas)"
+   },
+   "camara": {
+    "tipo": "fixa, zoom leve",
+    "texto": "fixa + zoom 1.00→1.03",
+    "de": 1,
+    "para": 1.03,
+    "eixo": "fixa + zoom leve (uniforme)",
+    "ease": "linear",
+    "extra": null,
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.15,
+    "medio": 0.45,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "respiro",
+    "nota": "plano de estabelecer: a piscina ocupa o terço inferior inteiro"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 28,
+   "scene": "bolinhas",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 117.64,
+    "t1": 121.36,
+    "dur": 3.72,
+    "frames": [
+     3529,
+     3641
+    ]
+   },
+   "plano": {
+    "t0": 117.64,
+    "t1": 121.76,
+    "dur": 4.12,
+    "frames": [
+     3529,
+     3653
+    ],
+    "gap_fala_fim": 0.4
+   },
+   "enquadramento": "MÉDIO",
+   "texto": "A Fridoka deu um pulo corajoso e mergulhou de barriga.",
+   "acao": "Frida mergulha de barriga",
+   "bg": "piscina de bolinhas amarelas",
+   "cam_origem": "fixa, zoom leve",
+   "frida": {
+    "x": 780,
+    "y": 1000,
+    "h": 420,
+    "h_pct": 0.389,
+    "expressao": "excited",
+    "olhar": "↓10° à esquerda (excited)",
+    "nota": "corpo em prancha; arco de 260 px em 26f"
+   },
+   "luna": {
+    "x": 1240,
+    "y": 1050,
+    "h": 380,
+    "h_pct": 0.352,
+    "expressao": "excited",
+    "olhar": "para a Frida (excited)",
+    "nota": "ri; leva as patas à cara"
+   },
+   "luz": {
+    "temp": "quente rasante (4200 K)",
+    "hora": "fim de tarde, 18h15",
+    "direcao": "sol rasante à direita, 10° acima do chão",
+    "nota": "amarelo das bolinhas saturado ao máximo; contraluz atravessa-as (semi-translúcidas)"
+   },
+   "camara": {
+    "tipo": "fixa, zoom leve",
+    "texto": "fixa + zoom 1.03→1.05",
+    "de": 1.03,
+    "para": 1.05,
+    "eixo": "fixa + zoom leve",
+    "ease": "linear",
+    "extra": "não seguir o corpo: a queda cabe no quadro sem pan",
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.2,
+    "medio": 0.5,
+    "chao": 1,
+    "primeiro_plano": 1.3
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "normal",
+    "nota": "o splash fica para o fim do plano, para o corte seguinte colher o resultado"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 29,
+   "scene": "bolinhas",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 121.76,
+    "t1": 125.66,
+    "dur": 3.9,
+    "frames": [
+     3653,
+     3770
+    ]
+   },
+   "plano": {
+    "t0": 121.76,
+    "t1": 127.02,
+    "dur": 5.26,
+    "frames": [
+     3653,
+     3811
+    ],
+    "gap_fala_fim": 1.36
+   },
+   "enquadramento": "MÉDIO↓",
+   "texto": "Ela sumiu no meio de tantas bolinhas e só apareceu com uma na boca.",
+   "acao": "Frida aparece com uma bolinha na boca",
+   "bg": "piscina de bolinhas amarelas",
+   "cam_origem": "fixa, zoom leve",
+   "frida": {
+    "x": 860,
+    "y": 1300,
+    "h": 700,
+    "h_pct": 0.648,
+    "expressao": "silly",
+    "olhar": "para a câmara, 0° (silly)",
+    "nota": "só a cabeça e as orelhas de fora do monte de bolinhas"
+   },
+   "luna": {
+    "x": 1250,
+    "y": 1090,
+    "h": 480,
+    "h_pct": 0.444,
+    "expressao": "happy",
+    "olhar": "para a Frida (happy)",
+    "nota": "2 saltos, 12f cada"
+   },
+   "luz": {
+    "temp": "quente rasante (4200 K)",
+    "hora": "fim de tarde, 18h15",
+    "direcao": "sol rasante à direita, 10° acima do chão",
+    "nota": "amarelo das bolinhas saturado ao máximo; contraluz atravessa-as (semi-translúcidas)"
+   },
+   "camara": {
+    "tipo": "fixa, zoom leve",
+    "texto": "fixa + zoom 1.05→1.06",
+    "de": 1.05,
+    "para": 1.06,
+    "eixo": "fixa + zoom leve",
+    "ease": "linear",
+    "extra": null,
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.25,
+    "medio": 0.55,
+    "chao": 1,
+    "primeiro_plano": 1.35
+   },
+   "corte": {
+    "entrada": "corte seco + 6f de hold antes de ela emergir",
+    "pacing": "normal",
+    "nota": "o \"hold\" de 6f é o suspense dentro do plano; não cortar antes"
+   },
+   "overlay": "",
+   "hero": true,
+   "hero_nota": "Pay-off cómico da piscina: a bolinha na boca faz de coroa e o plano é o mais \"brinquedo\" do vídeo — é a imagem que a criança imita depois."
+  },
+  {
+   "i": 30,
+   "scene": "tunel",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 127.02,
+    "t1": 131.68,
+    "dur": 4.66,
+    "frames": [
+     3811,
+     3950
+    ]
+   },
+   "plano": {
+    "t0": 127.02,
+    "t1": 132.22,
+    "dur": 5.2,
+    "frames": [
+     3811,
+     3967
+    ],
+    "gap_fala_fim": 0.54
+   },
+   "enquadramento": "GERAL",
+   "texto": "Elas correram para o túnel de grama artificial cheio de luzinhas coloridas.",
+   "acao": "tunel de grama com luzinhas",
+   "bg": "tunel de grama com luzinhas",
+   "cam_origem": "travelling lateral",
+   "frida": {
+    "x": 780,
+    "y": 1010,
+    "h": 380,
+    "h_pct": 0.352,
+    "expressao": "happy",
+    "olhar": "→30°, para o túnel (happy)",
+    "nota": "corre em 3/4; orelhas a bater"
+   },
+   "luna": {
+    "x": 1060,
+    "y": 1010,
+    "h": 330,
+    "h_pct": 0.306,
+    "expressao": "excited",
+    "olhar": "→35° (excited)",
+    "nota": "à frente, rabo em hélice"
+   },
+   "luz": {
+    "temp": "fria com acentos quentes (hora azul + luzinhas)",
+    "hora": "hora azul, 19h00",
+    "direcao": "ambiente azul 8000 K + luzinhas ciano/magenta do túnel a iluminar o chão",
+    "nota": "único plano do vídeo com luz fria dominante — use-se como \"respiro\" cromático"
+   },
+   "camara": {
+    "tipo": "travelling lateral",
+    "texto": "travelling 0→260 px dir",
+    "de": 1,
+    "para": 1,
+    "eixo": "travelling lateral 0→260 px (dir)",
+    "ease": "linear",
+    "extra": "3 camadas: árvores 0,2× / túnel 0,5× / chão 1×",
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.2,
+    "medio": 0.5,
+    "chao": 1,
+    "primeiro_plano": 1.15
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "normal",
+    "nota": "o travelling é horizontal: nunca juntar tilt ou zoom, senão perde-se o \"corredor\""
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 31,
+   "scene": "tunel",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 132.22,
+    "t1": 137,
+    "dur": 4.78,
+    "frames": [
+     3967,
+     4110
+    ]
+   },
+   "plano": {
+    "t0": 132.22,
+    "t1": 137,
+    "dur": 4.78,
+    "frames": [
+     3967,
+     4110
+    ],
+    "gap_fala_fim": 0
+   },
+   "enquadramento": "MÉDIO",
+   "texto": "A Luna entrou correndo de um lado e saiu do outro com o focinho todo sujo de terra.",
+   "acao": "Luna sai com o focinho sujo de terra",
+   "bg": "tunel de grama com luzinhas",
+   "cam_origem": "travelling lateral",
+   "frida": {
+    "x": 1380,
+    "y": 1040,
+    "h": 460,
+    "h_pct": 0.426,
+    "expressao": "surprised",
+    "olhar": "←20° para a Luna (surprised)",
+    "nota": "recua 20 px, orelhas sobem"
+   },
+   "luna": {
+    "x": 960,
+    "y": 1080,
+    "h": 560,
+    "h_pct": 0.519,
+    "expressao": "silly",
+    "olhar": "para a câmara, -8° (silly)",
+    "nota": "entra pela esquerda, sai pela direita; 3 manchas de terra aparecem no focinho"
+   },
+   "luz": {
+    "temp": "fria com acentos quentes (hora azul + luzinhas)",
+    "hora": "hora azul, 19h00",
+    "direcao": "ambiente azul 8000 K + luzinhas ciano/magenta do túnel a iluminar o chão",
+    "nota": "único plano do vídeo com luz fria dominante — use-se como \"respiro\" cromático"
+   },
+   "camara": {
+    "tipo": "travelling lateral",
+    "texto": "travelling 260→520 px dir (contínuo)",
+    "de": 1,
+    "para": 1,
+    "eixo": "travelling 260→520 px (continua o anterior)",
+    "ease": "linear",
+    "extra": "túnel passa em primeiro plano a 1,6×, fora de foco",
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.2,
+    "medio": 0.5,
+    "chao": 1,
+    "primeiro_plano": 1.5
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "normal",
+    "nota": "a continuidade do travelling faz o corte parecer invisível — é o objetivo"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 32,
+   "scene": "tunel",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 137,
+    "t1": 140.7,
+    "dur": 3.7,
+    "frames": [
+     4110,
+     4221
+    ]
+   },
+   "plano": {
+    "t0": 137,
+    "t1": 141.64,
+    "dur": 4.64,
+    "frames": [
+     4110,
+     4249
+    ],
+    "gap_fala_fim": 0.94
+   },
+   "enquadramento": "MÉDIO↓",
+   "texto": "Parecia uma topeira muito charmosa e brincalhona.",
+   "acao": "Luna como 'topeira charmosa'",
+   "bg": "tunel de grama com luzinhas",
+   "cam_origem": "travelling lateral",
+   "frida": {
+    "x": 1330,
+    "y": 1060,
+    "h": 560,
+    "h_pct": 0.519,
+    "expressao": "happy",
+    "olhar": "←20° para a Luna (happy)",
+    "nota": "ri, mão na barriga"
+   },
+   "luna": {
+    "x": 900,
+    "y": 1120,
+    "h": 700,
+    "h_pct": 0.648,
+    "expressao": "proud",
+    "olhar": "para a câmara, -2°, queixo levantado (proud)",
+    "nota": "pose de \"topeira charmosa\": sentada, focinho sujo"
+   },
+   "luz": {
+    "temp": "fria com acentos quentes (hora azul + luzinhas)",
+    "hora": "hora azul, 19h00",
+    "direcao": "ambiente azul 8000 K + luzinhas ciano/magenta do túnel a iluminar o chão",
+    "nota": "único plano do vídeo com luz fria dominante — use-se como \"respiro\" cromático"
+   },
+   "camara": {
+    "tipo": "travelling lateral",
+    "texto": "travelling 520→700 px (ease-out) + push 1.00→1.03",
+    "de": 1,
+    "para": 1.03,
+    "eixo": "travelling 520→700 px (abranda, ease-out) + push-in",
+    "ease": "ease-out",
+    "extra": "a câmara \"trava\" na Luna: o travelling morre aqui",
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.25,
+    "medio": 0.55,
+    "chao": 1,
+    "primeiro_plano": 1.25
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "respiro",
+    "nota": "rim duplo (azul por trás, luzinhas quentes por baixo): é o retrato do vídeo"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 33,
+   "scene": "espelhos",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 141.64,
+    "t1": 146.02,
+    "dur": 4.38,
+    "frames": [
+     4249,
+     4381
+    ]
+   },
+   "plano": {
+    "t0": 141.64,
+    "t1": 146.26,
+    "dur": 4.62,
+    "frames": [
+     4249,
+     4388
+    ],
+    "gap_fala_fim": 0.24
+   },
+   "enquadramento": "GERAL",
+   "texto": "Na hora de ir embora, passaram na casa dos espelhos do parque.",
+   "acao": "casa dos espelhos",
+   "bg": "casa dos espelhos, reflexos",
+   "cam_origem": "fixa com wobble",
+   "frida": {
+    "x": 720,
+    "y": 1030,
+    "h": 400,
+    "h_pct": 0.37,
+    "expressao": "calm",
+    "olhar": "→15°, para a entrada (calm)",
+    "nota": "cauda baixa, passo lento"
+   },
+   "luna": {
+    "x": 1120,
+    "y": 1030,
+    "h": 350,
+    "h_pct": 0.324,
+    "expressao": "curious",
+    "olhar": "→20° (curious)",
+    "nota": "fareja o ar, cabeça inclinada"
+   },
+   "luz": {
+    "temp": "fria (4500 K)",
+    "hora": "noite a cair, 19h40",
+    "direcao": "luz fria verde-azulada da porta; spotlight quente reservado ao reflexo",
+    "nota": "o reflexo é sempre mais quente que o original — é a pista de que \"é outro\""
+   },
+   "camara": {
+    "tipo": "fixa com wobble",
+    "texto": "fixa + wobble 3 px (só fundo/reflexo)",
+    "de": 1,
+    "para": 1.02,
+    "eixo": "fixa com wobble de 3 px, 2 ciclos de 1,18 s",
+    "ease": "linear",
+    "extra": "o wobble aplica-se SÓ ao fundo e ao reflexo — nunca à cara da Frida",
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.2,
+    "medio": 0.5,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "respiro",
+    "nota": "a cena dos espelhos é a mais escura: dar 2 s antes de qualquer gag"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 34,
+   "scene": "espelhos",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 146.26,
+    "t1": 151.08,
+    "dur": 4.82,
+    "frames": [
+     4388,
+     4532
+    ]
+   },
+   "plano": {
+    "t0": 146.26,
+    "t1": 151.62,
+    "dur": 5.36,
+    "frames": [
+     4388,
+     4549
+    ],
+    "gap_fala_fim": 0.54
+   },
+   "enquadramento": "MÉDIO",
+   "texto": "A Frida olhou para o reflexo e viu um bulldog gigante com cabeça de melancia.",
+   "acao": "reflexo com cabeca de melancia",
+   "bg": "casa dos espelhos, reflexos",
+   "cam_origem": "fixa com wobble",
+   "frida": {
+    "x": 900,
+    "y": 1100,
+    "h": 640,
+    "h_pct": 0.593,
+    "expressao": "surprised",
+    "olhar": "para a câmara, 0°, a olhar o reflexo (surprised)",
+    "nota": "não pisca durante 1,5 s"
+   },
+   "luna": {
+    "x": 1300,
+    "y": 1060,
+    "h": 520,
+    "h_pct": 0.481,
+    "expressao": "silly",
+    "olhar": "Frida → reflexo, alterna 3× (silly)",
+    "nota": "pata na boca a abafar o riso"
+   },
+   "luz": {
+    "temp": "fria (4500 K)",
+    "hora": "noite a cair, 19h40",
+    "direcao": "luz fria verde-azulada da porta; spotlight quente reservado ao reflexo",
+    "nota": "o reflexo é sempre mais quente que o original — é a pista de que \"é outro\""
+   },
+   "camara": {
+    "tipo": "fixa com wobble",
+    "texto": "fixa + wobble 4 px no reflexo + push 1.02→1.05",
+    "de": 1.02,
+    "para": 1.05,
+    "eixo": "fixa com wobble de 4 px no reflexo, 2 ciclos",
+    "ease": "ease-out",
+    "extra": "reflexo entra 8f DEPOIS da Frida",
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.2,
+    "medio": 0.5,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "normal",
+    "nota": "o reflexo (Frida em 1080,300, h 420, deformado 1,35× na horizontal) é mais quente que a Frida real"
+   },
+   "overlay": "",
+   "hero": true,
+   "hero_nota": "A gag central do vídeo: a cabeça de melancia é o único absurdo visual que sobrevive à narração, e vive dos 8 frames de atraso entre a Frida e o reflexo."
+  },
+  {
+   "i": 35,
+   "scene": "espelhos",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 151.62,
+    "t1": 156.14,
+    "dur": 4.52,
+    "frames": [
+     4549,
+     4684
+    ]
+   },
+   "plano": {
+    "t0": 151.62,
+    "t1": 157.02,
+    "dur": 5.4,
+    "frames": [
+     4549,
+     4711
+    ],
+    "gap_fala_fim": 0.88
+   },
+   "enquadramento": "MÉDIO",
+   "texto": "Ela latiu para o próprio reflexo achando que era um novo colega de brincadeira.",
+   "acao": "Frida late ao proprio reflexo",
+   "bg": "casa dos espelhos, reflexos",
+   "cam_origem": "fixa com wobble",
+   "frida": {
+    "x": 820,
+    "y": 1120,
+    "h": 700,
+    "h_pct": 0.648,
+    "expressao": "excited",
+    "olhar": "→ reflexo, 3 latidos (excited)",
+    "nota": "corpo arqueado; cabeça avança 12 px por latido"
+   },
+   "luna": {
+    "x": 1360,
+    "y": 1060,
+    "h": 520,
+    "h_pct": 0.481,
+    "expressao": "happy",
+    "olhar": "←15° para a Frida (happy)",
+    "nota": "tapa os ouvidos a brincar"
+   },
+   "luz": {
+    "temp": "fria (4500 K)",
+    "hora": "noite a cair, 19h40",
+    "direcao": "luz fria verde-azulada da porta; spotlight quente reservado ao reflexo",
+    "nota": "o reflexo é sempre mais quente que o original — é a pista de que \"é outro\""
+   },
+   "camara": {
+    "tipo": "fixa com wobble",
+    "texto": "fixa + wobble 3 px + push 1.05→1.07",
+    "de": 1.05,
+    "para": 1.07,
+    "eixo": "fixa + wobble 3 px, 2 ciclos",
+    "ease": "linear",
+    "extra": "o latido do reflexo chega com 4f de atraso",
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.2,
+    "medio": 0.5,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "staccato",
+    "nota": "3 latidos a 1,4 s: o último cai no fim do plano e corta a seco"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 36,
+   "scene": "moral",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 157.02,
+    "t1": 158.78,
+    "dur": 1.76,
+    "frames": [
+     4711,
+     4763
+    ]
+   },
+   "plano": {
+    "t0": 157.02,
+    "t1": 159.28,
+    "dur": 2.26,
+    "frames": [
+     4711,
+     4778
+    ],
+    "gap_fala_fim": 0.5
+   },
+   "enquadramento": "GERAL",
+   "texto": "O que aprendemos hoje?",
+   "acao": "fundo por do sol, as duas juntas",
+   "bg": "por do sol, silhuetas do parque",
+   "cam_origem": "push-in lento",
+   "frida": {
+    "x": 760,
+    "y": 980,
+    "h": 360,
+    "h_pct": 0.333,
+    "expressao": "calm",
+    "olhar": "→5°, de 3/4 de costas, para o parque (calm)",
+    "nota": "imóvel, só a respiração"
+   },
+   "luna": {
+    "x": 1120,
+    "y": 980,
+    "h": 310,
+    "h_pct": 0.287,
+    "expressao": "calm",
+    "olhar": "→5° (calm)",
+    "nota": "imóvel; uma orelha mexe ao vento"
+   },
+   "luz": {
+    "temp": "quente-âmbar (2200 K)",
+    "hora": "pôr do sol, 20h10",
+    "direcao": "contraluz frontal-baixo, silhuetas + fill frontal de 30%",
+    "nota": "gradiente âmbar→rosa→azul; sem fill não há olhos, com fill a mais perde-se a silhueta"
+   },
+   "camara": {
+    "tipo": "push-in lento",
+    "texto": "push-in 1.00→1.03 (lento)",
+    "de": 1,
+    "para": 1.03,
+    "eixo": "pivot (960, 620)",
+    "ease": "ease-out",
+    "extra": null,
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.1,
+    "medio": 0.3,
+    "chao": 1,
+    "primeiro_plano": 1.15
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "respiro",
+    "nota": "contraluz total: rim de 2 px no pelo. Sem rim, as duas desaparecem no laranja"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 37,
+   "scene": "moral",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 159.28,
+    "t1": 165.56,
+    "dur": 6.28,
+    "frames": [
+     4778,
+     4967
+    ]
+   },
+   "plano": {
+    "t0": 159.28,
+    "t1": 166,
+    "dur": 6.72,
+    "frames": [
+     4778,
+     4980
+    ],
+    "gap_fala_fim": 0.44
+   },
+   "enquadramento": "CONJ",
+   "texto": "Curtir um passeio incrível ao lado de quem a gente gosta deixa qualquer dia muito mais especial e feliz.",
+   "acao": "abraco, coracoes a subir",
+   "bg": "por do sol, silhuetas do parque",
+   "cam_origem": "push-in lento",
+   "frida": {
+    "x": 840,
+    "y": 1100,
+    "h": 620,
+    "h_pct": 0.574,
+    "expressao": "loved",
+    "olhar": "para a Luna, ↓6° (loved)",
+    "nota": "braço por cima do ombro; olhos fecham 1× aos 3 s"
+   },
+   "luna": {
+    "x": 1120,
+    "y": 1100,
+    "h": 540,
+    "h_pct": 0.5,
+    "expressao": "loved",
+    "olhar": "para a Frida, ↑6° (loved)",
+    "nota": "cabeça apoiada no ombro da Frida"
+   },
+   "luz": {
+    "temp": "quente-âmbar (2200 K)",
+    "hora": "pôr do sol, 20h10",
+    "direcao": "contraluz frontal-baixo, silhuetas + fill frontal de 30%",
+    "nota": "gradiente âmbar→rosa→azul; sem fill não há olhos, com fill a mais perde-se a silhueta"
+   },
+   "camara": {
+    "tipo": "push-in lento",
+    "texto": "push-in 1.03→1.09 (6,28 s)",
+    "de": 1.03,
+    "para": 1.09,
+    "eixo": "pivot (980, 700), entre as duas caras",
+    "ease": "ease-in-out",
+    "extra": "o push-in mais longo do vídeo (6,28 s): 1,0% de escala por segundo",
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.15,
+    "medio": 0.4,
+    "chao": 1,
+    "primeiro_plano": 1.25
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "respiro",
+    "nota": "fill frontal de 30% para os olhos não ficarem negros; 6–10 corações a subir por segundo"
+   },
+   "overlay": "",
+   "hero": true,
+   "hero_nota": "É o coração do vídeo: abraço + push-in + corações dizem a moral sem uma única palavra de texto."
+  },
+  {
+   "i": 38,
+   "scene": "moral",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 166,
+    "t1": 168.72,
+    "dur": 2.72,
+    "frames": [
+     4980,
+     5062
+    ]
+   },
+   "plano": {
+    "t0": 166,
+    "t1": 169.78,
+    "dur": 3.78,
+    "frames": [
+     4980,
+     5093
+    ],
+    "gap_fala_fim": 1.06
+   },
+   "enquadramento": "MÉDIO",
+   "texto": "A amizade é o melhor presente do mundo.",
+   "acao": "texto: 'a amizade e o melhor presente'",
+   "bg": "por do sol, silhuetas do parque",
+   "cam_origem": "push-in lento",
+   "frida": {
+    "x": 780,
+    "y": 1090,
+    "h": 520,
+    "h_pct": 0.481,
+    "expressao": "loved",
+    "olhar": "para a câmara, 0° (loved)",
+    "nota": "sem ação: deixa o texto ler-se"
+   },
+   "luna": {
+    "x": 1140,
+    "y": 1090,
+    "h": 460,
+    "h_pct": 0.426,
+    "expressao": "loved",
+    "olhar": "para a câmara, -3° (loved)",
+    "nota": "inclina a cabeça para a Frida"
+   },
+   "luz": {
+    "temp": "quente-âmbar (2200 K)",
+    "hora": "pôr do sol, 20h10",
+    "direcao": "contraluz frontal-baixo, silhuetas + fill frontal de 30%",
+    "nota": "gradiente âmbar→rosa→azul; sem fill não há olhos, com fill a mais perde-se a silhueta"
+   },
+   "camara": {
+    "tipo": "push-in lento",
+    "texto": "push-in 1.09→1.11 (herda)",
+    "de": 1.09,
+    "para": 1.11,
+    "eixo": "pivot (960, 660)",
+    "ease": "linear",
+    "extra": "herda a escala do plano 37: o push-in nunca recomeça",
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.15,
+    "medio": 0.4,
+    "chao": 1,
+    "primeiro_plano": 1.25
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "normal",
+    "nota": "espaço superior reservado (y 180–460) para as 2 linhas de texto"
+   },
+   "overlay": "\"A AMIZADE É O / MELHOR PRESENTE\" em (960,300) e (960,400), reveal por máscara de baixo para cima + brilho a passar",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 39,
+   "scene": "final",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 169.78,
+    "t1": 172.58,
+    "dur": 2.8,
+    "frames": [
+     5093,
+     5177
+    ]
+   },
+   "plano": {
+    "t0": 169.78,
+    "t1": 173.08,
+    "dur": 3.3,
+    "frames": [
+     5093,
+     5192
+    ],
+    "gap_fala_fim": 0.5
+   },
+   "enquadramento": "GRÁF",
+   "texto": "E assim termina nossa aventura de hoje.",
+   "acao": "cartao final",
+   "bg": "cartao final, coracoes",
+   "cam_origem": "fixa",
+   "frida": {
+    "x": 700,
+    "y": 1010,
+    "h": 460,
+    "h_pct": 0.426,
+    "expressao": "happy",
+    "olhar": "para a câmara, 0° (happy)",
+    "nota": "acena com a pata 2×"
+   },
+   "luna": {
+    "x": 1220,
+    "y": 1010,
+    "h": 400,
+    "h_pct": 0.37,
+    "expressao": "happy",
+    "olhar": "para a câmara, 0° (happy)",
+    "nota": "rabo 3 Hz"
+   },
+   "luz": {
+    "temp": "quente de estúdio (3200 K)",
+    "hora": "noite, 21h00",
+    "direcao": "key quente frontal + fundo azul-marinho",
+    "nota": "volta ao \"cartão\" do início para fechar o círculo; corações rosa a subir"
+   },
+   "camara": {
+    "tipo": "fixa",
+    "texto": "fixa",
+    "de": 1,
+    "para": 1,
+    "eixo": "fixa",
+    "ease": "nenhum",
+    "extra": "sem movimento de propósito: é o contraste com o pôr do sol",
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.1,
+    "medio": 0.3,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "normal",
+    "nota": "volta ao cartão do início (mesma composição, fundo azul): fecha o círculo"
+   },
+   "overlay": "corações rosa a subir no fundo; sem texto",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 40,
+   "scene": "final",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 173.08,
+    "t1": 174.88,
+    "dur": 1.8,
+    "frames": [
+     5192,
+     5246
+    ]
+   },
+   "plano": {
+    "t0": 173.08,
+    "t1": 176.04,
+    "dur": 2.96,
+    "frames": [
+     5192,
+     5281
+    ],
+    "gap_fala_fim": 1.16
+   },
+   "enquadramento": "CONJ",
+   "texto": "Esse é o final da nossa história.",
+   "acao": "as duas a acenar",
+   "bg": "cartao final, coracoes",
+   "cam_origem": "fixa",
+   "frida": {
+    "x": 760,
+    "y": 1060,
+    "h": 560,
+    "h_pct": 0.519,
+    "expressao": "happy",
+    "olhar": "para a câmara, 0° (happy)",
+    "nota": "3 acenos de pata, 14f cada"
+   },
+   "luna": {
+    "x": 1160,
+    "y": 1060,
+    "h": 480,
+    "h_pct": 0.444,
+    "expressao": "happy",
+    "olhar": "para a câmara, 0° (happy)",
+    "nota": "3 acenos com 4f de atraso (não são robôs)"
+   },
+   "luz": {
+    "temp": "quente de estúdio (3200 K)",
+    "hora": "noite, 21h00",
+    "direcao": "key quente frontal + fundo azul-marinho",
+    "nota": "volta ao \"cartão\" do início para fechar o círculo; corações rosa a subir"
+   },
+   "camara": {
+    "tipo": "fixa",
+    "texto": "fixa",
+    "de": 1,
+    "para": 1,
+    "eixo": "fixa",
+    "ease": "nenhum",
+    "extra": null,
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.1,
+    "medio": 0.3,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "staccato",
+    "nota": "os acenos dão o ritmo: 3 batidas em 1,8 s"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 41,
+   "scene": "final",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 176.04,
+    "t1": 179.4,
+    "dur": 3.36,
+    "frames": [
+     5281,
+     5382
+    ]
+   },
+   "plano": {
+    "t0": 176.04,
+    "t1": 180.12,
+    "dur": 4.08,
+    "frames": [
+     5281,
+     5404
+    ],
+    "gap_fala_fim": 0.72
+   },
+   "enquadramento": "MÉDIO",
+   "texto": "Muito obrigado por participar dessa aventura com a gente.",
+   "acao": "aceno de agradecimento",
+   "bg": "cartao final, coracoes",
+   "cam_origem": "fixa",
+   "frida": {
+    "x": 800,
+    "y": 1080,
+    "h": 620,
+    "h_pct": 0.574,
+    "expressao": "loved",
+    "olhar": "para a câmara, 0° (loved)",
+    "nota": "inclina a cabeça 8°"
+   },
+   "luna": {
+    "x": 1140,
+    "y": 1080,
+    "h": 520,
+    "h_pct": 0.481,
+    "expressao": "shy",
+    "olhar": "para a câmara, -5° (shy)",
+    "nota": "esconde-se 15% atrás da Frida"
+   },
+   "luz": {
+    "temp": "quente de estúdio (3200 K)",
+    "hora": "noite, 21h00",
+    "direcao": "key quente frontal + fundo azul-marinho",
+    "nota": "volta ao \"cartão\" do início para fechar o círculo; corações rosa a subir"
+   },
+   "camara": {
+    "tipo": "fixa",
+    "texto": "fixa",
+    "de": 1,
+    "para": 1,
+    "eixo": "fixa",
+    "ease": "nenhum",
+    "extra": null,
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.1,
+    "medio": 0.3,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "normal",
+    "nota": "aproximar 10% em relação ao plano 40: a câmara \"entra\" sem se mexer, por corte de escala"
+   },
+   "overlay": "",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 42,
+   "scene": "final",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 180.12,
+    "t1": 184.44,
+    "dur": 4.32,
+    "frames": [
+     5404,
+     5533
+    ]
+   },
+   "plano": {
+    "t0": 180.12,
+    "t1": 184.86,
+    "dur": 4.74,
+    "frames": [
+     5404,
+     5546
+    ],
+    "gap_fala_fim": 0.42
+   },
+   "enquadramento": "MÉDIO",
+   "texto": "Deixe seu like, se inscreva no canal e indique para seus amiguinhos.",
+   "acao": "botoes like / inscrever a aparecer",
+   "bg": "cartao final, coracoes",
+   "cam_origem": "fixa",
+   "frida": {
+    "x": 720,
+    "y": 1060,
+    "h": 540,
+    "h_pct": 0.5,
+    "expressao": "excited",
+    "olhar": "↓25° à direita para a UI → câmara (excited)",
+    "nota": "aponta para o botão"
+   },
+   "luna": {
+    "x": 1220,
+    "y": 1060,
+    "h": 460,
+    "h_pct": 0.426,
+    "expressao": "excited",
+    "olhar": "↓25° à esquerda para a UI → câmara (excited)",
+    "nota": "salta 2× no 2.º botão"
+   },
+   "luz": {
+    "temp": "quente de estúdio (3200 K)",
+    "hora": "noite, 21h00",
+    "direcao": "key quente frontal + fundo azul-marinho",
+    "nota": "volta ao \"cartão\" do início para fechar o círculo; corações rosa a subir"
+   },
+   "camara": {
+    "tipo": "fixa",
+    "texto": "fixa",
+    "de": 1,
+    "para": 1,
+    "eixo": "fixa",
+    "ease": "nenhum",
+    "extra": "a UI salta sozinha: overshoot de 8%",
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.1,
+    "medio": 0.3,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "normal",
+    "nota": "2 marcas: LIKE aos 0,4 s (760,860) e INSCREVER-SE aos 1,1 s (1160,860)"
+   },
+   "overlay": "botões \"LIKE\" e \"INSCREVER-SE\" na faixa inferior, entrada com bounce",
+   "hero": false,
+   "hero_nota": null
+  },
+  {
+   "i": 43,
+   "scene": "final",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 184.86,
+    "t1": 187.82,
+    "dur": 2.96,
+    "frames": [
+     5546,
+     5635
+    ]
+   },
+   "plano": {
+    "t0": 184.86,
+    "t1": 188.4,
+    "dur": 3.54,
+    "frames": [
+     5546,
+     5652
+    ],
+    "gap_fala_fim": 0.58
+   },
+   "enquadramento": "CLOSE-2",
+   "texto": "Um grande beijo no seu coração e fique com a gente.",
+   "acao": "beijo para a camera",
+   "bg": "cartao final, coracoes",
+   "cam_origem": "fixa",
+   "frida": {
+    "x": 760,
+    "y": 1240,
+    "h": 900,
+    "h_pct": 0.833,
+    "expressao": "loved",
+    "olhar": "para a câmara, 0° (loved)",
+    "nota": "pisca 1×; manda o beijo aos 1,2 s"
+   },
+   "luna": {
+    "x": 1120,
+    "y": 1240,
+    "h": 820,
+    "h_pct": 0.759,
+    "expressao": "loved",
+    "olhar": "para a câmara, 0° (loved)",
+    "nota": "pisca no mesmo frame da Frida"
+   },
+   "luz": {
+    "temp": "quente de estúdio (3200 K)",
+    "hora": "noite, 21h00",
+    "direcao": "key quente frontal + fundo azul-marinho",
+    "nota": "volta ao \"cartão\" do início para fechar o círculo; corações rosa a subir"
+   },
+   "camara": {
+    "tipo": "fixa",
+    "texto": "fixa (close frontal, sem truque)",
+    "de": 1,
+    "para": 1,
+    "eixo": "fixa",
+    "ease": "nenhum",
+    "extra": "close frontal sem truque: é o único plano do fim em que a câmara não ajuda",
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.15,
+    "medio": 0.35,
+    "chao": 1,
+    "primeiro_plano": 1.3
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "respiro",
+    "nota": "fundo ligeiramente mais escuro: o halo rosa atrás separa as caras do azul"
+   },
+   "overlay": "",
+   "hero": true,
+   "hero_nota": "Ligação direta: dois rostos a olhar para a lente e um beijo — é o plano que transforma espectador em subscritor."
+  },
+  {
+   "i": 44,
+   "scene": "final",
+   "speaker": "narrador",
+   "fala": {
+    "t0": 188.4,
+    "t1": 190.42,
+    "dur": 2.02,
+    "frames": [
+     5652,
+     5713
+    ]
+   },
+   "plano": {
+    "t0": 188.4,
+    "t1": 196.069,
+    "dur": 7.669,
+    "frames": [
+     5652,
+     5882
+    ],
+    "gap_fala_fim": 5.649
+   },
+   "enquadramento": "MÉDIO",
+   "texto": "Acompanhe nossos próximos vídeos.",
+   "acao": "seta para o proximo video",
+   "bg": "cartao final, coracoes",
+   "cam_origem": "fixa",
+   "frida": {
+    "x": 720,
+    "y": 1060,
+    "h": 560,
+    "h_pct": 0.519,
+    "expressao": "happy",
+    "olhar": "→20°, para a seta (happy)",
+    "nota": "aponta com a pata"
+   },
+   "luna": {
+    "x": 1160,
+    "y": 1060,
+    "h": 480,
+    "h_pct": 0.444,
+    "expressao": "happy",
+    "olhar": "→20°, para a seta (happy)",
+    "nota": "salta 1×"
+   },
+   "luz": {
+    "temp": "quente de estúdio (3200 K)",
+    "hora": "noite, 21h00",
+    "direcao": "key quente frontal + fundo azul-marinho",
+    "nota": "volta ao \"cartão\" do início para fechar o círculo; corações rosa a subir"
+   },
+   "camara": {
+    "tipo": "fixa",
+    "texto": "fixa",
+    "de": 1,
+    "para": 1,
+    "eixo": "fixa",
+    "ease": "nenhum",
+    "extra": null,
+    "desvio": null
+   },
+   "parallax": {
+    "fundo": 0.1,
+    "medio": 0.3,
+    "chao": 1,
+    "primeiro_plano": 1.2
+   },
+   "corte": {
+    "entrada": "corte seco",
+    "pacing": "normal",
+    "nota": "último plano: 2,02 s de fala + 5,65 s de cauda até 196,069 s (o cartão fica, a música fecha)"
+   },
+   "overlay": "seta creme com contorno escuro, ponta em (1600, 620), entra da direita; loop de 6 px a 2 Hz",
+   "hero": false,
+   "hero_nota": null
+  }
+ ]
+}
