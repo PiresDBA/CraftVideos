@@ -654,10 +654,10 @@
     "semantic_hash": "821259a15d58cac3f00f3d3f696fd4cc"
   },
   "video-orquestracao/public/assets/avatar/catalogo-avatares.json": {
-    "mtime": 1794919497.061776,
-    "seen": 1794923893.5061784,
-    "ast_hash": "ca5b234d14f71b729ce9bbb2669c87e5",
-    "semantic_hash": "ca5b234d14f71b729ce9bbb2669c87e5"
+    "mtime": 1794948613.7039828,
+    "seen": 1794956345.6726966,
+    "ast_hash": "6a9ab4c271548919f4e309af583c2c85",
+    "semantic_hash": ""
   },
   "video-orquestracao/public/assets/avatar/sincronizacao-labial/sincronizacao-labial-cena-01.json": {
     "mtime": 1794915522.8406897,
@@ -810,10 +810,10 @@
     "semantic_hash": "f056ccab8fa78b3c554ac6bc86385a90"
   },
   "AGENTS.md": {
-    "mtime": 1794571202.7455292,
-    "seen": 1794923893.5063343,
-    "ast_hash": "f6d045ce405a29adf4213d24261cf840",
-    "semantic_hash": "f6d045ce405a29adf4213d24261cf840"
+    "mtime": 1794940211.19301,
+    "seen": 1794956345.6731346,
+    "ast_hash": "e0d955613111c378682be7247a636db9",
+    "semantic_hash": ""
   },
   "AUDITORIA_CLONE.md": {
     "mtime": 1794566675.7112186,
@@ -912,10 +912,10 @@
     "semantic_hash": "98ca330dda3f3e811cb02f2d972d0bd1"
   },
   "video-orquestracao/public/assets/avatar/FICHA-PERSONAGENS-HISTORINHA.md": {
-    "mtime": 1794918970.095249,
-    "seen": 1794923893.5064342,
-    "ast_hash": "862fa19a3aa57564da60a402a41e86ec",
-    "semantic_hash": "862fa19a3aa57564da60a402a41e86ec"
+    "mtime": 1794948604.5091474,
+    "seen": 1794956345.6732428,
+    "ast_hash": "b2b866f43236c764115311c3e884d696",
+    "semantic_hash": ""
   },
   "video-orquestracao/public/assets/avatar/LEIA-ME-avatar-estilizado.md": {
     "mtime": 1794877662.164366,
@@ -924,10 +924,10 @@
     "semantic_hash": "251058ecd69631be5279a71f24124b59"
   },
   "video-orquestracao/public/assets/especificacao-tecnica-quatro-estacoes.md": {
-    "mtime": 1794793190.1231728,
-    "seen": 1794923893.5064461,
-    "ast_hash": "7c629391fa6848c0e36a58bfff0583b6",
-    "semantic_hash": "7c629391fa6848c0e36a58bfff0583b6"
+    "mtime": 1794948619.2431796,
+    "seen": 1794956345.6732543,
+    "ast_hash": "bbbeccd37d00d3b3076ca0a9b28621a8",
+    "semantic_hash": ""
   },
   "video-orquestracao/public/assets/historia-luninha-e-fridoca/ROTEIRO-E-PLANO.md": {
     "mtime": 1794917818.339455,
@@ -952,5 +952,245 @@
     "seen": 1794923893.5064702,
     "ast_hash": "f6f1a74d0ccf193b2581ae3bf0ae9ac6",
     "semantic_hash": "f6f1a74d0ccf193b2581ae3bf0ae9ac6"
+  },
+  "arte-luna-frida/render_svg.py": {
+    "mtime": 1794948081.4056327,
+    "seen": 1794956345.670798,
+    "ast_hash": "39bd57a1a43b492cd75cd680457ea44c",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/audio/energia-voz.json": {
+    "mtime": 1794952242.1729875,
+    "seen": 1794956345.6729982,
+    "ast_hash": "441a5737760cd97e60967f0d72a518ab",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/audio/relatorio-stems.json": {
+    "mtime": 1794952226.007981,
+    "seen": 1794956345.6730044,
+    "ast_hash": "5e2891430ffd3accad2855e71d1579a5",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/audio/tempos.json": {
+    "mtime": 1794951898.9071598,
+    "seen": 1794956345.67301,
+    "ast_hash": "8eecac3524ef6e4111aac56f1ecd0129",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/beats.json": {
+    "mtime": 1794951027.6895857,
+    "seen": 1794956345.6730158,
+    "ast_hash": "689d262d2a263dbaac5c27a5aac46ebd",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/bg/gerar_fundos.py": {
+    "mtime": 1794953329.9771514,
+    "seen": 1794956345.673021,
+    "ast_hash": "804f12216a177f6f8f6aef36d64f8303",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/bg/manifest.json": {
+    "mtime": 1794956215.1894526,
+    "seen": 1794956345.6730268,
+    "ast_hash": "43698ba515754a6ebc48851fe93f492e",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/build_beats.py": {
+    "mtime": 1794951010.133252,
+    "seen": 1794956345.6730323,
+    "ast_hash": "8f2cb1b054759d066709aa479f02dfaf",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/build_sequence_plan.py": {
+    "mtime": 1794951627.5695925,
+    "seen": 1794956345.673038,
+    "ast_hash": "c32a57211ff2b8ce1c60ebb93850d10f",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/compor_grelhas.py": {
+    "mtime": 1794953155.5707004,
+    "seen": 1794956345.6730435,
+    "ast_hash": "046924395f10ca7a2593fee720294950",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/expressoes.py": {
+    "mtime": 1794956273.0549018,
+    "seen": 1794956345.6730487,
+    "ast_hash": "5b609e516612d77481704dae9faf7d44",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/fatiar.py": {
+    "mtime": 1794953501.9489214,
+    "seen": 1794956345.6730537,
+    "ast_hash": "8ade933d0c3c1f6313960fd2ffa71795",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/gen_poses.py": {
+    "mtime": 1794953183.2956114,
+    "seen": 1794956345.673068,
+    "ast_hash": "f1ed049476748d1cf29b5757ed54b153",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/limpar_halo.py": {
+    "mtime": 1794953288.8373332,
+    "seen": 1794956345.6730733,
+    "ast_hash": "d7cfcdf87fc75cd9ae6e5ac21f1153e2",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/montar_grelha.py": {
+    "mtime": 1794952389.2361796,
+    "seen": 1794956345.6730785,
+    "ast_hash": "6cccfbdc518fd3ecbadc0b3fbe5d78b5",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/recortar_base.py": {
+    "mtime": 1794953347.5199502,
+    "seen": 1794956345.673084,
+    "ast_hash": "886010eb2c79406fa3de24c1fb561fe6",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/espec-planos.json": {
+    "mtime": 1794952507.325088,
+    "seen": 1794956345.6730897,
+    "ast_hash": "347008b6902f20771bd77319477beeb8",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/gen_edit.py": {
+    "mtime": 1794952656.213545,
+    "seen": 1794956345.6730952,
+    "ast_hash": "8228baf9d7b5f1201793214b8b44b3de",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/gen_nvidia.py": {
+    "mtime": 1794951270.5862052,
+    "seen": 1794956345.673101,
+    "ast_hash": "3e3a872342fa4fd1e5cb9134a06faa6c",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/graph_lookup.py": {
+    "mtime": 1794951027.2011507,
+    "seen": 1794956345.6731062,
+    "ast_hash": "8bd0ade1c77b76158739d1d6b9d0a693",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/mk_aprovacao.py": {
+    "mtime": 1794953339.270735,
+    "seen": 1794956345.6731112,
+    "ast_hash": "9bd5c8666a91f4e37a97d310971508e0",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/sequence-plan.json": {
+    "mtime": 1794951631.6343186,
+    "seen": 1794956345.6731164,
+    "ast_hash": "d2b1b9f9557e77cdcfd10f5265600b5d",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/transcribe.py": {
+    "mtime": 1794950876.7629187,
+    "seen": 1794956345.673122,
+    "ast_hash": "0f5ede01ed4c2eae37a9544deb8405fd",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/DIRECAO_ARTE.md": {
+    "mtime": 1794948634.1933787,
+    "seen": 1794956345.6732042,
+    "ast_hash": "e89fef084334f6151f8a956bb4d5ccfd",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/TAREFAS-TIME.md": {
+    "mtime": 1794948634.1933787,
+    "seen": 1794956345.6732092,
+    "ast_hash": "c14249f8505145c5752f065417491c38",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/public/assets/historinha-luninha-e-fridoca/referencias/INDICE-REFERENCIAS.md": {
+    "mtime": 1794936409.9713187,
+    "seen": 1794956345.6732707,
+    "ast_hash": "88cf0b8485c6f91c554d77f2f0610b58",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/public/assets/historinha-luninha-e-fridoca/referencias/_nao-usar/KIT-REFERENCIA-LUNA-E-FRIDA.md": {
+    "mtime": 1794928263.5346687,
+    "seen": 1794956345.6732762,
+    "ast_hash": "a85dc02b5fbf26bf9776ae10efa24e8f",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/AGENTES.md": {
+    "mtime": 1794951355.938185,
+    "seen": 1794956345.6732876,
+    "ast_hash": "3147e9ca0748524873e5a762eb37c1da",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/BEAT-SHEET.md": {
+    "mtime": 1794951027.690586,
+    "seen": 1794956345.673293,
+    "ast_hash": "cd39abcadec3511bea59aed59a1eb657",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/PERSONAGENS.md": {
+    "mtime": 1794952769.0840292,
+    "seen": 1794956345.673298,
+    "ast_hash": "4b8b79a75b2f0b5a724d765b63336c1e",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/STYLE-BIBLE.md": {
+    "mtime": 1794951760.8252232,
+    "seen": 1794956345.6733031,
+    "ast_hash": "90516b61fedecaff94acc07709ee139b",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/audio/PLANO-LIPSYNC.md": {
+    "mtime": 1794952280.6537914,
+    "seen": 1794956345.673308,
+    "ast_hash": "1d0cd3e6ebe96e5974042160c02c9927",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/audio/RELATORIO-stems.md": {
+    "mtime": 1794952226.007981,
+    "seen": 1794956345.673314,
+    "ast_hash": "bbe682754df8d6cc12ddd2e87e927b4c",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/_prompts-grelhas.md": {
+    "mtime": 1794953636.6114926,
+    "seen": 1794956345.6733203,
+    "ast_hash": "ae0f1053fa96bcbb40c40a033a38a37e",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/espec-planos.md": {
+    "mtime": 1794952507.331152,
+    "seen": 1794956345.6733255,
+    "ast_hash": "a8ae79c15c3587e92750381781a4ceb7",
+    "semantic_hash": ""
+  },
+  "arte-luna-frida/luna.svg": {
+    "mtime": 1794946992.3638377,
+    "seen": 1794956345.6733308,
+    "ast_hash": "7e85acf372f39f4fc988a88a667135ba",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/public/assets/historinha-luninha-e-fridoca/desenhos-aprovacao/luna-frente-3-4.svg": {
+    "mtime": 1794948994.777053,
+    "seen": 1794956345.6733422,
+    "ast_hash": "88102f0cf6c7ca98468eb1d129395c4a",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/public/assets/historinha-luninha-e-fridoca/desenhos-aprovacao/luna-perfil.svg": {
+    "mtime": 1794948994.777053,
+    "seen": 1794956345.673347,
+    "ast_hash": "fc0dd6f7ae0f970c11c87a7e740847e0",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/public/assets/historinha-luninha-e-fridoca/desenhos/luna-frente-3-4.svg": {
+    "mtime": 1794948553.197993,
+    "seen": 1794956345.6733518,
+    "ast_hash": "abf391780b25a4bb6dd33bf193ce64bb",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/public/assets/historinha-luninha-e-fridoca/desenhos/luna-perfil.svg": {
+    "mtime": 1794948553.199426,
+    "seen": 1794956345.6733565,
+    "ast_hash": "4c0fe156285b384606bda90f72881092",
+    "semantic_hash": ""
   }
 }
