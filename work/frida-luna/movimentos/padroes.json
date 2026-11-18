@@ -1,0 +1,32 @@
+{
+ "versao": 1,
+ "data": "2026-11-18",
+ "movimento_aprovado": {
+  "nome": "marcha-flow10",
+  "personagem": "frida",
+  "referencia": "movimentos/_referencia/marcha-aceita-flow10.webp",
+  "validacao": "movimentos/_referencia/marcha-aceita-flow10.json",
+  "quadros": 8,
+  "altura_sprite": 270,
+  "passada_sprite": 94,
+  "fps_aprovado": 7.5,
+  "fps_original": 10,
+  "nota": "O utilizador aprovou em 18/11: coerente, mas um pouco rapido. 7,5 fps = 4 frames por desenho, ciclo 1,07 s. A 10 fps o ciclo e 0,8 s."
+ },
+ "regras_aprovadas": {
+  "fps_validos": [7.5, 10],
+  "porque_so_estes_fps": "30 fps / 7,5 = 4 frames por desenho; 30/10 = 3. Qualquer fps que nao divida 30 deixa desenhos com duracoes diferentes e o passo tremelica.",
+  "passada": "medida no registo a partir da abertura dos pes (2 x (largura_max - largura_min)); nunca escrita a mao",
+  "alfa": "fundo = ligado a borda da imagem, nunca por limiar de cor (o peito/barriga/rosto sao da cor do fundo e ficavam transparentes)",
+  "sem_interpolacao": "frames inteiros, sem crossfade (a mistura duplica pernas)",
+  "sem_bob_artificial_alto": "2 px chegam; acima disso compete com o desenho",
+  "porteiro": "animar_tira.py rejeita a tira se a perna de tras nunca passar a frente"
+ },
+ "movimentos_rejeitados": {
+  "flow-04": "coxo: perna clara sempre a frente (0/8 trocas)",
+  "flow-03 de _flow3 (12 quadros)": "pernas praticamente paradas (2,9 / 4,9 px)",
+  "flow-09": "perna escura nunca chega a frente",
+  "flow-00": "repete meia-passada e nao fecha"
+ },
+ "proximo_passo": "quando a tira v3 (perfil puro) chegar: py animar_tira.py <tira> <nome> --fps 7.5"
+}

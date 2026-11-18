@@ -72,3 +72,51 @@ e os frames em `movimentos/<personagem>/<movimento>/`.
 | avanço = passada × fase | o pé não derrapa no chão |
 | soma com bob e sombra | dá peso; sem isto o boneco flutua |
 | proporção Frida 1,00 · Luna 0,72 | o "dobro" é de massa, não de altura |
+
+## Receita aprovada (18/11) — marcha da Frida
+
+O utilizador aprovou a tira **flow-10**: movimentos coerentes, apenas um pouco rápidos.
+Tudo o que se seguir usa esta receita.
+
+| item | valor |
+| --- | --- |
+| referência | `movimentos/_referencia/marcha-aceita-flow10.webp` (8 quadros) |
+| validação medida | `movimentos/_referencia/marcha-aceita-flow10.json` |
+| passada | 94 px de sprite (medida no registo), sprite de 270 px |
+| fps aprovado | **7,5** (4 frames por desenho, ciclo 1,07 s) |
+| fps mais vivo | 10 (3 frames por desenho, ciclo 0,8 s) |
+| parâmetros gravados | `movimentos/padroes.json` |
+| renders | `card/marcha-flow10-4s.mp4` · `card/marcha-flow10-lenta-4s.mp4` |
+
+### Porque só 7,5 ou 10 fps
+
+30 / 7,5 = 4 e 30 / 10 = 3. Qualquer outro valor deixa desenhos com durações diferentes
+(4-3-4-3) e o passo tremelica.
+
+### O porteiro (obrigatório antes de animar)
+
+```powershell
+py animar_tira.py "chars\folhas\_flowN\flow-XX.webp" marcha-nova --fps 7.5
+```
+
+Corta → mede as duas pernas por cor → **só regista e renderiza se a perna de trás passar
+à frente em pelo menos 2 quadros**. Saída típica de uma tira coxa:
+
+```
+troca de lado em 0/8 quadros | amplitude 6.7 / 8.1 px (h=213)
+REJEITADA: coxo: a perna de tras nunca passa a frente
+```
+
+Uma tira pode parecer uma caminhada e não servir: foi o que aconteceu a `flow-04`,
+`flow-09` e à tira de 12 quadros. Sem esta medição o erro só aparece no vídeo.
+
+### Regras que já custaram render
+
+| sintoma | causa | conserto |
+| --- | --- | --- |
+| peito/barriga/rosto transparentes | fundo definido por cor; o creme do corpo é igual ao do papel | fundo = **ligado à borda** (`cortar_mascara.py`) |
+| rectângulo creme atrás do boneco | `binary_fill_holes` enchia o espaço entre as pernas | não preencher buracos fechados |
+| corpo a patinar / passadeira | passada fixa (92 px) | passada **medida** no registo |
+| pernas a tremelica | fps que não divide 30 | 7,5 ou 10 |
+| cintilação de cor | cada frame de uma geração diferente | uma única tira; `normalizar_cores.py` só se vier de várias |
+| mancar (uma perna só salta) | vista de 3/4: a perna de trás esconde-se | `PROMPTS-MARCHA-V3.md` (perfil puro, perna de trás mais escura) |
