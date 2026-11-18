@@ -16,7 +16,9 @@
         "movimentos/frida/escuta/f02.png",
         "movimentos/frida/escuta/f03.png",
         "movimentos/frida/escuta/f04.png",
-        "movimentos/frida/escuta/f05.png"
+        "movimentos/frida/escuta/f05.png",
+        "movimentos/frida/escuta/f06.png",
+        "movimentos/frida/escuta/f07.png"
       ]
     },
     "luna/escuta": {
@@ -120,7 +122,9 @@
         "movimentos/luna/comer/f02.png",
         "movimentos/luna/comer/f03.png",
         "movimentos/luna/comer/f04.png",
-        "movimentos/luna/comer/f05.png"
+        "movimentos/luna/comer/f05.png",
+        "movimentos/luna/comer/f06.png",
+        "movimentos/luna/comer/f07.png"
       ]
     },
     "frida/giro": {
@@ -146,11 +150,7 @@
         "movimentos/frida/sorrir/f04.png",
         "movimentos/frida/sorrir/f05.png",
         "movimentos/frida/sorrir/f06.png",
-        "movimentos/frida/sorrir/f07.png",
-        "movimentos/frida/sorrir/f08.png",
-        "movimentos/frida/sorrir/f09.png",
-        "movimentos/frida/sorrir/f10.png",
-        "movimentos/frida/sorrir/f11.png"
+        "movimentos/frida/sorrir/f07.png"
       ]
     },
     "luna/sorrir": {
@@ -163,9 +163,7 @@
         "movimentos/luna/sorrir/f04.png",
         "movimentos/luna/sorrir/f05.png",
         "movimentos/luna/sorrir/f06.png",
-        "movimentos/luna/sorrir/f07.png",
-        "movimentos/luna/sorrir/f08.png",
-        "movimentos/luna/sorrir/f09.png"
+        "movimentos/luna/sorrir/f07.png"
       ]
     },
     "frida/surpreso": {
@@ -178,8 +176,7 @@
         "movimentos/frida/surpreso/f04.png",
         "movimentos/frida/surpreso/f05.png",
         "movimentos/frida/surpreso/f06.png",
-        "movimentos/frida/surpreso/f07.png",
-        "movimentos/frida/surpreso/f08.png"
+        "movimentos/frida/surpreso/f07.png"
       ]
     },
     "luna/surpreso": {
@@ -191,7 +188,8 @@
         "movimentos/luna/surpreso/f03.png",
         "movimentos/luna/surpreso/f04.png",
         "movimentos/luna/surpreso/f05.png",
-        "movimentos/luna/surpreso/f06.png"
+        "movimentos/luna/surpreso/f06.png",
+        "movimentos/luna/surpreso/f07.png"
       ]
     }
   },

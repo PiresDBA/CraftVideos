@@ -130,8 +130,6 @@ def main():
                 piores.append((quem, nome, buracos))
             if ref:
                 d = distancia(assinatura(fs[0]), ref)
-                if ref2:
-                    d = min(d, distancia(assinatura(fs[0]), ref2))
                 check(f"continuidade {quem}/{nome}", d <= 0.45, f"{d:.2f} <= 0,45")
     check("P6 sem buracos no contorno", total_buracos == 0,
           f"{total_buracos} pixéis" + (f" {piores[:4]}" if piores else ""))

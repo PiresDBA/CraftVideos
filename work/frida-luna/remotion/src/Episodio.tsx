@@ -82,11 +82,14 @@ const spriteEm = (
 };
 
 /** Sombra eliptica medida + sprite ancorado pelos pes. */
-const Personagem: React.FC<{ quem: "frida" | "luna"; dado: SpriteBeat; src: string; frame: number }> = ({
+const Personagem: React.FC<{ quem: "frida" | "luna"; dado: SpriteBeat; src: string; frame: number; mov: string; beatFrom: number; beatDur: number }> = ({
   quem,
   dado,
   src,
   frame,
+  mov,
+  beatFrom,
+  beatDur,
 }) => {
   const s: Sombra = dado.sombra ?? { w: 280, h: 16, op: 0.2, dx: 0, dy: 0 };
   const largura = dado.h * 1.15; // caixa larga; o sprite entra com object-fit: contain
@@ -101,7 +104,19 @@ const Personagem: React.FC<{ quem: "frida" | "luna"; dado: SpriteBeat; src: stri
   const inc = Math.sin((t * Math.PI * 2) / 120) * 2.5;
   const balanco = Math.sin((t * Math.PI * 2) / 24) * 1.2;
   const micro = `translateX(${balanco.toFixed(2)}px) rotate(${inc.toFixed(2)}deg) scaleY(${(1 + resp).toFixed(4)})`;
-  const transform = dado.flip ? `scaleX(-1) ${micro}` : micro;
+  // SALTO REAL: levantar o ELEMENTO no compositor (há espaço no 1080p), nunca
+  // encolher o sprite. A sombra elíptica fica no chão; o personagem sobe e desce.
+  // Curva senoidal fechada: 0 -> 60 px -> 0 ao longo do beat.
+  let lift = 0;
+  if (mov === "salto") {
+    // frame LOCAL ao beat (não o global), senão o arco nunca acontece.
+    const localFrame = Math.max(0, frame - beatFrom);
+    const dur = Math.max(1, beatDur);
+    const local = Math.max(0, Math.min(1, localFrame / dur));
+    lift = -Math.round(Math.sin(local * Math.PI) * 70);
+  }
+  const desloc = `translateY(${lift}px) ${micro}`;
+  const transform = dado.flip ? `scaleX(-1) ${desloc}` : desloc;
 
   return (
     <React.Fragment>
@@ -248,6 +263,9 @@ export const Episodio: React.FC = () => {
             dado={dado}
             src={spriteEm(tl, quem, dado, local, fps)}
             frame={frame}
+            mov={dado.mov}
+            beatFrom={beat?.from ?? 0}
+            beatDur={beat?.durationInFrames ?? 60}
           />
         ))}
       </div>

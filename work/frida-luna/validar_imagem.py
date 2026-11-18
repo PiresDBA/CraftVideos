@@ -105,7 +105,9 @@ def _porta_sombra(a):
         alt = sl[0].stop - sl[0].start
         larg = sl[1].stop - sl[1].start
         no_fundo = sl[0].start > H * 0.66
-        oval = (larg / max(1, alt)) > 2.2 and area < maior * 0.30
+        # área mínima 40 px: resíduos de 4-6 px do anti-aliasing da oval removida
+        # são ruído invisível, não uma sombra desenhada (uma oval real = 1500+ px).
+        oval = (larg / max(1, alt)) > 2.2 and area < maior * 0.30 and area >= 40
         if no_fundo and oval:
             sombras.append({"larg": larg, "alt": alt, "area": round(area)})
     return (len(sombras) == 0), {"sombra_oval": sombras}
@@ -209,15 +211,9 @@ def validar(pasta, quem=None, nome=""):
     cont = 99.0
     try:
         from calibrar_continuidade import assinatura, distancia
-        # Cycles de salto têm a oval removida (sombra de contacto vai no Remotion).
-        # Aceita-se a referência com OU sem oval: usa-se a MENOR distância, para
-        # que um sprite fiel a qualquer uma das duas versões canónicas passe.
+        # Referência canónica = happy.png SEM oval (oval_total.py). Tudo alinhado.
         ref = BASE / "chars" / "poses-v3" / quem / "happy.png"
-        ref_limpa = BASE / "chars" / "poses-v3" / quem / "_ref-sem-oval.png"
-        assin = assinatura(fs[0])
-        cont = float(distancia(assin, assinatura(ref)))
-        if ref_limpa.exists():
-            cont = min(cont, float(distancia(assin, assinatura(ref_limpa))))
+        cont = float(distancia(assinatura(fs[0]), assinatura(ref)))
     except Exception as e:
         motivos.append(f"continuidade: nao foi possivel medir ({e})")
     if cont > 0.45:

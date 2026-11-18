@@ -43,9 +43,9 @@ BRACO = {
         y0=99, y1=177,
         piv=(150.0, 104.0),
         keep_top=13,              # toco do ombro fica na base (liga o braço ao corpo)
-        erase_x_shift=6,          # mantém faixa castanha da lateral: o fill usa CASTANHO, não creme
-        fill_brown=True,          # fonte do fill só pixéis castanhos (não contorno da pata)
-        base="preencher",         # mesma técnica da Luna: sem buraco alpha=0 atrás do braço
+        erase_x_shift=6,          # mantém faixa castanha da lateral
+        fill_brown=False,         # preencher com a cor VIZINHA REAL (barriga creme à esquerda)
+        base="preencher",
     ),
     "luna": dict(
         xlos=[(137, 119.0), (150, 112.0), (165, 105.0), (182, 104.0)],
@@ -103,10 +103,11 @@ def extrair_braco(quem, src):
     if quem == "frida":
         ponta = yy > 172
         xl[ponta] = np.maximum(xl[ponta], 152.0)
-    # máscara total (inclui a ponta da pata); a PEÇA que roda exclui a ponta para
-    # não ir parar à borda do canvas nos ângulos do balanço.
+    # A PEÇA QUE RODA INCLUI A PATA INTEIRA — se a pata for excluída fica um
+    # buraco transparente no corpo (defeito rejeitado pelo utilizador). Para não
+    # bater na borda, reduz-se a amplitude do balanço em vez de cortar a pata.
     mask_all = (xx >= xl - 1.0) & (yy >= g["y0"]) & (yy <= g["y1"]) & (al > 20)
-    mask = mask_all & (yy <= 172) if quem == "frida" else mask_all
+    mask = mask_all
     ys, xs = np.nonzero(mask)
     x0, x1 = int(xs.min()), int(xs.max()) + 1
     y0, y1 = int(ys.min()), int(ys.max()) + 1
@@ -117,26 +118,20 @@ def extrair_braco(quem, src):
     peca = Image.fromarray(crop, "RGBA")
     piv = (g["piv"][0] - x0, g["piv"][1] - y0)
 
-    # base sem o braço — mantém um TOCO no ombro para o braço rodado ficar ligado
+    # BASE: apagar o braço em repouso e preencher replicando a coluna da MESMA
+    # linha 3 px à esquerda da fronteira do braço (xl). Isto preserva a cor
+    # local da lateral do corpo em cada altura (creme no meio, castanho em cima)
+    # SEM puxar o contorno escuro da direita — causa dos risos rejeitados.
     base = src.copy()
     shift = g.get("erase_x_shift", 0)
-    if quem == "frida":
-        shift = np.where(yy > 172, 0, shift)   # ponta da pata: apaga-se toda
     erase = mask_all & (xx >= xl - 1.0 + shift) & (yy >= g["y0"] + g["keep_top"])
-    if g["base"] == "transparente":
-        base[erase, 3] = 0
-    else:
-        # preenche com o pixél opaco vizinho mais próximo (barriga contínua)
-        valido = (al > 20) & ~erase
-        if g.get("fill_brown"):
-            rgb = src[..., :3].astype(np.int16)
-            castanho = ((rgb[..., 0] > 150) & (rgb[..., 1] > 80) &
-                        (rgb[..., 0] - rgb[..., 2] > 60) &
-                        (rgb[..., 1] - rgb[..., 2] > 35))
-            valido &= castanho
-        ind = ndimage.distance_transform_edt(~valido, return_distances=False,
-                                             return_indices=True)
-        base[erase] = base[ind[0][erase], ind[1][erase]]
+    if erase.any():
+        # origem: mesma linha y, coluna 4 px à esquerda da fronteira
+        src_x = np.clip((xl - 4).astype(int), 0, W - 1)
+        col = np.clip(src_x[..., None], 0, W - 1)
+        lin = np.arange(H)[:, None]
+        fill = base[lin, col]                 # copia a cor local da lateral
+        base[erase] = fill[erase]
     return peca, Image.fromarray(base, "RGBA"), piv, (x0, y0, x1, y1), mask
 
 

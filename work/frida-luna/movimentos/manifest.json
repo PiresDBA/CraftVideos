@@ -2,90 +2,28 @@
  "personagens": {
   "luna": {
    "olhar": {
-    "frames": 8,
-    "fps": 7.5,
     "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\luna\\olhar",
-    "ficheiros": [
-     "f00.png",
-     "f01.png",
-     "f02.png",
-     "f03.png",
-     "f04.png",
-     "f05.png",
-     "f06.png",
-     "f07.png"
-    ],
-    "fonte": "Flow flow-00.webp",
-    "nota": "validado automaticamente pelo jarvis",
-    "passada_sprite": 4,
-    "abertura_pes": 2,
-    "altura_sprite": 269
+    "fonte": "rig_sem_recorte (imagem aprovada intacta)",
+    "fps": 7.5,
+    "frames": 8
    },
    "escuta": {
-    "frames": 8,
-    "fps": 7.5,
     "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\luna\\escuta",
-    "ficheiros": [
-     "f00.png",
-     "f01.png",
-     "f02.png",
-     "f03.png",
-     "f04.png",
-     "f05.png",
-     "f06.png",
-     "f07.png"
-    ],
-    "fonte": "Flow Dachshund_glance_animation_chara…_9d333d5c.jpg",
-    "nota": "validado por validar_ciclo.py",
-    "passada_sprite": 4,
-    "abertura_pes": 2,
-    "altura_sprite": 268
+    "fonte": "rig_sem_recorte (imagem aprovada intacta)",
+    "fps": 7.5,
+    "frames": 8
    },
    "fala": {
-    "frames": 8,
-    "fps": 7.5,
     "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\luna\\fala",
-    "ficheiros": [
-     "f00.png",
-     "f01.png",
-     "f02.png",
-     "f03.png",
-     "f04.png",
-     "f05.png",
-     "f06.png",
-     "f07.png",
-     "f08.png",
-     "f09.png",
-     "f10.png",
-     "f11.png"
-    ],
-    "fonte": "rig_novo (gesto visivel)",
-    "nota": "validado por validar_ciclo.py",
-    "passada_sprite": 76,
-    "abertura_pes": 38,
-    "altura_sprite": 179
+    "fonte": "rig_sem_recorte (imagem aprovada intacta)",
+    "fps": 7.5,
+    "frames": 8
    },
    "sorrir": {
-    "frames": 10,
-    "fps": 7.5,
     "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\luna\\sorrir",
-    "ficheiros": [
-     "f00.png",
-     "f01.png",
-     "f02.png",
-     "f03.png",
-     "f04.png",
-     "f05.png",
-     "f06.png",
-     "f07.png",
-     "f08.png",
-     "f09.png"
-    ],
-    "fonte": "Flow flow-01.webp",
-    "nota": "especialista cont 0.35; micro 7/5",
-    "passada_sprite": 40,
-    "abertura_pes": 20,
-    "altura_sprite": 265
+    "fonte": "rig_sem_recorte (imagem aprovada intacta)",
+    "fps": 7.5,
+    "frames": 8
    },
    "corrida": {
     "frames": 8,
@@ -108,43 +46,16 @@
     "altura_sprite": 265
    },
    "surpreso": {
-    "frames": 7,
-    "fps": 7.5,
     "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\luna\\surpreso",
-    "ficheiros": [
-     "f00.png",
-     "f01.png",
-     "f02.png",
-     "f03.png",
-     "f04.png",
-     "f05.png",
-     "f06.png"
-    ],
-    "fonte": "Flow flow-00.webp",
-    "nota": "especialista cont 0.14; micro 7/5",
-    "passada_sprite": 74,
-    "abertura_pes": 37,
-    "altura_sprite": 265
+    "fonte": "rig_sem_recorte (imagem aprovada intacta)",
+    "fps": 7.5,
+    "frames": 8
    },
    "salto": {
-    "frames": 8,
-    "fps": 7.5,
     "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\luna\\salto",
-    "ficheiros": [
-     "f00.png",
-     "f01.png",
-     "f02.png",
-     "f03.png",
-     "f04.png",
-     "f05.png",
-     "f06.png",
-     "f07.png"
-    ],
-    "fonte": "rig_novo (gesto visivel)",
-    "nota": "especialista cont 0.16; micro 7/5",
-    "passada_sprite": 76,
-    "abertura_pes": 38,
-    "altura_sprite": 265
+    "fonte": "rig_sem_recorte (imagem aprovada intacta)",
+    "fps": 7.5,
+    "frames": 8
    },
    "marcha": {
     "frames": 8,
@@ -191,69 +102,30 @@
     "altura_sprite": 265
    },
    "comer": {
-    "frames": 6,
-    "fps": 7.5,
     "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\luna\\comer",
-    "ficheiros": [
-     "f00.png",
-     "f01.png",
-     "f02.png",
-     "f03.png",
-     "f04.png",
-     "f05.png"
-    ],
-    "fonte": "Flow flow-06.webp",
-    "nota": "especialista cont 0.29; micro 7/5",
-    "passada_sprite": 134,
-    "abertura_pes": 67,
-    "altura_sprite": 265
+    "fonte": "rig_sem_recorte (imagem aprovada intacta)",
+    "fps": 7.5,
+    "frames": 8
    },
    "acenar": {
-    "fonte": "acenar.py (tchau visivel)",
+    "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\luna\\acenar",
+    "fonte": "acenar.py (tchau limpo)",
     "fps": 7.5,
-    "frames": 10,
-    "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\luna\\acenar"
+    "frames": 10
    }
   },
   "frida": {
    "escuta": {
-    "frames": 6,
-    "fps": 7.5,
     "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\frida\\escuta",
-    "ficheiros": [
-     "f00.png",
-     "f01.png",
-     "f02.png",
-     "f03.png",
-     "f04.png",
-     "f05.png"
-    ],
-    "fonte": "Flow Sprite_sheet_for_escuta_cycle_60601875.jpg",
-    "nota": "validado por validar_ciclo.py",
-    "passada_sprite": 638,
-    "abertura_pes": 319,
-    "altura_sprite": 235
+    "fonte": "rig_sem_recorte (imagem aprovada intacta)",
+    "fps": 7.5,
+    "frames": 8
    },
    "fala": {
-    "frames": 8,
-    "fps": 7.5,
     "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\frida\\fala",
-    "ficheiros": [
-     "f00.png",
-     "f01.png",
-     "f02.png",
-     "f03.png",
-     "f04.png",
-     "f05.png",
-     "f06.png",
-     "f07.png",
-     "f08.png"
-    ],
-    "fonte": "rig_novo (gesto visivel)",
-    "nota": "validado por validar_ciclo.py",
-    "passada_sprite": 22,
-    "abertura_pes": 11,
-    "altura_sprite": 317
+    "fonte": "rig_sem_recorte (imagem aprovada intacta)",
+    "fps": 7.5,
+    "frames": 8
    },
    "marcha": {
     "frames": 8,
@@ -280,69 +152,22 @@
     "altura_sprite": 231
    },
    "surpreso": {
-    "frames": 9,
-    "fps": 7.5,
     "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\frida\\surpreso",
-    "ficheiros": [
-     "f00.png",
-     "f01.png",
-     "f02.png",
-     "f03.png",
-     "f04.png",
-     "f05.png",
-     "f06.png",
-     "f07.png",
-     "f08.png"
-    ],
-    "fonte": "Flow flow-07.webp",
-    "nota": "especialista cont 0.24; micro 7/5",
-    "passada_sprite": 60,
-    "abertura_pes": 30,
-    "altura_sprite": 231
+    "fonte": "rig_sem_recorte (imagem aprovada intacta)",
+    "fps": 7.5,
+    "frames": 8
    },
    "sorrir": {
-    "frames": 12,
-    "fps": 7.5,
     "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\frida\\sorrir",
-    "ficheiros": [
-     "f00.png",
-     "f01.png",
-     "f02.png",
-     "f03.png",
-     "f04.png",
-     "f05.png",
-     "f06.png",
-     "f07.png",
-     "f08.png",
-     "f09.png",
-     "f10.png",
-     "f11.png"
-    ],
-    "fonte": "Flow flow-08.webp",
-    "nota": "especialista cont 0.28; micro 7/5",
-    "passada_sprite": 48,
-    "abertura_pes": 24,
-    "altura_sprite": 231
+    "fonte": "rig_sem_recorte (imagem aprovada intacta)",
+    "fps": 7.5,
+    "frames": 8
    },
    "salto": {
-    "frames": 8,
-    "fps": 7.5,
     "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\frida\\salto",
-    "ficheiros": [
-     "f00.png",
-     "f01.png",
-     "f02.png",
-     "f03.png",
-     "f04.png",
-     "f05.png",
-     "f06.png",
-     "f07.png"
-    ],
-    "fonte": "rig_novo (gesto visivel)",
-    "nota": "especialista cont 0.27; micro 7/5",
-    "passada_sprite": 80,
-    "abertura_pes": 40,
-    "altura_sprite": 231
+    "fonte": "rig_sem_recorte (imagem aprovada intacta)",
+    "fps": 7.5,
+    "frames": 8
    },
    "olhar-frente": {
     "frames": 8,
@@ -408,30 +233,22 @@
     "altura_sprite": 231
    },
    "comer": {
-    "frames": 8,
-    "fps": 7.5,
     "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\frida\\comer",
-    "ficheiros": [
-     "f00.png",
-     "f01.png",
-     "f02.png",
-     "f03.png",
-     "f04.png",
-     "f05.png",
-     "f06.png",
-     "f07.png"
-    ],
-    "fonte": "Flow flow-14.webp",
-    "nota": "especialista cont 0.14; micro 7/5",
-    "passada_sprite": 86,
-    "abertura_pes": 43,
-    "altura_sprite": 231
+    "fonte": "rig_sem_recorte (imagem aprovada intacta)",
+    "fps": 7.5,
+    "frames": 8
    },
    "acenar": {
-    "fonte": "acenar.py (tchau visivel)",
+    "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\frida\\acenar",
+    "fonte": "acenar.py (tchau limpo)",
     "fps": 7.5,
-    "frames": 10,
-    "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\frida\\acenar"
+    "frames": 10
+   },
+   "olhar": {
+    "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\frida\\olhar",
+    "fonte": "rig_sem_recorte (imagem aprovada intacta)",
+    "fps": 7.5,
+    "frames": 8
    }
   }
  }
