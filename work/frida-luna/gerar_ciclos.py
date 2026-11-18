@@ -29,8 +29,18 @@ REF = {
 }
 
 
+def bloco_micro():
+    """O bloco de micro-movimentos obrigatórios, extraído do ficheiro de regras."""
+    f = BASE / "chars" / "PROMPTS-MICRO-MOVIMENTOS.md"
+    if not f.exists():
+        return ""
+    m = re.search(r"```\s*\n(.*?)\n```", f.read_text(encoding="utf-8"), re.S)
+    return m.group(1).strip() if m else ""
+
+
 def blocos():
     texto = PROMPTS.read_text(encoding="utf-8")
+    micro = bloco_micro()
     gotas = re.split(r"(?m)^##\s+", texto)[1:]
     out = []
     for gota in gotas:
@@ -44,10 +54,13 @@ def blocos():
         prompt = re.search(r"```\s*\n(.*?)\n```", gota, re.S)
         if not prompt:
             continue
+        p = prompt.group(1).strip()
+        if micro and "MICRO-MOVEMENTS" not in p:
+            p = p + "\n\n" + micro
         out.append({
             "n": numero, "quem": quem, "mov": mov,
             "nome": f"{quem}-{mov}",
-            "prompt": prompt.group(1).strip(),
+            "prompt": p,
         })
     return out
 

@@ -48,6 +48,36 @@ def generico(imgs):
     }
 
 
+def micro_movimentos(imgs):
+    """Mede se há vida no rosto/apêndices, não só respiração/piscar.
+
+    Regiões relativas (fraction da largura/altura). Para cada uma, mede a maior diferença
+    média de cor entre quadros consecutivos, contando só pixeis opacos nos dois.
+    """
+    regioes = {
+        "sobrancelha": (0.28, 0.16, 0.72, 0.32),
+        "bochecha/orelha": (0.08, 0.20, 0.42, 0.45),
+        "focinho": (0.45, 0.22, 0.88, 0.45),
+        "coleira/bandana": (0.22, 0.46, 0.80, 0.62),
+        "rabinho": (0.02, 0.55, 0.28, 0.88),
+    }
+    h, w = imgs[0].shape[:2]
+    resultado = {}
+    for nome, (x0, y0, x1, y1) in regioes.items():
+        xa, xb = int(w * x0), int(w * x1)
+        ya, yb = int(h * y0), int(h * y1)
+        maior = 0.0
+        for a, b in zip(imgs, imgs[1:] + imgs[:1]):
+            aa, bb = a[ya:yb, xa:xb], b[ya:yb, xa:xb]
+            m = (aa[:, :, 3] > 128) & (bb[:, :, 3] > 128)
+            if m.sum() < 50:
+                continue
+            d = float(np.abs(aa[:, :, :3][m] - bb[:, :, :3][m]).mean())
+            maior = max(maior, d)
+        resultado[nome] = round(maior, 2)
+    return resultado
+
+
 def principais(pasta, tipo):
     erros = []
     if tipo in ("marcha", "corrida"):
@@ -116,7 +146,15 @@ def main():
         erros.append(f"ciclo nao fecha: emenda {g['emenda']:.1f} vs media {g['media_passos']:.1f}")
     erros += principais(a.pasta, a.tipo)
 
+    micro = micro_movimentos(imgs)
+    regioes_vivas = sum(1 for v in micro.values() if v >= 0.8)
+    if regioes_vivas < 2:
+        erros.append(f"rosto congelado: so {regioes_vivas}/5 regioes micro-moveem {micro}")
+    if g["media_passos"] < 0.25:
+        erros.append(f"quadros identicos: diferenca media {g['media_passos']:.2f}")
+
     print(json.dumps({"nome": a.nome or a.pasta, "tipo": a.tipo, **g,
+                      "micro": micro, "regioes_vivas": regioes_vivas,
                       "erros": erros, "veredito": "ACEITE" if not erros else "REJEITADA"},
                      indent=1, ensure_ascii=False))
     return 1 if erros else 0
