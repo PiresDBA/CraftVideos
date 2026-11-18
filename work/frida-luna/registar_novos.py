@@ -47,6 +47,8 @@ def main():
         tipo = cfg.get("tipo", "escuta")
         fps = cfg.get("fps", 7.5)
         origem = BASE / "chars" / "folhas" / cfg["ficheiro"]
+        if not origem.exists():
+            origem = BASE / "chars" / "folhas" / "_novos" / cfg["ficheiro"]
         print(f"\n=== {nome} ({quem}/{tipo}) <- {origem.name} ===", flush=True)
         if not origem.exists():
             print("  FALTA o ficheiro")

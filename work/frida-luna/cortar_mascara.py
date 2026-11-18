@@ -32,13 +32,28 @@ def mascara_figuras(im: np.ndarray, limiar: int, chao: float = 0.92):
     dif = np.abs(im.astype(int) - bg.astype(int)).sum(axis=2)
     cand = dif >= limiar
 
-    # linha de chao continua: liga todas as figuras e estraga a separacao
+    # linha de chao continua: liga todas as figuras e estraga a separacao.
+    # Tem de ser UMA FAIXA FINA e ISOLADA (com fundo por baixo). Sem isto, numa tira de
+    # bonecos pequenos a faixa dos proprios pes tem cobertura alta e era apagada.
     cobertura = cand.mean(axis=1)
-    linhas_chao = cobertura >= chao
-    if linhas_chao.any():
-        cand[linhas_chao, :] = False
-        ys = np.nonzero(linhas_chao)[0]
-        print(f"  linha de chao removida nas linhas {ys.min()}-{ys.max()}")
+    alto = cobertura >= chao
+    linhas_chao = np.zeros_like(alto)
+    y = 0
+    while y < len(alto):
+        if not alto[y]:
+            y += 1
+            continue
+        f = y
+        while f + 1 < len(alto) and alto[f + 1]:
+            f += 1
+        comprimento = f - y + 1
+        por_baixo = cobertura[f + 1:f + 9] if f + 1 < len(cobertura) else np.array([])
+        fundo_depois = len(por_baixo) == 0 or float(np.mean(por_baixo)) < 0.35
+        if comprimento <= 8 and fundo_depois:
+            linhas_chao[y:f + 1] = True
+            print(f"  linha de chao removida nas linhas {y}-{f} "
+                  f"({comprimento} px, fundo por baixo)")
+        y = f + 1
 
     # fundo = cor-de-fundo ligado a borda
     rot_bg, n_bg = ndimage.label(~cand)
@@ -64,7 +79,7 @@ def alfa_suave(mask: np.ndarray) -> np.ndarray:
 def main():
     src, dst = Path(sys.argv[1]), Path(sys.argv[2])
     limiar = int(sys.argv[sys.argv.index("--limiar") + 1]) if "--limiar" in sys.argv else 26
-    area_min = int(sys.argv[sys.argv.index("--area-min") + 1]) if "--area-min" in sys.argv else 2500
+    area_min = int(sys.argv[sys.argv.index("--area-min") + 1]) if "--area-min" in sys.argv else 400
     chao = float(sys.argv[sys.argv.index("--chao") + 1]) if "--chao" in sys.argv else 0.92
 
     dst.mkdir(parents=True, exist_ok=True)
