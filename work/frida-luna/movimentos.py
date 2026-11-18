@@ -81,7 +81,8 @@ def cmd_registar(who, nome, pasta, fps, fonte="", nota=""):
 
 
 
-def cmd_render(who, nome, dur, out, bg_path=None, altura=700, x0=300, audio_path=None):
+def cmd_render(who, nome, dur, out, bg_path=None, altura=700, x0=300, audio_path=None,
+               passada_override=None):
     m = load_man()
     conf = m["personagens"][who][nome]
     pasta = Path(conf["pasta"])
@@ -110,7 +111,9 @@ def cmd_render(who, nome, dur, out, bg_path=None, altura=700, x0=300, audio_path
         # (passada_sprite vem do registo; era um 92 fixo que fazia patinar)
         ciclo = len(fr) / fps_anim
         passada = conf.get("passada_sprite", 0) * k
-        if passada <= 0:
+        if passada_override is not None:
+            passada = float(passada_override)   # 0 para idle/fala (personagem parada)
+        elif passada <= 0:
             passada = s.width * 0.55
         x = x0 + (t / ciclo) * passada
         # o desenho nao tem balanco vertical proprio: 2 px chegam para nao parecer "travado"
@@ -145,7 +148,10 @@ def main():
         alt = int(sys.argv[sys.argv.index("--altura") + 1]) if "--altura" in sys.argv else 700
         x0 = int(sys.argv[sys.argv.index("--x0") + 1]) if "--x0" in sys.argv else 300
         audio = sys.argv[sys.argv.index("--audio") + 1] if "--audio" in sys.argv else None
-        return cmd_render(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], bg, alt, x0, audio)
+        passada = (float(sys.argv[sys.argv.index("--passada") + 1])
+                   if "--passada" in sys.argv else None)
+        return cmd_render(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5],
+                          bg, alt, x0, audio, passada)
     raise SystemExit(__doc__)
 
 
