@@ -86,9 +86,24 @@ def main():
     for f in dst.glob("*.png"):
         f.unlink()
 
-    rgb = np.array(Image.open(src).convert("RGB"))
-    fig = mascara_figuras(rgb, limiar, chao)
-    alfa = alfa_suave(fig)
+    imagem = Image.open(src).convert("RGBA")
+    rgba = np.array(imagem)
+    alfa_existente = rgba[:, :, 3]
+
+    # Se o Flow entregou a imagem com fundo transparente de verdade, NAO ha que recortar
+    # por cor: usamos o alfa que veio da geracao. Isto elimina uma fonte grande de erro
+    # (cortar a pelagem creme que tem a cor do papel).
+    transparente = (alfa_existente.min() < 250 and
+                    float((alfa_existente < 128).mean()) > 0.05)
+    if transparente:
+        print("  imagem ja tem fundo transparente — alfa aproveitado, sem recorte por cor")
+        rgb = rgba[:, :, :3]
+        fig = alfa_existente > 128
+        alfa = alfa_existente
+    else:
+        rgb = rgba[:, :, :3]
+        fig = mascara_figuras(rgb, limiar, chao)
+        alfa = alfa_suave(fig)
 
     rot, n = ndimage.label(fig)
     areas = ndimage.sum(fig, rot, index=range(1, n + 1))

@@ -60,6 +60,8 @@ def micro_movimentos(imgs):
         "focinho": (0.45, 0.22, 0.88, 0.45),
         "coleira/bandana": (0.22, 0.46, 0.80, 0.62),
         "rabinho": (0.02, 0.55, 0.28, 0.88),
+        "patas/maos": (0.28, 0.72, 0.78, 0.97),
+        "barriguinha": (0.34, 0.50, 0.74, 0.76),
     }
     h, w = imgs[0].shape[:2]
     resultado = {}
@@ -178,7 +180,7 @@ def main():
 
     micro = micro_movimentos(imgs)
     regioes_vivas = sum(1 for v in micro.values() if v >= 0.8)
-    if regioes_vivas < 2:
+    if regioes_vivas < 3:
         erros.append(f"rosto congelado: so {regioes_vivas}/5 regioes micro-moveem {micro}")
     if g["media_passos"] < 0.25:
         erros.append(f"quadros identicos: diferenca media {g['media_passos']:.2f}")

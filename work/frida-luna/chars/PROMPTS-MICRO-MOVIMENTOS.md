@@ -21,6 +21,8 @@ Esta folha é injectada automaticamente em todos os prompts por `gerar_ciclos.py
 | colar de pérolas | 1–2 px de balanço | 8–12 quadros | segue o movimento do peito com atraso de 1 quadro |
 | rabinho | 3–6 px na ponta | 6–8 quadros | meia volta curta, não remo de leme |
 | olho | piscar real 2–3 quadros | 48–96 quadros | pálpebra curva, nunca barra |
+| patas/mãos | 1–2 px de fecho dos dedos ou balanço | 10–16 quadros | a pata abre e fecha um pouco, nunca braço inteiro |
+| barriguinha | 1–2 px de expansão, 1 quadro atrasada do peito | 48 quadros | acompanha a respiração com atraso, dá a ideia de peso mole |
 
 ## Luna — regiões obrigatórias
 
@@ -33,10 +35,19 @@ Esta folha é injectada automaticamente em todos os prompts por `gerar_ciclos.py
 | bandana roxa | 1–2 px | 8–12 quadros | ponta a mexer com o peso do corpo |
 | rabinho | 4–8 px na ponta | 6–10 quadros | abanar pequeno e constante |
 | bigode / pelo do focinho | 1 px | 10–14 quadros | vibração mínima |
+| patas/mãos | 1–2 px de dedos a fechar/abrir | 10–16 quadros | nunca mexer o braço inteiro |
+| barriguinha | 1–2 px de expansão atrasada do peito | 48 quadros | dá peso mole ao corpo comprido |
 
 ## Bloco para injectar no prompt (inglês)
 
 ```
+OUTPUT — TRUE TRANSPARENT BACKGROUND (RGBA with real alpha), NOT cream paper, NOT white,
+NOT a coloured card. Each drawing must be an isolated figure with fully transparent space
+around it: no ground line, no shadow, no rectangle, no border. Keep the 8 figures in ONE
+horizontal row, evenly spaced, with generous empty gaps between them, identical size and the
+feet on the same baseline inside each cell. Do NOT flatten the alpha. Do NOT put the figures
+on a background.
+
 MICRO-MOVEMENTS — MANDATORY. This is NOT a frozen character with only breathing and blinking.
 In every drawing, at least three small facial/appendage details change by 1 to 3 pixels
 relative to the previous drawing. Keep the body outline, feet, head centre and overall size
@@ -45,13 +56,21 @@ stable: only these details move.
 For the FRIDA bulldog: the rosy cheek blush gently pulses in size/opacity, one eyebrow arcs
 slightly differently from the other, one floppy ear gives a tiny twitch, the muzzle/jowl has
 a very small tremble, the pearl necklace swings 1-2 pixels one drawing after the chest moves,
-and the short tail gives a small wag of 3-6 pixels at the tip. Blink once with real curved
-eyelids (never a straight bar).
+the short tail gives a small wag of 3-6 pixels at the tip, the PAWS curl and uncurl by 1-2
+pixels (fingers, never the whole arm), and the round BELLY expands 1-2 pixels one drawing
+after the chest, like a soft weight. Blink once with real curved eyelids (never a bar).
 
 For the LUNA dachshund: the eyebrows move independently by 1-2 pixels, the nose/muzzle has a
 tiny sniffing twitch, the long floppy ears sway loosely at the tips, the purple bandana
-swings 1-2 pixels, the muzzle whiskers tremble by 1 pixel, and the tail wags constantly but
-gently (4-8 pixels at the tip). Blink once with real curved eyelids (never a straight bar).
+swings 1-2 pixels, the muzzle whiskers tremble by 1 pixel, the tail wags constantly but
+gently (4-8 pixels at the tip), the small PAWS curl and uncurl by 1-2 pixels, and the long
+BELLY expands 1-2 pixels one drawing after the chest. Blink once with real curved eyelids.
+
+EMOTION — the micro-movements must EXPRESS the beat's feeling, not just add noise. If the
+beat is happy: cheeks lift, brows soften, tail wag is quicker, eyes brighten. If the beat is
+sad: cheeks sink, brows pull together, ears droop, tail slows down. If surprised: brows rise,
+eyes widen, body freezes for one drawing. If scared: ears flatten, tail drops, muzzle pulls
+back. Keep the approved face identity in every drawing: only these small details move.
 
 Rule: no two consecutive drawings may be identical. The only allowed identical pair is the
 LAST drawing compared to the FIRST, so the loop closes. Amplitudes must stay small: these
