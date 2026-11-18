@@ -388,9 +388,11 @@ for (const c of scenes) {
     // Exceccao declarada na regra B: num beat com falante designado, quem escuta
     // fica a 0,94x e a ratio 0,72 sai momentaneamente do intervalo de QA.
     if (FALA_0_94.has(b.i)) continue;
+    // Ratio actualizado quando a Frida passou de 620 para 520 px (contrato 18/11/2026):
+    // Luna/Frida = 450/520 = 0,865. O antigo 0,72 era da epoca F620/L440.
     const r = b.luna.h / b.frida.h;
-    if (Math.abs(r - 0.72) > 0.03) {
-      erros.push(`beat ${b.i}: hLuna/hFrida=${r.toFixed(3)} (esperado 0,720)`);
+    if (Math.abs(r - 0.865) > 0.03) {
+      erros.push(`beat ${b.i}: hLuna/hFrida=${r.toFixed(3)} (esperado 0,865)`);
     }
   }
   if (c._t) {

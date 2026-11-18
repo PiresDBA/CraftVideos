@@ -31,6 +31,203 @@
         "movimentos/luna/escuta/f06.png",
         "movimentos/luna/escuta/f07.png"
       ]
+    },
+    "frida/comer": {
+      "fps": 7.5,
+      "frames": [
+        "movimentos/frida/comer/f00.png",
+        "movimentos/frida/comer/f01.png",
+        "movimentos/frida/comer/f02.png",
+        "movimentos/frida/comer/f03.png",
+        "movimentos/frida/comer/f04.png",
+        "movimentos/frida/comer/f05.png",
+        "movimentos/frida/comer/f06.png",
+        "movimentos/frida/comer/f07.png"
+      ]
+    },
+    "luna/comer": {
+      "fps": 7.5,
+      "frames": [
+        "movimentos/luna/comer/f00.png",
+        "movimentos/luna/comer/f01.png",
+        "movimentos/luna/comer/f02.png",
+        "movimentos/luna/comer/f03.png",
+        "movimentos/luna/comer/f04.png",
+        "movimentos/luna/comer/f05.png"
+      ]
+    },
+    "frida/olhar-frente": {
+      "fps": 7.5,
+      "frames": [
+        "movimentos/frida/olhar-frente/f00.png",
+        "movimentos/frida/olhar-frente/f01.png",
+        "movimentos/frida/olhar-frente/f02.png",
+        "movimentos/frida/olhar-frente/f03.png",
+        "movimentos/frida/olhar-frente/f04.png",
+        "movimentos/frida/olhar-frente/f05.png",
+        "movimentos/frida/olhar-frente/f06.png",
+        "movimentos/frida/olhar-frente/f07.png"
+      ]
+    },
+    "frida/marcha": {
+      "fps": 7.5,
+      "frames": [
+        "movimentos/frida/marcha/f00.png",
+        "movimentos/frida/marcha/f01.png",
+        "movimentos/frida/marcha/f02.png",
+        "movimentos/frida/marcha/f03.png",
+        "movimentos/frida/marcha/f04.png",
+        "movimentos/frida/marcha/f05.png",
+        "movimentos/frida/marcha/f06.png",
+        "movimentos/frida/marcha/f07.png",
+        "movimentos/frida/marcha/f08.png",
+        "movimentos/frida/marcha/f09.png",
+        "movimentos/frida/marcha/f10.png",
+        "movimentos/frida/marcha/f11.png"
+      ]
+    },
+    "luna/corrida": {
+      "fps": 7.5,
+      "frames": [
+        "movimentos/luna/corrida/f00.png",
+        "movimentos/luna/corrida/f01.png",
+        "movimentos/luna/corrida/f02.png",
+        "movimentos/luna/corrida/f03.png",
+        "movimentos/luna/corrida/f04.png",
+        "movimentos/luna/corrida/f05.png",
+        "movimentos/luna/corrida/f06.png",
+        "movimentos/luna/corrida/f07.png"
+      ]
+    },
+    "frida/salto": {
+      "fps": 7.5,
+      "frames": [
+        "movimentos/frida/salto/f00.png",
+        "movimentos/frida/salto/f01.png",
+        "movimentos/frida/salto/f02.png",
+        "movimentos/frida/salto/f03.png",
+        "movimentos/frida/salto/f04.png",
+        "movimentos/frida/salto/f05.png",
+        "movimentos/frida/salto/f06.png",
+        "movimentos/frida/salto/f07.png"
+      ]
+    },
+    "luna/salto": {
+      "fps": 7.5,
+      "frames": [
+        "movimentos/luna/salto/f00.png",
+        "movimentos/luna/salto/f01.png",
+        "movimentos/luna/salto/f02.png",
+        "movimentos/luna/salto/f03.png",
+        "movimentos/luna/salto/f04.png",
+        "movimentos/luna/salto/f05.png",
+        "movimentos/luna/salto/f06.png",
+        "movimentos/luna/salto/f07.png"
+      ]
+    },
+    "frida/corrida": {
+      "fps": 7.5,
+      "frames": [
+        "movimentos/frida/corrida/f00.png",
+        "movimentos/frida/corrida/f01.png",
+        "movimentos/frida/corrida/f02.png",
+        "movimentos/frida/corrida/f03.png",
+        "movimentos/frida/corrida/f04.png",
+        "movimentos/frida/corrida/f05.png",
+        "movimentos/frida/corrida/f06.png",
+        "movimentos/frida/corrida/f07.png",
+        "movimentos/frida/corrida/f08.png",
+        "movimentos/frida/corrida/f09.png",
+        "movimentos/frida/corrida/f10.png"
+      ]
+    },
+    "frida/giro": {
+      "fps": 7.5,
+      "frames": [
+        "movimentos/frida/giro/f00.png",
+        "movimentos/frida/giro/f01.png",
+        "movimentos/frida/giro/f02.png",
+        "movimentos/frida/giro/f03.png",
+        "movimentos/frida/giro/f04.png",
+        "movimentos/frida/giro/f05.png",
+        "movimentos/frida/giro/f06.png",
+        "movimentos/frida/giro/f07.png"
+      ]
+    },
+    "luna/giro": {
+      "fps": 7.5,
+      "frames": [
+        "movimentos/luna/giro/f00.png",
+        "movimentos/luna/giro/f01.png",
+        "movimentos/luna/giro/f02.png",
+        "movimentos/luna/giro/f03.png",
+        "movimentos/luna/giro/f04.png",
+        "movimentos/luna/giro/f05.png",
+        "movimentos/luna/giro/f06.png",
+        "movimentos/luna/giro/f07.png",
+        "movimentos/luna/giro/f08.png",
+        "movimentos/luna/giro/f09.png",
+        "movimentos/luna/giro/f10.png",
+        "movimentos/luna/giro/f11.png"
+      ]
+    },
+    "frida/sorrir": {
+      "fps": 7.5,
+      "frames": [
+        "movimentos/frida/sorrir/f00.png",
+        "movimentos/frida/sorrir/f01.png",
+        "movimentos/frida/sorrir/f02.png",
+        "movimentos/frida/sorrir/f03.png",
+        "movimentos/frida/sorrir/f04.png",
+        "movimentos/frida/sorrir/f05.png",
+        "movimentos/frida/sorrir/f06.png",
+        "movimentos/frida/sorrir/f07.png",
+        "movimentos/frida/sorrir/f08.png",
+        "movimentos/frida/sorrir/f09.png",
+        "movimentos/frida/sorrir/f10.png",
+        "movimentos/frida/sorrir/f11.png"
+      ]
+    },
+    "luna/sorrir": {
+      "fps": 7.5,
+      "frames": [
+        "movimentos/luna/sorrir/f00.png",
+        "movimentos/luna/sorrir/f01.png",
+        "movimentos/luna/sorrir/f02.png",
+        "movimentos/luna/sorrir/f03.png",
+        "movimentos/luna/sorrir/f04.png",
+        "movimentos/luna/sorrir/f05.png",
+        "movimentos/luna/sorrir/f06.png",
+        "movimentos/luna/sorrir/f07.png",
+        "movimentos/luna/sorrir/f08.png",
+        "movimentos/luna/sorrir/f09.png"
+      ]
+    },
+    "frida/surpreso": {
+      "fps": 7.5,
+      "frames": [
+        "movimentos/frida/surpreso/f00.png",
+        "movimentos/frida/surpreso/f01.png",
+        "movimentos/frida/surpreso/f02.png",
+        "movimentos/frida/surpreso/f03.png",
+        "movimentos/frida/surpreso/f04.png",
+        "movimentos/frida/surpreso/f05.png",
+        "movimentos/frida/surpreso/f06.png",
+        "movimentos/frida/surpreso/f07.png",
+        "movimentos/frida/surpreso/f08.png"
+      ]
+    },
+    "luna/surpreso": {
+      "fps": 7.5,
+      "frames": [
+        "movimentos/luna/surpreso/f00.png",
+        "movimentos/luna/surpreso/f01.png",
+        "movimentos/luna/surpreso/f02.png",
+        "movimentos/luna/surpreso/f03.png",
+        "movimentos/luna/surpreso/f04.png",
+        "movimentos/luna/surpreso/f05.png",
+        "movimentos/luna/surpreso/f06.png"
+      ]
     }
   },
   "expressoes": {
@@ -337,7 +534,7 @@
             "frente": false
           },
           "luna": {
-            "mov": "marcha",
+            "mov": "corrida",
             "expr": "excited",
             "x": 395,
             "y": 996,
@@ -408,7 +605,7 @@
             "frente": false
           },
           "luna": {
-            "mov": "marcha",
+            "mov": "corrida",
             "expr": "happy",
             "x": 380,
             "y": 1002,
@@ -599,7 +796,7 @@
             "frente": false
           },
           "luna": {
-            "mov": "marcha",
+            "mov": "corrida",
             "expr": "happy",
             "x": 400,
             "y": 1008,

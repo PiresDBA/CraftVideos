@@ -1,0 +1,634 @@
+{
+ "data": "2026-11-18T12:10:17",
+ "origem": "D:\\CRAFT\\work\\frida-luna\\chars\\folhas\\_semanticos-lote1",
+ "total": 26,
+ "resumo": {
+  "fundo_opaco": 26,
+  "espacamento_insuficiente": 21,
+  "aprovadas": 0
+ },
+ "itens": [
+  {
+   "imagem": "flow-00.webp",
+   "personagem_visual": "frida",
+   "movimento_visual": "giro",
+   "espacamento": {
+    "ok": false,
+    "figuras": 7,
+    "largura_mediana": 152.0,
+    "menor_gap": 23,
+    "exigido": 38.0,
+    "gaps": [
+     38,
+     30,
+     23,
+     56,
+     40,
+     44
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 23px < 1/4 da largura (38.0px) — 7 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-01.webp",
+   "personagem_visual": "frida",
+   "movimento_visual": "marcha",
+   "espacamento": {
+    "ok": false,
+    "figuras": 8,
+    "largura_mediana": 136.0,
+    "menor_gap": 26,
+    "exigido": 34.0,
+    "gaps": [
+     26,
+     31,
+     36,
+     27,
+     28,
+     28,
+     33
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 26px < 1/4 da largura (34.0px) — 8 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-02.webp",
+   "personagem_visual": "frida",
+   "movimento_visual": "sorrir",
+   "espacamento": {
+    "ok": false,
+    "figuras": 8,
+    "largura_mediana": 144.0,
+    "menor_gap": 23,
+    "exigido": 36.0,
+    "gaps": [
+     24,
+     23,
+     23,
+     24,
+     24,
+     23,
+     25
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 23px < 1/4 da largura (36.0px) — 8 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-03.webp",
+   "personagem_visual": "frida",
+   "movimento_visual": "giro",
+   "espacamento": {
+    "ok": true,
+    "figuras": 5,
+    "largura_mediana": 191.0,
+    "menor_gap": 60,
+    "exigido": 47.8,
+    "gaps": [
+     98,
+     80,
+     60,
+     97
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-04.webp",
+   "personagem_visual": "frida",
+   "movimento_visual": "olhar-frente",
+   "espacamento": {
+    "ok": false,
+    "figuras": 8,
+    "largura_mediana": 152.0,
+    "menor_gap": 10,
+    "exigido": 38.0,
+    "gaps": [
+     23,
+     20,
+     18,
+     10,
+     19,
+     15,
+     19
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 10px < 1/4 da largura (38.0px) — 8 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-05.webp",
+   "personagem_visual": "frida",
+   "movimento_visual": "sentar",
+   "espacamento": {
+    "ok": false,
+    "figuras": 8,
+    "largura_mediana": 145.0,
+    "menor_gap": 23,
+    "exigido": 36.2,
+    "gaps": [
+     24,
+     24,
+     23,
+     24,
+     24,
+     23,
+     24
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 23px < 1/4 da largura (36.2px) — 8 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-06.webp",
+   "personagem_visual": "frida",
+   "movimento_visual": "marcha",
+   "espacamento": {
+    "ok": false,
+    "figuras": 8,
+    "largura_mediana": 138.0,
+    "menor_gap": 19,
+    "exigido": 34.5,
+    "gaps": [
+     34,
+     28,
+     22,
+     24,
+     19,
+     35,
+     33
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 19px < 1/4 da largura (34.5px) — 8 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-07.webp",
+   "personagem_visual": "frida",
+   "movimento_visual": "corrida",
+   "espacamento": {
+    "ok": false,
+    "figuras": 8,
+    "largura_mediana": 157.0,
+    "menor_gap": 6,
+    "exigido": 39.2,
+    "gaps": [
+     19,
+     6,
+     16,
+     17,
+     10,
+     10,
+     14
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 6px < 1/4 da largura (39.2px) — 8 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-08.webp",
+   "personagem_visual": "frida",
+   "movimento_visual": "giro",
+   "espacamento": {
+    "ok": false,
+    "figuras": 4,
+    "largura_mediana": 226.0,
+    "menor_gap": 21,
+    "exigido": 56.5,
+    "gaps": [
+     91,
+     21,
+     79
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 21px < 1/4 da largura (56.5px) — 4 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-09.webp",
+   "personagem_visual": "frida",
+   "movimento_visual": "giro",
+   "espacamento": {
+    "ok": true,
+    "figuras": 8,
+    "largura_mediana": 103.0,
+    "menor_gap": 57,
+    "exigido": 25.8,
+    "gaps": [
+     58,
+     57,
+     63,
+     60,
+     67,
+     61,
+     58
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-10.webp",
+   "personagem_visual": "frida",
+   "movimento_visual": "sentar",
+   "espacamento": {
+    "ok": true,
+    "figuras": 8,
+    "largura_mediana": 124.0,
+    "menor_gap": 43,
+    "exigido": 31.0,
+    "gaps": [
+     43,
+     49,
+     49,
+     44,
+     47,
+     53,
+     48
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-11.webp",
+   "personagem_visual": "frida",
+   "movimento_visual": "marcha",
+   "espacamento": {
+    "ok": false,
+    "figuras": 8,
+    "largura_mediana": 137.5,
+    "menor_gap": 24,
+    "exigido": 34.4,
+    "gaps": [
+     31,
+     32,
+     28,
+     32,
+     24,
+     35,
+     44
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 24px < 1/4 da largura (34.4px) — 8 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-12.webp",
+   "personagem_visual": "frida",
+   "movimento_visual": "escuta",
+   "espacamento": {
+    "ok": false,
+    "figuras": 8,
+    "largura_mediana": 139.0,
+    "menor_gap": 29,
+    "exigido": 34.8,
+    "gaps": [
+     32,
+     31,
+     32,
+     30,
+     31,
+     29,
+     30
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 29px < 1/4 da largura (34.8px) — 8 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-13.webp",
+   "personagem_visual": "frida",
+   "movimento_visual": "sorrir",
+   "espacamento": {
+    "ok": false,
+    "figuras": 8,
+    "largura_mediana": 143.5,
+    "menor_gap": 22,
+    "exigido": 35.9,
+    "gaps": [
+     27,
+     25,
+     22,
+     23,
+     23,
+     25,
+     24
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 22px < 1/4 da largura (35.9px) — 8 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-14.webp",
+   "personagem_visual": "frida",
+   "movimento_visual": "olhar-frente",
+   "espacamento": {
+    "ok": false,
+    "figuras": 8,
+    "largura_mediana": 147.0,
+    "menor_gap": 21,
+    "exigido": 36.8,
+    "gaps": [
+     23,
+     22,
+     22,
+     22,
+     21,
+     22,
+     22
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 21px < 1/4 da largura (36.8px) — 8 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-15.webp",
+   "personagem_visual": "frida",
+   "movimento_visual": "giro",
+   "espacamento": {
+    "ok": true,
+    "figuras": 6,
+    "largura_mediana": 169.5,
+    "menor_gap": 48,
+    "exigido": 42.4,
+    "gaps": [
+     56,
+     54,
+     55,
+     48,
+     53
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-16.webp",
+   "personagem_visual": "luna",
+   "movimento_visual": "marcha",
+   "espacamento": {
+    "ok": false,
+    "figuras": 8,
+    "largura_mediana": 147.5,
+    "menor_gap": 18,
+    "exigido": 36.9,
+    "gaps": [
+     25,
+     18,
+     24,
+     23,
+     23,
+     30,
+     25
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 18px < 1/4 da largura (36.9px) — 8 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-17.webp",
+   "personagem_visual": "frida",
+   "movimento_visual": "marcha",
+   "espacamento": {
+    "ok": false,
+    "figuras": 1,
+    "largura_mediana": 1372.0,
+    "menor_gap": 0,
+    "exigido": 343.0,
+    "gaps": []
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 0px < 1/4 da largura (343.0px) — 1 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-18.webp",
+   "personagem_visual": "luna",
+   "movimento_visual": "escuta",
+   "espacamento": {
+    "ok": false,
+    "figuras": 8,
+    "largura_mediana": 145.5,
+    "menor_gap": 18,
+    "exigido": 36.4,
+    "gaps": [
+     18,
+     19,
+     39,
+     36,
+     19,
+     25,
+     22
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 18px < 1/4 da largura (36.4px) — 8 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-19.webp",
+   "personagem_visual": "luna",
+   "movimento_visual": "marcha",
+   "espacamento": {
+    "ok": false,
+    "figuras": 1,
+    "largura_mediana": 1372.0,
+    "menor_gap": 0,
+    "exigido": 343.0,
+    "gaps": []
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 0px < 1/4 da largura (343.0px) — 1 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-20.webp",
+   "personagem_visual": "luna",
+   "movimento_visual": "corrida",
+   "espacamento": {
+    "ok": false,
+    "figuras": 10,
+    "largura_mediana": 114.5,
+    "menor_gap": 14,
+    "exigido": 28.6,
+    "gaps": [
+     24,
+     16,
+     14,
+     17,
+     18,
+     18,
+     14,
+     17,
+     21
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 14px < 1/4 da largura (28.6px) — 10 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-21.webp",
+   "personagem_visual": "luna",
+   "movimento_visual": "giro",
+   "espacamento": {
+    "ok": true,
+    "figuras": 8,
+    "largura_mediana": 117.0,
+    "menor_gap": 41,
+    "exigido": 29.2,
+    "gaps": [
+     49,
+     43,
+     41,
+     47,
+     41,
+     41,
+     44
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-22.webp",
+   "personagem_visual": "luna",
+   "movimento_visual": "giro",
+   "espacamento": {
+    "ok": false,
+    "figuras": 7,
+    "largura_mediana": 101.0,
+    "menor_gap": 19,
+    "exigido": 25.2,
+    "gaps": [
+     37,
+     32,
+     19,
+     20,
+     37,
+     48
+    ]
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 19px < 1/4 da largura (25.2px) — 7 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-23.webp",
+   "personagem_visual": "frida",
+   "movimento_visual": "sorrir",
+   "espacamento": {
+    "ok": false,
+    "figuras": 1,
+    "largura_mediana": 1372.0,
+    "menor_gap": 0,
+    "exigido": 343.0,
+    "gaps": []
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 0px < 1/4 da largura (343.0px) — 1 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-24.webp",
+   "personagem_visual": "luna",
+   "movimento_visual": "corrida",
+   "espacamento": {
+    "ok": false,
+    "figuras": 1,
+    "largura_mediana": 1372.0,
+    "menor_gap": 0,
+    "exigido": 343.0,
+    "gaps": []
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 0px < 1/4 da largura (343.0px) — 1 figuras"
+   ],
+   "veredito": "REPROVADA"
+  },
+  {
+   "imagem": "flow-25.webp",
+   "personagem_visual": "luna",
+   "movimento_visual": "sorrir",
+   "espacamento": {
+    "ok": false,
+    "figuras": 1,
+    "largura_mediana": 1372.0,
+    "menor_gap": 0,
+    "exigido": 343.0,
+    "gaps": []
+   },
+   "motivos": [
+    "fundo RGB opaco (alpha=255) — sem transparencia real",
+    "espacamento 0px < 1/4 da largura (343.0px) — 1 figuras"
+   ],
+   "veredito": "REPROVADA"
+  }
+ ]
+}
