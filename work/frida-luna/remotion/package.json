@@ -1,0 +1,24 @@
+{
+  "name": "frida-luna-episodio-remotion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Composicao Remotion do episodio completo O Parque dos Pets (1920x1080, 30 fps, 5882 frames)",
+  "scripts": {
+    "gerar": "node gerar_timeline.mjs",
+    "preparar": "node preparar_publico.mjs",
+    "compositions": "remotion compositions src/index.ts",
+    "studio": "remotion studio src/index.ts",
+    "sample": "remotion render src/index.ts Episodio _remotion-sample.mp4 --frames=0-299 --scale=0.5 --codec=h264 --pixel-format=yuv420p --crf=24",
+    "render": "remotion render src/index.ts Episodio ../card/parque-dos-petes.mp4 --codec=h264 --pixel-format=yuv420p --crf=18"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.484",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.484"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.1",
+    "typescript": "5.3.3"
+  }
+}

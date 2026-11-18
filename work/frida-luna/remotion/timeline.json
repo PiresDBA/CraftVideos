@@ -1,0 +1,2163 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "durationInFrames": 5882,
+  "audio": "audio/voz.wav",
+  "musica": "audio/musica.wav",
+  "musicaVolume": 0.12,
+  "nota": "O Parque dos Pets. Numeros de DIRECAO-ARTE.md (tabela A + regras B). Pes no chao de cada cena; elenco imovel com a camera; legenda so na fala. Sem interpolacao entre desenhos; fallback para pose estatica.",
+  "banco": {
+    "frida/escuta": {
+      "fps": 7.5,
+      "frames": [
+        "movimentos/frida/escuta/f00.png",
+        "movimentos/frida/escuta/f01.png",
+        "movimentos/frida/escuta/f02.png",
+        "movimentos/frida/escuta/f03.png",
+        "movimentos/frida/escuta/f04.png",
+        "movimentos/frida/escuta/f05.png",
+        "movimentos/frida/escuta/f06.png",
+        "movimentos/frida/escuta/f07.png"
+      ]
+    },
+    "frida/marcha-flow10": {
+      "fps": 10,
+      "frames": [
+        "movimentos/frida/marcha-flow10/f00.png",
+        "movimentos/frida/marcha-flow10/f01.png",
+        "movimentos/frida/marcha-flow10/f02.png",
+        "movimentos/frida/marcha-flow10/f03.png",
+        "movimentos/frida/marcha-flow10/f04.png",
+        "movimentos/frida/marcha-flow10/f05.png",
+        "movimentos/frida/marcha-flow10/f06.png",
+        "movimentos/frida/marcha-flow10/f07.png"
+      ]
+    },
+    "luna/corrida": {
+      "fps": 12,
+      "frames": [
+        "movimentos/luna/corrida/run_000.png",
+        "movimentos/luna/corrida/run_001.png",
+        "movimentos/luna/corrida/run_002.png",
+        "movimentos/luna/corrida/run_003.png",
+        "movimentos/luna/corrida/run_004.png",
+        "movimentos/luna/corrida/run_005.png"
+      ]
+    }
+  },
+  "expressoes": {
+    "frida": {
+      "angry": "chars/poses-v3/frida/angry.png",
+      "excited": "chars/poses-v3/frida/excited.png",
+      "happy": "chars/poses-v3/frida/happy.png",
+      "loved": "chars/poses-v3/frida/loved.png",
+      "sad": "chars/poses-v3/frida/sad.png",
+      "scared": "chars/poses-v3/frida/scared.png",
+      "silly": "chars/poses-v3/frida/silly.png",
+      "surprised": "chars/poses-v3/frida/surprised.png"
+    },
+    "luna": {
+      "angry": "chars/poses-v3/luna/angry.png",
+      "excited": "chars/poses-v3/luna/excited.png",
+      "happy": "chars/poses-v3/luna/happy.png",
+      "loved": "chars/poses-v3/luna/loved.png",
+      "sad": "chars/poses-v3/luna/sad.png",
+      "scared": "chars/poses-v3/luna/scared.png",
+      "silly": "chars/poses-v3/luna/silly.png",
+      "surprised": "chars/poses-v3/luna/surprised.png"
+    }
+  },
+  "scenes": [
+    {
+      "scene": "hook",
+      "from": 0,
+      "durationInFrames": 505,
+      "bg": "bg/flow/hook.png",
+      "chao": 1000,
+      "camera": {
+        "move": "push-in",
+        "amount": 0.06,
+        "tilt": 0,
+        "fundoTremor": 0,
+        "nota": "**Confirma** push-in 1,00→1,06 em 505 f"
+      },
+      "sombraFrida": {
+        "w": 280,
+        "h": 16,
+        "op": 0.2,
+        "dx": 0,
+        "dy": 0
+      },
+      "sombraLuna": {
+        "w": 215,
+        "h": 12,
+        "op": 0.2,
+        "dx": 0,
+        "dy": 0
+      },
+      "beats": [
+        {
+          "i": 1,
+          "from": 116,
+          "durationInFrames": 122,
+          "frida": {
+            "mov": "escuta",
+            "expr": "surprised",
+            "x": 1400,
+            "y": 1000,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 280,
+              "h": 16,
+              "op": 0.2,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "excited",
+            "x": 500,
+            "y": 1000,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 215,
+              "h": 12,
+              "op": 0.2,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "E se os animais tivessem um parque de diversões todinho para eles?",
+          "speaker": "narrador",
+          "action": "cartao de titulo: interrogacao grande"
+        },
+        {
+          "i": 2,
+          "from": 245,
+          "durationInFrames": 136,
+          "frida": {
+            "mov": "escuta",
+            "expr": "excited",
+            "x": 1448,
+            "y": 1000,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 280,
+              "h": 16,
+              "op": 0.2,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 558,
+            "y": 1000,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 215,
+              "h": 12,
+              "op": 0.2,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Já imaginou montanha-russa de ossinho e roda gigante de petiscos?",
+          "speaker": "narrador",
+          "action": "montanha-russa de ossinho desenhada a aparecer"
+        },
+        {
+          "i": 3,
+          "from": 392,
+          "durationInFrames": 68,
+          "frida": {
+            "mov": "marcha-flow10",
+            "expr": "silly",
+            "x": 1477,
+            "y": 1000,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 280,
+              "h": 16,
+              "op": 0.2,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "corrida",
+            "expr": "excited",
+            "x": 592,
+            "y": 1000,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 215,
+              "h": 12,
+              "op": 0.2,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Pois venha ver essa aventura maluca!",
+          "speaker": "narrador",
+          "action": "rodape a correr, letras a saltar"
+        }
+      ]
+    },
+    {
+      "scene": "abertura",
+      "from": 505,
+      "durationInFrames": 350,
+      "bg": "bg/flow/abertura.png",
+      "chao": 996,
+      "camera": {
+        "move": "none",
+        "amount": 0,
+        "tilt": 0,
+        "fundoTremor": 0,
+        "nota": "**Confirma** fixa (350 f)"
+      },
+      "sombraFrida": {
+        "w": 300,
+        "h": 18,
+        "op": 0.22,
+        "dx": 0,
+        "dy": 0
+      },
+      "sombraLuna": {
+        "w": 230,
+        "h": 14,
+        "op": 0.22,
+        "dx": 0,
+        "dy": 0
+      },
+      "beats": [
+        {
+          "i": 4,
+          "from": 505,
+          "durationInFrames": 31,
+          "frida": {
+            "mov": "fala",
+            "expr": "happy",
+            "x": 1520,
+            "y": 996,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.22,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "corrida",
+            "expr": "happy",
+            "x": 308,
+            "y": 996,
+            "h": 419,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.22,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Olha, pessoal!",
+          "speaker": "frida",
+          "action": "as duas a entrar em quadro"
+        },
+        {
+          "i": 5,
+          "from": 555,
+          "durationInFrames": 68,
+          "frida": {
+            "mov": "abracar",
+            "expr": "loved",
+            "x": 1512,
+            "y": 996,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.22,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "abracar",
+            "expr": "scared",
+            "x": 344,
+            "y": 996,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.22,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Que alegria ter vocês aqui com a gente hoje!",
+          "speaker": "frida",
+          "action": "abraco de boas-vindas"
+        },
+        {
+          "i": 6,
+          "from": 637,
+          "durationInFrames": 192,
+          "frida": {
+            "mov": "sentar",
+            "expr": "happy",
+            "x": 1495,
+            "y": 996,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.22,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "sentar",
+            "expr": "excited",
+            "x": 395,
+            "y": 996,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.22,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Vamos embarcar em uma história super divertida sobre a Luna e a Frida em um parque de diversões incrível!",
+          "speaker": "narrador",
+          "action": "apresentacao: as duas lado a lado"
+        }
+      ]
+    },
+    {
+      "scene": "portao",
+      "from": 855,
+      "durationInFrames": 472,
+      "bg": "bg/flow/portao.png",
+      "chao": 1002,
+      "camera": {
+        "move": "pan",
+        "amount": -140,
+        "tilt": 0,
+        "fundoTremor": 0,
+        "nota": "**Confirma** pan 0→−140 px, parallax 0,35/0,65 (472 f)"
+      },
+      "sombraFrida": {
+        "w": 300,
+        "h": 18,
+        "op": 0.22,
+        "dx": 0,
+        "dy": 0
+      },
+      "sombraLuna": {
+        "w": 230,
+        "h": 14,
+        "op": 0.22,
+        "dx": 0,
+        "dy": 0
+      },
+      "beats": [
+        {
+          "i": 7,
+          "from": 855,
+          "durationInFrames": 178,
+          "frida": {
+            "mov": "marcha-flow10",
+            "expr": "happy",
+            "x": 1320,
+            "y": 1002,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.22,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "corrida",
+            "expr": "surprised",
+            "x": 380,
+            "y": 1002,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.22,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "A Luninha e a Fridoka caminhavam bem distraídas pelo parque quando viram um portão enorme.",
+          "speaker": "narrador",
+          "action": "caminhada distraida, fundo de parque"
+        },
+        {
+          "i": 8,
+          "from": 1045,
+          "durationInFrames": 81,
+          "frida": {
+            "mov": "marcha-flow10",
+            "expr": "surprised",
+            "x": 1390,
+            "y": 1002,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.22,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "corrida",
+            "expr": "surprised",
+            "x": 474,
+            "y": 1002,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.22,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Em cima estava escrito Parque dos Petes.",
+          "speaker": "narrador",
+          "action": "letreiro 'Parque dos Petes' a entrar"
+        },
+        {
+          "i": 9,
+          "from": 1134,
+          "durationInFrames": 81,
+          "frida": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 1425,
+            "y": 1002,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.22,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "excited",
+            "x": 520,
+            "y": 1002,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.22,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "A Salsicha Luna deu pulinhos de pura alegria.",
+          "speaker": "narrador",
+          "action": "Luna a dar pulinhos de alegria"
+        },
+        {
+          "i": 10,
+          "from": 1229,
+          "durationInFrames": 56,
+          "frida": {
+            "mov": "escuta",
+            "expr": "loved",
+            "x": 1460,
+            "y": 1002,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.22,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "loved",
+            "x": 567,
+            "y": 1002,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.22,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Era um sonho virando realidade.",
+          "speaker": "narrador",
+          "action": "brilhos a volta das duas"
+        }
+      ]
+    },
+    {
+      "scene": "montanha",
+      "from": 1327,
+      "durationInFrames": 995,
+      "bg": "bg/flow/montanha.png",
+      "chao": 1008,
+      "camera": {
+        "move": "push-in",
+        "amount": 0.06,
+        "tilt": -90,
+        "fundoTremor": 0,
+        "nota": "**Confirma** push-in 1,00→1,06 + tilt 0→−90 px (995 f)"
+      },
+      "sombraFrida": {
+        "w": 300,
+        "h": 18,
+        "op": 0.18,
+        "dx": -14,
+        "dy": 0
+      },
+      "sombraLuna": {
+        "w": 230,
+        "h": 14,
+        "op": 0.18,
+        "dx": -14,
+        "dy": 0
+      },
+      "beats": [
+        {
+          "i": 11,
+          "from": 1327,
+          "durationInFrames": 162,
+          "frida": {
+            "mov": "olhar",
+            "expr": "surprised",
+            "x": 1340,
+            "y": 1008,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.18,
+              "dx": -14,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "olhar",
+            "expr": "excited",
+            "x": 400,
+            "y": 1008,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.18,
+              "dx": -14,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Logo na entrada, a Bulldog Frida olhou para a montanha-russa de biscoitos gigantes.",
+          "speaker": "narrador",
+          "action": "Frida olha para a montanha-russa de biscoitos"
+        },
+        {
+          "i": 12,
+          "from": 1506,
+          "durationInFrames": 76,
+          "frida": {
+            "mov": "escuta",
+            "expr": "excited",
+            "x": 1364,
+            "y": 1008,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.18,
+              "dx": -14,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 427,
+            "y": 1008,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.18,
+              "dx": -14,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "O carrinho era em formato de osso voador.",
+          "speaker": "narrador",
+          "action": "carrinho em forma de osso a chegar"
+        },
+        {
+          "i": 13,
+          "from": 1595,
+          "durationInFrames": 91,
+          "frida": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 1377,
+            "y": 1008,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.18,
+              "dx": -14,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 442,
+            "y": 1008,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.18,
+              "dx": -14,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Ela ajeitou as orelhas e chamou a amiga para correr.",
+          "speaker": "narrador",
+          "action": "Frida ajeita as orelhas e chama a Luna"
+        },
+        {
+          "i": 14,
+          "from": 1686,
+          "durationInFrames": 97,
+          "frida": {
+            "mov": "fala",
+            "expr": "silly",
+            "x": 1391,
+            "y": 1008,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.18,
+              "dx": -14,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "silly",
+            "x": 446,
+            "y": 1008,
+            "h": 419,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.18,
+              "dx": -14,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "caption": "Vamos ver quem chega primeiro na bilheteria.",
+          "speaker": "frida",
+          "action": "fala da Frida: 'vamos ver quem chega primeiro'"
+        },
+        {
+          "i": 15,
+          "from": 1813,
+          "durationInFrames": 96,
+          "frida": {
+            "mov": "marcha-flow10",
+            "expr": "excited",
+            "x": 1406,
+            "y": 1008,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.18,
+              "dx": -14,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "luna": {
+            "mov": "corrida",
+            "expr": "excited",
+            "x": 476,
+            "y": 1008,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.18,
+              "dx": -14,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "caption": "As duas subiram correndo no carrinho de osso.",
+          "speaker": "narrador",
+          "action": "as duas a correr para o carrinho"
+        },
+        {
+          "i": 16,
+          "from": 1917,
+          "durationInFrames": 124,
+          "frida": {
+            "mov": "escuta",
+            "expr": "scared",
+            "x": 1422,
+            "y": 1008,
+            "h": 380,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.18,
+              "dx": -14,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "scared",
+            "x": 494,
+            "y": 1008,
+            "h": 274,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.18,
+              "dx": -14,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "A alavanca puxou com força e o carrinho disparou pelas nuvens.",
+          "speaker": "narrador",
+          "action": "arranque: linhas de velocidade no fundo"
+        },
+        {
+          "i": 17,
+          "from": 2059,
+          "durationInFrames": 160,
+          "frida": {
+            "mov": "escuta",
+            "expr": "excited",
+            "x": 1442,
+            "y": 1008,
+            "h": 380,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.18,
+              "dx": -14,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "silly",
+            "x": 516,
+            "y": 1008,
+            "h": 274,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.18,
+              "dx": -14,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "A Luna latiu de emoção enquanto o vento balançava suas orelhinhas compridas de Dachun.",
+          "speaker": "narrador",
+          "action": "Luna a latir, orelhas a voar"
+        },
+        {
+          "i": 18,
+          "from": 2228,
+          "durationInFrames": 50,
+          "frida": {
+            "mov": "escuta",
+            "expr": "excited",
+            "x": 1466,
+            "y": 1008,
+            "h": 380,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.18,
+              "dx": -14,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "excited",
+            "x": 544,
+            "y": 1008,
+            "h": 274,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.18,
+              "dx": -14,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Que velocidade maluca!",
+          "speaker": "narrador",
+          "action": "texto 'que velocidade maluca!'"
+        }
+      ]
+    },
+    {
+      "scene": "roda",
+      "from": 2322,
+      "durationInFrames": 505,
+      "bg": "bg/flow/roda.png",
+      "chao": 1012,
+      "camera": {
+        "move": "tilt",
+        "amount": -90,
+        "tilt": 0,
+        "fundoTremor": 0,
+        "nota": "**Corrige**: tilt limitado a 0→−90 px (não “lento” livre)"
+      },
+      "sombraFrida": {
+        "w": 310,
+        "h": 18,
+        "op": 0.26,
+        "dx": 0,
+        "dy": 0
+      },
+      "sombraLuna": {
+        "w": 235,
+        "h": 14,
+        "op": 0.26,
+        "dx": 0,
+        "dy": 0
+      },
+      "beats": [
+        {
+          "i": 19,
+          "from": 2322,
+          "durationInFrames": 161,
+          "frida": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 1450,
+            "y": 1012,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 310,
+              "h": 18,
+              "op": 0.26,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "surprised",
+            "x": 530,
+            "y": 1012,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 235,
+              "h": 14,
+              "op": 0.26,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Depois da descida radical, pararam em frente a roda gigante de potinhos de ração.",
+          "speaker": "narrador",
+          "action": "roda gigante de potinhos de racao"
+        },
+        {
+          "i": 20,
+          "from": 2483,
+          "durationInFrames": 133,
+          "frida": {
+            "mov": "escuta",
+            "expr": "surprised",
+            "x": 1450,
+            "y": 1012,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 310,
+              "h": 18,
+              "op": 0.26,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "surprised",
+            "x": 530,
+            "y": 1012,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 235,
+              "h": 14,
+              "op": 0.26,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Cada cabine parecia uma tigela colorida cheia de bolinhas a borcar.",
+          "speaker": "narrador",
+          "action": "cabines em forma de tigela colorida"
+        },
+        {
+          "i": 21,
+          "from": 2629,
+          "durationInFrames": 76,
+          "frida": {
+            "mov": "escuta",
+            "expr": "loved",
+            "x": 1450,
+            "y": 1012,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 310,
+              "h": 18,
+              "op": 0.26,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "silly",
+            "x": 530,
+            "y": 1012,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 235,
+              "h": 14,
+              "op": 0.26,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "A Frida suspirou o babando de vontade.",
+          "speaker": "narrador",
+          "action": "Frida a babar de vontade"
+        },
+        {
+          "i": 22,
+          "from": 2726,
+          "durationInFrames": 70,
+          "frida": {
+            "mov": "fala",
+            "expr": "happy",
+            "x": 1450,
+            "y": 1012,
+            "h": 380,
+            "flip": false,
+            "sombra": {
+              "w": 310,
+              "h": 18,
+              "op": 0.26,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "excited",
+            "x": 518,
+            "y": 1012,
+            "h": 258,
+            "flip": false,
+            "sombra": {
+              "w": 235,
+              "h": 14,
+              "op": 0.26,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "caption": "Dá para ver o parque inteiro lá de cima.",
+          "speaker": "frida",
+          "action": "fala da Frida: 'da para ver o parque inteiro'"
+        }
+      ]
+    },
+    {
+      "scene": "carrossel",
+      "from": 2827,
+      "durationInFrames": 528,
+      "bg": "bg/flow/carrossel.png",
+      "chao": 1000,
+      "camera": {
+        "move": "pan",
+        "amount": -60,
+        "tilt": 0,
+        "fundoTremor": 0,
+        "nota": "**Corrige**: órbita não existe — pan 0→−60 px; giro é da sprite, não da câmara"
+      },
+      "sombraFrida": {
+        "w": 300,
+        "h": 18,
+        "op": 0.24,
+        "dx": 0,
+        "dy": 0
+      },
+      "sombraLuna": {
+        "w": 230,
+        "h": 14,
+        "op": 0.24,
+        "dx": 0,
+        "dy": 0
+      },
+      "beats": [
+        {
+          "i": 23,
+          "from": 2827,
+          "durationInFrames": 111,
+          "frida": {
+            "mov": "giro",
+            "expr": "happy",
+            "x": 1450,
+            "y": 1000,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.24,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "giro",
+            "expr": "happy",
+            "x": 530,
+            "y": 1000,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.24,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "A próxima parada foi o carrossel mágico do parque.",
+          "speaker": "narrador",
+          "action": "carrossel magico a girar"
+        },
+        {
+          "i": 24,
+          "from": 2950,
+          "durationInFrames": 192,
+          "frida": {
+            "mov": "escuta",
+            "expr": "excited",
+            "x": 1450,
+            "y": 1000,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.24,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "loved",
+            "x": 530,
+            "y": 1000,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.24,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Em vez de cavalos, os bichinhos giravam em cima de almofadas gigantes e pelúcias de roedores de brinquedo.",
+          "speaker": "narrador",
+          "action": "almofadas gigantes e pelucias de roedores"
+        },
+        {
+          "i": 25,
+          "from": 3156,
+          "durationInFrames": 94,
+          "frida": {
+            "mov": "escuta",
+            "expr": "silly",
+            "x": 1450,
+            "y": 1000,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.24,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "silly",
+            "x": 530,
+            "y": 1000,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.24,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "A Luninha tentou morder o ar de tanta fofura.",
+          "speaker": "narrador",
+          "action": "Luna tenta morder o ar"
+        },
+        {
+          "i": 26,
+          "from": 3262,
+          "durationInFrames": 61,
+          "frida": {
+            "mov": "giro",
+            "expr": "happy",
+            "x": 1438,
+            "y": 1000,
+            "h": 583,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.24,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "giro",
+            "expr": "surprised",
+            "x": 530,
+            "y": 1000,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.24,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Girar assim dá uma tontura boa.",
+          "speaker": "luna",
+          "action": "fala da Luna: 'girar da uma tontura boa'"
+        }
+      ]
+    },
+    {
+      "scene": "bolinhas",
+      "from": 3355,
+      "durationInFrames": 456,
+      "bg": "bg/flow/bolinhas.png",
+      "chao": 972,
+      "camera": {
+        "move": "zoom",
+        "amount": 0.03,
+        "tilt": 0,
+        "fundoTremor": 0,
+        "nota": "**Corrige**: zoom de quadro 1,00→1,03, sem outro movimento"
+      },
+      "sombraFrida": {
+        "w": 300,
+        "h": 16,
+        "op": 0.2,
+        "dx": 0,
+        "dy": 0
+      },
+      "sombraLuna": {
+        "w": 230,
+        "h": 13,
+        "op": 0.2,
+        "dx": 0,
+        "dy": 0
+      },
+      "beats": [
+        {
+          "i": 27,
+          "from": 3355,
+          "durationInFrames": 168,
+          "frida": {
+            "mov": "escuta",
+            "expr": "surprised",
+            "x": 1450,
+            "y": 972,
+            "h": 760,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 16,
+              "op": 0.2,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "surprised",
+            "x": 530,
+            "y": 972,
+            "h": 547,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 13,
+              "op": 0.2,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "O melhor de tudo foi a enorme piscina cheia de milhares de bolinhas de tênis amarelas.",
+          "speaker": "narrador",
+          "action": "piscina de bolinhas de tenis amarelas"
+        },
+        {
+          "i": 28,
+          "from": 3529,
+          "durationInFrames": 112,
+          "frida": {
+            "mov": "escuta",
+            "expr": "excited",
+            "x": 1450,
+            "y": 972,
+            "h": 760,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 16,
+              "op": 0.2,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "excited",
+            "x": 530,
+            "y": 972,
+            "h": 547,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 13,
+              "op": 0.2,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "A Fridoka deu um pulo corajoso e mergulhou de barriga.",
+          "speaker": "narrador",
+          "action": "Frida mergulha de barriga"
+        },
+        {
+          "i": 29,
+          "from": 3653,
+          "durationInFrames": 117,
+          "frida": {
+            "mov": "escuta",
+            "expr": "silly",
+            "x": 1450,
+            "y": 972,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 16,
+              "op": 0.2,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 530,
+            "y": 972,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 13,
+              "op": 0.2,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "caption": "Ela sumiu no meio de tantas bolinhas e só apareceu com uma na boca.",
+          "speaker": "narrador",
+          "action": "Frida aparece com uma bolinha na boca"
+        }
+      ]
+    },
+    {
+      "scene": "tunel",
+      "from": 3811,
+      "durationInFrames": 438,
+      "bg": "bg/flow/tunel.png",
+      "chao": 1006,
+      "camera": {
+        "move": "pan",
+        "amount": -140,
+        "tilt": 0,
+        "fundoTremor": 0,
+        "nota": "**Confirma** pan 0→−140 px, parallax 0,35/0,65 (438 f)"
+      },
+      "sombraFrida": {
+        "w": 300,
+        "h": 16,
+        "op": 0.14,
+        "dx": 0,
+        "dy": 0
+      },
+      "sombraLuna": {
+        "w": 230,
+        "h": 12,
+        "op": 0.14,
+        "dx": 0,
+        "dy": 0
+      },
+      "beats": [
+        {
+          "i": 30,
+          "from": 3811,
+          "durationInFrames": 139,
+          "frida": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 1450,
+            "y": 1006,
+            "h": 760,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 16,
+              "op": 0.14,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "excited",
+            "x": 530,
+            "y": 1006,
+            "h": 547,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 12,
+              "op": 0.14,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Elas correram para o túnel de grama artificial cheio de luzinhas coloridas.",
+          "speaker": "narrador",
+          "action": "tunel de grama com luzinhas"
+        },
+        {
+          "i": 31,
+          "from": 3967,
+          "durationInFrames": 143,
+          "frida": {
+            "mov": "escuta",
+            "expr": "surprised",
+            "x": 1450,
+            "y": 1006,
+            "h": 760,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 16,
+              "op": 0.14,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "silly",
+            "x": 530,
+            "y": 1006,
+            "h": 547,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 12,
+              "op": 0.14,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "A Luna entrou correndo de um lado e saiu do outro com o focinho todo sujo de terra.",
+          "speaker": "narrador",
+          "action": "Luna sai com o focinho sujo de terra"
+        },
+        {
+          "i": 32,
+          "from": 4110,
+          "durationInFrames": 111,
+          "frida": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 1450,
+            "y": 1006,
+            "h": 760,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 16,
+              "op": 0.14,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 530,
+            "y": 1006,
+            "h": 547,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 12,
+              "op": 0.14,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Parecia uma topeira muito charmosa e brincalhona.",
+          "speaker": "narrador",
+          "action": "Luna como 'topeira charmosa'"
+        }
+      ]
+    },
+    {
+      "scene": "espelhos",
+      "from": 4249,
+      "durationInFrames": 462,
+      "bg": "bg/flow/espelhos.png",
+      "chao": 998,
+      "camera": {
+        "move": "none",
+        "amount": 0,
+        "tilt": 0,
+        "fundoTremor": 4,
+        "nota": "**Corrige**: sem wobble de câmara — fixa; tremor ±4 px só no fundo, `frame % 12`"
+      },
+      "sombraFrida": {
+        "w": 290,
+        "h": 15,
+        "op": 0.2,
+        "dx": 0,
+        "dy": 0
+      },
+      "sombraLuna": {
+        "w": 220,
+        "h": 12,
+        "op": 0.2,
+        "dx": 0,
+        "dy": 0
+      },
+      "beats": [
+        {
+          "i": 33,
+          "from": 4249,
+          "durationInFrames": 132,
+          "frida": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 1450,
+            "y": 998,
+            "h": 760,
+            "flip": false,
+            "sombra": {
+              "w": 290,
+              "h": 15,
+              "op": 0.2,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "surprised",
+            "x": 530,
+            "y": 998,
+            "h": 547,
+            "flip": false,
+            "sombra": {
+              "w": 220,
+              "h": 12,
+              "op": 0.2,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Na hora de ir embora, passaram na casa dos espelhos do parque.",
+          "speaker": "narrador",
+          "action": "casa dos espelhos"
+        },
+        {
+          "i": 34,
+          "from": 4388,
+          "durationInFrames": 144,
+          "frida": {
+            "mov": "escuta",
+            "expr": "surprised",
+            "x": 1450,
+            "y": 998,
+            "h": 760,
+            "flip": false,
+            "sombra": {
+              "w": 290,
+              "h": 15,
+              "op": 0.2,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "silly",
+            "x": 530,
+            "y": 998,
+            "h": 547,
+            "flip": false,
+            "sombra": {
+              "w": 220,
+              "h": 12,
+              "op": 0.2,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "A Frida olhou para o reflexo e viu um bulldog gigante com cabeça de melancia.",
+          "speaker": "narrador",
+          "action": "reflexo com cabeca de melancia"
+        },
+        {
+          "i": 35,
+          "from": 4549,
+          "durationInFrames": 135,
+          "frida": {
+            "mov": "escuta",
+            "expr": "excited",
+            "x": 1450,
+            "y": 998,
+            "h": 760,
+            "flip": false,
+            "sombra": {
+              "w": 290,
+              "h": 15,
+              "op": 0.2,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 530,
+            "y": 998,
+            "h": 547,
+            "flip": false,
+            "sombra": {
+              "w": 220,
+              "h": 12,
+              "op": 0.2,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "caption": "Ela latiu para o próprio reflexo achando que era um novo colega de brincadeira.",
+          "speaker": "narrador",
+          "action": "Frida late ao proprio reflexo"
+        }
+      ]
+    },
+    {
+      "scene": "moral",
+      "from": 4711,
+      "durationInFrames": 382,
+      "bg": "bg/flow/moral.png",
+      "chao": 1006,
+      "camera": {
+        "move": "push-in",
+        "amount": 0.06,
+        "tilt": 0,
+        "fundoTremor": 0,
+        "nota": "**Confirma** push-in 1,00→1,06 (382 f)"
+      },
+      "sombraFrida": {
+        "w": 300,
+        "h": 18,
+        "op": 0.28,
+        "dx": 0,
+        "dy": 8
+      },
+      "sombraLuna": {
+        "w": 230,
+        "h": 14,
+        "op": 0.28,
+        "dx": 0,
+        "dy": 8
+      },
+      "beats": [
+        {
+          "i": 36,
+          "from": 4711,
+          "durationInFrames": 52,
+          "frida": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 1450,
+            "y": 1006,
+            "h": 380,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.28,
+              "dx": 0,
+              "dy": 8
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 530,
+            "y": 1006,
+            "h": 274,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.28,
+              "dx": 0,
+              "dy": 8
+            },
+            "frente": true
+          },
+          "caption": "O que aprendemos hoje?",
+          "speaker": "narrador",
+          "action": "fundo por do sol, as duas juntas"
+        },
+        {
+          "i": 37,
+          "from": 4778,
+          "durationInFrames": 189,
+          "frida": {
+            "mov": "abracar",
+            "expr": "loved",
+            "x": 1450,
+            "y": 1006,
+            "h": 380,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.28,
+              "dx": 0,
+              "dy": 8
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "abracar",
+            "expr": "loved",
+            "x": 530,
+            "y": 1006,
+            "h": 274,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.28,
+              "dx": 0,
+              "dy": 8
+            },
+            "frente": true
+          },
+          "caption": "Curtir um passeio incrível ao lado de quem a gente gosta deixa qualquer dia muito mais especial e feliz.",
+          "speaker": "narrador",
+          "action": "abraco, coracoes a subir"
+        },
+        {
+          "i": 38,
+          "from": 4980,
+          "durationInFrames": 82,
+          "frida": {
+            "mov": "escuta",
+            "expr": "loved",
+            "x": 1450,
+            "y": 1006,
+            "h": 380,
+            "flip": false,
+            "sombra": {
+              "w": 300,
+              "h": 18,
+              "op": 0.28,
+              "dx": 0,
+              "dy": 8
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "loved",
+            "x": 530,
+            "y": 1006,
+            "h": 274,
+            "flip": false,
+            "sombra": {
+              "w": 230,
+              "h": 14,
+              "op": 0.28,
+              "dx": 0,
+              "dy": 8
+            },
+            "frente": true
+          },
+          "caption": "A amizade é o melhor presente do mundo.",
+          "speaker": "narrador",
+          "action": "texto: 'a amizade e o melhor presente'"
+        }
+      ]
+    },
+    {
+      "scene": "final",
+      "from": 5093,
+      "durationInFrames": 789,
+      "bg": "bg/flow/final.png",
+      "chao": 1000,
+      "camera": {
+        "move": "none",
+        "amount": 0,
+        "tilt": 0,
+        "fundoTremor": 0,
+        "nota": "**Confirma** fixa (789 f)"
+      },
+      "sombraFrida": {
+        "w": 280,
+        "h": 16,
+        "op": 0.18,
+        "dx": 0,
+        "dy": 0
+      },
+      "sombraLuna": {
+        "w": 215,
+        "h": 12,
+        "op": 0.18,
+        "dx": 0,
+        "dy": 0
+      },
+      "beats": [
+        {
+          "i": 39,
+          "from": 5093,
+          "durationInFrames": 84,
+          "frida": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 1450,
+            "y": 1000,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 280,
+              "h": 16,
+              "op": 0.18,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 530,
+            "y": 1000,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 215,
+              "h": 12,
+              "op": 0.18,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "E assim termina nossa aventura de hoje.",
+          "speaker": "narrador",
+          "action": "cartao final"
+        },
+        {
+          "i": 40,
+          "from": 5192,
+          "durationInFrames": 54,
+          "frida": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 1450,
+            "y": 1000,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 280,
+              "h": 16,
+              "op": 0.18,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 530,
+            "y": 1000,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 215,
+              "h": 12,
+              "op": 0.18,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Esse é o final da nossa história.",
+          "speaker": "narrador",
+          "action": "as duas a acenar"
+        },
+        {
+          "i": 41,
+          "from": 5281,
+          "durationInFrames": 101,
+          "frida": {
+            "mov": "escuta",
+            "expr": "loved",
+            "x": 1450,
+            "y": 1000,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 280,
+              "h": 16,
+              "op": 0.18,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "scared",
+            "x": 530,
+            "y": 1000,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 215,
+              "h": 12,
+              "op": 0.18,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Muito obrigado por participar dessa aventura com a gente.",
+          "speaker": "narrador",
+          "action": "aceno de agradecimento"
+        },
+        {
+          "i": 42,
+          "from": 5404,
+          "durationInFrames": 129,
+          "frida": {
+            "mov": "escuta",
+            "expr": "excited",
+            "x": 1450,
+            "y": 1000,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 280,
+              "h": 16,
+              "op": 0.18,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "excited",
+            "x": 530,
+            "y": 1000,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 215,
+              "h": 12,
+              "op": 0.18,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Deixe seu like, se inscreva no canal e indique para seus amiguinhos.",
+          "speaker": "narrador",
+          "action": "botoes like / inscrever a aparecer"
+        },
+        {
+          "i": 43,
+          "from": 5546,
+          "durationInFrames": 89,
+          "frida": {
+            "mov": "escuta",
+            "expr": "loved",
+            "x": 1450,
+            "y": 1000,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 280,
+              "h": 16,
+              "op": 0.18,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "loved",
+            "x": 530,
+            "y": 1000,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 215,
+              "h": 12,
+              "op": 0.18,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Um grande beijo no seu coração e fique com a gente.",
+          "speaker": "narrador",
+          "action": "beijo para a camera"
+        },
+        {
+          "i": 44,
+          "from": 5652,
+          "durationInFrames": 61,
+          "frida": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 1450,
+            "y": 1000,
+            "h": 620,
+            "flip": false,
+            "sombra": {
+              "w": 280,
+              "h": 16,
+              "op": 0.18,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": false
+          },
+          "luna": {
+            "mov": "escuta",
+            "expr": "happy",
+            "x": 530,
+            "y": 1000,
+            "h": 446,
+            "flip": false,
+            "sombra": {
+              "w": 215,
+              "h": 12,
+              "op": 0.18,
+              "dx": 0,
+              "dy": 0
+            },
+            "frente": true
+          },
+          "caption": "Acompanhe nossos próximos vídeos.",
+          "speaker": "narrador",
+          "action": "seta para o proximo video"
+        }
+      ]
+    }
+  ]
+}
