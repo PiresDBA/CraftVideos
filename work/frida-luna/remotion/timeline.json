@@ -31,33 +31,6 @@
         "movimentos/luna/escuta/f06.png",
         "movimentos/luna/escuta/f07.png"
       ]
-    },
-    "frida/fala": {
-      "fps": 7.5,
-      "frames": [
-        "movimentos/frida/fala/f00.png",
-        "movimentos/frida/fala/f01.png",
-        "movimentos/frida/fala/f02.png",
-        "movimentos/frida/fala/f03.png",
-        "movimentos/frida/fala/f04.png",
-        "movimentos/frida/fala/f05.png",
-        "movimentos/frida/fala/f06.png",
-        "movimentos/frida/fala/f07.png",
-        "movimentos/frida/fala/f08.png"
-      ]
-    },
-    "luna/olhar": {
-      "fps": 7.5,
-      "frames": [
-        "movimentos/luna/olhar/f00.png",
-        "movimentos/luna/olhar/f01.png",
-        "movimentos/luna/olhar/f02.png",
-        "movimentos/luna/olhar/f03.png",
-        "movimentos/luna/olhar/f04.png",
-        "movimentos/luna/olhar/f05.png",
-        "movimentos/luna/olhar/f06.png",
-        "movimentos/luna/olhar/f07.png"
-      ]
     }
   },
   "expressoes": {
@@ -118,7 +91,7 @@
           "durationInFrames": 122,
           "frida": {
             "mov": "escuta",
-            "expr": "surprised",
+            "expr": "happy",
             "x": 1400,
             "y": 1000,
             "h": 520,
@@ -134,7 +107,7 @@
           },
           "luna": {
             "mov": "escuta",
-            "expr": "excited",
+            "expr": "happy",
             "x": 500,
             "y": 1000,
             "h": 450,
@@ -157,8 +130,8 @@
           "from": 245,
           "durationInFrames": 136,
           "frida": {
-            "mov": "escuta",
-            "expr": "excited",
+            "mov": "comer",
+            "expr": "happy",
             "x": 1448,
             "y": 1000,
             "h": 520,
@@ -173,7 +146,7 @@
             "frente": false
           },
           "luna": {
-            "mov": "escuta",
+            "mov": "comer",
             "expr": "happy",
             "x": 558,
             "y": 1000,
@@ -197,8 +170,8 @@
           "from": 392,
           "durationInFrames": 68,
           "frida": {
-            "mov": "corrida",
-            "expr": "silly",
+            "mov": "escuta",
+            "expr": "happy",
             "x": 1477,
             "y": 1000,
             "h": 520,
@@ -213,8 +186,8 @@
             "frente": false
           },
           "luna": {
-            "mov": "corrida",
-            "expr": "excited",
+            "mov": "escuta",
+            "expr": "happy",
             "x": 592,
             "y": 1000,
             "h": 450,
@@ -268,7 +241,7 @@
           "from": 505,
           "durationInFrames": 31,
           "frida": {
-            "mov": "fala",
+            "mov": "olhar-frente",
             "expr": "happy",
             "x": 1520,
             "y": 996,
@@ -284,7 +257,7 @@
             "frente": false
           },
           "luna": {
-            "mov": "marcha",
+            "mov": "escuta",
             "expr": "happy",
             "x": 308,
             "y": 996,
@@ -308,8 +281,8 @@
           "from": 555,
           "durationInFrames": 68,
           "frida": {
-            "mov": "abracar",
-            "expr": "loved",
+            "mov": "escuta",
+            "expr": "happy",
             "x": 1512,
             "y": 996,
             "h": 520,
@@ -324,8 +297,8 @@
             "frente": false
           },
           "luna": {
-            "mov": "abracar",
-            "expr": "scared",
+            "mov": "escuta",
+            "expr": "happy",
             "x": 344,
             "y": 996,
             "h": 450,
@@ -348,8 +321,8 @@
           "from": 637,
           "durationInFrames": 192,
           "frida": {
-            "mov": "sentar",
-            "expr": "happy",
+            "mov": "marcha",
+            "expr": "excited",
             "x": 1495,
             "y": 996,
             "h": 520,
@@ -364,7 +337,7 @@
             "frente": false
           },
           "luna": {
-            "mov": "sentar",
+            "mov": "marcha",
             "expr": "excited",
             "x": 395,
             "y": 996,
@@ -436,7 +409,7 @@
           },
           "luna": {
             "mov": "marcha",
-            "expr": "surprised",
+            "expr": "happy",
             "x": 380,
             "y": 1002,
             "h": 450,
@@ -459,8 +432,8 @@
           "from": 1045,
           "durationInFrames": 81,
           "frida": {
-            "mov": "marcha",
-            "expr": "surprised",
+            "mov": "escuta",
+            "expr": "happy",
             "x": 1390,
             "y": 1002,
             "h": 520,
@@ -475,8 +448,8 @@
             "frente": false
           },
           "luna": {
-            "mov": "marcha",
-            "expr": "surprised",
+            "mov": "escuta",
+            "expr": "happy",
             "x": 474,
             "y": 1002,
             "h": 450,
@@ -499,7 +472,7 @@
           "from": 1134,
           "durationInFrames": 81,
           "frida": {
-            "mov": "escuta",
+            "mov": "salto",
             "expr": "happy",
             "x": 1425,
             "y": 1002,
@@ -515,8 +488,8 @@
             "frente": false
           },
           "luna": {
-            "mov": "escuta",
-            "expr": "excited",
+            "mov": "salto",
+            "expr": "happy",
             "x": 520,
             "y": 1002,
             "h": 450,
@@ -540,7 +513,7 @@
           "durationInFrames": 56,
           "frida": {
             "mov": "escuta",
-            "expr": "loved",
+            "expr": "happy",
             "x": 1460,
             "y": 1002,
             "h": 520,
@@ -556,7 +529,7 @@
           },
           "luna": {
             "mov": "escuta",
-            "expr": "loved",
+            "expr": "happy",
             "x": 567,
             "y": 1002,
             "h": 450,
@@ -610,8 +583,8 @@
           "from": 1327,
           "durationInFrames": 162,
           "frida": {
-            "mov": "olhar",
-            "expr": "surprised",
+            "mov": "marcha",
+            "expr": "happy",
             "x": 1340,
             "y": 1008,
             "h": 520,
@@ -626,8 +599,8 @@
             "frente": false
           },
           "luna": {
-            "mov": "olhar",
-            "expr": "excited",
+            "mov": "marcha",
+            "expr": "happy",
             "x": 400,
             "y": 1008,
             "h": 450,
@@ -651,7 +624,7 @@
           "durationInFrames": 76,
           "frida": {
             "mov": "escuta",
-            "expr": "excited",
+            "expr": "happy",
             "x": 1364,
             "y": 1008,
             "h": 520,
@@ -690,8 +663,8 @@
           "from": 1595,
           "durationInFrames": 91,
           "frida": {
-            "mov": "escuta",
-            "expr": "happy",
+            "mov": "corrida",
+            "expr": "loved",
             "x": 1377,
             "y": 1008,
             "h": 520,
@@ -706,8 +679,8 @@
             "frente": false
           },
           "luna": {
-            "mov": "escuta",
-            "expr": "happy",
+            "mov": "corrida",
+            "expr": "loved",
             "x": 442,
             "y": 1008,
             "h": 450,
@@ -730,8 +703,8 @@
           "from": 1686,
           "durationInFrames": 97,
           "frida": {
-            "mov": "fala",
-            "expr": "silly",
+            "mov": "marcha",
+            "expr": "happy",
             "x": 1391,
             "y": 1008,
             "h": 520,
@@ -747,7 +720,7 @@
           },
           "luna": {
             "mov": "escuta",
-            "expr": "silly",
+            "expr": "happy",
             "x": 446,
             "y": 1008,
             "h": 450,
@@ -771,7 +744,7 @@
           "durationInFrames": 96,
           "frida": {
             "mov": "corrida",
-            "expr": "excited",
+            "expr": "happy",
             "x": 1406,
             "y": 1008,
             "h": 520,
@@ -787,7 +760,7 @@
           },
           "luna": {
             "mov": "corrida",
-            "expr": "excited",
+            "expr": "happy",
             "x": 476,
             "y": 1008,
             "h": 450,
@@ -811,7 +784,7 @@
           "durationInFrames": 124,
           "frida": {
             "mov": "escuta",
-            "expr": "scared",
+            "expr": "happy",
             "x": 1422,
             "y": 1008,
             "h": 520,
@@ -827,7 +800,7 @@
           },
           "luna": {
             "mov": "escuta",
-            "expr": "scared",
+            "expr": "happy",
             "x": 494,
             "y": 1008,
             "h": 450,
@@ -851,7 +824,7 @@
           "durationInFrames": 160,
           "frida": {
             "mov": "escuta",
-            "expr": "excited",
+            "expr": "happy",
             "x": 1442,
             "y": 1008,
             "h": 520,
@@ -867,7 +840,7 @@
           },
           "luna": {
             "mov": "escuta",
-            "expr": "silly",
+            "expr": "happy",
             "x": 516,
             "y": 1008,
             "h": 450,
@@ -891,7 +864,7 @@
           "durationInFrames": 50,
           "frida": {
             "mov": "escuta",
-            "expr": "excited",
+            "expr": "happy",
             "x": 1466,
             "y": 1008,
             "h": 520,
@@ -907,7 +880,7 @@
           },
           "luna": {
             "mov": "escuta",
-            "expr": "excited",
+            "expr": "happy",
             "x": 544,
             "y": 1008,
             "h": 450,
@@ -978,7 +951,7 @@
           },
           "luna": {
             "mov": "escuta",
-            "expr": "surprised",
+            "expr": "happy",
             "x": 530,
             "y": 1012,
             "h": 450,
@@ -1001,8 +974,8 @@
           "from": 2483,
           "durationInFrames": 133,
           "frida": {
-            "mov": "escuta",
-            "expr": "surprised",
+            "mov": "comer",
+            "expr": "happy",
             "x": 1450,
             "y": 1012,
             "h": 520,
@@ -1017,8 +990,8 @@
             "frente": false
           },
           "luna": {
-            "mov": "escuta",
-            "expr": "surprised",
+            "mov": "comer",
+            "expr": "happy",
             "x": 530,
             "y": 1012,
             "h": 450,
@@ -1042,7 +1015,7 @@
           "durationInFrames": 76,
           "frida": {
             "mov": "escuta",
-            "expr": "loved",
+            "expr": "happy",
             "x": 1450,
             "y": 1012,
             "h": 520,
@@ -1058,7 +1031,7 @@
           },
           "luna": {
             "mov": "escuta",
-            "expr": "silly",
+            "expr": "happy",
             "x": 530,
             "y": 1012,
             "h": 450,
@@ -1081,7 +1054,7 @@
           "from": 2726,
           "durationInFrames": 70,
           "frida": {
-            "mov": "fala",
+            "mov": "escuta",
             "expr": "happy",
             "x": 1450,
             "y": 1012,
@@ -1098,7 +1071,7 @@
           },
           "luna": {
             "mov": "escuta",
-            "expr": "excited",
+            "expr": "happy",
             "x": 518,
             "y": 1012,
             "h": 450,
@@ -1152,7 +1125,7 @@
           "from": 2827,
           "durationInFrames": 111,
           "frida": {
-            "mov": "giro",
+            "mov": "escuta",
             "expr": "happy",
             "x": 1450,
             "y": 1000,
@@ -1168,7 +1141,7 @@
             "frente": false
           },
           "luna": {
-            "mov": "giro",
+            "mov": "escuta",
             "expr": "happy",
             "x": 530,
             "y": 1000,
@@ -1192,8 +1165,8 @@
           "from": 2950,
           "durationInFrames": 192,
           "frida": {
-            "mov": "escuta",
-            "expr": "excited",
+            "mov": "giro",
+            "expr": "happy",
             "x": 1450,
             "y": 1000,
             "h": 520,
@@ -1208,8 +1181,8 @@
             "frente": false
           },
           "luna": {
-            "mov": "escuta",
-            "expr": "loved",
+            "mov": "giro",
+            "expr": "happy",
             "x": 530,
             "y": 1000,
             "h": 450,
@@ -1232,8 +1205,8 @@
           "from": 3156,
           "durationInFrames": 94,
           "frida": {
-            "mov": "escuta",
-            "expr": "silly",
+            "mov": "comer",
+            "expr": "happy",
             "x": 1450,
             "y": 1000,
             "h": 520,
@@ -1248,8 +1221,8 @@
             "frente": false
           },
           "luna": {
-            "mov": "escuta",
-            "expr": "silly",
+            "mov": "comer",
+            "expr": "happy",
             "x": 530,
             "y": 1000,
             "h": 450,
@@ -1272,7 +1245,7 @@
           "from": 3262,
           "durationInFrames": 61,
           "frida": {
-            "mov": "giro",
+            "mov": "escuta",
             "expr": "happy",
             "x": 1438,
             "y": 1000,
@@ -1289,7 +1262,7 @@
           },
           "luna": {
             "mov": "giro",
-            "expr": "surprised",
+            "expr": "happy",
             "x": 530,
             "y": 1000,
             "h": 450,
@@ -1344,7 +1317,7 @@
           "durationInFrames": 168,
           "frida": {
             "mov": "escuta",
-            "expr": "surprised",
+            "expr": "happy",
             "x": 1450,
             "y": 972,
             "h": 520,
@@ -1360,7 +1333,7 @@
           },
           "luna": {
             "mov": "escuta",
-            "expr": "surprised",
+            "expr": "happy",
             "x": 530,
             "y": 972,
             "h": 450,
@@ -1383,8 +1356,8 @@
           "from": 3529,
           "durationInFrames": 112,
           "frida": {
-            "mov": "escuta",
-            "expr": "excited",
+            "mov": "salto",
+            "expr": "happy",
             "x": 1450,
             "y": 972,
             "h": 520,
@@ -1399,8 +1372,8 @@
             "frente": false
           },
           "luna": {
-            "mov": "escuta",
-            "expr": "excited",
+            "mov": "salto",
+            "expr": "happy",
             "x": 530,
             "y": 972,
             "h": 450,
@@ -1424,7 +1397,7 @@
           "durationInFrames": 117,
           "frida": {
             "mov": "escuta",
-            "expr": "silly",
+            "expr": "happy",
             "x": 1450,
             "y": 972,
             "h": 520,
@@ -1494,7 +1467,7 @@
           "from": 3811,
           "durationInFrames": 139,
           "frida": {
-            "mov": "escuta",
+            "mov": "corrida",
             "expr": "happy",
             "x": 1450,
             "y": 1006,
@@ -1510,8 +1483,8 @@
             "frente": false
           },
           "luna": {
-            "mov": "escuta",
-            "expr": "excited",
+            "mov": "corrida",
+            "expr": "happy",
             "x": 530,
             "y": 1006,
             "h": 450,
@@ -1534,8 +1507,8 @@
           "from": 3967,
           "durationInFrames": 143,
           "frida": {
-            "mov": "escuta",
-            "expr": "surprised",
+            "mov": "corrida",
+            "expr": "happy",
             "x": 1450,
             "y": 1006,
             "h": 520,
@@ -1550,8 +1523,8 @@
             "frente": false
           },
           "luna": {
-            "mov": "escuta",
-            "expr": "silly",
+            "mov": "corrida",
+            "expr": "happy",
             "x": 530,
             "y": 1006,
             "h": 450,
@@ -1662,7 +1635,7 @@
           },
           "luna": {
             "mov": "escuta",
-            "expr": "surprised",
+            "expr": "happy",
             "x": 530,
             "y": 998,
             "h": 450,
@@ -1686,7 +1659,7 @@
           "durationInFrames": 144,
           "frida": {
             "mov": "escuta",
-            "expr": "surprised",
+            "expr": "happy",
             "x": 1450,
             "y": 998,
             "h": 520,
@@ -1702,7 +1675,7 @@
           },
           "luna": {
             "mov": "escuta",
-            "expr": "silly",
+            "expr": "happy",
             "x": 530,
             "y": 998,
             "h": 450,
@@ -1726,7 +1699,7 @@
           "durationInFrames": 135,
           "frida": {
             "mov": "escuta",
-            "expr": "excited",
+            "expr": "happy",
             "x": 1450,
             "y": 998,
             "h": 520,
@@ -1836,8 +1809,8 @@
           "from": 4778,
           "durationInFrames": 189,
           "frida": {
-            "mov": "abracar",
-            "expr": "loved",
+            "mov": "sorrir",
+            "expr": "excited",
             "x": 1450,
             "y": 1006,
             "h": 520,
@@ -1852,8 +1825,8 @@
             "frente": false
           },
           "luna": {
-            "mov": "abracar",
-            "expr": "loved",
+            "mov": "sorrir",
+            "expr": "excited",
             "x": 530,
             "y": 1006,
             "h": 450,
@@ -1877,7 +1850,7 @@
           "durationInFrames": 82,
           "frida": {
             "mov": "escuta",
-            "expr": "loved",
+            "expr": "happy",
             "x": 1450,
             "y": 1006,
             "h": 520,
@@ -1893,7 +1866,7 @@
           },
           "luna": {
             "mov": "escuta",
-            "expr": "loved",
+            "expr": "happy",
             "x": 530,
             "y": 1006,
             "h": 450,
@@ -1947,8 +1920,8 @@
           "from": 5093,
           "durationInFrames": 84,
           "frida": {
-            "mov": "escuta",
-            "expr": "happy",
+            "mov": "surpreso",
+            "expr": "surprised",
             "x": 1450,
             "y": 1000,
             "h": 520,
@@ -1963,8 +1936,8 @@
             "frente": false
           },
           "luna": {
-            "mov": "escuta",
-            "expr": "happy",
+            "mov": "surpreso",
+            "expr": "surprised",
             "x": 530,
             "y": 1000,
             "h": 450,
@@ -1987,8 +1960,8 @@
           "from": 5192,
           "durationInFrames": 54,
           "frida": {
-            "mov": "escuta",
-            "expr": "happy",
+            "mov": "surpreso",
+            "expr": "surprised",
             "x": 1450,
             "y": 1000,
             "h": 520,
@@ -2003,8 +1976,8 @@
             "frente": false
           },
           "luna": {
-            "mov": "escuta",
-            "expr": "happy",
+            "mov": "surpreso",
+            "expr": "surprised",
             "x": 530,
             "y": 1000,
             "h": 450,
@@ -2028,7 +2001,7 @@
           "durationInFrames": 101,
           "frida": {
             "mov": "escuta",
-            "expr": "loved",
+            "expr": "happy",
             "x": 1450,
             "y": 1000,
             "h": 520,
@@ -2044,7 +2017,7 @@
           },
           "luna": {
             "mov": "escuta",
-            "expr": "scared",
+            "expr": "happy",
             "x": 530,
             "y": 1000,
             "h": 450,
@@ -2068,7 +2041,7 @@
           "durationInFrames": 129,
           "frida": {
             "mov": "escuta",
-            "expr": "excited",
+            "expr": "happy",
             "x": 1450,
             "y": 1000,
             "h": 520,
@@ -2084,7 +2057,7 @@
           },
           "luna": {
             "mov": "escuta",
-            "expr": "excited",
+            "expr": "happy",
             "x": 530,
             "y": 1000,
             "h": 450,
@@ -2108,7 +2081,7 @@
           "durationInFrames": 89,
           "frida": {
             "mov": "escuta",
-            "expr": "loved",
+            "expr": "happy",
             "x": 1450,
             "y": 1000,
             "h": 520,
@@ -2124,7 +2097,7 @@
           },
           "luna": {
             "mov": "escuta",
-            "expr": "loved",
+            "expr": "happy",
             "x": 530,
             "y": 1000,
             "h": 450,

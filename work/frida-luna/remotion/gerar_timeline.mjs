@@ -238,6 +238,10 @@ const fundoFinal = (nome) => {
 // E) Cruzamento: cenas (sequence-plan) x tabela x beats (plano + tempos)
 // ---------------------------------------------------------------------------
 const porI = new Map(beatsPlano.map((b) => [b.i, b]));
+// Camada semântica: cada beat tem o movimento que FAZ SENTIDO com a fala.
+// Prevalece sobre o plano genérico; se ainda não houver ciclo no banco, cai para a pose.
+const semantica = lerJson(join(RAIZ, "animacao", "movimentos-por-fala.json"));
+const porISem = new Map((Array.isArray(semantica) ? semantica : []).map((b) => [b.i, b]));
 const segmentos = tempos.segmentos ?? [];
 // Efeitos de fundo por cena — decididos pelo sentido da cena, nao a olho.
 // Todos sao desenhados por codigo (sem imagens novas) e deterministas por frame.
@@ -286,9 +290,13 @@ for (const seg of segmentos) {
   const falante = seg.speaker ?? "narrador";
 
   const sprite = (quem) => {
-    const brutoExpr = plano[`expr_${quem}`] ?? seg.poses?.[quem] ?? "happy";
-    const brutoMov = plano[quem] ?? "escuta";
+    const semBeat = porISem.get(seg.i);
+    const brutoExpr = semBeat?.emocao ?? plano[`expr_${quem}`] ?? seg.poses?.[quem] ?? "happy";
+    const brutoMov = semBeat?.[quem] ?? plano[quem] ?? "escuta";
     const resolvido = resolverMovimento(quem, brutoMov);
+    if (semBeat?.[quem] && !resolvido) {
+      avisos.push(`beat ${seg.i}: movimento semântico ${quem}/${brutoMov} ainda sem ciclo — pose estática`);
+    }
 
     // x: interpolacao ini->fim da tabela ao longo da cena (passo < 8 px/frame).
     const xTabela = quem === "frida" ? t?.xFrida : t?.xLuna;
@@ -302,7 +310,7 @@ for (const seg of segmentos) {
     // exatamente o mesmo tamanho do princípio ao fim. A tabela de direcção de arte
     // previa planos de 380/760 e um 0,94x em escuta; ambos criavam a ilusão de personagens
     // diferentes. Só a posição (x/y) e a câmara mudam, nunca a escala do sprite.
-    const h = quem === "frida" ? 660 : 440;   // proporção 1,5x pedida pelo utilizador
+    const h = quem === "frida" ? 520 : 450;   // a Frida só um pouco maior que a Luna (~1,16x)
 
     return {
       mov: resolvido?.nome ?? brutoMov,
