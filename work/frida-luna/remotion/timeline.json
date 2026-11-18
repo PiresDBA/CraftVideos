@@ -16,9 +16,7 @@
         "movimentos/frida/escuta/f02.png",
         "movimentos/frida/escuta/f03.png",
         "movimentos/frida/escuta/f04.png",
-        "movimentos/frida/escuta/f05.png",
-        "movimentos/frida/escuta/f06.png",
-        "movimentos/frida/escuta/f07.png"
+        "movimentos/frida/escuta/f05.png"
       ]
     },
     "luna/escuta": {
@@ -30,31 +28,22 @@
         "movimentos/luna/escuta/f03.png",
         "movimentos/luna/escuta/f04.png",
         "movimentos/luna/escuta/f05.png",
-        "movimentos/luna/escuta/f06.png"
+        "movimentos/luna/escuta/f06.png",
+        "movimentos/luna/escuta/f07.png"
       ]
     },
-    "frida/marcha-flow10": {
-      "fps": 10,
+    "frida/fala": {
+      "fps": 7.5,
       "frames": [
-        "movimentos/frida/marcha-flow10/f00.png",
-        "movimentos/frida/marcha-flow10/f01.png",
-        "movimentos/frida/marcha-flow10/f02.png",
-        "movimentos/frida/marcha-flow10/f03.png",
-        "movimentos/frida/marcha-flow10/f04.png",
-        "movimentos/frida/marcha-flow10/f05.png",
-        "movimentos/frida/marcha-flow10/f06.png",
-        "movimentos/frida/marcha-flow10/f07.png"
-      ]
-    },
-    "luna/corrida": {
-      "fps": 12,
-      "frames": [
-        "movimentos/luna/corrida/run_000.png",
-        "movimentos/luna/corrida/run_001.png",
-        "movimentos/luna/corrida/run_002.png",
-        "movimentos/luna/corrida/run_003.png",
-        "movimentos/luna/corrida/run_004.png",
-        "movimentos/luna/corrida/run_005.png"
+        "movimentos/frida/fala/f00.png",
+        "movimentos/frida/fala/f01.png",
+        "movimentos/frida/fala/f02.png",
+        "movimentos/frida/fala/f03.png",
+        "movimentos/frida/fala/f04.png",
+        "movimentos/frida/fala/f05.png",
+        "movimentos/frida/fala/f06.png",
+        "movimentos/frida/fala/f07.png",
+        "movimentos/frida/fala/f08.png"
       ]
     },
     "luna/olhar": {
@@ -207,7 +196,7 @@
           "from": 392,
           "durationInFrames": 68,
           "frida": {
-            "mov": "marcha-flow10",
+            "mov": "corrida",
             "expr": "silly",
             "x": 1477,
             "y": 1000,
@@ -293,7 +282,7 @@
             "frente": false
           },
           "luna": {
-            "mov": "corrida",
+            "mov": "marcha",
             "expr": "happy",
             "x": 308,
             "y": 996,
@@ -427,7 +416,7 @@
           "from": 855,
           "durationInFrames": 178,
           "frida": {
-            "mov": "marcha-flow10",
+            "mov": "marcha",
             "expr": "happy",
             "x": 1320,
             "y": 1002,
@@ -443,7 +432,7 @@
             "frente": false
           },
           "luna": {
-            "mov": "corrida",
+            "mov": "marcha",
             "expr": "surprised",
             "x": 380,
             "y": 1002,
@@ -467,7 +456,7 @@
           "from": 1045,
           "durationInFrames": 81,
           "frida": {
-            "mov": "marcha-flow10",
+            "mov": "marcha",
             "expr": "surprised",
             "x": 1390,
             "y": 1002,
@@ -483,7 +472,7 @@
             "frente": false
           },
           "luna": {
-            "mov": "corrida",
+            "mov": "marcha",
             "expr": "surprised",
             "x": 474,
             "y": 1002,
@@ -777,7 +766,7 @@
           "from": 1813,
           "durationInFrames": 96,
           "frida": {
-            "mov": "marcha-flow10",
+            "mov": "corrida",
             "expr": "excited",
             "x": 1406,
             "y": 1008,

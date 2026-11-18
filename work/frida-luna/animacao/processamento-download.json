@@ -1,0 +1,595 @@
+{
+ "total": 134,
+ "resumo": {
+  "corte: menos de 6 figuras": 93,
+  "continuidade: nao e Frida nem Luna (min 0.97)": 1,
+  "continuidade: nao e Frida nem Luna (min 0.61)": 1,
+  "continuidade: nao e Frida nem Luna (min 1.32)": 2,
+  "continuidade: nao e Frida nem Luna (min 1.28)": 1,
+  "continuidade: nao e Frida nem Luna (min 2.94)": 1,
+  "continuidade: nao e Frida nem Luna (min 1.15)": 1,
+  "continuidade: nao e Frida nem Luna (min 0.58)": 1,
+  "continuidade: nao e Frida nem Luna (min 3.80)": 1,
+  "continuidade: nao e Frida nem Luna (min 1.01)": 1,
+  "continuidade: nao e Frida nem Luna (min 1.61)": 2,
+  "continuidade: nao e Frida nem Luna (min 1.20)": 1,
+  "continuidade: nao e Frida nem Luna (min 0.85)": 1,
+  "continuidade: nao e Frida nem Luna (min 1.45)": 1,
+  "continuidade: nao e Frida nem Luna (min 1.67)": 2,
+  "continuidade: nao e Frida nem Luna (min 1.46)": 1,
+  "continuidade: nao e Frida nem Luna (min 1.63)": 1,
+  "continuidade: nao e Frida nem Luna (min 1.64)": 1,
+  "continuidade: nao e Frida nem Luna (min 1.43)": 1,
+  "continuidade: nao e Frida nem Luna (min 1.37)": 1,
+  "continuidade: nao e Frida nem Luna (min 1.03)": 1,
+  "continuidade: nao e Frida nem Luna (min 0.70)": 1,
+  "continuidade: nao e Frida nem Luna (min 1.29)": 1,
+  "continuidade: nao e Frida nem Luna (min 2.81)": 1,
+  "APROVADO": 5,
+  "continuidade: nao e Frida nem Luna (min 1.04)": 1,
+  "continuidade: nao e Frida nem Luna (min 1.80)": 1,
+  "continuidade: nao e Frida nem Luna (min 1.35)": 1,
+  "movimento: nenhum tipo passou": 1,
+  "continuidade: nao e Frida nem Luna (min 0.72)": 1,
+  "continuidade: nao e Frida nem Luna (min 0.46)": 1,
+  "continuidade: nao e Frida nem Luna (min 4.51)": 1,
+  "continuidade: nao e Frida nem Luna (min 2.14)": 1,
+  "continuidade: nao e Frida nem Luna (min 2.16)": 1,
+  "continuidade: nao e Frida nem Luna (min 5.56)": 1
+ },
+ "detalhe": [
+  {
+   "imagem": "abertura_dc06106c.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "bolinhas_03989db7.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_breathing_cycle_sprite_s…_e884afff.jpg",
+   "motivo": "continuidade 0.97",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_character_walking_cycle_5342feb0.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_glance_loop_drawing_sequ…_cb2c7251.jpg",
+   "motivo": "continuidade 0.61",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_mouth_talking_animation_…_d2544da2.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_performing_hug_cycle_91fb0837.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_performing_walk_cycle_16c34edc.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_performing_walk_cycle_6eefbac5.jpg",
+   "motivo": "continuidade 1.32",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_performing_walk_cycle_an…_3d3a2652.jpg",
+   "motivo": "continuidade 1.28",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_performing_walk_cycle_an…_e049738d.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_performing_walk_cycle_d91b0961.jpg",
+   "motivo": "continuidade 2.94",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_performing_walk_cycle_e6c93afb.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_run_cycle_illustration_be672ae7.jpg",
+   "motivo": "continuidade 1.15",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_sit_stand_cycle_animation_9b4b550b.jpg",
+   "motivo": "continuidade 0.58",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_sit_stand_loop_animation_828a84d5.jpg",
+   "motivo": "continuidade 3.80",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_talking_mouth_animation_…_b73893e7.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_talking_mouth_animation_…_f681767d.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_walking_animation_cycle_f10c93ca.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_walking_animation_frames_13f6e551.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_walking_animation_frames_17ab5da4.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_walking_animation_frames_b10eb40e.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_walking_cycle_illustration_ab5bacd7.jpg",
+   "motivo": "continuidade 1.01",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_walking_cycle_illustration_f438ccc3.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_walking_cycle_sheet_032c85b6.jpg",
+   "motivo": "continuidade 1.61",
+   "quem": "luna"
+  },
+  {
+   "imagem": "Bulldog_walking_cycle_sheet_04285a52.jpg",
+   "motivo": "continuidade 1.20",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_walking_filmstrip_animation_30dea4c4.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_walking_walk_cycle_frames_884ee01d.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_walk_cycle_drawings_05938c3c.jpg",
+   "motivo": "continuidade 0.85",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_walk_cycle_drawings_1cabc704.jpg",
+   "motivo": "continuidade 1.45",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_walk_cycle_drawings_5d0272a6.jpg",
+   "motivo": "continuidade 1.67",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_walk_cycle_drawings_613acdbd.jpg",
+   "motivo": "continuidade 1.46",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_walk_cycle_drawings_95596ff7.jpg",
+   "motivo": "continuidade 1.63",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_walk_cycle_drawings_c7e63ae3.jpg",
+   "motivo": "continuidade 1.64",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_walk_cycle_drawings_dc465740.jpg",
+   "motivo": "continuidade 1.43",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_walk_cycle_frames_0c7e69e1.jpg",
+   "motivo": "continuidade 1.37",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_walk_cycle_frames_3b78e1f1.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_walk_cycle_frames_77c45a17.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_walk_cycle_frames_8517a42f.jpg",
+   "motivo": "continuidade 1.03",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_walk_cycle_frames_ac0872df.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_walk_cycle_frames_bd9482a6.jpg",
+   "motivo": "continuidade 0.70",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_walk_cycle_illustration_36019e37.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Bulldog_walk_cycle_illustration_714d61ab.jpg",
+   "motivo": "continuidade 1.29",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Bulldog_walk_cycle_illustration_775005bf.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "carrossel_3920ac5f.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Dachshund_character_turn-around_…_4ef3d6f5.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Dachshund_character_turn-around_…_5097e90b.jpg",
+   "motivo": "continuidade 1.32",
+   "quem": "luna"
+  },
+  {
+   "imagem": "Dachshund_character_turn-around_…_613e408e.jpg",
+   "motivo": "continuidade 2.81",
+   "quem": "luna"
+  },
+  {
+   "imagem": "Dachshund_listening_loop_drawings_ad12b3a2.jpg",
+   "motivo": "continuidade 1.04",
+   "quem": "luna"
+  },
+  {
+   "imagem": "Dachshund_performing_hug_animati…_c7b04f36.jpg",
+   "motivo": "continuidade 1.80",
+   "quem": "luna"
+  },
+  {
+   "imagem": "Dachshund_sit-to-stand_animation…_3727cf6a.jpg",
+   "motivo": "continuidade 1.35",
+   "quem": "luna"
+  },
+  {
+   "imagem": "Dachshund_sit-to-stand_animation…_f4d9f3b4.jpg",
+   "motivo": "movimento reprovado",
+   "quem": "luna",
+   "continuidade": 0.26
+  },
+  {
+   "imagem": "Dachshund_walk_cycle_character_s…_0a6fdbd3.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Dachshund_walk_cycle_illustration_8d99cad5.jpg",
+   "motivo": "continuidade 0.72",
+   "quem": "luna"
+  },
+  {
+   "imagem": "Dachshund_walk_cycle_illustration_cd0ec957.jpg",
+   "motivo": "continuidade 0.46",
+   "quem": "luna"
+  },
+  {
+   "imagem": "Dachshund_walk_cycle_illustration_d961ba44.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "English_bulldog_run_cycle_1783b955.jpg",
+   "motivo": "continuidade 1.61",
+   "quem": "frida"
+  },
+  {
+   "imagem": "English_bulldog_walk_cycle_drawing_5b1ae0b2.jpg",
+   "motivo": "continuidade 1.67",
+   "quem": "frida"
+  },
+  {
+   "imagem": "espelhos_a44d4934.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "final_11104c4c.jpg",
+   "motivo": "continuidade 4.51",
+   "quem": "luna"
+  },
+  {
+   "imagem": "hook_4daa29c6.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_12b8ffa7.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_1cfb30d1.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_276040e1.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_35b1b121.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_360f6c6d.png",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_3a89bb36.png",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_3dbc2d79.png",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_3fec710c.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_42b05704.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_44cb8626.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_48ded787.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_4a80a7be.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_4eb158ea.png",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_52f7ce88.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_5c4a8af6.png",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_5efb99c6.png",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_60d016d6.png",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_612e8206.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_70d19edb.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_72ba7844.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_792760bd.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_7b6fa1a6.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_92f6f396.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_9534210c.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_974404ea.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_a32df574.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_ae9326ec.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_c01027bd.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_c1a0b6c6.png",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_c4bf31ba.png",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_c521d3df.png",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_cbeebcb8.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_d131d156.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_dd387c6d.png",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_e289b78b.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_e8955539.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_efb7231a.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_f2c1d2fc.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_f41c4600.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_f74acff3.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_f794b03f.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_f9c8f024.png",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "image.png_fbffe194.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Magical_amusement_park_illustration_552902d8.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "montanha_9ba4202b.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "moral_4f9391b4.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "portao_c0c6e5a2.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "referenci-frida_01cdd6ad.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "roda_566a95a0.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Sprite_sheet_character_cycle_olhar_881fb37f.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Sprite_sheet_fala_movement_cycle_9a0eafa7.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Sprite_sheet_for_corrida_cycle_6af05cd7.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Sprite_sheet_for_fala_cycle_15dad66a.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Sprite_sheet_for_movement_cycle_367dc48b.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Sprite_sheet_for_movement_cycle_96c2dee5.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Sprite_sheet_for_sitting_cycle_4f20f06f.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Sprite_sheet_marching_cycle_85e8ad8c.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Sprite_sheet_rotation_cycle_9c54fe74.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Sprite_sheet_running_cycle_anima…_c70678d8.jpg",
+   "motivo": "continuidade 2.14",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Sprite_sheet_running_cycle_eac2cc8e.jpg",
+   "motivo": "continuidade 2.16",
+   "quem": "frida"
+  },
+  {
+   "imagem": "tunel_c621370a.jpg",
+   "motivo": "continuidade 5.56",
+   "quem": "frida"
+  },
+  {
+   "imagem": "Two_animated_dogs_posing_together_5703e6b8.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Two_dogs_in_animated_illustration_3c78018e.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Two_dogs_in_animated_scene_00fba779.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Two_dogs_posing_together_4b1033f6.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Two_dogs_posing_together_6ad5309f.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Two_dogs_standing_together_b2095803.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  },
+  {
+   "imagem": "Two_stylized_dogs_posing_together_474aa272.jpg",
+   "motivo": "corte: menos de 6 figuras"
+  }
+ ]
+}

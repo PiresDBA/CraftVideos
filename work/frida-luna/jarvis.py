@@ -163,7 +163,12 @@ def submeter(nome, prompt, quem):
            "--ref-image", str(REF[quem]), "--aspect", "16:9", "--wait", "60",
            "--skip-confirm", "--name", nome, "--prompt", prompt]
     rc, log = rodar(cmd, mostrar=False)
-    return "RESUMO 1/1" in log or "prompt enviado" in log
+    ok = "RESUMO 1/1" in log or "prompt enviado" in log
+    if not ok:
+        print("   motivo: " + " | ".join(
+            l.strip() for l in log.splitlines()
+            if "ERRO" in l or "falhou:" in l or "ref-image" in l or "RESUMO" in l)[-300:])
+    return ok
 
 
 def descarregar(destino, n=4):
@@ -331,6 +336,10 @@ def prompt_lote(quem, movimentos):
         micro = m.group(1).strip() if m else ""
     nomes = "\n".join(f"- Image {i+1}: the cycle called \"{m}\"" for i, m in enumerate(movimentos))
     return (
+        f"CRITICAL: EVERY IMAGE MUST HAVE A FULLY TRANSPARENT BACKGROUND (real RGBA alpha). "
+        f"No cream paper, no white, no colour, no ground line, NO SHADOW or oval under the "
+        f"feet, no border, no text. Any image with a background is rejected. Deliver the "
+        f"alpha channel intact, do not flatten it.\n\n"
         f"Create {len(movimentos)} SEPARATE images in this single request. Each image is one "
         f"sprite sheet for the SAME approved character, drawn exactly like the attached "
         f"reference image (same face, same colours, same proportions, same outline) — never "

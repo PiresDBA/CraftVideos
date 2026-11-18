@@ -41,9 +41,15 @@ Esta folha é injectada automaticamente em todos os prompts por `gerar_ciclos.py
 ## Bloco para injectar no prompt (inglês)
 
 ```
-OUTPUT — TRUE TRANSPARENT BACKGROUND (RGBA with real alpha), NOT cream paper, NOT white,
-NOT a coloured card. Each drawing must be an isolated figure with fully transparent space
-around it: no ground line, NO SHADOW, NO OVAL OR ELLIPSE UNDER THE FEET, no contact blob,
+OUTPUT — READ THIS FIRST: EVERY IMAGE MUST BE DELIVERED WITH A FULLY TRANSPARENT
+BACKGROUND (RGBA / alpha channel). This is the single most important requirement. Not cream
+paper, not white, not a coloured card. No shadow, no oval under the feet, no ground line,
+no rectangle, no border, no text. If a drawing has ANY coloured background it is useless.
+Transparent background on EVERY one of the 8 drawings, on EVERY image.
+
+TRANSPARENT BACKGROUND, DETAIL:
+Each drawing must be an isolated figure with fully transparent space around it: no ground
+line, NO SHADOW, NO OVAL OR ELLIPSE UNDER THE FEET, no contact blob,
 no rectangle, no border. The shadow will be drawn later by the animation, so it must NOT be in
 the image. Keep the 8 figures in ONE
 horizontal row, evenly spaced, identical size and the feet on the same baseline inside each

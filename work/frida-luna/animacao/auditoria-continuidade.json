@@ -1,0 +1,200 @@
+[
+ {
+  "nome": "frida (REFERÊNCIA)",
+  "personagem": "frida",
+  "tipo": "referencia",
+  "score": 0.0,
+  "cor": 0.0,
+  "proporcao": 0.0,
+  "histograma": 0.0,
+  "score_cor": 0.0,
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\chars\\poses-v3\\frida\\happy.png"
+ },
+ {
+  "nome": "frida/poses/happy",
+  "personagem": "frida",
+  "tipo": "expressao-aprovada",
+  "score": 0.0,
+  "cor": 0.0,
+  "proporcao": 0.0,
+  "histograma": 0.0,
+  "score_cor": 0.0,
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\chars\\poses-v3\\frida\\happy.png"
+ },
+ {
+  "nome": "frida/poses/sad",
+  "personagem": "frida",
+  "tipo": "expressao-aprovada",
+  "score": 0.096,
+  "cor": 0.05,
+  "proporcao": 0.018,
+  "histograma": 0.007,
+  "score_cor": 0.05,
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\chars\\poses-v3\\frida\\sad.png"
+ },
+ {
+  "nome": "frida/poses/angry",
+  "personagem": "frida",
+  "tipo": "expressao-aprovada",
+  "score": 0.111,
+  "cor": 0.04,
+  "proporcao": 0.031,
+  "histograma": 0.007,
+  "score_cor": 0.04,
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\chars\\poses-v3\\frida\\angry.png"
+ },
+ {
+  "nome": "frida/poses/scared",
+  "personagem": "frida",
+  "tipo": "expressao-aprovada",
+  "score": 0.118,
+  "cor": 0.06,
+  "proporcao": 0.021,
+  "histograma": 0.009,
+  "score_cor": 0.06,
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\chars\\poses-v3\\frida\\scared.png"
+ },
+ {
+  "nome": "frida/poses/loved",
+  "personagem": "frida",
+  "tipo": "expressao-aprovada",
+  "score": 0.163,
+  "cor": 0.13,
+  "proporcao": 0.008,
+  "histograma": 0.013,
+  "score_cor": 0.13,
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\chars\\poses-v3\\frida\\loved.png"
+ },
+ {
+  "nome": "frida/poses/surprised",
+  "personagem": "frida",
+  "tipo": "expressao-aprovada",
+  "score": 0.178,
+  "cor": 0.1,
+  "proporcao": 0.028,
+  "histograma": 0.013,
+  "score_cor": 0.1,
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\chars\\poses-v3\\frida\\surprised.png"
+ },
+ {
+  "nome": "frida/poses/silly",
+  "personagem": "frida",
+  "tipo": "expressao-aprovada",
+  "score": 0.204,
+  "cor": 0.15,
+  "proporcao": 0.018,
+  "histograma": 0.012,
+  "score_cor": 0.15,
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\chars\\poses-v3\\frida\\silly.png"
+ },
+ {
+  "nome": "frida/poses/excited",
+  "personagem": "frida",
+  "tipo": "expressao-aprovada",
+  "score": 0.256,
+  "cor": 0.23,
+  "proporcao": 0.003,
+  "histograma": 0.012,
+  "score_cor": 0.23,
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\chars\\poses-v3\\frida\\excited.png"
+ },
+ {
+  "nome": "luna (REFERÊNCIA)",
+  "personagem": "luna",
+  "tipo": "referencia",
+  "score": 0.0,
+  "cor": 0.0,
+  "proporcao": 0.0,
+  "histograma": 0.0,
+  "score_cor": 0.0,
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\chars\\poses-v3\\luna\\happy.png"
+ },
+ {
+  "nome": "luna/poses/happy",
+  "personagem": "luna",
+  "tipo": "expressao-aprovada",
+  "score": 0.0,
+  "cor": 0.0,
+  "proporcao": 0.0,
+  "histograma": 0.0,
+  "score_cor": 0.0,
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\chars\\poses-v3\\luna\\happy.png"
+ },
+ {
+  "nome": "luna/poses/sad",
+  "personagem": "luna",
+  "tipo": "expressao-aprovada",
+  "score": 0.072,
+  "cor": 0.06,
+  "proporcao": 0.003,
+  "histograma": 0.004,
+  "score_cor": 0.06,
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\chars\\poses-v3\\luna\\sad.png"
+ },
+ {
+  "nome": "luna/poses/angry",
+  "personagem": "luna",
+  "tipo": "expressao-aprovada",
+  "score": 0.093,
+  "cor": 0.07,
+  "proporcao": 0.006,
+  "histograma": 0.006,
+  "score_cor": 0.07,
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\chars\\poses-v3\\luna\\angry.png"
+ },
+ {
+  "nome": "luna/poses/excited",
+  "personagem": "luna",
+  "tipo": "expressao-aprovada",
+  "score": 0.123,
+  "cor": 0.1,
+  "proporcao": 0.006,
+  "histograma": 0.005,
+  "score_cor": 0.1,
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\chars\\poses-v3\\luna\\excited.png"
+ },
+ {
+  "nome": "luna/poses/silly",
+  "personagem": "luna",
+  "tipo": "expressao-aprovada",
+  "score": 0.276,
+  "cor": 0.11,
+  "proporcao": 0.076,
+  "histograma": 0.009,
+  "score_cor": 0.11,
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\chars\\poses-v3\\luna\\silly.png"
+ },
+ {
+  "nome": "luna/poses/surprised",
+  "personagem": "luna",
+  "tipo": "expressao-aprovada",
+  "score": 0.29,
+  "cor": 0.12,
+  "proporcao": 0.076,
+  "histograma": 0.008,
+  "score_cor": 0.12,
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\chars\\poses-v3\\luna\\surprised.png"
+ },
+ {
+  "nome": "luna/poses/loved",
+  "personagem": "luna",
+  "tipo": "expressao-aprovada",
+  "score": 0.311,
+  "cor": 0.2,
+  "proporcao": 0.046,
+  "histograma": 0.011,
+  "score_cor": 0.2,
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\chars\\poses-v3\\luna\\loved.png"
+ },
+ {
+  "nome": "luna/poses/scared",
+  "personagem": "luna",
+  "tipo": "expressao-aprovada",
+  "score": 0.402,
+  "cor": 0.23,
+  "proporcao": 0.076,
+  "histograma": 0.01,
+  "score_cor": 0.23,
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\chars\\poses-v3\\luna\\scared.png"
+ }
+]

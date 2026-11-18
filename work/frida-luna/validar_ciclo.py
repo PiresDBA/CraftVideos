@@ -95,7 +95,10 @@ def continuidade(pasta, quem):
         if not ref.exists() or not frame.exists():
             return None, None
         d = distancia(assinatura(frame), assinatura(ref))
-        return d, (d > 0.45)
+        # bool() explicito: distancia() devolve numpy.float64 e (d > 0.45) devolve
+        # numpy.bool_, que NAO e o singleton True — o "is True" deixava passar outros
+        # desenhos. Sem isto a porta de continuidade tinha um buraco.
+        return d, bool(d > 0.45)
     except Exception as e:
         return None, str(e)
 

@@ -101,6 +101,8 @@ def main():
         fig = alfa_existente > 128
         alfa = alfa_existente
     else:
+        print("  AVISO: imagem sem fundo transparente — recorte por cor necesario; "
+              "reforcar 'transparent background' no prompt da proxima vez")
         rgb = rgba[:, :, :3]
         fig = mascara_figuras(rgb, limiar, chao)
         alfa = alfa_suave(fig)

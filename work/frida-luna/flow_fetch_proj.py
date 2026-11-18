@@ -517,6 +517,19 @@ async def submit_flow_prompt(page, prompt: str, clear: bool = True,
     result = {"ok": False, "error": None}
     await _dismiss_overlays(page)
     ed = await editor(page)
+
+    async def ler_editor():
+        """Depois de anexar a referencia o Flow recria o editor e o handle antigo morre."""
+        nonlocal ed
+        try:
+            return (await ed.inner_text()).strip()
+        except Exception:
+            try:
+                ed = await editor(page)
+                return (await ed.inner_text()).strip()
+            except Exception:
+                return ""
+
     await ed.click()
     await page.wait_for_timeout(300)
     # fill() funciona em contenteditable (ProseMirror) e garante o texto visível
@@ -528,14 +541,14 @@ async def submit_flow_prompt(page, prompt: str, clear: bool = True,
             await page.keyboard.press("Delete")
         await page.keyboard.insert_text(prompt)
     await page.wait_for_timeout(400)
-    typed = (await ed.inner_text()).strip()
+    typed = await ler_editor()
     if len(typed) < min(20, len(prompt)):
         await ed.click()
         await page.keyboard.press("Control+a")
         await page.keyboard.press("Delete")
         await page.keyboard.insert_text(prompt)
         await page.wait_for_timeout(300)
-        typed = (await ed.inner_text()).strip()
+        typed = await ler_editor()
     if len(typed) < 5:
         result["error"] = "campo de prompt vazio após digitação"
         print(f"  ⚠ {result['error']}", flush=True)
@@ -559,7 +572,7 @@ async def submit_flow_prompt(page, prompt: str, clear: bool = True,
             try:
                 await gen_btn.click()
                 await page.wait_for_timeout(1500)
-                if len((await ed.inner_text()).strip()) < 5:
+                if len(await ler_editor()) < 5:
                     print(f"  envio confirmado (tentativa {attempt + 1})", flush=True)
                     result["ok"] = True
                     return result
@@ -568,7 +581,7 @@ async def submit_flow_prompt(page, prompt: str, clear: bool = True,
         # Fallback: Enter
         await page.keyboard.press("Enter")
         await page.wait_for_timeout(1500)
-        if len((await ed.inner_text()).strip()) < 5:
+        if len(await ler_editor()) < 5:
             print(f"  envio confirmado (tentativa {attempt + 1})", flush=True)
             result["ok"] = True
             return result
