@@ -1,0 +1,1820 @@
+{
+  ".artcraft/artcraft.mjs": {
+    "mtime": 1794492122.1670923,
+    "seen": 1794923893.5055103,
+    "ast_hash": "0174b44ce79fb2ffe1b72bdae72e7efe",
+    "semantic_hash": "0174b44ce79fb2ffe1b72bdae72e7efe"
+  },
+  ".artcraft/card-scaffold.mjs": {
+    "mtime": 1794581284.459891,
+    "seen": 1794923893.5055249,
+    "ast_hash": "686e9bad53a27e831b258c951ea7de19",
+    "semantic_hash": "686e9bad53a27e831b258c951ea7de19"
+  },
+  ".artcraft/clone/lib/ass.mjs": {
+    "mtime": 1794654267.7692,
+    "seen": 1794923893.5055325,
+    "ast_hash": "f2417b691cc63daf7bc4077c998ac8c4",
+    "semantic_hash": "f2417b691cc63daf7bc4077c998ac8c4"
+  },
+  ".artcraft/clone/lib/ass.test.mjs": {
+    "mtime": 1794654319.104411,
+    "seen": 1794923893.5055385,
+    "ast_hash": "6833d7b5396ebc75ea59a0399a081f7c",
+    "semantic_hash": "6833d7b5396ebc75ea59a0399a081f7c"
+  },
+  ".artcraft/clone/lib/cache.mjs": {
+    "mtime": 1794614536.2722924,
+    "seen": 1794923893.505545,
+    "ast_hash": "8bd74d786b21e96fdf1b518fd84f421b",
+    "semantic_hash": "8bd74d786b21e96fdf1b518fd84f421b"
+  },
+  ".artcraft/clone/lib/cache.test.mjs": {
+    "mtime": 1794611805.781342,
+    "seen": 1794923893.505551,
+    "ast_hash": "a5ca99535b2dc1b6c19490a7d8897805",
+    "semantic_hash": "a5ca99535b2dc1b6c19490a7d8897805"
+  },
+  ".artcraft/clone/lib/colour.mjs": {
+    "mtime": 1794612985.1476057,
+    "seen": 1794923893.5055583,
+    "ast_hash": "8bb0ad85f89409f64b0108621669855c",
+    "semantic_hash": "8bb0ad85f89409f64b0108621669855c"
+  },
+  ".artcraft/clone/lib/comfy.mjs": {
+    "mtime": 1794874760.6392949,
+    "seen": 1794923893.5055647,
+    "ast_hash": "1d5993d426e3eb90d828dea279869156",
+    "semantic_hash": "1d5993d426e3eb90d828dea279869156"
+  },
+  ".artcraft/clone/lib/config.mjs": {
+    "mtime": 1794614723.0216956,
+    "seen": 1794923893.505571,
+    "ast_hash": "21eed077c0c95d69b977909e9d018e81",
+    "semantic_hash": "21eed077c0c95d69b977909e9d018e81"
+  },
+  ".artcraft/clone/lib/config.test.mjs": {
+    "mtime": 1794614940.2561114,
+    "seen": 1794923893.5055773,
+    "ast_hash": "6e15ba4d4b314941e7e155a2160b1824",
+    "semantic_hash": "6e15ba4d4b314941e7e155a2160b1824"
+  },
+  ".artcraft/clone/lib/direcao-cli.test.mjs": {
+    "mtime": 1794659279.408139,
+    "seen": 1794923893.5055828,
+    "ast_hash": "43446bba5cbd5d65f38465a1bfc070f0",
+    "semantic_hash": "43446bba5cbd5d65f38465a1bfc070f0"
+  },
+  ".artcraft/clone/lib/direcao.mjs": {
+    "mtime": 1794659719.9322023,
+    "seen": 1794923893.5055895,
+    "ast_hash": "bb52fd714481f5e42a6f0b760d20170b",
+    "semantic_hash": "bb52fd714481f5e42a6f0b760d20170b"
+  },
+  ".artcraft/clone/lib/direcao.test.mjs": {
+    "mtime": 1794659795.4381893,
+    "seen": 1794923893.5055957,
+    "ast_hash": "887044607d471cd6965b7266ee3f845f",
+    "semantic_hash": "887044607d471cd6965b7266ee3f845f"
+  },
+  ".artcraft/clone/lib/engine-cli-smoke.test.mjs": {
+    "mtime": 1794654454.9420881,
+    "seen": 1794923893.505602,
+    "ast_hash": "64c8d0a15ba7753ed67610fee2372051",
+    "semantic_hash": "64c8d0a15ba7753ed67610fee2372051"
+  },
+  ".artcraft/clone/lib/js-scan.mjs": {
+    "mtime": 1794707271.9701536,
+    "seen": 1794923893.5056076,
+    "ast_hash": "c56503c8b7d5c9baef94842b41ad64f4",
+    "semantic_hash": "c56503c8b7d5c9baef94842b41ad64f4"
+  },
+  ".artcraft/clone/lib/layout.mjs": {
+    "mtime": 1794614577.2433298,
+    "seen": 1794923893.5056136,
+    "ast_hash": "e3fdaa69958eee5dc0efc3b12b8a43de",
+    "semantic_hash": "e3fdaa69958eee5dc0efc3b12b8a43de"
+  },
+  ".artcraft/clone/lib/layout.test.mjs": {
+    "mtime": 1794610242.6898108,
+    "seen": 1794923893.5056198,
+    "ast_hash": "a8520156acb2623d46fd20f0b01b8cc0",
+    "semantic_hash": "a8520156acb2623d46fd20f0b01b8cc0"
+  },
+  ".artcraft/clone/lib/media.mjs": {
+    "mtime": 1794612757.2920914,
+    "seen": 1794923893.5056262,
+    "ast_hash": "611f4bb48f1c36588da8b060604a2d92",
+    "semantic_hash": "611f4bb48f1c36588da8b060604a2d92"
+  },
+  ".artcraft/clone/lib/media.test.mjs": {
+    "mtime": 1794612795.631907,
+    "seen": 1794923893.5056322,
+    "ast_hash": "3e390d73c03589731cace24ef0836cb1",
+    "semantic_hash": "3e390d73c03589731cace24ef0836cb1"
+  },
+  ".artcraft/clone/lib/preflight.mjs": {
+    "mtime": 1794752347.8719337,
+    "seen": 1794923893.5056384,
+    "ast_hash": "8efe9cae4d1dfcb6b3eecf14ef1ab17f",
+    "semantic_hash": "8efe9cae4d1dfcb6b3eecf14ef1ab17f"
+  },
+  ".artcraft/clone/lib/runtime.mjs": {
+    "mtime": 1794613181.5291567,
+    "seen": 1794923893.5056443,
+    "ast_hash": "7ddc45deaefa617e61d6b9c7f3898eab",
+    "semantic_hash": "7ddc45deaefa617e61d6b9c7f3898eab"
+  },
+  ".artcraft/clone/lib/runtime.test.mjs": {
+    "mtime": 1794613322.5427966,
+    "seen": 1794923893.5056505,
+    "ast_hash": "74fe6fff62004ffefb14a4db513e5504",
+    "semantic_hash": "74fe6fff62004ffefb14a4db513e5504"
+  },
+  ".artcraft/clone/lib/seamless.mjs": {
+    "mtime": 1794707561.670334,
+    "seen": 1794923893.5056581,
+    "ast_hash": "7238c3a53fb259218dad25f88b25a45b",
+    "semantic_hash": "7238c3a53fb259218dad25f88b25a45b"
+  },
+  ".artcraft/clone/lib/text.mjs": {
+    "mtime": 1794654536.6672242,
+    "seen": 1794923893.5056646,
+    "ast_hash": "c6004f6a3a826c8c147f94a9993d09c7",
+    "semantic_hash": "c6004f6a3a826c8c147f94a9993d09c7"
+  },
+  ".artcraft/clone/lib/text.test.mjs": {
+    "mtime": 1794654634.5982919,
+    "seen": 1794923893.50567,
+    "ast_hash": "e535443782d3570314eb5aec789afc15",
+    "semantic_hash": "e535443782d3570314eb5aec789afc15"
+  },
+  ".artcraft/clone/lib/visuals.mjs": {
+    "mtime": 1794912540.5648115,
+    "seen": 1794923893.5056763,
+    "ast_hash": "8f94338a9404445cd3c945ddbb6e0446",
+    "semantic_hash": "8f94338a9404445cd3c945ddbb6e0446"
+  },
+  ".artcraft/mcp-gateway.mjs": {
+    "mtime": 1794493521.1632686,
+    "seen": 1794923893.5056822,
+    "ast_hash": "28ebaa1922ae74c503221841cef6b627",
+    "semantic_hash": "28ebaa1922ae74c503221841cef6b627"
+  },
+  ".artcraft/media.mjs": {
+    "mtime": 1794493458.1248314,
+    "seen": 1794923893.5056877,
+    "ast_hash": "8eeb5593aa29d027f5504350780395b3",
+    "semantic_hash": "8eeb5593aa29d027f5504350780395b3"
+  },
+  ".artcraft/ref-programs.mjs": {
+    "mtime": 1794562737.2761755,
+    "seen": 1794923893.505694,
+    "ast_hash": "480dfccec0e5046599872297aaeb71cc",
+    "semantic_hash": "480dfccec0e5046599872297aaeb71cc"
+  },
+  ".artcraft/run-dashboard.ps1": {
+    "mtime": 1794705328.4993813,
+    "seen": 1794923893.5056999,
+    "ast_hash": "625b2adeaba836f19bdfdf559d6500df",
+    "semantic_hash": "625b2adeaba836f19bdfdf559d6500df"
+  },
+  ".artcraft/studio-catalog.mjs": {
+    "mtime": 1794528351.262388,
+    "seen": 1794923893.505706,
+    "ast_hash": "d860435287bb67c0262828ca1cc53d10",
+    "semantic_hash": "d860435287bb67c0262828ca1cc53d10"
+  },
+  ".artcraft/studio-panel.mjs": {
+    "mtime": 1794528397.1154413,
+    "seen": 1794923893.5057118,
+    "ast_hash": "65f5e7a0140cfc11e9b9526257f17fc9",
+    "semantic_hash": "65f5e7a0140cfc11e9b9526257f17fc9"
+  },
+  ".artcraft/studio.mjs": {
+    "mtime": 1794528309.8172996,
+    "seen": 1794923893.5057178,
+    "ast_hash": "682202bad8f97578dc8183033ddb7074",
+    "semantic_hash": "682202bad8f97578dc8183033ddb7074"
+  },
+  ".artcraft/teste-motivo-remotion.mjs": {
+    "mtime": 1794601472.7238674,
+    "seen": 1794923893.505724,
+    "ast_hash": "2fdcb9c35582a9552b2044f6a5d6b1bc",
+    "semantic_hash": "2fdcb9c35582a9552b2044f6a5d6b1bc"
+  },
+  ".artcraft/voicecraft-status.mjs": {
+    "mtime": 1794526744.356529,
+    "seen": 1794923893.5057294,
+    "ast_hash": "9bd65b7f147b1fa4fa3f52f75470170e",
+    "semantic_hash": "9bd65b7f147b1fa4fa3f52f75470170e"
+  },
+  ".artcraft/yt-audit.mjs": {
+    "mtime": 1794708851.2839074,
+    "seen": 1794923893.5057354,
+    "ast_hash": "b3cc61f613653b9ace7788ae3d0bf8e7",
+    "semantic_hash": "b3cc61f613653b9ace7788ae3d0bf8e7"
+  },
+  ".artcraft/yt-build-dataset.mjs": {
+    "mtime": 1794700117.614378,
+    "seen": 1794923893.5057416,
+    "ast_hash": "2112f699b760c2884b25d15e9a4cceca",
+    "semantic_hash": "2112f699b760c2884b25d15e9a4cceca"
+  },
+  ".artcraft/yt-channel-scan.mjs": {
+    "mtime": 1794497644.695992,
+    "seen": 1794923893.5057478,
+    "ast_hash": "39859873103188a28feee4c9d7f4ce86",
+    "semantic_hash": "39859873103188a28feee4c9d7f4ce86"
+  },
+  ".artcraft/yt-channels.mjs": {
+    "mtime": 1794495680.0901668,
+    "seen": 1794923893.5057535,
+    "ast_hash": "4e11b69deee621388eb0a59f1905da24",
+    "semantic_hash": "4e11b69deee621388eb0a59f1905da24"
+  },
+  ".artcraft/yt-classify.mjs": {
+    "mtime": 1794497908.1978025,
+    "seen": 1794923893.5057592,
+    "ast_hash": "6ca02500003fba41b6f5ee39ba563b59",
+    "semantic_hash": "6ca02500003fba41b6f5ee39ba563b59"
+  },
+  ".artcraft/yt-clone-analysis.mjs": {
+    "mtime": 1794497962.5302958,
+    "seen": 1794923893.5057652,
+    "ast_hash": "6dd7b39b21171d98e4b8e3b63f45ef01",
+    "semantic_hash": "6dd7b39b21171d98e4b8e3b63f45ef01"
+  },
+  ".artcraft/yt-clone-build.mjs": {
+    "mtime": 1794912514.7913806,
+    "seen": 1794923893.5057707,
+    "ast_hash": "15cefbc7666aff4c894e892d4d7443cb",
+    "semantic_hash": "15cefbc7666aff4c894e892d4d7443cb"
+  },
+  ".artcraft/yt-collect-targets.mjs": {
+    "mtime": 1794700117.614378,
+    "seen": 1794923893.5057762,
+    "ast_hash": "e77b10f0a3c6afe6bbd0ed4b015ecbb5",
+    "semantic_hash": "e77b10f0a3c6afe6bbd0ed4b015ecbb5"
+  },
+  ".artcraft/yt-daemon.mjs": {
+    "mtime": 1794771074.3223262,
+    "seen": 1794923893.5057824,
+    "ast_hash": "7df275aed78d6c953cd2d9385c4c0d1a",
+    "semantic_hash": "7df275aed78d6c953cd2d9385c4c0d1a"
+  },
+  ".artcraft/yt-daily.mjs": {
+    "mtime": 1794496966.8348618,
+    "seen": 1794923893.505788,
+    "ast_hash": "15f4357a52fe485af419a7275b64a5c0",
+    "semantic_hash": "15f4357a52fe485af419a7275b64a5c0"
+  },
+  ".artcraft/yt-dashboard.mjs": {
+    "mtime": 1794708820.4696393,
+    "seen": 1794923893.5057938,
+    "ast_hash": "6dfa89eac5b31bb3e75490f0bc74518d",
+    "semantic_hash": "6dfa89eac5b31bb3e75490f0bc74518d"
+  },
+  ".artcraft/yt-direcao.mjs": {
+    "mtime": 1794659063.2422814,
+    "seen": 1794923893.5057995,
+    "ast_hash": "8f338ffd4626b5f35f433cb60552a0a6",
+    "semantic_hash": "8f338ffd4626b5f35f433cb60552a0a6"
+  },
+  ".artcraft/yt-edl.mjs": {
+    "mtime": 1794566208.2115953,
+    "seen": 1794923893.5058053,
+    "ast_hash": "d872cf69fad7752af99ed4bee9d52f8e",
+    "semantic_hash": "d872cf69fad7752af99ed4bee9d52f8e"
+  },
+  ".artcraft/yt-find-fresh.mjs": {
+    "mtime": 1794532148.4174173,
+    "seen": 1794923893.5058122,
+    "ast_hash": "a1d1b135117ad8741c7310763c4b4b5b",
+    "semantic_hash": "a1d1b135117ad8741c7310763c4b4b5b"
+  },
+  ".artcraft/yt-format-profile.mjs": {
+    "mtime": 1794528152.7238367,
+    "seen": 1794923893.5058184,
+    "ast_hash": "c09916bda3de82219a32350ed2b02b3b",
+    "semantic_hash": "c09916bda3de82219a32350ed2b02b3b"
+  },
+  ".artcraft/yt-lint-dangling.mjs": {
+    "mtime": 1794707219.391491,
+    "seen": 1794923893.505824,
+    "ast_hash": "e0ac17cbefb4418aec117f9081d6134d",
+    "semantic_hash": "e0ac17cbefb4418aec117f9081d6134d"
+  },
+  ".artcraft/yt-lint-scope.mjs": {
+    "mtime": 1794707327.098933,
+    "seen": 1794923893.5058296,
+    "ast_hash": "b5bd87031519b893acc9b0cf0e90a403",
+    "semantic_hash": "b5bd87031519b893acc9b0cf0e90a403"
+  },
+  ".artcraft/yt-merge.mjs": {
+    "mtime": 1794530396.1589637,
+    "seen": 1794923893.5058355,
+    "ast_hash": "244a04a346e15b8e5fc12c1491e16e20",
+    "semantic_hash": "244a04a346e15b8e5fc12c1491e16e20"
+  },
+  ".artcraft/yt-motion-remotion.mjs": {
+    "mtime": 1794708329.673025,
+    "seen": 1794923893.5058415,
+    "ast_hash": "2af2d19569918942f813853c9074ee4c",
+    "semantic_hash": "2af2d19569918942f813853c9074ee4c"
+  },
+  ".artcraft/yt-ref-analyze.mjs": {
+    "mtime": 1794744881.7227306,
+    "seen": 1794923893.5058472,
+    "ast_hash": "612e2c210902c98031f16f28451717d2",
+    "semantic_hash": "612e2c210902c98031f16f28451717d2"
+  },
+  ".artcraft/yt-ref-anatomy.mjs": {
+    "mtime": 1794561303.6654284,
+    "seen": 1794923893.5058532,
+    "ast_hash": "e97dfb18995cf93be2bc24301b857100",
+    "semantic_hash": "e97dfb18995cf93be2bc24301b857100"
+  },
+  ".artcraft/yt-research.mjs": {
+    "mtime": 1794493865.2907498,
+    "seen": 1794923893.5058594,
+    "ast_hash": "26dd4cd38fc6c4472a291f6b2c68e68a",
+    "semantic_hash": "26dd4cd38fc6c4472a291f6b2c68e68a"
+  },
+  ".artcraft/yt-script.mjs": {
+    "mtime": 1794530396.1694214,
+    "seen": 1794923893.5058656,
+    "ast_hash": "aa00d21fdd7ccb4e86f60cb7ce744c0b",
+    "semantic_hash": "aa00d21fdd7ccb4e86f60cb7ce744c0b"
+  },
+  ".artcraft/yt-shorts-scan.mjs": {
+    "mtime": 1794496587.9872017,
+    "seen": 1794923893.505871,
+    "ast_hash": "e251e92506cda12e8c021ece7ebed796",
+    "semantic_hash": "e251e92506cda12e8c021ece7ebed796"
+  },
+  ".artcraft/yt-top-world.mjs": {
+    "mtime": 1794494359.0755327,
+    "seen": 1794923893.5058768,
+    "ast_hash": "5c06b1813665d353400d744d377279d0",
+    "semantic_hash": "5c06b1813665d353400d744d377279d0"
+  },
+  "blender_test.py": {
+    "mtime": 1794858450.1842117,
+    "seen": 1794923893.5058823,
+    "ast_hash": "ef1a9b2426421ba4ff1e346cf69fe30a",
+    "semantic_hash": "ef1a9b2426421ba4ff1e346cf69fe30a"
+  },
+  "clone.config.json": {
+    "mtime": 1794913964.347137,
+    "seen": 1794923893.5058877,
+    "ast_hash": "1c70e8c2d1bec6d4b8607176cd1f3937",
+    "semantic_hash": "1c70e8c2d1bec6d4b8607176cd1f3937"
+  },
+  "headless-effectcraft-m2/cli-helper.js": {
+    "mtime": 1794565706.0756643,
+    "seen": 1794923893.5058935,
+    "ast_hash": "b63f7dc442454890ec9cca03e4d68de6",
+    "semantic_hash": "b63f7dc442454890ec9cca03e4d68de6"
+  },
+  "headless-effectcraft-m2/render.mjs": {
+    "mtime": 1794565823.8158917,
+    "seen": 1794923893.5058994,
+    "ast_hash": "4ab5abeda53fce11145c0b8e0256c72a",
+    "semantic_hash": "4ab5abeda53fce11145c0b8e0256c72a"
+  },
+  "headless-effectcraft-m2/smart-render.mjs": {
+    "mtime": 1794565792.827999,
+    "seen": 1794923893.5059056,
+    "ast_hash": "cab33ada3d0bc0a2569f922d2b3fd26a",
+    "semantic_hash": "cab33ada3d0bc0a2569f922d2b3fd26a"
+  },
+  "scripts/_patch_diorama.py": {
+    "mtime": 1794877914.3381662,
+    "seen": 1794923893.5059114,
+    "ast_hash": "803945f5ea627a4d8f4a42a20564064d",
+    "semantic_hash": "803945f5ea627a4d8f4a42a20564064d"
+  },
+  "scripts/_patch_framing.py": {
+    "mtime": 1794913956.1164618,
+    "seen": 1794923893.505917,
+    "ast_hash": "59d598ed9eb39d4272ab27a9f3307d8d",
+    "semantic_hash": "59d598ed9eb39d4272ab27a9f3307d8d"
+  },
+  "scripts/_patch_look.py": {
+    "mtime": 1794912508.3286216,
+    "seen": 1794923893.5059228,
+    "ast_hash": "f0dcfadeb524da8b642620085d2f75ce",
+    "semantic_hash": "f0dcfadeb524da8b642620085d2f75ce"
+  },
+  "scripts/_patch_mask.py": {
+    "mtime": 1794911942.2244697,
+    "seen": 1794923893.5059285,
+    "ast_hash": "1a3c82707d55586c4be5374097cc87f0",
+    "semantic_hash": "1a3c82707d55586c4be5374097cc87f0"
+  },
+  "scripts/_patch_race.py": {
+    "mtime": 1794910729.3098936,
+    "seen": 1794923893.5059342,
+    "ast_hash": "9d7f0bb94ee594d62eec007cf129f7f9",
+    "semantic_hash": "9d7f0bb94ee594d62eec007cf129f7f9"
+  },
+  "scripts/_probe2.py": {
+    "mtime": 1794877311.6347938,
+    "seen": 1794923893.5059404,
+    "ast_hash": "c30cb2ed533f4e29b53c7dcd75962360",
+    "semantic_hash": "c30cb2ed533f4e29b53c7dcd75962360"
+  },
+  "scripts/_probe3.py": {
+    "mtime": 1794877318.9411423,
+    "seen": 1794923893.5059466,
+    "ast_hash": "9a342e7d2565cecc5e8a4cb7d1675df1",
+    "semantic_hash": "9a342e7d2565cecc5e8a4cb7d1675df1"
+  },
+  "scripts/_probe4.py": {
+    "mtime": 1794877472.1652477,
+    "seen": 1794923893.5059526,
+    "ast_hash": "acdc55fd4d5f4559da7d748161676c07",
+    "semantic_hash": "acdc55fd4d5f4559da7d748161676c07"
+  },
+  "scripts/avatar_mask.py": {
+    "mtime": 1794911343.5994048,
+    "seen": 1794923893.5059583,
+    "ast_hash": "80d14e4cdd2117e32c2507a7640b4f81",
+    "semantic_hash": "80d14e4cdd2117e32c2507a7640b4f81"
+  },
+  "scripts/blender_diorama.py": {
+    "mtime": 1794913964.1873603,
+    "seen": 1794923893.5059645,
+    "ast_hash": "1e39f4e043188b3c281562a837c248a2",
+    "semantic_hash": "1e39f4e043188b3c281562a837c248a2"
+  },
+  "scripts/blender_integration.mjs": {
+    "mtime": 1794858772.7168558,
+    "seen": 1794923893.5059702,
+    "ast_hash": "9ae72f27d913e7339ed5782f3a0ffdc7",
+    "semantic_hash": "9ae72f27d913e7339ed5782f3a0ffdc7"
+  },
+  "scripts/blender_kinetic_cards.py": {
+    "mtime": 1794869834.2638133,
+    "seen": 1794923893.5059764,
+    "ast_hash": "97e7c0e5c52c3a8f9a126746744ff01e",
+    "semantic_hash": "97e7c0e5c52c3a8f9a126746744ff01e"
+  },
+  "scripts/blender_probe53.py": {
+    "mtime": 1794877097.8480282,
+    "seen": 1794923893.5059822,
+    "ast_hash": "dcc3acbfa91bca554cd3e3e7a76fb41e",
+    "semantic_hash": "dcc3acbfa91bca554cd3e3e7a76fb41e"
+  },
+  "scripts/comfy_asset.mjs": {
+    "mtime": 1794858709.3417146,
+    "seen": 1794923893.5059886,
+    "ast_hash": "58dcfc0376d26385bf301247a02212d2",
+    "semantic_hash": "58dcfc0376d26385bf301247a02212d2"
+  },
+  "scripts/comfy_client.mjs": {
+    "mtime": 1794868481.308071,
+    "seen": 1794923893.505995,
+    "ast_hash": "69c9c6c4d6160ca35887db759eb6b6e1",
+    "semantic_hash": "69c9c6c4d6160ca35887db759eb6b6e1"
+  },
+  "scripts/comfyui_integration.mjs": {
+    "mtime": 1794858787.030715,
+    "seen": 1794923893.5060012,
+    "ast_hash": "66a0db6b6a51aeac839c97d7e6ed2ae2",
+    "semantic_hash": "66a0db6b6a51aeac839c97d7e6ed2ae2"
+  },
+  "scripts/effectcraft_cards.mjs": {
+    "mtime": 1794858685.4663548,
+    "seen": 1794923893.506008,
+    "ast_hash": "7c41f8506ad572bc0bcfbcf2d3978b59",
+    "semantic_hash": "7c41f8506ad572bc0bcfbcf2d3978b59"
+  },
+  "scripts/effectcraft_integration.mjs": {
+    "mtime": 1794858781.5525815,
+    "seen": 1794923893.5060136,
+    "ast_hash": "9df6cc68027e2415bc2c449eca3398aa",
+    "semantic_hash": "9df6cc68027e2415bc2c449eca3398aa"
+  },
+  "scripts/filmcraft_export.mjs": {
+    "mtime": 1794858713.173035,
+    "seen": 1794923893.5060198,
+    "ast_hash": "f34360aeb630001cdfeb8aab2a3c6bf8",
+    "semantic_hash": "f34360aeb630001cdfeb8aab2a3c6bf8"
+  },
+  "scripts/patch_config.mjs": {
+    "mtime": 1794869776.6828635,
+    "seen": 1794923893.506026,
+    "ast_hash": "b4d598bfe1bed6e29057bb9c2f268768",
+    "semantic_hash": "b4d598bfe1bed6e29057bb9c2f268768"
+  },
+  "scripts/pipeline_orchestrator.mjs": {
+    "mtime": 1794858767.729296,
+    "seen": 1794923893.506032,
+    "ast_hash": "bf5880bb49e1a2296a6d04d3be548017",
+    "semantic_hash": "bf5880bb49e1a2296a6d04d3be548017"
+  },
+  "scripts/roteiro_para_cenas.mjs": {
+    "mtime": 1794869014.7681053,
+    "seen": 1794923893.5060408,
+    "ast_hash": "3f453726b9660cd255b1f3dfc497777c",
+    "semantic_hash": "3f453726b9660cd255b1f3dfc497777c"
+  },
+  "scripts/soundcraft_process.mjs": {
+    "mtime": 1794858701.1966627,
+    "seen": 1794923893.5060468,
+    "ast_hash": "8bc1294f9a40e2388d46a35663937992",
+    "semantic_hash": "8bc1294f9a40e2388d46a35663937992"
+  },
+  "scripts/test_diorama.mjs": {
+    "mtime": 1794878553.6408246,
+    "seen": 1794923893.506052,
+    "ast_hash": "0d81d88891260fcafbac277389896057",
+    "semantic_hash": "0d81d88891260fcafbac277389896057"
+  },
+  "scripts/test_mask_align.py": {
+    "mtime": 1794911255.3169374,
+    "seen": 1794923893.5060577,
+    "ast_hash": "c68050aafaa68a3ac8f7eae9fa2da9cf",
+    "semantic_hash": "c68050aafaa68a3ac8f7eae9fa2da9cf"
+  },
+  "scripts/vectorcraft_assets.mjs": {
+    "mtime": 1794858695.1772585,
+    "seen": 1794923893.5060635,
+    "ast_hash": "e6d9c236519fe720f2de6bb6e608712b",
+    "semantic_hash": "e6d9c236519fe720f2de6bb6e608712b"
+  },
+  "scripts/vectorcraft_integration.mjs": {
+    "mtime": 1794858796.495113,
+    "seen": 1794923893.5060694,
+    "ast_hash": "edc3de7407577adf3e680d866b0f6128",
+    "semantic_hash": "edc3de7407577adf3e680d866b0f6128"
+  },
+  "taxonomy.json": {
+    "mtime": 1794497671.799746,
+    "seen": 1794923893.5060754,
+    "ast_hash": "b7e082d312f55943260c54e0f21793de",
+    "semantic_hash": "b7e082d312f55943260c54e0f21793de"
+  },
+  "test_prompts.mjs": {
+    "mtime": 1794875774.486724,
+    "seen": 1794923893.5060813,
+    "ast_hash": "430a6da193faebdb2e0cb2a5a33b2fcd",
+    "semantic_hash": "430a6da193faebdb2e0cb2a5a33b2fcd"
+  },
+  "video-orquestracao/public/assets/audio/_v1-106632s-backup-2026-11-16/manifesto-narracao.json": {
+    "mtime": 1794792662.8427036,
+    "seen": 1794923893.506087,
+    "ast_hash": "4d9baee93a9e0bb12dada8e56b8d1380",
+    "semantic_hash": "4d9baee93a9e0bb12dada8e56b8d1380"
+  },
+  "video-orquestracao/public/assets/audio/_v1-106632s-backup-2026-11-16/tempos-narracao.json": {
+    "mtime": 1794793093.5771403,
+    "seen": 1794923893.5060933,
+    "ast_hash": "e33177f67c040a0c61e7b882ad91cf03",
+    "semantic_hash": "e33177f67c040a0c61e7b882ad91cf03"
+  },
+  "video-orquestracao/public/assets/audio/luninha-fridoca/manifesto-audio.json": {
+    "mtime": 1794917453.8753006,
+    "seen": 1794923893.5060992,
+    "ast_hash": "8d0b32b543899c81c7e1f2a17b0fa23e",
+    "semantic_hash": "8d0b32b543899c81c7e1f2a17b0fa23e"
+  },
+  "video-orquestracao/public/assets/audio/luninha-fridoca/sincronizacao-labial/sincronizacao-labial-cena-01-convite.json": {
+    "mtime": 1794917454.107932,
+    "seen": 1794923893.5061054,
+    "ast_hash": "d95c5aeac522416bb24a64ea12c022bf",
+    "semantic_hash": "d95c5aeac522416bb24a64ea12c022bf"
+  },
+  "video-orquestracao/public/assets/audio/luninha-fridoca/sincronizacao-labial/sincronizacao-labial-cena-02-trajes.json": {
+    "mtime": 1794917454.335821,
+    "seen": 1794923893.5061111,
+    "ast_hash": "31f830ea83973f001e45bc3d8616b579",
+    "semantic_hash": "31f830ea83973f001e45bc3d8616b579"
+  },
+  "video-orquestracao/public/assets/audio/luninha-fridoca/sincronizacao-labial/sincronizacao-labial-cena-03-decolagem.json": {
+    "mtime": 1794917454.6346262,
+    "seen": 1794923893.5061169,
+    "ast_hash": "a63602a4b595d5842f0953bb5bbc0d4b",
+    "semantic_hash": "a63602a4b595d5842f0953bb5bbc0d4b"
+  },
+  "video-orquestracao/public/assets/audio/luninha-fridoca/sincronizacao-labial/sincronizacao-labial-cena-04-gravidade.json": {
+    "mtime": 1794917454.9680989,
+    "seen": 1794923893.506123,
+    "ast_hash": "bdd971b5f46a5face273a0249e5910cd",
+    "semantic_hash": "bdd971b5f46a5face273a0249e5910cd"
+  },
+  "video-orquestracao/public/assets/audio/luninha-fridoca/sincronizacao-labial/sincronizacao-labial-cena-05-biscoitos.json": {
+    "mtime": 1794917455.1855352,
+    "seen": 1794923893.5061288,
+    "ast_hash": "a920eded2029ed611ba0ad36ed126d48",
+    "semantic_hash": "a920eded2029ed611ba0ad36ed126d48"
+  },
+  "video-orquestracao/public/assets/audio/luninha-fridoca/sincronizacao-labial/sincronizacao-labial-cena-06-botao.json": {
+    "mtime": 1794917455.4749987,
+    "seen": 1794923893.5061352,
+    "ast_hash": "f18606ac78ee5012b4e1bc44a178dbae",
+    "semantic_hash": "f18606ac78ee5012b4e1bc44a178dbae"
+  },
+  "video-orquestracao/public/assets/audio/luninha-fridoca/sincronizacao-labial/sincronizacao-labial-cena-07-abraco.json": {
+    "mtime": 1794917455.7269251,
+    "seen": 1794923893.5061414,
+    "ast_hash": "9db43cf9d592227187e3acd67ca7c83e",
+    "semantic_hash": "9db43cf9d592227187e3acd67ca7c83e"
+  },
+  "video-orquestracao/public/assets/audio/luninha-fridoca/sincronizacao-labial/sincronizacao-labial-cena-08-volta.json": {
+    "mtime": 1794917455.902587,
+    "seen": 1794923893.506148,
+    "ast_hash": "6c8527774ed06496d5753c59fea681a8",
+    "semantic_hash": "6c8527774ed06496d5753c59fea681a8"
+  },
+  "video-orquestracao/public/assets/audio/luninha-fridoca/sincronizacao-labial/sincronizacao-labial-cena-09-pouso.json": {
+    "mtime": 1794917456.0507283,
+    "seen": 1794923893.5061543,
+    "ast_hash": "5240cdab0f545740e4b3813cdce9d4b9",
+    "semantic_hash": "5240cdab0f545740e4b3813cdce9d4b9"
+  },
+  "video-orquestracao/public/assets/audio/luninha-fridoca/sincronizacao-labial/sincronizacao-labial-cena-10-final.json": {
+    "mtime": 1794917456.2354338,
+    "seen": 1794923893.50616,
+    "ast_hash": "05bf36448275e38886c9855cbfe8fe2d",
+    "semantic_hash": "05bf36448275e38886c9855cbfe8fe2d"
+  },
+  "video-orquestracao/public/assets/audio/quatro-estacoes/manifesto-narracao.json": {
+    "mtime": 1794838411.2899055,
+    "seen": 1794923893.506166,
+    "ast_hash": "d8699f370c986541ac70e832fa7391da",
+    "semantic_hash": "d8699f370c986541ac70e832fa7391da"
+  },
+  "video-orquestracao/public/assets/audio/quatro-estacoes/tempos-narracao.json": {
+    "mtime": 1794838957.6301472,
+    "seen": 1794923893.506172,
+    "ast_hash": "821259a15d58cac3f00f3d3f696fd4cc",
+    "semantic_hash": "821259a15d58cac3f00f3d3f696fd4cc"
+  },
+  "video-orquestracao/public/assets/avatar/catalogo-avatares.json": {
+    "mtime": 1794948613.7039828,
+    "seen": 1794956345.6726966,
+    "ast_hash": "6a9ab4c271548919f4e309af583c2c85",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/public/assets/avatar/sincronizacao-labial/sincronizacao-labial-cena-01.json": {
+    "mtime": 1794915522.8406897,
+    "seen": 1794923893.5061839,
+    "ast_hash": "9190226e605b9fa1b80090becf4ea745",
+    "semantic_hash": "9190226e605b9fa1b80090becf4ea745"
+  },
+  "video-orquestracao/public/assets/avatar/sincronizacao-labial/sincronizacao-labial-cena-02.json": {
+    "mtime": 1794915523.0085464,
+    "seen": 1794923893.5061898,
+    "ast_hash": "f2fff44af42efb38f0c7c4537ebf6ded",
+    "semantic_hash": "f2fff44af42efb38f0c7c4537ebf6ded"
+  },
+  "video-orquestracao/public/assets/avatar/sincronizacao-labial/sincronizacao-labial-cena-03.json": {
+    "mtime": 1794915523.1852722,
+    "seen": 1794923893.506196,
+    "ast_hash": "6fe9e2597c1d94c9feaa32a878ec0950",
+    "semantic_hash": "6fe9e2597c1d94c9feaa32a878ec0950"
+  },
+  "video-orquestracao/public/assets/avatar/sincronizacao-labial/sincronizacao-labial-cena-04.json": {
+    "mtime": 1794915523.3674583,
+    "seen": 1794923893.5062015,
+    "ast_hash": "5ef2a4f7df46250c639344dc64140d06",
+    "semantic_hash": "5ef2a4f7df46250c639344dc64140d06"
+  },
+  "video-orquestracao/public/assets/avatar/sincronizacao-labial/sincronizacao-labial-cena-05.json": {
+    "mtime": 1794915523.4837687,
+    "seen": 1794923893.506207,
+    "ast_hash": "c90a28ed7792e6a6b46f70dc893f7270",
+    "semantic_hash": "c90a28ed7792e6a6b46f70dc893f7270"
+  },
+  "video-orquestracao/public/assets/avatar/sincronizacao-labial/sincronizacao-labial-narracao-completa.json": {
+    "mtime": 1794915522.6834269,
+    "seen": 1794923893.5062132,
+    "ast_hash": "80eed08925e2dfda3dff87453520b90f",
+    "semantic_hash": "80eed08925e2dfda3dff87453520b90f"
+  },
+  "video-orquestracao/public/assets/historinha-espaco/audio/metadados-voz.json": {
+    "mtime": 1794918102.2959073,
+    "seen": 1794923893.5062191,
+    "ast_hash": "e5ae04163ccbf092f7b07048b36654aa",
+    "semantic_hash": "e5ae04163ccbf092f7b07048b36654aa"
+  },
+  "video-orquestracao/public/assets/historinha-espaco/audio/sincronizacao-labial-historinha-completa.json": {
+    "mtime": 1794918102.2943854,
+    "seen": 1794923893.506225,
+    "ast_hash": "332dd639b5f29333d1ae7f1fc92b1021",
+    "semantic_hash": "332dd639b5f29333d1ae7f1fc92b1021"
+  },
+  "video-orquestracao/public/assets/historinha-espaco/audio/tempos-historia.json": {
+    "mtime": 1794918101.7768054,
+    "seen": 1794923893.5062313,
+    "ast_hash": "48cef5fbd83c6d39ff62e5a391eb1b41",
+    "semantic_hash": "48cef5fbd83c6d39ff62e5a391eb1b41"
+  },
+  "video-orquestracao/public/assets/spec-beats-quatro-estacoes.json": {
+    "mtime": 1794973021.043811,
+    "seen": 1795012719.284517,
+    "ast_hash": "6ca34f1c027e8d4caf1f663820f78481",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/src/components/3d/VidroJanelaShader.tsx": {
+    "mtime": 1794877291.01324,
+    "seen": 1794923893.506244,
+    "ast_hash": "e3d6cf92e55fec4d4ce0da1940c6a377",
+    "semantic_hash": "e3d6cf92e55fec4d4ce0da1940c6a377"
+  },
+  "video-orquestracao/src/components/3d/fundamentosCenaTrem.ts": {
+    "mtime": 1794793182.362396,
+    "seen": 1794923893.50625,
+    "ast_hash": "6e2426f681d088e1316085f80f436cd2",
+    "semantic_hash": "6e2426f681d088e1316085f80f436cd2"
+  },
+  "video-orquestracao/src/quatro-estacoes/timeline.json": {
+    "mtime": 1794975745.3698401,
+    "seen": 1795012719.2845833,
+    "ast_hash": "387a99561c82a71eaa24df332c783078",
+    "semantic_hash": ""
+  },
+  "work/avatars/frida.json": {
+    "mtime": 1794556967.5694892,
+    "seen": 1794923893.506262,
+    "ast_hash": "3c72694439d9a7310e900309811a4ded",
+    "semantic_hash": "3c72694439d9a7310e900309811a4ded"
+  },
+  "work/avatars/luna.json": {
+    "mtime": 1794556967.6473668,
+    "seen": 1794923893.5062678,
+    "ast_hash": "3b7ffc7dd3bf4461cdf487d0d17b140d",
+    "semantic_hash": "3b7ffc7dd3bf4461cdf487d0d17b140d"
+  },
+  "work/avatars/v2/gerar-bases-avatares-v2.mjs": {
+    "mtime": 1794666225.893929,
+    "seen": 1794923893.506274,
+    "ast_hash": "61c2405d3d3053063a07e4851bc1429c",
+    "semantic_hash": "61c2405d3d3053063a07e4851bc1429c"
+  },
+  "work/avatars/v2/gerar-bases-avatares-v2.test.mjs": {
+    "mtime": 1794666121.516364,
+    "seen": 1794923893.50628,
+    "ast_hash": "d6aaec7d3aec7c20dfd5a7c7e1895c99",
+    "semantic_hash": "d6aaec7d3aec7c20dfd5a7c7e1895c99"
+  },
+  "work/avatars/v2/validar-avatar-v2.py": {
+    "mtime": 1794662921.9960363,
+    "seen": 1794923893.506286,
+    "ast_hash": "9760a79c722dc3552a963ea8378679a4",
+    "semantic_hash": "9760a79c722dc3552a963ea8378679a4"
+  },
+  "work/avatars/v2/workflow-base-v2.json": {
+    "mtime": 1794666613.021112,
+    "seen": 1794923893.5062923,
+    "ast_hash": "fb81fe665d0a1b4314f07d76acb5858c",
+    "semantic_hash": "fb81fe665d0a1b4314f07d76acb5858c"
+  },
+  "work/avatars/v3/gerar-driving-templates-f3.py": {
+    "mtime": 1794690122.371224,
+    "seen": 1794923893.506298,
+    "ast_hash": "2a4af1fd7100aab8cfac5b13326b1141",
+    "semantic_hash": "2a4af1fd7100aab8cfac5b13326b1141"
+  },
+  "work/clone-tooling/analyze-and-generate.mjs": {
+    "mtime": 1794563217.7852232,
+    "seen": 1794923893.506304,
+    "ast_hash": "5405ab5ad59785d443a7f84f244658ce",
+    "semantic_hash": "5405ab5ad59785d443a7f84f244658ce"
+  },
+  "work/clone-tooling/explainer-effects.mjs": {
+    "mtime": 1794570709.6381495,
+    "seen": 1794923893.5063107,
+    "ast_hash": "d72b8a52b1503f3c1964602608264118",
+    "semantic_hash": "d72b8a52b1503f3c1964602608264118"
+  },
+  "work/clone-tooling/tops-only.mjs": {
+    "mtime": 1794567298.633201,
+    "seen": 1794923893.5063167,
+    "ast_hash": "63d3269650c9b2a965dc081a33a80a15",
+    "semantic_hash": "63d3269650c9b2a965dc081a33a80a15"
+  },
+  "work/explainer-study/preview/serve.mjs": {
+    "mtime": 1794577194.824919,
+    "seen": 1794923893.5063221,
+    "ast_hash": "5e64f99b267bf4643a8d37209edb6960",
+    "semantic_hash": "5e64f99b267bf4643a8d37209edb6960"
+  },
+  ".artcraft/clone/README.md": {
+    "mtime": 1794660041.409084,
+    "seen": 1794923893.5063279,
+    "ast_hash": "f056ccab8fa78b3c554ac6bc86385a90",
+    "semantic_hash": "f056ccab8fa78b3c554ac6bc86385a90"
+  },
+  "AGENTS.md": {
+    "mtime": 1795012641.1023421,
+    "seen": 1795012719.285421,
+    "ast_hash": "2d439e0f1a8e58e30ab0efb5f9c12217",
+    "semantic_hash": ""
+  },
+  "AUDITORIA_CLONE.md": {
+    "mtime": 1794566675.7112186,
+    "seen": 1794923893.50634,
+    "ast_hash": "49f4438dbfb75a15feaa34a03e1d5b58",
+    "semantic_hash": "49f4438dbfb75a15feaa34a03e1d5b58"
+  },
+  "CONTRATO_FABRICA.md": {
+    "mtime": 1794765271.145634,
+    "seen": 1794923893.5063465,
+    "ast_hash": "6a0d349db279202589c6fa2c4fe06ab4",
+    "semantic_hash": "6a0d349db279202589c6fa2c4fe06ab4"
+  },
+  "CORRUPCAO-yt-clone-build.md": {
+    "mtime": 1794604905.6665077,
+    "seen": 1794923893.506352,
+    "ast_hash": "529d1ab5dfd92831974115abc253b9d5",
+    "semantic_hash": "529d1ab5dfd92831974115abc253b9d5"
+  },
+  "MANUAL_ANIMADO.html": {
+    "mtime": 1794746531.87419,
+    "seen": 1794923893.506358,
+    "ast_hash": "167d919632c7c52de0b8185b291145e9",
+    "semantic_hash": "167d919632c7c52de0b8185b291145e9"
+  },
+  "MANUAL_VISUAL.html": {
+    "mtime": 1794746380.4163272,
+    "seen": 1794923893.5063639,
+    "ast_hash": "43479e57b006026c99273f45ed2a0c0e",
+    "semantic_hash": "43479e57b006026c99273f45ed2a0c0e"
+  },
+  "MASTER_STUDIO.html": {
+    "mtime": 1794746338.8841772,
+    "seen": 1794923893.50637,
+    "ast_hash": "8c6f9183f77a10ef1e0d579b5e92637d",
+    "semantic_hash": "8c6f9183f77a10ef1e0d579b5e92637d"
+  },
+  "README.md": {
+    "mtime": 1794615630.840822,
+    "seen": 1794923893.5063758,
+    "ast_hash": "2d9948de85c39056d1be3e278fdce407",
+    "semantic_hash": "2d9948de85c39056d1be3e278fdce407"
+  },
+  "SYSTEM_DOCS.md": {
+    "mtime": 1794746560.9496229,
+    "seen": 1794923893.5063815,
+    "ast_hash": "dc41068a879a0d9ad0b307ec20b92143",
+    "semantic_hash": "dc41068a879a0d9ad0b307ec20b92143"
+  },
+  "VARREDURA.md": {
+    "mtime": 1794525788.539227,
+    "seen": 1794923893.5063877,
+    "ast_hash": "f78447c9587467862389c9b453e3f1e3",
+    "semantic_hash": "f78447c9587467862389c9b453e3f1e3"
+  },
+  "headless-effectcraft-m2/README.md": {
+    "mtime": 1794565860.8563316,
+    "seen": 1794923893.5063934,
+    "ast_hash": "934455053dce45cb2f833afb8e226d14",
+    "semantic_hash": "934455053dce45cb2f833afb8e226d14"
+  },
+  "video-orquestracao/AGENTS.md": {
+    "mtime": 1794973222.2851114,
+    "seen": 1795012719.2855103,
+    "ast_hash": "15d5c93f2de97e3d498b8305fd317db1",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/TIMELINE-quatro-estacoes.md": {
+    "mtime": 1794975745.370588,
+    "seen": 1795012719.2855456,
+    "ast_hash": "8dfe3ff245e80eeef57352b7ecda70c7",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/public/assets/audio/RELATORIO-tecnico-audio-avatar.md": {
+    "mtime": 1794838948.8446934,
+    "seen": 1794923893.506411,
+    "ast_hash": "79233f8dbde79c309621591cc4ef0a00",
+    "semantic_hash": "79233f8dbde79c309621591cc4ef0a00"
+  },
+  "video-orquestracao/public/assets/audio/_v1-106632s-backup-2026-11-16/RELATORIO-tecnico-audio-avatar.md": {
+    "mtime": 1794793023.883438,
+    "seen": 1794923893.5064166,
+    "ast_hash": "ba75bdd9867bbc1686daad665d6fa7f9",
+    "semantic_hash": "ba75bdd9867bbc1686daad665d6fa7f9"
+  },
+  "video-orquestracao/public/assets/audio/luninha-fridoca/lista-concat.txt": {
+    "mtime": 1794917408.7406285,
+    "seen": 1794923893.5064225,
+    "ast_hash": "3aa1039bc69f9a2a6eb39597fb259281",
+    "semantic_hash": "3aa1039bc69f9a2a6eb39597fb259281"
+  },
+  "video-orquestracao/public/assets/avatar/CATALOGO-AVATARES.md": {
+    "mtime": 1794916268.693381,
+    "seen": 1794923893.5064285,
+    "ast_hash": "98ca330dda3f3e811cb02f2d972d0bd1",
+    "semantic_hash": "98ca330dda3f3e811cb02f2d972d0bd1"
+  },
+  "video-orquestracao/public/assets/avatar/FICHA-PERSONAGENS-HISTORINHA.md": {
+    "mtime": 1794948604.5091474,
+    "seen": 1794956345.6732428,
+    "ast_hash": "b2b866f43236c764115311c3e884d696",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/public/assets/avatar/LEIA-ME-avatar-estilizado.md": {
+    "mtime": 1794877662.164366,
+    "seen": 1794923893.5064402,
+    "ast_hash": "251058ecd69631be5279a71f24124b59",
+    "semantic_hash": "251058ecd69631be5279a71f24124b59"
+  },
+  "video-orquestracao/public/assets/especificacao-tecnica-quatro-estacoes.md": {
+    "mtime": 1794948619.2431796,
+    "seen": 1794956345.6732543,
+    "ast_hash": "bbbeccd37d00d3b3076ca0a9b28621a8",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/public/assets/historia-luninha-e-fridoca/ROTEIRO-E-PLANO.md": {
+    "mtime": 1794917818.339455,
+    "seen": 1794923893.5064516,
+    "ast_hash": "c6c3b233498626cf8cd512a8ba5bf012",
+    "semantic_hash": "c6c3b233498626cf8cd512a8ba5bf012"
+  },
+  "video-orquestracao/public/assets/historia-luninha-e-fridoca/trechos-narracao.md": {
+    "mtime": 1794916728.0970528,
+    "seen": 1794923893.5064578,
+    "ast_hash": "b06fe559db2ae9eec5cd1a56cbc6c8cc",
+    "semantic_hash": "b06fe559db2ae9eec5cd1a56cbc6c8cc"
+  },
+  "work/explainer-study/preview/index.html": {
+    "mtime": 1794579011.392222,
+    "seen": 1794923893.5064638,
+    "ast_hash": "0c7ddb50e5527ddfb4791ea0224a08a3",
+    "semantic_hash": "0c7ddb50e5527ddfb4791ea0224a08a3"
+  },
+  "video-orquestracao/public/assets/avatar/avatar-mascote-flat-quatro-estacoes.svg": {
+    "mtime": 1794877207.9755483,
+    "seen": 1794923893.5064702,
+    "ast_hash": "f6f1a74d0ccf193b2581ae3bf0ae9ac6",
+    "semantic_hash": "f6f1a74d0ccf193b2581ae3bf0ae9ac6"
+  },
+  "arte-luna-frida/render_svg.py": {
+    "mtime": 1794948081.4056327,
+    "seen": 1794956345.670798,
+    "ast_hash": "39bd57a1a43b492cd75cd680457ea44c",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/audio/energia-voz.json": {
+    "mtime": 1794952242.1729875,
+    "seen": 1794956345.6729982,
+    "ast_hash": "441a5737760cd97e60967f0d72a518ab",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/audio/relatorio-stems.json": {
+    "mtime": 1794952226.007981,
+    "seen": 1794956345.6730044,
+    "ast_hash": "5e2891430ffd3accad2855e71d1579a5",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/audio/tempos.json": {
+    "mtime": 1794951898.9071598,
+    "seen": 1794956345.67301,
+    "ast_hash": "8eecac3524ef6e4111aac56f1ecd0129",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/beats.json": {
+    "mtime": 1794951027.6895857,
+    "seen": 1794956345.6730158,
+    "ast_hash": "689d262d2a263dbaac5c27a5aac46ebd",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/bg/gerar_fundos.py": {
+    "mtime": 1794960042.2238767,
+    "seen": 1795012719.2847934,
+    "ast_hash": "641b4be0070326e2f1362d8d2b011957",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/bg/manifest.json": {
+    "mtime": 1794961368.7442572,
+    "seen": 1795012719.2847989,
+    "ast_hash": "cbf41c72661bd0a2d80669c39feac726",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/build_beats.py": {
+    "mtime": 1794951010.133252,
+    "seen": 1794956345.6730323,
+    "ast_hash": "8f2cb1b054759d066709aa479f02dfaf",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/build_sequence_plan.py": {
+    "mtime": 1794951627.5695925,
+    "seen": 1794956345.673038,
+    "ast_hash": "c32a57211ff2b8ce1c60ebb93850d10f",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/compor_grelhas.py": {
+    "mtime": 1794953155.5707004,
+    "seen": 1794956345.6730435,
+    "ast_hash": "046924395f10ca7a2593fee720294950",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/expressoes.py": {
+    "mtime": 1794956618.7560985,
+    "seen": 1795012719.2848506,
+    "ast_hash": "15bd3c1c8e215a154971364e33b6b68c",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/fatiar.py": {
+    "mtime": 1794953501.9489214,
+    "seen": 1794956345.6730537,
+    "ast_hash": "8ade933d0c3c1f6313960fd2ffa71795",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/gen_poses.py": {
+    "mtime": 1794953183.2956114,
+    "seen": 1794956345.673068,
+    "ast_hash": "f1ed049476748d1cf29b5757ed54b153",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/limpar_halo.py": {
+    "mtime": 1794953288.8373332,
+    "seen": 1794956345.6730733,
+    "ast_hash": "d7cfcdf87fc75cd9ae6e5ac21f1153e2",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/montar_grelha.py": {
+    "mtime": 1794952389.2361796,
+    "seen": 1794956345.6730785,
+    "ast_hash": "6cccfbdc518fd3ecbadc0b3fbe5d78b5",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/recortar_base.py": {
+    "mtime": 1794953347.5199502,
+    "seen": 1794956345.673084,
+    "ast_hash": "886010eb2c79406fa3de24c1fb561fe6",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/espec-planos.json": {
+    "mtime": 1794952507.325088,
+    "seen": 1794956345.6730897,
+    "ast_hash": "347008b6902f20771bd77319477beeb8",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/gen_edit.py": {
+    "mtime": 1794952656.213545,
+    "seen": 1794956345.6730952,
+    "ast_hash": "8228baf9d7b5f1201793214b8b44b3de",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/gen_nvidia.py": {
+    "mtime": 1794951270.5862052,
+    "seen": 1794956345.673101,
+    "ast_hash": "3e3a872342fa4fd1e5cb9134a06faa6c",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/graph_lookup.py": {
+    "mtime": 1794951027.2011507,
+    "seen": 1794956345.6731062,
+    "ast_hash": "8bd0ade1c77b76158739d1d6b9d0a693",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/mk_aprovacao.py": {
+    "mtime": 1794964210.0049877,
+    "seen": 1795012719.2851195,
+    "ast_hash": "3ab418fff3c25eabc2910f887bbb3945",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/sequence-plan.json": {
+    "mtime": 1794951631.6343186,
+    "seen": 1794956345.6731164,
+    "ast_hash": "d2b1b9f9557e77cdcfd10f5265600b5d",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/transcribe.py": {
+    "mtime": 1794950876.7629187,
+    "seen": 1794956345.673122,
+    "ast_hash": "0f5ede01ed4c2eae37a9544deb8405fd",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/DIRECAO_ARTE.md": {
+    "mtime": 1794948634.1933787,
+    "seen": 1794956345.6732042,
+    "ast_hash": "e89fef084334f6151f8a956bb4d5ccfd",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/TAREFAS-TIME.md": {
+    "mtime": 1794948634.1933787,
+    "seen": 1794956345.6732092,
+    "ast_hash": "c14249f8505145c5752f065417491c38",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/public/assets/historinha-luninha-e-fridoca/referencias/INDICE-REFERENCIAS.md": {
+    "mtime": 1794936409.9713187,
+    "seen": 1794956345.6732707,
+    "ast_hash": "88cf0b8485c6f91c554d77f2f0610b58",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/public/assets/historinha-luninha-e-fridoca/referencias/_nao-usar/KIT-REFERENCIA-LUNA-E-FRIDA.md": {
+    "mtime": 1794928263.5346687,
+    "seen": 1794956345.6732762,
+    "ast_hash": "a85dc02b5fbf26bf9776ae10efa24e8f",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/AGENTES.md": {
+    "mtime": 1794951355.938185,
+    "seen": 1794956345.6732876,
+    "ast_hash": "3147e9ca0748524873e5a762eb37c1da",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/BEAT-SHEET.md": {
+    "mtime": 1794951027.690586,
+    "seen": 1794956345.673293,
+    "ast_hash": "cd39abcadec3511bea59aed59a1eb657",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/PERSONAGENS.md": {
+    "mtime": 1794965074.6334426,
+    "seen": 1795012719.2856967,
+    "ast_hash": "2828ce9806cfa36f88f17077451e47a5",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/STYLE-BIBLE.md": {
+    "mtime": 1794951760.8252232,
+    "seen": 1794956345.6733031,
+    "ast_hash": "90516b61fedecaff94acc07709ee139b",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/audio/PLANO-LIPSYNC.md": {
+    "mtime": 1794952280.6537914,
+    "seen": 1794956345.673308,
+    "ast_hash": "1d0cd3e6ebe96e5974042160c02c9927",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/audio/RELATORIO-stems.md": {
+    "mtime": 1794952226.007981,
+    "seen": 1794956345.673314,
+    "ast_hash": "bbe682754df8d6cc12ddd2e87e927b4c",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/_prompts-grelhas.md": {
+    "mtime": 1794953636.6114926,
+    "seen": 1794956345.6733203,
+    "ast_hash": "ae0f1053fa96bcbb40c40a033a38a37e",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/espec-planos.md": {
+    "mtime": 1794952507.331152,
+    "seen": 1794956345.6733255,
+    "ast_hash": "a8ae79c15c3587e92750381781a4ceb7",
+    "semantic_hash": ""
+  },
+  "arte-luna-frida/luna.svg": {
+    "mtime": 1794973751.365974,
+    "seen": 1795012719.2858467,
+    "ast_hash": "67236580de6bbd51bd3834c8f616131b",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/public/assets/historinha-luninha-e-fridoca/desenhos-aprovacao/luna-frente-3-4.svg": {
+    "mtime": 1794974009.3976867,
+    "seen": 1795012719.2858815,
+    "ast_hash": "93d860e43c1a293c289d69fd574ab633",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/public/assets/historinha-luninha-e-fridoca/desenhos-aprovacao/luna-perfil.svg": {
+    "mtime": 1794974009.3976867,
+    "seen": 1795012719.2858877,
+    "ast_hash": "4d988d7afe0b1cce574284553e735d76",
+    "semantic_hash": ""
+  },
+  "arte-luna-frida/cena01_compor.py": {
+    "mtime": 1794974611.2716062,
+    "seen": 1795012719.283843,
+    "ast_hash": "b536a6b3d2889ac43266b08dccd66c86",
+    "semantic_hash": ""
+  },
+  "arte-luna-frida/separar_personagens.py": {
+    "mtime": 1794974531.8505828,
+    "seen": 1795012719.283863,
+    "ast_hash": "6316f03f751cd69d07cb2ebb4ea11217",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/analisar_pernas.py": {
+    "mtime": 1794982336.24981,
+    "seen": 1795012719.284682,
+    "ast_hash": "4d74e9b1e28dee112ebf984b70a3abb9",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/animacao/auditoria-continuidade.json": {
+    "mtime": 1795006031.23256,
+    "seen": 1795012719.2846882,
+    "ast_hash": "e857aab53c4c1f27abc5fd26b420718c",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/animacao/calibracao-frida.json": {
+    "mtime": 1795005685.918023,
+    "seen": 1795012719.2846935,
+    "ast_hash": "16dcbc07e75496fe7b9fbd5c9f926dec",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/animacao/calibracao-luna.json": {
+    "mtime": 1795005686.2008054,
+    "seen": 1795012719.2846987,
+    "ast_hash": "728f0db1ce431a263680c05f61c0aa3c",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/animacao/faltam.json": {
+    "mtime": 1795008903.9535668,
+    "seen": 1795012719.2847042,
+    "ast_hash": "f1bfeb660d1e60f6e816583976e39057",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/animacao/plano-por-beat.json": {
+    "mtime": 1795008903.93832,
+    "seen": 1795012719.284711,
+    "ast_hash": "44ae361a20c1fd6c965d984a19b279e4",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/animacao/processamento-download.json": {
+    "mtime": 1795010243.4709141,
+    "seen": 1795012719.2847168,
+    "ast_hash": "e0a9f9117a5b85954d049e3f30664aa0",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/animacao/regras.json": {
+    "mtime": 1795008188.1286955,
+    "seen": 1795012719.2847216,
+    "ast_hash": "b8250d87382944167bbeb43b60fd4a24",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/animar_tira.py": {
+    "mtime": 1794982925.3040273,
+    "seen": 1795012719.2847273,
+    "ast_hash": "8362b29c8f0faaa0e64a55eb48e0780c",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/auditoria_consistencia.py": {
+    "mtime": 1795006009.5214062,
+    "seen": 1795012719.2847555,
+    "ast_hash": "a885cbe848ed8904417343fe275c7b7f",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/avaliar_tiras.py": {
+    "mtime": 1794981518.9692278,
+    "seen": 1795012719.284762,
+    "ast_hash": "f73973e4683cfbc25f6a6ff6fe16ccbe",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/bg/contact.py": {
+    "mtime": 1794961487.613785,
+    "seen": 1795012719.2847755,
+    "ast_hash": "6aaebda88db7a9a40616f48ccba1dbd5",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/bg/contact_dir.py": {
+    "mtime": 1794964118.210924,
+    "seen": 1795012719.2847815,
+    "ast_hash": "fcd5bb465c1f66c0cff8f07c754a3dc3",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/bg/gen_flux.py": {
+    "mtime": 1794962564.8681142,
+    "seen": 1795012719.2847872,
+    "ast_hash": "47c7073b6b04f68c106421bcec79c72e",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/bg/verificar_fundos.py": {
+    "mtime": 1794961432.7448647,
+    "seen": 1795012719.2848048,
+    "ast_hash": "9c3ac3591aa0ba080ceb5ccb8d921ee3",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/calibrar_continuidade.py": {
+    "mtime": 1795005665.4433603,
+    "seen": 1795012719.2848253,
+    "ast_hash": "be55f913290fda3e2bdb45eb73b0ffa2",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/card10.py": {
+    "mtime": 1794964371.9098148,
+    "seen": 1795012719.284831,
+    "ast_hash": "8451377676857e390c14b211ead69003",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/contact_v3.py": {
+    "mtime": 1794962347.6800783,
+    "seen": 1795012719.2848444,
+    "ast_hash": "b0f4cd024106031ab10a2332e64df482",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/expressoes_v3.py": {
+    "mtime": 1794963231.9559183,
+    "seen": 1795012719.2848563,
+    "ast_hash": "b0e34fc16d6dbcba581dd4c4312c1899",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/fatiar_grelha.py": {
+    "mtime": 1794962273.3216984,
+    "seen": 1795012719.28487,
+    "ast_hash": "e1ffc6541186dfc4f508dfe9f4e09ae1",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/folhas/_mapa-novos.json": {
+    "mtime": 1795010305.9642909,
+    "seen": 1795012719.2848766,
+    "ast_hash": "7fae63c7c4b8fa5f099d4b47666a6b2b",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/ciclo_de_tira.py": {
+    "mtime": 1794977672.7301033,
+    "seen": 1795012719.2849112,
+    "ast_hash": "7f6974f33dfb92f1d896651b69afc889",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/comparar.py": {
+    "mtime": 1795003602.9351728,
+    "seen": 1795012719.2849176,
+    "ast_hash": "d0dc3ac290c77683a03ac363288ed08a",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/corrigir_multiplos.py": {
+    "mtime": 1795010687.8037713,
+    "seen": 1795012719.2849233,
+    "ast_hash": "99d484464727aeebae8f31956369fc2e",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/corrigir_nomes.py": {
+    "mtime": 1795004918.9326942,
+    "seen": 1795012719.28493,
+    "ast_hash": "df4af0eba06c0d609d70e4a3c4b8885f",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/cortar_fila.py": {
+    "mtime": 1794980192.294171,
+    "seen": 1795012719.2849357,
+    "ast_hash": "6cd0c7bce5ffde1965f9bb49536a9b21",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/cortar_grade.py": {
+    "mtime": 1794977706.302223,
+    "seen": 1795012719.2849417,
+    "ast_hash": "c971a83f67e1fb36f0903b9416444678",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/cortar_mascara.py": {
+    "mtime": 1795009235.914466,
+    "seen": 1795012719.284947,
+    "ast_hash": "5d73768fe7257283e9efe8823aab2b55",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/diag_dist.py": {
+    "mtime": 1795011740.10035,
+    "seen": 1795012719.2849529,
+    "ast_hash": "7b2fdddf4200945543e5f2331f50b664",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/diag_sombra.py": {
+    "mtime": 1795011442.7592535,
+    "seen": 1795012719.2849586,
+    "ast_hash": "106c45a8caeb4a3e2f7fae4cd8404360",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/estabilizar_ciclo.py": {
+    "mtime": 1794978619.788445,
+    "seen": 1795012719.284993,
+    "ast_hash": "202a6eac956da3b11b1ac766db363c5c",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/extrair_movimentos.py": {
+    "mtime": 1794969910.078163,
+    "seen": 1795012719.2849984,
+    "ast_hash": "2c2e4b82078b74ae775d844917814e89",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/fixar_proporcoes.py": {
+    "mtime": 1795011788.7294593,
+    "seen": 1795012719.2850044,
+    "ast_hash": "a71ed1208f5da9400173411d00db045a",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/flow_fetch_proj.py": {
+    "mtime": 1795009662.8258622,
+    "seen": 1795012719.2850099,
+    "ast_hash": "5b57e74f886930a453f4561aad2d8990",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/gerar_ciclos.py": {
+    "mtime": 1795005778.4947093,
+    "seen": 1795012719.285031,
+    "ast_hash": "82ea2a04e130c03c91d5cf229a22b8fb",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/identificar_lote.py": {
+    "mtime": 1795008945.1531167,
+    "seen": 1795012719.2850654,
+    "ast_hash": "ca3b4fc4d4985805ce9da32bd606eb6f",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/jarvis.py": {
+    "mtime": 1795009283.9072735,
+    "seen": 1795012719.2850714,
+    "ast_hash": "69553078bee24a770e66da0bfaebddc0",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/medir_altura_video.py": {
+    "mtime": 1795011298.5276804,
+    "seen": 1795012719.2850938,
+    "ast_hash": "b6dac99a0a6909d5fe059561da7e0257",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/medir_amostra.py": {
+    "mtime": 1795004457.5192294,
+    "seen": 1795012719.2851,
+    "ast_hash": "f91425329c9b38f988d991b332a58432",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/medir_pes.py": {
+    "mtime": 1794982205.1582372,
+    "seen": 1795012719.2851067,
+    "ast_hash": "6c8121f0199b449f0ecb806ca1b2d1d8",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/merge_docs.py": {
+    "mtime": 1794956666.0450761,
+    "seen": 1795012719.285113,
+    "ast_hash": "6c2c0b3c18b45f94e53fc9b49eadb667",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/motor.py": {
+    "mtime": 1794970219.4330516,
+    "seen": 1795012719.2851539,
+    "ast_hash": "ab9b831f3ce9f029a02a14fadd5210a0",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos.py": {
+    "mtime": 1795002308.5896947,
+    "seen": 1795012719.2851598,
+    "ast_hash": "8935715fa44796fcf538a48feaefc194",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/_quarentena/relatorio.json": {
+    "mtime": 1795005640.3239355,
+    "seen": 1795012719.285166,
+    "ast_hash": "394821b9c2bee2f237e4d0d67b203a8b",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/_referencia/marcha-aceita-flow10.json": {
+    "mtime": 1794982971.9181292,
+    "seen": 1795012719.2851725,
+    "ast_hash": "01d33d49ef12e548e836315f30a57679",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/padroes.json": {
+    "mtime": 1794983259.1228848,
+    "seen": 1795012719.2851791,
+    "ast_hash": "0b24185758122a783fef557ae822fc8f",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/normalizar_canvas.py": {
+    "mtime": 1795011393.0062587,
+    "seen": 1795012719.285185,
+    "ast_hash": "15b2e0f6b4a02ddd1408a4c051b00d56",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/normalizar_cores.py": {
+    "mtime": 1794978852.5722344,
+    "seen": 1795012719.2851903,
+    "ast_hash": "467ea4b6638ee6109b46dd741ec7b214",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/plano_animacao.py": {
+    "mtime": 1794983612.7573037,
+    "seen": 1795012719.2851963,
+    "ast_hash": "0a92717ad3b0cdf08e8f05ce1fa7ffa2",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/probe_flow.py": {
+    "mtime": 1794975547.9210432,
+    "seen": 1795012719.2852027,
+    "ast_hash": "3b3be4db58cd39a04150722d4c8f7735",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/processar_download.py": {
+    "mtime": 1795009999.5746586,
+    "seen": 1795012719.2852082,
+    "ast_hash": "42bb7aa238f2eb04207b4da95ee20da4",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/quarentena_ciclos.py": {
+    "mtime": 1795005620.9065084,
+    "seen": 1795012719.2852142,
+    "ast_hash": "06edb94631b796fc4939ee3d12f1396e",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/reconstruir_ciclos.py": {
+    "mtime": 1795012171.560531,
+    "seen": 1795012719.2852204,
+    "ast_hash": "5cf89d4e58d044f0f9eda5d698f4bd8b",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/registar_novos.py": {
+    "mtime": 1795004955.1206524,
+    "seen": 1795012719.2852275,
+    "ast_hash": "bacfb06cad2abe0056f8547bc853d296",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/remotion/gerar_timeline.mjs": {
+    "mtime": 1795012223.8743272,
+    "seen": 1795012719.2852342,
+    "ast_hash": "037221456fee675869a39452e2bdc041",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/remotion/package.json": {
+    "mtime": 1795002545.1822393,
+    "seen": 1795012719.2852402,
+    "ast_hash": "d84511a9d12e963fdcf5034a0126e509",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/remotion/preparar_publico.mjs": {
+    "mtime": 1795002610.5637846,
+    "seen": 1795012719.2852461,
+    "ast_hash": "7041ab734441e98f4f84e2316cd1d1ab",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/remotion/remotion.config.ts": {
+    "mtime": 1794965807.0652783,
+    "seen": 1795012719.2852519,
+    "ast_hash": "1e69ea6847745531115fafa31a794f9d",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/remotion/src/Episodio.tsx": {
+    "mtime": 1795010888.9925497,
+    "seen": 1795012719.2852583,
+    "ast_hash": "f77b9aa5afc4c3eccbb18747345a9eca",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/remotion/src/FundosVivos.tsx": {
+    "mtime": 1795010853.53893,
+    "seen": 1795012719.2852652,
+    "ast_hash": "d76dbb360db21aab04d793f4afbcfe98",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/remotion/src/Root.tsx": {
+    "mtime": 1795002042.7254746,
+    "seen": 1795012719.285272,
+    "ast_hash": "dd5fbb2c16f1199757b79ced0ef45dae",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/remotion/src/index.ts": {
+    "mtime": 1794965909.6996937,
+    "seen": 1795012719.2852788,
+    "ast_hash": "7364516b042e32f06cc0bc5a012d91fd",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/remotion/src/timeline.ts": {
+    "mtime": 1795010828.2569797,
+    "seen": 1795012719.285287,
+    "ast_hash": "35ba07dd028dc7ec7348ab64f62ec74f",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/remotion/timeline.example.json": {
+    "mtime": 1795002342.2418587,
+    "seen": 1795012719.2853107,
+    "ast_hash": "f1e9549fbbd3c1e1a99ebe855825a193",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/remotion/timeline.json": {
+    "mtime": 1795012244.1882408,
+    "seen": 1795012719.285316,
+    "ast_hash": "9e88bf98f46774dd77cf50170df765e9",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/remotion/tsconfig.json": {
+    "mtime": 1794965783.5727403,
+    "seen": 1795012719.285322,
+    "ast_hash": "854cbcb56549c2947cd9dd77a8c8205c",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/remover_sombra.py": {
+    "mtime": 1795011522.4681983,
+    "seen": 1795012719.285328,
+    "ast_hash": "72e54d4dd1a2b5d7da116866b4d2a950",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/rig.py": {
+    "mtime": 1794965660.6773345,
+    "seen": 1795012719.285334,
+    "ast_hash": "386fba46d403ea5dc2b523a2b1f7cb81",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/rig_walk.py": {
+    "mtime": 1794970578.2426243,
+    "seen": 1795012719.28534,
+    "ast_hash": "7d6866065376efddb43d7326bc38c3aa",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/semantica_narracao.py": {
+    "mtime": 1795012457.2318385,
+    "seen": 1795012719.2853463,
+    "ast_hash": "c3a2edf00f91e8638e4868b4db74f396",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/strip.py": {
+    "mtime": 1794969982.6005826,
+    "seen": 1795012719.2853622,
+    "ast_hash": "de581428787faca81e94baa89cb24e88",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/strip_linha.py": {
+    "mtime": 1794970807.5697947,
+    "seen": 1795012719.285369,
+    "ast_hash": "9cc1318dc2c42c1c60da5597d74bbdc5",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/testar_novos.py": {
+    "mtime": 1795004209.1853676,
+    "seen": 1795012719.2853746,
+    "ast_hash": "6584e33b709d57f7293ada63109e5ac2",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/transferir_cor.py": {
+    "mtime": 1795011840.704246,
+    "seen": 1795012719.2853885,
+    "ast_hash": "a19be9c39c6a7a1ccd3f6b98cd80d8e5",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/validar_ciclo.py": {
+    "mtime": 1795009935.7713208,
+    "seen": 1795012719.2853947,
+    "ast_hash": "df7ad5d1613005fd994c57a9e92271ac",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/verificar_contrato.py": {
+    "mtime": 1795012593.2382214,
+    "seen": 1795012719.2854006,
+    "ast_hash": "102a147e4bfd4067867e4b3e2d854103",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/write_flow_state.py": {
+    "mtime": 1794975699.0683224,
+    "seen": 1795012719.2854068,
+    "ast_hash": "a835c10ea90cd8f4e0cd8d617a130945",
+    "semantic_hash": ""
+  },
+  "CONTRATO-ANIMACAO.md": {
+    "mtime": 1795012564.4805312,
+    "seen": 1795012719.2854352,
+    "ast_hash": "a52f3b7684576a200b0a7ec83ba367e1",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/ENTREGA-ARTISTA-DESENHO.md": {
+    "mtime": 1794974563.6856513,
+    "seen": 1795012719.2855244,
+    "ast_hash": "01a091814d01a86bd1be4fe2b50fe8bd",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/REGRAS-render-quatro-estacoes.md": {
+    "mtime": 1794976117.0741355,
+    "seen": 1795012719.2855306,
+    "ast_hash": "3911a11963dfa1f018280b650e80c215",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/build-1080p/lista-concat.txt": {
+    "mtime": 1794976137.25115,
+    "seen": 1795012719.2855515,
+    "ast_hash": "15431572c2f2e04816deb3a46b611e6d",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/build-1080p/lista-video.txt": {
+    "mtime": 1794976204.0457401,
+    "seen": 1795012719.2855577,
+    "ast_hash": "704939740d373d23dd2a634f196e3706",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/public/assets/historinha-luninha-e-fridoca/desenhos-aprovacao/LEIA-ME.md": {
+    "mtime": 1794973656.4621718,
+    "seen": 1795012719.285628,
+    "ast_hash": "4aee301ae62d1a55fede2d6d8e92fc39",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/DIRECAO-ARTE.md": {
+    "mtime": 1795002043.5671053,
+    "seen": 1795012719.285684,
+    "ast_hash": "230bfab24503cb5da0c87a4aca077982",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/MOTOR-FLOW.md": {
+    "mtime": 1794983528.9584026,
+    "seen": 1795012719.2856903,
+    "ast_hash": "8f69194c9385f01f9e785bbbf8728331",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/PROCESSO-PRODUCAO.md": {
+    "mtime": 1795005842.3914726,
+    "seen": 1795012719.2857025,
+    "ast_hash": "5a1b00636a4147966a433f46ac44023f",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/animacao/PISCAR-E-QA.md": {
+    "mtime": 1795003294.0079906,
+    "seen": 1795012719.2857158,
+    "ast_hash": "e0f0d21c281692aa72d1d5d65c35140c",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/PROMPTS-8-EXPRESSOES.md": {
+    "mtime": 1794961391.8856788,
+    "seen": 1795012719.2857368,
+    "ast_hash": "c7c241163cd19811c6d805d0a0dd481d",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/PROMPTS-CICLOS-FRIDA.md": {
+    "mtime": 1794970485.5200875,
+    "seen": 1795012719.2857425,
+    "ast_hash": "240104c9352f061c5c6759f2a6f7e854",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/PROMPTS-MARCHA-V2.md": {
+    "mtime": 1794979054.322849,
+    "seen": 1795012719.2857478,
+    "ast_hash": "3f843317db156418c6b8f9446624cffe",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/PROMPTS-MARCHA-V3.md": {
+    "mtime": 1794982657.690399,
+    "seen": 1795012719.285753,
+    "ast_hash": "3b35ecc2378286391a6f4b309e464d2c",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/PROMPTS-MICRO-MOVIMENTOS.md": {
+    "mtime": 1795009195.7344851,
+    "seen": 1795012719.28576,
+    "ast_hash": "5b593cbb0c667241c5493d4b198c158a",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/PROMPTS-MOVIMENTOS.md": {
+    "mtime": 1795002021.4878273,
+    "seen": 1795012719.2857652,
+    "ast_hash": "c566e7dee2868fbd9d0317127243ea13",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/chars/PROMPTS-PISCAR.md": {
+    "mtime": 1795003374.7885778,
+    "seen": 1795012719.2857704,
+    "ast_hash": "064fa430dffe8da7b2aed4e932a31f4e",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/remotion/README.md": {
+    "mtime": 1795002617.9657247,
+    "seen": 1795012719.2858171,
+    "ast_hash": "e56bc0b6543a5b1e53d47ad9c586c0e5",
+    "semantic_hash": ""
+  },
+  "arte-luna-frida/frida-char.svg": {
+    "mtime": 1794974548.0072713,
+    "seen": 1795012719.2858255,
+    "ast_hash": "9fefaab2131f5d65327a2ef1670e84a7",
+    "semantic_hash": ""
+  },
+  "arte-luna-frida/frida.svg": {
+    "mtime": 1794973931.7282772,
+    "seen": 1795012719.285834,
+    "ast_hash": "b2f8377e992ddb52eed11d1a59c9d9f0",
+    "semantic_hash": ""
+  },
+  "arte-luna-frida/luna-char.svg": {
+    "mtime": 1794974548.0060227,
+    "seen": 1795012719.28584,
+    "ast_hash": "d25f8c92943c629ba486839ad8a1b29d",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/public/assets/historinha-luninha-e-fridoca/desenhos-aprovacao/frida-frente-3-4.svg": {
+    "mtime": 1794973146.4673207,
+    "seen": 1795012719.2858658,
+    "ast_hash": "1966cccf89c3c4c855106bbb204df51b",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/public/assets/historinha-luninha-e-fridoca/desenhos-aprovacao/frida-perfil.svg": {
+    "mtime": 1794973146.46832,
+    "seen": 1795012719.2858741,
+    "ast_hash": "ac3d170407c637b0cf013d9cef05441e",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/public/assets/historinha-luninha-e-fridoca/desenhos-obsoleto-v1/luna-frente-3-4.svg": {
+    "mtime": 1794948553.197993,
+    "seen": 1795012719.2858934,
+    "ast_hash": "abf391780b25a4bb6dd33bf193ce64bb",
+    "semantic_hash": ""
+  },
+  "video-orquestracao/public/assets/historinha-luninha-e-fridoca/desenhos-obsoleto-v1/luna-perfil.svg": {
+    "mtime": 1794948553.199426,
+    "seen": 1795012719.2858999,
+    "ast_hash": "4c0fe156285b384606bda90f72881092",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/_referencia/marcha-aceita-flow10.webp": {
+    "mtime": 1794981362.7996743,
+    "seen": 1795012719.2859235,
+    "ast_hash": "021969fa3aac3f83b5e9469cd9c7529b",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/frida/escuta/f04.png": {
+    "mtime": 1795012201.5222316,
+    "seen": 1795012719.2859325,
+    "ast_hash": "77497c8c70e6e79422841f97536ae779",
+    "semantic_hash": ""
+  }
+}
