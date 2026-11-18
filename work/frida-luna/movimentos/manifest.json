@@ -42,7 +42,7 @@
     "altura_sprite": 268
    },
    "fala": {
-    "frames": 12,
+    "frames": 8,
     "fps": 7.5,
     "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\luna\\fala",
     "ficheiros": [
@@ -59,7 +59,7 @@
      "f10.png",
      "f11.png"
     ],
-    "fonte": "Flow Dachshund_sit_stand_loop_00ede980.jpg",
+    "fonte": "rig_novo (gesto visivel)",
     "nota": "validado por validar_ciclo.py",
     "passada_sprite": 76,
     "abertura_pes": 38,
@@ -101,7 +101,7 @@
      "f06.png",
      "f07.png"
     ],
-    "fonte": "Flow flow-05.webp",
+    "fonte": "rig_novo (gesto visivel)",
     "nota": "especialista cont 0.16; micro 7/5",
     "passada_sprite": 40,
     "abertura_pes": 20,
@@ -140,7 +140,7 @@
      "f06.png",
      "f07.png"
     ],
-    "fonte": "Flow flow-02.webp",
+    "fonte": "rig_novo (gesto visivel)",
     "nota": "especialista cont 0.16; micro 7/5",
     "passada_sprite": 76,
     "abertura_pes": 38,
@@ -160,14 +160,14 @@
      "f06.png",
      "f07.png"
     ],
-    "fonte": "Flow flow-03.webp",
+    "fonte": "rig_novo (gesto visivel)",
     "nota": "especialista cont 0.18; micro 7/5",
     "passada_sprite": 36,
     "abertura_pes": 18,
     "altura_sprite": 265
    },
    "giro": {
-    "frames": 12,
+    "frames": 8,
     "fps": 7.5,
     "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\luna\\giro",
     "ficheiros": [
@@ -184,7 +184,7 @@
      "f10.png",
      "f11.png"
     ],
-    "fonte": "Flow flow-04.webp",
+    "fonte": "rig_novo (gesto visivel)",
     "nota": "especialista cont 0.34; micro 7/5",
     "passada_sprite": 66,
     "abertura_pes": 33,
@@ -207,6 +207,12 @@
     "passada_sprite": 134,
     "abertura_pes": 67,
     "altura_sprite": 265
+   },
+   "acenar": {
+    "fonte": "acenar.py (tchau visivel)",
+    "fps": 7.5,
+    "frames": 10,
+    "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\luna\\acenar"
    }
   },
   "frida": {
@@ -229,7 +235,7 @@
     "altura_sprite": 235
    },
    "fala": {
-    "frames": 9,
+    "frames": 8,
     "fps": 7.5,
     "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\frida\\fala",
     "ficheiros": [
@@ -243,14 +249,14 @@
      "f07.png",
      "f08.png"
     ],
-    "fonte": "Flow Sprite_sheet_generation_for_move…_8692e946.jpg",
+    "fonte": "rig_novo (gesto visivel)",
     "nota": "validado por validar_ciclo.py",
     "passada_sprite": 22,
     "abertura_pes": 11,
     "altura_sprite": 317
    },
    "marcha": {
-    "frames": 12,
+    "frames": 8,
     "fps": 7.5,
     "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\frida\\marcha",
     "ficheiros": [
@@ -267,7 +273,7 @@
      "f10.png",
      "f11.png"
     ],
-    "fonte": "Flow flow-11.webp",
+    "fonte": "rig_novo (gesto visivel)",
     "nota": "especialista cont 0.14; micro 7/5",
     "passada_sprite": 50,
     "abertura_pes": 25,
@@ -332,7 +338,7 @@
      "f06.png",
      "f07.png"
     ],
-    "fonte": "Flow flow-09.webp",
+    "fonte": "rig_novo (gesto visivel)",
     "nota": "especialista cont 0.27; micro 7/5",
     "passada_sprite": 80,
     "abertura_pes": 40,
@@ -372,14 +378,14 @@
      "f06.png",
      "f07.png"
     ],
-    "fonte": "Flow flow-12.webp",
+    "fonte": "rig_novo (gesto visivel)",
     "nota": "especialista cont 0.22; micro 7/5",
     "passada_sprite": 74,
     "abertura_pes": 37,
     "altura_sprite": 231
    },
    "corrida": {
-    "frames": 11,
+    "frames": 8,
     "fps": 7.5,
     "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\frida\\corrida",
     "ficheiros": [
@@ -395,7 +401,7 @@
      "f09.png",
      "f10.png"
     ],
-    "fonte": "Flow flow-13.webp",
+    "fonte": "rig_novo (gesto visivel)",
     "nota": "especialista cont 0.25; micro 7/5",
     "passada_sprite": 92,
     "abertura_pes": 46,
@@ -420,6 +426,12 @@
     "passada_sprite": 86,
     "abertura_pes": 43,
     "altura_sprite": 231
+   },
+   "acenar": {
+    "fonte": "acenar.py (tchau visivel)",
+    "fps": 7.5,
+    "frames": 10,
+    "pasta": "D:\\CRAFT\\work\\frida-luna\\movimentos\\frida\\acenar"
    }
   }
  }

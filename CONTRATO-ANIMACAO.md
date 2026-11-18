@@ -50,11 +50,38 @@ em 18/11/2026. **Se uma regra antiga contradizer este contrato, este ganha.**
 - **Espaçamento mínimo de 1/4 da largura** entre figuras na folha — nunca encostadas.
 - 8 quadros numa única linha, mesma altura, pés na mesma baseline, quadro 8 = quadro 1.
 - Sem texto, números, moldura, linha de chão ou gradiente.
+- **POSTURA BÍPEDE obrigatória (18/11/2026)**: Frida e Luna são personagens **em pé sobre
+  duas patas**; NUNCA de quatro patas/deitadas. O Flow gera folhas quadrupedes que, esticadas
+  na caixa bípede, ficam desproporcionais ("animação perdida"). `validar_imagem.py` tem a
+  porta `postura`: `frac_sup >= ref×0,88` (Frida ref 0,296, Luna ref 0,388). Ver
+  `regenerar_locomocao.py` e `RELATORIO-BANCO.md`.
+- **NÃO usar motor de stick-figure neste projecto (aviso do utilizador):** as personagens são
+  **figuras cartoon detalhadas**, não palitos. O `rig_walk.py`/skill `stick-film` serve só como
+  referência de **fases travadas** (perna esq em oposição ao braço dir), nunca como estética.
+  Um rig aqui tem de animar **todas** as regiões com peças próprias: pernas, braços, cabeça,
+  orelhas, olhos (piscar + olhar), sobrancelhas, bochecha/focinho, colar/bandana e rabinho —
+  todas derivadas das poses aprovadas, sem pixéis novos. Ver `rig_estendido.py`.
+- **DUAS ESCALAS DE MOVIMENTO — NÃO CONFUNDIR (decisão do utilizador, 18/11/2026):**
+  - **MICRO** (1–2 px): bochecha, sobrancelha, olho/piscar, ponta da orelha, colar,
+    rabinho, barriguinha. É o que dá "vida" ao desenho — já funciona no rig.
+  - **GESTO/ACÇÃO** (amplitude visível a 520 px): pernas a alternar ~22–34°, braço a
+    levantar ~30–45° no tchau, corpo a subir ~20 px no salto. A acção principal **tem de
+    se ver**. Chamar "micro" a um gesto que não se vê é REPROVAÇÃO garantida — o utilizador
+    rejeitou a prova exactamente por isso ("caminhavam" parecia parado, "pulinhos" não saltava).
+  - Regra: cada beat com movimento nomeado tem de passar no **teste do olho a 520 px** —
+    ver o clipe e confirmar que a acção é识别ável antes de mostrar ao utilizador.
+- **Movimento proibido sem gesto nomeado**: "Olha, pessoal!" = **acenar/tchau**, não
+  "olhar-frente" parado. Cada fala com verbo de acção mapeia para um gesto visível.
 - **Micro-movimentos obrigatórios**: sobrancelha, olho (piscar com pálpebra curva),
   bochecha, focinho, orelha, patas/mãos, barriguinha, colar/bandana, rabinho.
   Pelo menos 3 regiões têm de mudar; quadros consecutivos nunca idênticos.
 - **Emoção comanda o micro**: feliz = bochechas sobem/rabo rápido; triste = sobrancelhas
   juntas/orelhas caídas; surpreso = sobrancelhas sobem/olhos abrem; medo = orelhas baixas.
+- **GESTO NA FALA — contido (decisão do utilizador, 18/11/2026)**: as personagens hão-de
+  servir como **avatar** no futuro. Por isso, no ciclo `fala` o braço **NÃO pode gesticular
+  à solta** — amplitud de 1–2 px no máximo, ombro quase parado; o peso da fala vai na
+  **boca (RMS), sobrancelhas e olhos**. Braços em grandes arcos só em gestos nomeados
+  (`acenar`, `abracar`), nunca em `fala`. Verificar no clipe antes de aprovar.
 
 ## 4. Google Flow — como usar
 

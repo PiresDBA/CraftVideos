@@ -17,7 +17,7 @@ BASE = Path(r"D:\CRAFT\work\frida-luna")
 
 # (movimento, padrões no texto, descrição do gesto para o prompt do Flow)
 REGRAS = [
-    ("acenar", r"bem-vind|oi[,!.]|ol[áa]|tchau|acen|sauda|apresent",
+    ("acenar", r"bem-vind|oi[,!.]|ol[áa]|olha[,\s]|tchau|acen|sauda|apresent",
      "levanta uma pata e acena para a câmara, com um sorriso"),
     ("sorrir", r"sorr|feliz|alegre|content|riso|gargalh",
      "sorriso amplo, olhos a brilhar, bochechas a subir"),
@@ -84,8 +84,8 @@ def main():
                 # A narração é em 3a pessoa: a acção pertence às duas personagens.
                 meu = "escuta" if mov == "falar" else mov
             else:
-                meu = mov if falante == quem else (
-                    "olhar-frente" if mov == "acenar" else "escuta")
+                # Quem não acena reage com escuta (ou olhar, se existir no banco).
+                meu = mov if falante == quem else "escuta"
             existe = any(n.startswith(meu) for n in banco.get(quem, set()))
             linha[quem] = meu
             if not existe:

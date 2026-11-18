@@ -19,11 +19,11 @@
   "t1": 12.7,
   "texto": "Já imaginou montanha-russa de ossinho e roda gigante de petiscos?",
   "falante": "narrador",
-  "acao": "comer",
+  "acao": "escuta",
   "emocao": "happy",
-  "gesto": "inclina o focinho e dá pequenos movimentos de mastigar",
-  "frida": "comer",
-  "luna": "comer"
+  "gesto": "respiração leve, olhar atento, piscar ocasional",
+  "frida": "escuta",
+  "luna": "escuta"
  },
  {
   "i": 3,
@@ -45,10 +45,10 @@
   "t1": 17.86,
   "texto": "Olha, pessoal!",
   "falante": "frida",
-  "acao": "olhar-frente",
+  "acao": "acenar",
   "emocao": "happy",
-  "gesto": "vira a cabeça para a frente e olha com curiosidade",
-  "frida": "olhar-frente",
+  "gesto": "levanta uma pata e acena para a câmara, com um sorriso",
+  "frida": "acenar",
   "luna": "escuta"
  },
  {
@@ -253,11 +253,11 @@
   "t1": 87.2,
   "texto": "Cada cabine parecia uma tigela colorida cheia de bolinhas a borcar.",
   "falante": "narrador",
-  "acao": "comer",
+  "acao": "escuta",
   "emocao": "happy",
-  "gesto": "inclina o focinho e dá pequenos movimentos de mastigar",
-  "frida": "comer",
-  "luna": "comer"
+  "gesto": "respiração leve, olhar atento, piscar ocasional",
+  "frida": "escuta",
+  "luna": "escuta"
  },
  {
   "i": 21,
@@ -266,11 +266,11 @@
   "t1": 90.18,
   "texto": "A Frida suspirou o babando de vontade.",
   "falante": "narrador",
-  "acao": "escuta",
+  "acao": "comer",
   "emocao": "happy",
-  "gesto": "respiração leve, olhar atento, piscar ocasional",
-  "frida": "escuta",
-  "luna": "escuta"
+  "gesto": "inclina o focinho e dá pequenos movimentos de mastigar",
+  "frida": "comer",
+  "luna": "comer"
  },
  {
   "i": 22,

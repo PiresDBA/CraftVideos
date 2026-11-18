@@ -181,12 +181,11 @@ const exprFinal = (bruto) => {
 // ---------------------------------------------------------------------------
 // C) Banco de movimentos (manifest + descoberta de pastas nao manifestadas)
 // ---------------------------------------------------------------------------
-// "giro" nao tem alias de proposito: quando o ciclo de giro entrar no banco e
-// usado automaticamente; enquanto nao existe, cai para a pose estatica (regra B).
-const ALIAS_MOV = {
-  frida: { marcha: "marcha-flow10", corrida: "marcha-flow10" },
-  luna: { marcha: "corrida", corrida: "corrida" },
-};
+// SEM ALIAS: os 20 ciclos nomeados existem no banco (rig_novo + aprovados).
+// Um alias luna.marcha->corrida era legado de quando nao havia ciclo de marcha
+// da Luna e fazia a narração "caminhavam" virar corrida — movimento sem sentido.
+// O resolvedor usa SEMPRE o nome直接o da semântica; se faltar, cai para pose (regra B).
+const ALIAS_MOV = {};
 const FPS_OMISSAO = 7.5;
 const banco = {};
 const ordemNatural = (a, b) => a.localeCompare(b, undefined, { numeric: true });

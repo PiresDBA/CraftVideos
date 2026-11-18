@@ -149,12 +149,16 @@ def main():
         from calibrar_continuidade import assinatura, distancia
         for quem, movs in man["personagens"].items():
             ref = assinatura(BASE / "chars" / "poses-v3" / quem / "happy.png")
+            ref_limpa_p = BASE / "chars" / "poses-v3" / quem / "_ref-sem-oval.png"
+            ref_limpa = assinatura(ref_limpa_p) if ref_limpa_p.exists() else None
             for nome, cfg in movs.items():
                 f = Path(cfg["pasta"]) / "f00.png"
                 if not f.exists():
                     falhas += not ok(False, "ficheiro do ciclo ausente", f"{quem}/{nome}")
                     continue
                 d = distancia(assinatura(f), ref)
+                if ref_limpa:  # saltos sem oval: aceitar a referência limpa também
+                    d = min(d, distancia(assinatura(f), ref_limpa))
                 falhas += not ok(d <= 0.45, f"continuidade {quem}/{nome}", f"{d:.2f} <= 0,45")
     except Exception as e:
         falhas += not ok(False, "medição de continuidade", str(e)[:80])

@@ -158,9 +158,30 @@ def validar(pasta, quem=None, nome=""):
 
     motivos = []
     detalhes = {}
-    portas_ok = {k: True for k in ("fundo", "caixa", "sombra", "uma_figura", "continuidade")}
+    portas_ok = {k: True for k in ("fundo", "caixa", "sombra", "uma_figura", "postura", "continuidade")}
     frames = [np.array(Image.open(f).convert("RGBA")) for f in fs]
     W, H = CAIXA[quem]
+
+    # (d2) POSTURA BÍPEDE — porta nova (18/11/2026).
+    # Uma personagem em pé tem massa no terço superior (cabeça); uma de quatro
+    # patas tem pouca. Calibrada RELATIVAMENTE à referência aprovada (robusta a
+    # diferenças de desenho: Frida 0,296, Luna 0,388). Limiar = ref*0,88.
+    # Esta porta faltou e deixou passar folhas de quatro patas esticadas na caixa.
+    def _frac_sup(img):
+        opaco = img[:, :, 3] > 60
+        ter = max(1, opaco.shape[0] // 3)
+        return float(opaco[:ter].sum()) / max(1, int(opaco.sum()))
+    frac_med = float(np.mean([_frac_sup(a) for a in frames]))
+    ref_img = np.array(Image.open(BASE / "chars" / "poses-v3" / quem / "happy.png")
+                       .convert("RGBA"))
+    ref_sup = _frac_sup(ref_img)
+    limiar = ref_sup * 0.88
+    if frac_med < limiar:
+        portas_ok["postura"] = False
+        motivos.append(f"postura nao bípede: frac_sup={frac_med:.3f} < {limiar:.3f} "
+                       f"(ref {ref_sup:.3f}; desenho de quatro patas/deitado)")
+    detalhes["postura"] = round(frac_med, 3)
+    detalhes["postura_limiar"] = round(limiar, 3)
 
     for k in ("fundo", "caixa", "sombra", "uma_figura"):
         falhas = []
@@ -188,8 +209,15 @@ def validar(pasta, quem=None, nome=""):
     cont = 99.0
     try:
         from calibrar_continuidade import assinatura, distancia
+        # Cycles de salto têm a oval removida (sombra de contacto vai no Remotion).
+        # Aceita-se a referência com OU sem oval: usa-se a MENOR distância, para
+        # que um sprite fiel a qualquer uma das duas versões canónicas passe.
         ref = BASE / "chars" / "poses-v3" / quem / "happy.png"
-        cont = float(distancia(assinatura(fs[0]), assinatura(ref)))
+        ref_limpa = BASE / "chars" / "poses-v3" / quem / "_ref-sem-oval.png"
+        assin = assinatura(fs[0])
+        cont = float(distancia(assin, assinatura(ref)))
+        if ref_limpa.exists():
+            cont = min(cont, float(distancia(assin, assinatura(ref_limpa))))
     except Exception as e:
         motivos.append(f"continuidade: nao foi possivel medir ({e})")
     if cont > 0.45:

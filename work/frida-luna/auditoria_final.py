@@ -112,7 +112,9 @@ def main():
     piores = []
     for quem, movs in banco.items():
         ref_path = BASE / "chars" / "poses-v3" / quem / "happy.png"
+        ref_limpa = BASE / "chars" / "poses-v3" / quem / "_ref-sem-oval.png"
         ref = assinatura(ref_path) if assinatura else None
+        ref2 = assinatura(ref_limpa) if (assinatura and ref_limpa.exists()) else None
         for nome, cfg in movs.items():
             fs = sprites(cfg)
             if not fs:
@@ -128,6 +130,8 @@ def main():
                 piores.append((quem, nome, buracos))
             if ref:
                 d = distancia(assinatura(fs[0]), ref)
+                if ref2:
+                    d = min(d, distancia(assinatura(fs[0]), ref2))
                 check(f"continuidade {quem}/{nome}", d <= 0.45, f"{d:.2f} <= 0,45")
     check("P6 sem buracos no contorno", total_buracos == 0,
           f"{total_buracos} pixéis" + (f" {piores[:4]}" if piores else ""))
