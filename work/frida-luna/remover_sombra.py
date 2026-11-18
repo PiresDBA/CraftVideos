@@ -14,16 +14,19 @@ from PIL import Image
 def limpar(p: Path) -> bool:
     a = np.array(Image.open(p).convert("RGBA"))
     h, w, _ = a.shape
-    y0 = int(h * 0.86)
+    y0 = int(h * 0.88)
     faixa = a[y0:, :, :3].astype(np.int16)
     alfa = a[y0:, :, 3]
     mx = faixa.max(axis=2)
     mn = faixa.min(axis=2)
     sat = mx - mn
-    # sombra: cinza (pouca saturacao) e escura, ou semi-transparente
-    cinza = (sat < 38) & (mx < 215)
-    semi = (alfa > 0) & (alfa < 210) & (sat < 60)
-    alvo = cinza | semi
+    # O Flow desenha a sombra de duas formas: oval CINZENTO escuro ou oval CREME CLARO
+    # entre as patas. O creme tem baixa saturacao mas alto brilho — o filtro antigo so
+    # apanhava o cinzento (mx<215) e por isso a Luna continuava com o circulo.
+    cinza = (sat < 45) & (mx < 215)
+    creme = (sat < 55) & (mx >= 215) & (mn > 150)
+    semi = (alfa > 0) & (alfa < 210) & (sat < 65)
+    alvo = cinza | creme | semi
     alvo &= alfa > 0
     if not alvo.any():
         return False

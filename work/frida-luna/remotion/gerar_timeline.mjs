@@ -302,7 +302,7 @@ for (const seg of segmentos) {
     // exatamente o mesmo tamanho do princípio ao fim. A tabela de direcção de arte
     // previa planos de 380/760 e um 0,94x em escuta; ambos criavam a ilusão de personagens
     // diferentes. Só a posição (x/y) e a câmara mudam, nunca a escala do sprite.
-    const h = quem === "frida" ? 620 : 446;
+    const h = quem === "frida" ? 660 : 440;   // proporção 1,5x pedida pelo utilizador
 
     return {
       mov: resolvido?.nome ?? brutoMov,
