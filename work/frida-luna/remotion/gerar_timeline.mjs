@@ -239,11 +239,27 @@ const fundoFinal = (nome) => {
 // ---------------------------------------------------------------------------
 const porI = new Map(beatsPlano.map((b) => [b.i, b]));
 const segmentos = tempos.segmentos ?? [];
+// Efeitos de fundo por cena — decididos pelo sentido da cena, nao a olho.
+// Todos sao desenhados por codigo (sem imagens novas) e deterministas por frame.
+const OVERLAYS = {
+  hook: "confete",
+  abertura: "passarinhos-folhas",
+  portao: "folhas",
+  montanha: "vento",
+  roda: "nuvens-brilho",
+  carrossel: "luzinhas",
+  bolinhas: "bolinhas",
+  tunel: "folhas-luz",
+  espelhos: "brilhos",
+  moral: "folhas-sol",
+  final: "confete",
+};
 const scenes = cenasPlano.map((c) => {
   const t = tabela.get(c.scene.toLowerCase());
   if (!t) avisos.push(`cena "${c.scene}" sem linha na tabela de direccao de arte`);
   return {
     scene: c.scene,
+    overlay: OVERLAYS[c.scene] ?? "nenhum",
     from: c.from,
     durationInFrames: c.durationInFrames,
     bg: fundoFinal(c.scene),
@@ -282,12 +298,11 @@ for (const seg of segmentos) {
     const escuta = FALA_0_94.has(seg.i) && quem !== falante;
     if (escuta) x -= 12;
 
-    // altura: base da cena, exceccoes por beat da tabela, depois 0,94x se escuta em fala.
-    const alt = quem === "frida" ? t?.altFrida : t?.altLuna;
-    let h = alt?.base ?? (quem === "frida" ? 620 : 446);
-    const altBeat = alt?.porBeat?.[seg.i];
-    if (altBeat) h = altBeat;
-    if (escuta) h = Math.round(h * 0.94);
+    // ALTURA FIXA por personagem — decisão do utilizador: a Frida e a Luna têm de manter
+    // exatamente o mesmo tamanho do princípio ao fim. A tabela de direcção de arte
+    // previa planos de 380/760 e um 0,94x em escuta; ambos criavam a ilusão de personagens
+    // diferentes. Só a posição (x/y) e a câmara mudam, nunca a escala do sprite.
+    const h = quem === "frida" ? 620 : 446;
 
     return {
       mov: resolvido?.nome ?? brutoMov,

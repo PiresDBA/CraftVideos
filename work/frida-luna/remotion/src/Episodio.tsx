@@ -18,6 +18,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import { Beat, Camera, Scene, Sombra, SpriteBeat, Timeline, beatEm, cenaEm, useTimeline } from "./timeline";
+import { FundosVivos } from "./FundosVivos";
 
 const FPS_CICLO_OMISSAO = 7.5;
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
@@ -238,6 +239,8 @@ export const Episodio: React.FC = () => {
             style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
           />
         </div>
+        {/* efeitos de fundo por codigo: passarinhos, folhas, vento, brilhos, confete... */}
+        <FundosVivos overlay={cena?.overlay} />
         {elenco.map(({ quem, dado }) => (
           <Personagem
             key={quem}

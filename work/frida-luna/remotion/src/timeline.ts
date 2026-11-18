@@ -62,6 +62,7 @@ export type Camera = {
 
 /** Uma cena (11 no episodio). */
 export type Scene = {
+  overlay?: string; // efeito de fundo desenhado por codigo (ver FundosVivos.tsx)
   scene: string;
   from: number;
   durationInFrames: number;
