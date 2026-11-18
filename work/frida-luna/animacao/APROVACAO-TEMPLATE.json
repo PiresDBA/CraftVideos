@@ -1,0 +1,5 @@
+{
+  "aprovado": true,
+  "nota": "Copiar para animacao/aprovacao.json SÓ depois de o utilizador rever a amostra de 20 s. Preencher nota com o nome de quem aprovou e a data; nunca aprovar automaticamente.",
+  "preview": "remotion/_remotion-preview-v3.mp4"
+}

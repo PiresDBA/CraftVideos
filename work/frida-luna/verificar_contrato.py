@@ -21,6 +21,25 @@ def ok(cond, msg, detalhe=""):
     return bool(cond)
 
 
+def _resultado_validador(valor):
+    """Interpreta o retorno do validador especialista como aprovado/reprovado."""
+    if isinstance(valor, dict):
+        for chave in ("ok", "valido", "aprovado", "pass"):
+            if chave in valor:
+                return bool(valor[chave])
+        return False
+    if isinstance(valor, (tuple, list)):
+        return bool(valor[0]) if valor else False
+    return bool(valor)
+
+
+def _corresponde_movimento(nome, chave, quem):
+    """Nome exacto ou prefixo, com ou sem o prefixo da personagem na chave do banco."""
+    if chave.startswith(quem + "-"):
+        chave = chave[len(quem) + 1:]
+    return chave == nome or chave.startswith(nome) or nome.startswith(chave)
+
+
 def main():
     contrato = ROOT / "CONTRATO-ANIMACAO.md"
     print("=" * 62)
@@ -50,6 +69,78 @@ def main():
         for nome in movs:
             if nome.startswith(quem + "-"):
                 falhas += not ok(False, "nome de ciclo com prefixo", f"{quem}/{nome}")
+
+    # cobertura semântica: todo movimento nomeado de cada beat existe no banco
+    if sem.exists():
+        beats = json.loads(sem.read_text(encoding="utf-8"))
+        usados = {}  # (quem, movimento) -> [ids dos beats]
+        for b in beats:
+            for quem in ("frida", "luna"):
+                nome = b.get(quem)
+                if nome:
+                    usados.setdefault((quem, nome), []).append(b.get("i"))
+        faltam_mov = []
+        for (quem, nome), ids in sorted(usados.items()):
+            chaves = man["personagens"].get(quem, {})
+            presente = any(_corresponde_movimento(nome, chave, quem) for chave in chaves)
+            if not presente:
+                faltam_mov.append((quem, nome))
+                print(f"  [FECH] movimento em falta: {quem}/{nome} — beats {ids}")
+        falhas += not ok(not faltam_mov, "cobertura semântica dos movimentos",
+                         f"{len(faltam_mov)} em falta")
+
+    # validador especialista (tamanho + fundo + continuidade) aplicado a todos os ciclos aceites
+    val = BASE / "validar_imagem.py"
+    if not val.exists():
+        falhas += not ok(False, "validador especialista", "ausente — validar_imagem.py")
+    else:
+        try:
+            import importlib.util
+            import subprocess
+            import sys as _sys
+            spec = importlib.util.spec_from_file_location("validar_imagem", str(val))
+            mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(mod)
+            fn = next((getattr(mod, n) for n in
+                       ("validar", "validar_imagem", "verificar", "validar_ciclo",
+                        "check", "validate")
+                       if callable(getattr(mod, n, None))), None)
+            ciclos = [(q, n, c) for q, movs in man["personagens"].items()
+                      for n, c in movs.items()]
+            reprovados, erros = [], []
+            for quem, nome, cfg in ciclos:
+                f = Path(cfg["pasta"]) / "f00.png"
+                alvo = str(f) if f.exists() else str(cfg["pasta"])
+                resultado = None
+                if fn:
+                    for arg in (alvo, str(cfg["pasta"])):
+                        try:
+                            resultado = _resultado_validador(fn(arg))
+                            break
+                        except TypeError:
+                            continue
+                        except Exception as e:
+                            erros.append(f"{quem}/{nome}: {str(e)[:60]}")
+                            resultado = False
+                            break
+                if resultado is None:
+                    try:
+                        resultado = subprocess.run(
+                            [_sys.executable, str(val), alvo], capture_output=True
+                        ).returncode == 0
+                    except Exception as e:
+                        erros.append(f"{quem}/{nome}: CLI {str(e)[:60]}")
+                        resultado = False
+                if not resultado:
+                    reprovados.append(f"{quem}/{nome}")
+            for r in reprovados:
+                print(f"  [FECH] validador especialista reprovou {r}")
+            for e in erros:
+                print(f"  [FECH] validador especialista erro: {e}")
+            falhas += not ok(not reprovados and not erros, "validador especialista aplicado",
+                             f"{len(ciclos)} ciclos, {len(reprovados)} reprovados")
+        except Exception as e:
+            falhas += not ok(False, "validador especialista", str(e)[:80])
 
     # continuidade dos ciclos do banco
     try:

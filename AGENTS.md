@@ -325,6 +325,12 @@ py D:\CRAFT\work\frida-luna\verificar_contrato.py
 ```
 
 O contrato consolida as regras de ouro, as 9 regras de continuidade, os limiares medidos
-e as decisões do utilizador. Se o script disser que há uma porta fechada, **parar e corrigir
-antes de continuar**. Nunca gerar sem a referência aprovada anexada, nunca aceitar outra
-personagem e nunca avançar para o render final sem a amostra aprovada.
+e as decisões do utilizador. Se o script disser que há uma porta fechada — incluindo as
+linhas `[FECH]` de **movimento em falta** (com os IDs dos beats) ou de **validador
+especialista ausente/reprovado** — **parar e corrigir antes de continuar**. A regra
+"validador especialista sempre aplicado" cobre tamanho + fundo + continuidade em todos os
+ciclos aceites (`validar_imagem.py`). Nunca gerar sem a referência aprovada anexada, nunca
+aceitar outra personagem e nunca avançar para o render final sem a amostra aprovada pelo
+utilizador em `animacao/aprovacao.json` (modelo em `animacao/APROVACAO-TEMPLATE.json`);
+o jarvis não cria nem auto-aprova esse ficheiro. Sem lip-sync real: flap rítmico por RMS,
+não distingue vogais — não tentar implementar lip-sync falso.

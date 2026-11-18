@@ -106,7 +106,9 @@ def verificar_portas(verbose=True):
                 falhas.append(f"banco: nome com prefixo {quem}/{nome}")
 
     aprov = BASE / "animacao" / "aprovacao.json"
-    if aprov.exists():
+    if not aprov.exists():
+        falhas.append("aprovacao_humana: falta animacao/aprovacao.json — escrever a aprovacao da amostra")
+    else:
         a = json.loads(aprov.read_text(encoding="utf-8"))
         if not a.get("aprovado"):
             falhas.append("aprovacao_humana: amostra ainda nao aprovada")

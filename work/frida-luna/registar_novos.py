@@ -60,6 +60,22 @@ def main():
         ultima = [l for l in log.splitlines() if "frames ->" in l]
         print("  " + (ultima[-1] if ultima else log.strip().splitlines()[-1]), flush=True)
 
+        # PORTA DO ESPECIALISTA — fundo RGBA, caixa exacta, sem sombra, uma figura,
+        # continuidade. Nenhuma imagem entra no banco sem passar aqui.
+        import corrigir_multiplos
+        import fixar_proporcoes
+        from validar_imagem import validar as validar_especialista
+        corrigir_multiplos.corrigir(pasta)
+        H, aspect = fixar_proporcoes.ALVO[quem]
+        fixar_proporcoes.aplicar(pasta, quem, H, round(H * aspect))
+        vesp = validar_especialista(pasta, quem, nome)
+        print(f"  especialista: {vesp['veredito']} "
+              f"(continuidade {vesp['scores']['continuidade']:.2f})", flush=True)
+        if vesp["veredito"] != "ACEITE":
+            print(f"  REJEITADA pelo especialista: {vesp['motivos']}")
+            rejeitados.append((nome, "especialista: " + "; ".join(vesp["motivos"][:2])))
+            continue
+
         rc, log = corr([sys.executable, str(BASE / "validar_ciclo.py"), str(pasta),
                         tipo, "--nome", nome])
         try:

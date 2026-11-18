@@ -53,6 +53,16 @@ def main():
     detalhe = []
 
     for i, im in enumerate(imagens):
+        # espaçamento >= 1/4 da largura na FOLHA ORIGINAL (requisito (d) do especialista)
+        from validar_imagem import validar_espacamento
+        esp = validar_espacamento(im)
+        if not esp["ok"]:
+            motivos["folha: figuras encostadas (< 1/4 da largura)"] += 1
+            detalhe.append({"imagem": im.name, "motivo": "espacamento",
+                            "figuras": esp["figuras"], "menor_gap": esp["menor_gap"],
+                            "exigido": esp["exigido"]})
+            continue
+
         dest = tmp / im.stem
         corr([sys.executable, str(BASE / "cortar_mascara.py"), str(im), str(dest)])
         n = len(list(dest.glob("f*.png")))
@@ -67,6 +77,22 @@ def main():
             motivos[f"continuidade: nao e Frida nem Luna (min {cs[quem]:.2f})"] += 1
             detalhe.append({"imagem": im.name, "motivo": f"continuidade {cs[quem]:.2f}",
                             "quem": quem})
+            continue
+
+        # porta do ESPECIALISTA: normalizar caixa e validar fundo/tamanho/sombra/figura.
+        # Nenhuma imagem entra no banco sem passar aqui (contrato, seccao 6).
+        import corrigir_multiplos
+        import fixar_proporcoes
+        from validar_imagem import validar as validar_especialista
+        corrigir_multiplos.corrigir(dest)
+        H, aspect = fixar_proporcoes.ALVO[quem]
+        fixar_proporcoes.aplicar(dest, quem, H, round(H * aspect))
+        vesp = validar_especialista(dest, quem, im.stem)
+        if vesp["veredito"] != "ACEITE":
+            motivos["especialista: " + "; ".join(vesp["motivos"][:2])] += 1
+            detalhe.append({"imagem": im.name, "motivo": "especialista",
+                            "quem": quem, "motivos": vesp["motivos"],
+                            "portas": vesp["portas"]})
             continue
 
         melhor = None
@@ -89,7 +115,8 @@ def main():
 
         _, mov, v = melhor
         aprovados.append({"imagem": im, "quem": quem, "mov": mov, "pasta": dest,
-                          "continuidade": cs[quem], "validacao": v})
+                          "continuidade": vesp["scores"]["continuidade"],
+                          "validacao": v, "especialista": vesp})
         motivos["APROVADO"] += 1
         print(f"  OK {im.name[:44]:44} -> {quem}/{mov} cont {cs[quem]:.2f}", flush=True)
 

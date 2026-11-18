@@ -42,6 +42,11 @@ em 18/11/2026. **Se uma regra antiga contradizer este contrato, este ganha.**
 - Fundo **transparente de verdade (RGBA)** — é a primeira linha de todo o prompt.
 - **Sem sombra desenhada**: nem oval cinzenta nem oval creme. A sombra é do compositor.
   Remover por **componente** no corte; nunca apagar pixeis por faixa (estraga o contorno).
+  **Excepção medida (18/11/2026):** o sombreamento/clareza que faz parte da **arte aprovada**
+  (presente na própria `happy.png` de referência: 1616 px creme na Luna, 784 na Frida) NÃO é
+  uma sombra falsa e deve ser preservado — removê-lo quebra a continuidade e cria buracos no
+  contorno (medido: 1402 buracos). A regra proíbe sombras **introduzidas pelo Flow**, não o
+  desenho canónico. Ver `RESOLUCAO-PENDENCIAS.md`.
 - **Espaçamento mínimo de 1/4 da largura** entre figuras na folha — nunca encostadas.
 - 8 quadros numa única linha, mesma altura, pés na mesma baseline, quadro 8 = quadro 1.
 - Sem texto, números, moldura, linha de chão ou gradiente.
@@ -87,12 +92,27 @@ em 18/11/2026. **Se uma regra antiga contradizer este contrato, este ganha.**
 | micro | `validar_ciclo.py` | ≥3 regiões vivas, quadros não idênticos |
 | caixa | `fixar_proporcoes.py` | 173×231 / 167×265 em todos |
 | banco | `registar_novos.py` | nome curto, proveniência, 0 reprovados |
+| cobertura semântica | `verificar_contrato.py` | todo movimento nomeado de `frida`/`luna` em `animacao/movimentos-por-fala.json` existe em `movimentos/manifest.json` (nome/prefixo); falta = porta fechada, com os IDs dos beats afectados |
+| validador especialista | `validar_imagem.py` | **sempre aplicado a todos os ciclos aceites**: tamanho + fundo + continuidade; ficheiro ausente ou ciclo reprovado = porta fechada |
 | timeline | `gerar_timeline.mjs` | 5 882 frames, soma conferida |
 | amostra | Remotion 20 s | revisão humana obrigatória |
-| render final | `npm run render` | só depois da aprovação escrita em `animacao/aprovacao.json` |
+| render final | `npm run render` | exige que o **utilizador** escreva `animacao/aprovacao.json` a partir de `animacao/APROVACAO-TEMPLATE.json`; nunca auto-aprovado |
 
 `verificar_contrato.py` imprime o estado destas portas. `jarvis.py episodio` bloqueia
 se alguma estiver fechada.
+
+**Notas de porta:**
+- `verificar_contrato.py` imprime uma linha por movimento em falta (com os IDs dos beats)
+  e falha se houver algum. A linha final "TODAS AS PORTAS ABERTAS" só é válida se não
+  houver nenhuma linha `[FECH]` acima — ler sempre o blister completo.
+- **Validador especialista sempre aplicado:** nenhum ciclo entra no banco sem passar
+  `validar_imagem.py` (tamanho + fundo + continuidade). Se o ficheiro não existir, a porta
+  está fechada — é obrigatório criá-lo e corrê-lo sobre os ciclos aceites.
+- A aprovação é sempre um acto humano. `animacao/APROVACAO-TEMPLATE.json` é apenas um
+  modelo (`aprovado`, `nota`, `preview`); o render final exige que o utilizador copie o
+  modelo para `animacao/aprovacao.json` depois de rever a amostra. `jarvis.py episodio`
+  recusa o render se esse ficheiro não existir ou tiver `aprovado` falso. Nenhum script
+  cria ou aprova esse ficheiro automaticamente.
 
 ## 7. Mapa de ferramentas
 
@@ -107,17 +127,25 @@ se alguma estiver fechada.
 | cortar / limpar | `cortar_mascara.py`, `corrigir_multiplos.py`, `remover_sombra.py` (só componente) |
 | normalizar | `fixar_proporcoes.py`, `transferir_cor.py` |
 | validar / auditar | `validar_ciclo.py`, `auditoria_consistencia.py`, `processar_download.py` |
+| validador especialista (tamanho + fundo + continuidade) | `validar_imagem.py` |
 | animar | `remotion/gerar_timeline.mjs`, `Episodio.tsx`, `FundosVivos.tsx` |
 | comparar com a origem | `comparar.py` |
 | orquestrar tudo | `jarvis.py` (`status`, `ciclo`, `lote`, `produzir`, `verificar`, `episodio`) |
 
 ## 8. Zaões honestas
 
-- Sem lip-sync real: flap rítmico por RMS, não distingue vogais.
+- **Sem lip-sync real; flap rítmico por RMS, não distingue vogais; não tentar implementar
+  lip-sync falso.** A boca abre e fecha no ritmo do áudio (RMS) — não há correspondência
+  fonema → forma de boca, e não se deve inventar "vogais" por heurística.
 - Sem olhar dirigido por pupila (pupila fixa na folha); a direcção é encenação.
 - Sem interacção física real: abraços são sobreposição de sprites planas.
 - Fundos com parallax real só quando houver camadas separadas; senão é pan do PNG.
 - CTR é privado e nunca se inventa.
+
+**Nota de porta — lip-sync:** se pedirem lip-sync, manter esta limitação explícita e
+reportá-la como zaão, nunca como tarefa pendente a "resolver" com um truque de animação.
+Não fechar esta nota por aproximação: flap rítmico não é lip-sync e o contrato proíbe
+simular vogais.
 
 ## 9. Histórico de decisões do utilizador (18/11/2026)
 
