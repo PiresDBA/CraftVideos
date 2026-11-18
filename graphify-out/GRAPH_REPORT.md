@@ -1,17 +1,17 @@
 # Graph Report - CRAFT  (2026-11-18)
 
 ## Corpus Check
-- 301 files · ~332,163 words
+- 331 files · ~347,614 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 13 file(s) not represented in the graph (top: .cmd 7, .pkl 3, .bat 2)
 
 ## Summary
-- 2630 nodes · 5101 edges · 148 communities (139 shown, 9 thin omitted)
-- Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 253 edges (avg confidence: 0.86)
+- 2785 nodes · 5441 edges · 166 communities (155 shown, 11 thin omitted)
+- Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 254 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d73c55bf`
+- Built from commit: `9dbee32e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -31,9 +31,9 @@
 - Program Reference and Integrations
 - Clone Queue Daemon
 - Explainer Effects Kit
-- numpy
+- rig.py
 - Format Profiler
-- expressoes.py
+- numpy
 - gerar_fundos.py
 - numpy
 - EDL Beat Geometry
@@ -44,19 +44,19 @@
 - Analyze and Generate
 - pathlib
 - Luninha e Fridoca Story
-- Script Generation
+- yt-script.mjs
 - Card Scaffolding
-- Runtime Detection
+- json
 - Train Scene React Code
 - Bot Chain and Audio v1
 - fatiar_grelha.py
 - Card Config
 - Plano de lip-sync — “O Parque dos Pets” (Frida & Luna)
-- build_erase_mask
+- expressoes.py
 - CLI Helper Wrapper
 - Smart Render CLI
 - Canvas
-- roteiro_para_cenas.mjs
+- rig_estendido.py
 - Preflight Checks
 - Studio Catalog
 - Channel Scanner
@@ -66,29 +66,29 @@
 - espec-planos.md
 - Plano de lip-sync — “O Parque dos Pets” (Frida & Luna)
 - Studio Panel Builder
-- Pipeline Orchestrator
+- ref_path
 - build_sequence_plan.py
 - Channel Scoring Pipeline
-- math
+- rig_walk.py
 - reconstruir_ciclos.py
 - Personagens — ficha técnica (aprovada 2026-11-17)
 - O Parque dos Pets — beat sheet
-- qbez
+- preparar_publico.mjs
 - TAREFAS DO TIME — historinha "Luna e Frida no Espaço Sideral"
 - _iris
 - Canvas
-- cache.test.mjs
+- Uma frase com palavra em laranja (textStyle.mode caption)
 - Studio CLI
 - validar_imagem.py
 - manifest.json
-- render
+- sys
 - O Parque dos Pets — especificação de planos
 - Factory Map Docs
 - Channel Classifier Core
 - Lint Scope Analysis
-- Layout Tests
+- buildSceneClips
 - OpenMontage Catalog
-- Remotion Motion Render
+- scipy
 - Relatório — Auditoria Visual dos 5 ciclos (Frida & Luna)
 - World Ranking Export
 - DIREÇÃO DE ARTE — historinha "Luna e Frida no Espaço Sideral"
@@ -103,7 +103,7 @@
 - Classifier Functions
 - JS Lint Utilities
 - Plano de lip-sync — “O Parque dos Pets” (Frida & Luna) (2)
-- argparse
+- processar_semanticos.py
 - Stems — O Parque dos Pets
 - Master Studio Skills
 - json
@@ -135,7 +135,7 @@
 - FundosVivos.tsx
 - escuta
 - apply_green
-- eye_meio_fechado
+- draw_iris
 - Micro-movimentos obrigatórios — regra do motor
 - Desenhos da historinha — Luna e Frida (2D à mão)
 - AGENTES.md
@@ -160,20 +160,38 @@
 - Relatório — Banco de Movimentos Semânticos (Frida & Luna)
 - Resolução das pendências da Auditoria Visual
 - frida
-- blender_integration.mjs
-- effectcraft_integration.mjs
+- gen_edit.py
+- acenar.py
+- desenhar_esboco
+- validar-avatar-v2.py
+- animar_tira.py
+- rig_gesto.py
+- rig_novo.py
+- cena01_compor.py
+- RELATÓRIO — RIG ESTENDIDO (Frida & Luna)
+- yt-audit.mjs
+- RELATÓRIO — GESTOS VISÍVEIS (rig_gesto.py)
+- card10.py
+- fatiar_grelha.py
+- RELATÓRIO — movimento ACENAR (tchau)
+- cortar_fila.py
+- cortar_grade.py
+- _dedos
+- medir_pes.py
+- normalizar_canvas.py
+- remover_sombra.py
 
 ## God Nodes (most connected - your core abstractions)
 1. `main()` - 32 edges
-2. `run()` - 21 edges
-3. `build_variant()` - 20 edges
-4. `assinatura()` - 20 edges
-5. `distancia()` - 20 edges
-6. `main()` - 19 edges
-7. `grab_image()` - 18 edges
-8. `Prompts — os 13 movimentos em falta (Frida e Luna)` - 18 edges
-9. `Especificação Técnica — As Quatro Estações (revisão 2, Curador-Prompts → Diretor-Arte)` - 18 edges
-10. `buildNarrationForLanguage()` - 17 edges
+2. `validar()` - 26 edges
+3. `run()` - 21 edges
+4. `assinatura()` - 21 edges
+5. `distancia()` - 21 edges
+6. `build_variant()` - 20 edges
+7. `main()` - 19 edges
+8. `grab_image()` - 18 edges
+9. `Prompts — os 13 movimentos em falta (Frida e Luna)` - 18 edges
+10. `Especificação Técnica — As Quatro Estações (revisão 2, Curador-Prompts → Diretor-Arte)` - 18 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Gates de qualidade Q1–Q8` --semantically_similar_to--> `Mix de prévia v2 — 163,415 s, -14,0 LUFS, valsa a -22 dB`  [AMBIGUOUS] [semantically similar]
@@ -200,15 +218,15 @@
 - **Direção visual Grand Budapest de As Quatro Estações (câmera, luz, paleta, dissolve, cortes, inserts)** — video_orquestracao_public_assets_especificacao_tecnica_quatro_estacoes_camera_master_continuo, video_orquestracao_public_assets_especificacao_tecnica_quatro_estacoes_direcao_luz_estacoes, video_orquestracao_public_assets_especificacao_tecnica_quatro_estacoes_paleta_grand_budapest, video_orquestracao_public_assets_especificacao_tecnica_quatro_estacoes_dissolucao_estacoes_shader, video_orquestracao_public_assets_especificacao_tecnica_quatro_estacoes_transicoes_estacao_t1_t4, video_orquestracao_public_assets_especificacao_tecnica_quatro_estacoes_inserts_detalhe [INFERRED 0.85]
 - **Flat Four-Seasons Visual Identity: artwork, palette and costume form one design system** — video_orquestracao_public_assets_avatar_avatar_mascote_flat_quatro_estacoes_artwork, video_orquestracao_public_assets_avatar_avatar_mascote_flat_quatro_estacoes_paleta_visual, video_orquestracao_public_assets_avatar_avatar_mascote_flat_quatro_estacoes_traje_mascote [INFERRED 0.85]
 
-## Communities (148 total, 9 thin omitted)
+## Communities (166 total, 11 thin omitted)
 
 ### Community 0 - "blender_diorama.py"
-Cohesion: 0.06
-Nodes (44): blenderCard(), add_area(), animate(), assign(), bevel(), box(), build_backdrop(), build_books() (+36 more)
+Cohesion: 0.08
+Nodes (33): add_area(), animate(), assign(), bevel(), box(), build_backdrop(), build_books(), build_cove() (+25 more)
 
 ### Community 1 - "yt-clone-build Engine"
-Cohesion: 0.06
-Nodes (51): run(), ARG_ERRORS, buildCards(), buildNarrationForLanguage(), carregarOpus5(), CC, CONFIG_PATH, consultarReferenciasOpus5() (+43 more)
+Cohesion: 0.05
+Nodes (69): detectVRAM(), httpPost(), pythonEnv(), run(), ARG_ERRORS, argAll(), buildCards(), buildNarrationForLanguage() (+61 more)
 
 ### Community 2 - "ArtCraft Dispatcher CLI"
 Cohesion: 0.07
@@ -232,55 +250,55 @@ Nodes (33): addVideo(), inferAudience(), isShortVideo(), listRunFiles(), main(),
 
 ### Community 7 - "ref_node_fs"
 Cohesion: 0.08
-Nodes (21): CLI, correr(), created, HERE, created, ENGINE, HERE, runEngine() (+13 more)
+Nodes (23): hashText(), narrationCachePath(), narrationFingerprint(), readNarrationCache(), VOICE_FIELDS, writeNarrationCache(), CLI, correr() (+15 more)
 
 ### Community 8 - "visuals.mjs"
 Cohesion: 0.11
-Nodes (25): comfyFree(), comfyImage(), comfyStatus(), comfyVideo(), download(), queue(), waitResult(), dioramaClip() (+17 more)
+Nodes (23): comfyFree(), comfyImage(), comfyStatus(), comfyVideo(), download(), queue(), waitResult(), blenderCard() (+15 more)
 
 ### Community 9 - "Bíblia de estilo — *O Parque dos Pets* (Frida & Luna, recriado)"
 Cohesion: 0.06
 Nodes (34): 0. Identidade — o que estamos a fazer e o que está proibido, 10. Nomenclatura, 1. O que foi medido na referência, 2.1 As seis cores fixas, 2.2 Três acentos de identidade (área total ≤ 8 % do quadro), 2.3 As 11 cenas distinguem-se por *luz*, não por matiz, 2.4 Proporções de área por quadro, 2.5 Regra do contorno (+26 more)
 
 ### Community 10 - "Research Dashboard"
-Cohesion: 0.11
-Nodes (19): DASH, DATA, fail(), ok(), PORT, CloneManager, CONFIG, escapeHtml() (+11 more)
+Cohesion: 0.16
+Nodes (14): CloneManager, CONFIG, escapeHtml(), generateCategoryButtons(), generateChannelCards(), generateChannelOptions(), generateHTML(), generateRecentClones() (+6 more)
 
 ### Community 11 - "ASS and SRT Subtitles"
 Cohesion: 0.18
-Nodes (25): assDialogue() — construtor único das linhas Dialogue, Bug do campo Effect em falta no Dialogue ASS, keyWords / keywordsWithFallback (selecção de palavras-chave), assDialogue(), assStyleHeader(), assTime(), buildASS(), buildSRT() (+17 more)
+Nodes (24): assDialogue() — construtor único das linhas Dialogue, Bug do campo Effect em falta no Dialogue ASS, keyWords / keywordsWithFallback (selecção de palavras-chave), assDialogue(), assStyleHeader(), assTime(), buildASS(), buildSRT() (+16 more)
 
 ### Community 12 - "Program Reference and Integrations"
 Cohesion: 0.12
-Nodes (18): fs, path, run(), shortMenu(), generateAsset(), main(), generateAsset(), main() (+10 more)
+Nodes (16): fs, path, run(), shortMenu(), generateAsset(), main(), main(), renderCard() (+8 more)
 
 ### Community 13 - "Clone Queue Daemon"
 Cohesion: 0.11
 Nodes (31): ALL_PHASES, appendQueue(), arg(), AUTO_EXECUTE, buildCloneArgs(), cloneJobPublic(), cloneJobs, DASH (+23 more)
 
 ### Community 14 - "Explainer Effects Kit"
-Cohesion: 0.11
-Nodes (42): pad(), rows, Referência medida ref5 (yccXYW5liLE, ref1080.mp4), yt-ref-anatomy.mjs (medição de referência sem dependências), Manual Animado (deck HTML de 9 páginas da Fábrica), Medidor de formato (yt-format-profile.mjs, exemplo Jazzghost), Estado 2026-11-15 (yryryr, Wav2Lip, loop do avatar, telemetria), advance() (+34 more)
+Cohesion: 0.19
+Nodes (31): advance(), argv, BUILD, buildCaptions(), buildNeonGrid(), buildPanelStack(), buildPresenterZone(), buildSplitBand() (+23 more)
 
-### Community 15 - "numpy"
-Cohesion: 0.06
-Nodes (26): main(), sem_fundo(), alfa_suave(), main(), mascara_figuras(), contact(), main(), centro_tronco() (+18 more)
+### Community 15 - "rig.py"
+Cohesion: 0.12
+Nodes (11): alinhar(), construir(), cor_contorno(), cor_lingua(), desenhar_boca(), limpar_boca(), limpar_sombra(), main() (+3 more)
 
 ### Community 16 - "Format Profiler"
 Cohesion: 0.09
 Nodes (25): discoverTools(), findInTree(), flag(), KNOWN, requireTool(), SCAN_ROOTS, TOOLS, which() (+17 more)
 
-### Community 17 - "expressoes.py"
-Cohesion: 0.12
-Nodes (9): contact_sheet(), eye_espiral(), _font(), main(), mouth_aberta(), mouth_ondulada(), x_lagrima(), x_suor() (+1 more)
+### Community 17 - "numpy"
+Cohesion: 0.09
+Nodes (15): corrigir(), largura(), main(), centro_tronco(), main(), frac_sup_imagem(), diff(), altura() (+7 more)
 
 ### Community 18 - "gerar_fundos.py"
-Cohesion: 0.06
-Nodes (33): aplicar_borda_papel(), aplicar_temperatura(), carregar_imagem(), construir_workflow(), _coracao(), descarregar(), desenhar_cartao(), desenhar_esboco() (+25 more)
+Cohesion: 0.11
+Nodes (19): aplicar_borda_papel(), aplicar_temperatura(), carregar_imagem(), construir_workflow(), _coracao(), descarregar(), desenhar_cartao(), ErroComfy (+11 more)
 
 ### Community 19 - "numpy"
-Cohesion: 0.11
-Nodes (13): compor(), main(), pose_normalizada(), alpha_do_creme(), contact_sheet(), descontaminar(), fatiar(), main() (+5 more)
+Cohesion: 0.14
+Nodes (10): compor(), main(), pose_normalizada(), alpha_do_creme(), contact_sheet(), descontaminar(), fatiar(), main() (+2 more)
 
 ### Community 20 - "EDL Beat Geometry"
 Cohesion: 0.11
@@ -306,25 +324,21 @@ Nodes (12): candidates, confirmed, DAYS, floor, MIN_VIEWS, OUT, pick, QUERIES (+
 Cohesion: 0.16
 Nodes (19): analyzeReference(), arg(), buildScriptFromFacts(), EDGE_TTS, EFFECT_CLI, extractColorTempo(), FFMPEG, FFPROBE (+11 more)
 
-### Community 26 - "pathlib"
-Cohesion: 0.04
-Nodes (17): caixa(), main(), render_char(), render(), extract_frame(), main(), contactos(), main() (+9 more)
-
 ### Community 27 - "Luninha e Fridoca Story"
 Cohesion: 0.22
 Nodes (14): PRESENTERS, Apresentadoras Frida (bulldog) e Luna (dachshund), ffmpeg concat list — Luninha e Fridóca (10 cenas + silêncios alternados), Catálogo de avatares cartoon 2D (Quatro Estações), Avatar Buldogue inglês (id buldogue-ingles, padrão atual), Avatar Mascote Quatro Estações (chapéu terracota, cachecol mostarda, passarinho), Avatar Menina de cabelo escuro (id menina-cabelo-escuro), Avatar Menino de cabelo loiro (id menino-cabelo-loiro) (+6 more)
 
-### Community 28 - "Script Generation"
-Cohesion: 0.11
-Nodes (19): child, arg(), attempt(), DEFAULT_CHAIN, env, ENV_PATH, finish(), FORMAT_PATH (+11 more)
+### Community 28 - "yt-script.mjs"
+Cohesion: 0.05
+Nodes (41): Contrato de Direção (active_speaker / frida_state / luna_state), Cache de narração por fingerprint (narrationFingerprint), pad(), rows, child, arg(), attempt(), DEFAULT_CHAIN (+33 more)
 
 ### Community 29 - "Card Scaffolding"
 Cohesion: 0.31
 Nodes (17): ARCHETYPE_NAMES, archetypeFor(), ARCHETYPES, cmds(), fullGraphic(), mono(), neonGrid(), neonRect() (+9 more)
 
-### Community 30 - "Runtime Detection"
-Cohesion: 0.12
-Nodes (18): detectVRAM(), findFfmpeg(), httpGet(), httpPost(), killTree(), pythonEnv(), server(), fetchBroll() (+10 more)
+### Community 30 - "json"
+Cohesion: 0.11
+Nodes (8): assinatura(), distancia(), fontes(), main(), main(), movimento_da_accao(), detectar(), main()
 
 ### Community 31 - "Train Scene React Code"
 Cohesion: 0.16
@@ -335,20 +349,20 @@ Cohesion: 0.14
 Nodes (29): VoiceCraft (servidor TTS local :8090), voice, VoiceCraft: cascata de 10 provedores TTS, Piper TTS (voz offline gratuita do OpenMontage), Bot 4 — Especialista-Áudio e Avatar, AGENTS.md — mapa vivo do ecossistema Video Orchestrator, Relatório técnico Áudio e Avatar v1 (backup 106,632 s, 2026-11-16), Avatar Wav2Lip v1 — 600x704, 25fps, 15,0 s, placeholder s0.jpg (+21 more)
 
 ### Community 33 - "fatiar_grelha.py"
-Cohesion: 0.06
-Nodes (9): fatiar(), main(), sem_fundo(), clean(), is_background(), main(), sem_fundo(), main() (+1 more)
+Cohesion: 0.09
+Nodes (4): clean(), is_background(), main(), sem_fundo()
 
 ### Community 34 - "Card Config"
-Cohesion: 0.15
-Nodes (18): applyOverride(), CARD_ENGINES, DEFAULTS, flatKey(), loadConfig(), RAW_CONFIG, rawConfig(), redactConfig() (+10 more)
+Cohesion: 0.18
+Nodes (14): applyOverride(), CARD_ENGINES, DEFAULTS, flatKey(), loadConfig(), RAW_CONFIG, rawConfig(), redactConfig() (+6 more)
 
 ### Community 35 - "Plano de lip-sync — “O Parque dos Pets” (Frida & Luna)"
 Cohesion: 0.12
 Nodes (16): 0. Resumo executivo, 10. Limites que ficam escritos, 11. Ficheiros desta entrega, 1. Porque não se usa avatar neuronal, 2. Janela de análise: 40 ms, passo 1 frame, 3. Normalização e limiares (valores medidos, não inventados), 4. Quantos níveis: 3 (não 4), 6. Quem fala (vem de `beats.json`, `speaker`) (+8 more)
 
-### Community 36 - "build_erase_mask"
-Cohesion: 0.13
-Nodes (8): build_alpha(), build_erase_mask(), _components(), inpaint(), load_char(), _lum(), _pinkish(), _poly_mask()
+### Community 36 - "expressoes.py"
+Cohesion: 0.06
+Nodes (26): apply_green(), build_alpha(), build_erase_mask(), _components(), contact_sheet(), draw_brow(), _ellipse_mask(), eye_fechado() (+18 more)
 
 ### Community 37 - "CLI Helper Wrapper"
 Cohesion: 0.18
@@ -358,13 +372,13 @@ Nodes (13): Explainer effects kit (9 composições EffectCraft), Kit de efeitos 
 Cohesion: 0.26
 Nodes (13): ARGS, CLI_PATH, defaultOutPath(), __dirname, __filename, listCompositionsFromProject(), main(), PROJECT_PATH (+5 more)
 
-### Community 40 - "roteiro_para_cenas.mjs"
+### Community 40 - "rig_estendido.py"
 Cohesion: 0.16
-Nodes (15): Contrato de Direção (active_speaker / frida_state / luna_state), wav2lipSync(), Gates de qualidade Q1–Q8, CraftVideos — workspace do pipeline de clonagem, buildScenes(), firstSentence(), headlineFor(), main() (+7 more)
+Nodes (13): compor_pil(), construir(), escalar(), escalar_local(), gerar(), limpar_detritos(), main(), mask_from() (+5 more)
 
 ### Community 41 - "Preflight Checks"
-Cohesion: 0.18
-Nodes (14): DRIVERS_GENERICOS, formatPreflight(), resolvePath(), runPreflight(), speakerOf(), templatesDoScript(), ensureSeamlessLoop(), probeDuration() (+6 more)
+Cohesion: 0.16
+Nodes (16): BASE_DO_TEMPLATE, DRIVERS_GENERICOS, formatPreflight(), PASTA_DRIVERS, resolvePath(), runPreflight(), speakerOf(), templatesDoScript() (+8 more)
 
 ### Community 42 - "Studio Catalog"
 Cohesion: 0.19
@@ -398,9 +412,9 @@ Nodes (12): Regras de ouro (8) da cadeia Frida & Luna, Sinal vem de audio/voz.wa
 Cohesion: 0.23
 Nodes (12): appCard(), byCat, cat, catBlock(), cats, compChips, esc(), ICON (+4 more)
 
-### Community 50 - "Pipeline Orchestrator"
-Cohesion: 0.31
-Nodes (3): raw, CraftPipeline, main()
+### Community 50 - "ref_path"
+Cohesion: 0.15
+Nodes (9): main(), runBlenderCard(), generateAsset(), main(), main(), renderCard(), raw, CraftPipeline (+1 more)
 
 ### Community 51 - "build_sequence_plan.py"
 Cohesion: 0.23
@@ -410,13 +424,13 @@ Nodes (6): agrupar_cenas(), carregar_beats(), construir_plano(), frame_de(), mai
 Cohesion: 0.21
 Nodes (9): loadSamples(), main(), OUT, pipelineFor(), SAMPLES, SCAN, scoreChannel(), THRESHOLD (+1 more)
 
-### Community 53 - "math"
-Cohesion: 0.18
-Nodes (9): beat_at(), bg_1080(), main(), sprite(), eye_espiral(), carregar(), main(), partes() (+1 more)
+### Community 53 - "rig_walk.py"
+Cohesion: 0.36
+Nodes (4): carregar(), main(), partes(), rot()
 
 ### Community 54 - "reconstruir_ciclos.py"
 Cohesion: 0.11
-Nodes (21): check(), main(), medir_sprite(), nome_tem(), sprites(), assinatura(), distancia(), main() (+13 more)
+Nodes (20): check(), main(), medir_sprite(), nome_tem(), sprites(), assinatura(), distancia(), main() (+12 more)
 
 ### Community 55 - "Personagens — ficha técnica (aprovada 2026-11-17)"
 Cohesion: 0.48
@@ -426,9 +440,9 @@ Nodes (5): As 11 cenas (hook → final), 44 frases com tempos, falante, express�
 Cohesion: 0.17
 Nodes (12): abertura —   16.8s →   27.6s ( 10.8s), bolinhas —  111.8s →  125.7s ( 13.8s), carrossel —   94.2s →  110.8s ( 16.6s), espelhos —  141.6s →  156.1s ( 14.5s), final —  169.8s →  190.4s ( 20.6s), hook —    3.9s →   15.3s ( 11.5s), montanha —   44.2s →   75.9s ( 31.7s), moral —  157.0s →  168.7s ( 11.7s) (+4 more)
 
-### Community 57 - "qbez"
-Cohesion: 0.17
-Nodes (6): eye_fechado(), mouth_franzida(), mouth_lingua(), mouth_sorriso(), mouth_sorriso_grande(), qbez()
+### Community 57 - "preparar_publico.mjs"
+Cohesion: 0.16
+Nodes (16): comfyFree(), comfyImage(), comfyVideo(), download(), queue(), waitResult(), alvo, AQUI (+8 more)
 
 ### Community 58 - "TAREFAS DO TIME — historinha "Luna e Frida no Espaço Sideral""
 Cohesion: 0.18
@@ -442,25 +456,25 @@ Nodes (6): eye_aberto(), eye_lado(), eye_meio_fechado(), _fill(), eye_muito_aber
 Cohesion: 0.22
 Nodes (10): Identidade visual fixa, Banda dos apresentadores em y=771 (0,714 da altura), Ordem obrigatória de 6 camadas (fundo → grão/vinheta), Formato 9:16 com a mesma timeline (5 882 frames), Paleta de seis cores fixas + três acentos, Oito portões de QA (grep useFrame, soma 5 882, paleta, contact sheet, LUFS), Regra do contorno (9/5/7 px, #2A1A12, tremor de mão ±1,5 px), Temperatura de luz por cena (11 valores, curva dia→noite) (+2 more)
 
-### Community 61 - "cache.test.mjs"
-Cohesion: 0.19
-Nodes (13): Cache de narração por fingerprint (narrationFingerprint), hashText(), narrationCachePath(), narrationFingerprint(), readNarrationCache(), VOICE_FIELDS, writeNarrationCache(), Uma frase com palavra em laranja (textStyle.mode caption) (+5 more)
+### Community 61 - "Uma frase com palavra em laranja (textStyle.mode caption)"
+Cohesion: 0.27
+Nodes (9): Uma frase com palavra em laranja (textStyle.mode caption), Layout por plano (sceneLayout, splitRatio, textSide), Referência medida ref5 (yccXYW5liLE, ref1080.mp4), Anatomia medida: 33 planos, 31,9 cortes/min, divisão 17–79%, Layout dividido topo/baixo (formato do nicho), 9 composições EffectCraft E1–E9 (whiteboard, caption, neon grid, ui panel, split, …), Página de resultado — Explainer effects (9 composições), Short de referência yccXYW5liLE (60,23 s, 33 planos, ritmo 1,83 s/plano, acento #FF6A00) (+1 more)
 
 ### Community 62 - "Studio CLI"
 Cohesion: 0.22
 Nodes (7): all(), cat, catalog, groups, HERE, items(), CATALOG
 
 ### Community 63 - "validar_imagem.py"
-Cohesion: 0.24
-Nodes (8): _borda(), _componentes(), main(), _porta_caixa(), _porta_fundo(), _porta_sombra(), _porta_uma(), validar()
+Cohesion: 0.13
+Nodes (10): main(), main(), _borda(), _componentes(), main(), _porta_caixa(), _porta_fundo(), _porta_sombra() (+2 more)
 
 ### Community 64 - "manifest.json"
 Cohesion: 0.20
 Nodes (9): falhas, fundos, gerador, projeto, resolucao_padrao, altura, largura, servidor (+1 more)
 
-### Community 65 - "render"
-Cohesion: 0.20
-Nodes (5): apply_green(), draw_brow(), _ellipse_mask(), _filter_line(), render()
+### Community 65 - "sys"
+Cohesion: 0.19
+Nodes (6): extract_frame(), main(), env_float(), env_int(), rep(), main()
 
 ### Community 66 - "O Parque dos Pets — especificação de planos"
 Cohesion: 0.20
@@ -478,17 +492,17 @@ Nodes (7): Classificação Dark em taxonomy.json (flags, não nicho), EMPTY_AI, 
 Cohesion: 0.43
 Nodes (5): maskJs(), topLevelFunctions(), declaredIn(), identifiers(), KEYWORDS
 
-### Community 70 - "Layout Tests"
-Cohesion: 0.42
-Nodes (8): layoutMetrics(), sceneLayout(), baseCfg, textAnchorY(), buildMotionCards(), buildSceneClips(), sceneFilter(), topEngineOf()
+### Community 70 - "buildSceneClips"
+Cohesion: 0.19
+Nodes (16): layoutMetrics(), sceneLayout(), baseCfg, textAnchorY(), sceneKicker(), t0, buildMotionCards(), buildRemotionCards() (+8 more)
 
 ### Community 71 - "OpenMontage Catalog"
 Cohesion: 0.29
 Nodes (7): compositions, pipelines, OpenMontage: 98 skills utilizáveis (§3.2), 13 pipelines do OpenMontage, 13 composições Remotion catalogadas, OpenMontage (produção agêntica de vídeo, AGPLv3), Teste Remotion (TalkingHead com Frida, 90 frames)
 
-### Community 72 - "Remotion Motion Render"
-Cohesion: 0.36
-Nodes (7): t0, buildRemotionCards(), REMOTION_CLI, REMOTION_COMPOSER, remotionAvailable(), renderKineticCard(), runNode()
+### Community 72 - "scipy"
+Cohesion: 0.19
+Nodes (7): alfa_suave(), main(), mascara_figuras(), main(), mascara(), recortar(), 1. frida/escuta — DANIFICADO, corrigido
 
 ### Community 73 - "Relatório — Auditoria Visual dos 5 ciclos (Frida & Luna)"
 Cohesion: 0.17
@@ -503,12 +517,12 @@ Cohesion: 0.25
 Nodes (7): 1. Estilo final — FECHADO, 2. Nomes, 3. FPS / frames / resolução, 4. Paleta (proposta, sujeita à lousa crítica), 5. Critério de aceite — lousa crítica (obrigatório), 6. O que cada um faz agora (distribuição de demandas), DIREÇÃO DE ARTE — historinha "Luna e Frida no Espaço Sideral"
 
 ### Community 76 - "shutil"
-Cohesion: 0.09
-Nodes (17): avaliar(), main(), corrigir(), largura(), main(), aplicar(), bbox(), main() (+9 more)
+Cohesion: 0.11
+Nodes (12): avaliar(), main(), aplicar(), bbox(), main(), main(), main(), carregar_partes() (+4 more)
 
 ### Community 77 - "subprocess"
 Cohesion: 0.08
-Nodes (20): avaliar(), main(), serie(), cortar(), main(), validar(), main(), is_blank() (+12 more)
+Nodes (18): main(), gerar(), main(), is_blank(), main(), energia(), envelope(), main() (+10 more)
 
 ### Community 78 - "Mascot SVG Artwork"
 Cohesion: 0.48
@@ -542,9 +556,9 @@ Nodes (5): createClassifier(), applyOverride(), classifyChannel(), scoreAi(), ve
 Cohesion: 0.40
 Nodes (5): 5.1 Estrutura de sprite exigida ao Artista-desenho, 5.2 Pose → tratamento da boca, 5.3 Poses que já têm a boca aberta no desenho, 5.4 Movimento secundário (não áudio), 5. Como casar com as poses das folhas de expressão
 
-### Community 87 - "argparse"
-Cohesion: 0.13
-Nodes (11): BASE_DO_TEMPLATE, PASTA_DRIVERS, main(), ler_png(), main(), carregar(), continuidade(), generico() (+3 more)
+### Community 87 - "processar_semanticos.py"
+Cohesion: 0.18
+Nodes (11): continuidade(), corr(), cortar_fallback(), main(), carregar(), continuidade(), generico(), main() (+3 more)
 
 ### Community 88 - "Stems — O Parque dos Pets"
 Cohesion: 0.50
@@ -555,32 +569,32 @@ Cohesion: 0.67
 Nodes (3): OUT, Master Studio (painel gerado de studio.catalog.json), 92 skills por área (Master Studio)
 
 ### Community 91 - "json"
-Cohesion: 0.15
-Nodes (25): 7. Mapa de ferramentas, assinatura(), distancia(), fontes(), main(), ciclo(), comparar(), descarregar() (+17 more)
+Cohesion: 0.18
+Nodes (21): 7. Mapa de ferramentas, ciclo(), comparar(), descarregar(), episodio(), estado(), estado_curto(), experimentar() (+13 more)
 
 ### Community 92 - "expressoes_v3.py"
-Cohesion: 0.14
-Nodes (10): _anchors(), arc3(), draw_brow(), eye_fechado(), mouth_aberta(), mouth_franzida(), mouth_ondulada(), mouth_sorriso() (+2 more)
+Cohesion: 0.16
+Nodes (14): _anchors(), arc3(), draw_brow(), eye_fechado(), mouth_aberta(), mouth_franzida(), mouth_lingua(), mouth_ondulada() (+6 more)
 
 ### Community 93 - "re"
-Cohesion: 0.11
-Nodes (16): bloco_micro(), blocos(), descarregar(), main(), submeter(), bloco_micro(), descarregar(), gestos_por_nome() (+8 more)
+Cohesion: 0.12
+Nodes (20): ler_png(), main(), bloco_micro(), blocos(), descarregar(), main(), submeter(), bloco_micro() (+12 more)
 
 ### Community 94 - "Prompts — os 13 movimentos em falta (Frida e Luna)"
 Cohesion: 0.11
 Nodes (18): 10. Frida — olhar, 11. Luna — olhar, 12. Frida — abraçar, 13. Luna — abraçar, 1. Frida — escuta (PRIORIDADE MÁXIMA, 31 beats), 2. Luna — escuta (PRIORIDADE MÁXIMA, 33 beats), 3. Frida — fala (PRIORIDADE ALTA), 4. Frida — corrida (+10 more)
 
 ### Community 95 - "flow_fetch_proj.py"
-Cohesion: 0.18
+Cohesion: 0.19
 Nodes (10): _classify_screen(), _gemini_tts_key(), generate_audio_gemini(), _generic_prompt(), _norm_ascii(), _read_env_value(), _simplified_prompt(), _soften_prompt() (+2 more)
 
 ### Community 96 - "submit_flow_prompt"
-Cohesion: 0.19
-Nodes (8): _dismiss_overlays(), editor(), _loc_first_visible(), select_image_mode(), select_x1(), submit_flow_prompt(), ler_editor(), _toggle_checked()
+Cohesion: 0.16
+Nodes (9): attach_reference(), _dismiss_overlays(), editor(), _loc_first_visible(), select_image_mode(), select_x1(), submit_flow_prompt(), ler_editor() (+1 more)
 
 ### Community 97 - "grab_image"
-Cohesion: 0.14
-Nodes (8): attach_reference(), count_dl(), _enforce_characters(), _enforce_image_only(), grab_image(), _imagem_repetida(), _last_screen_text(), pe()
+Cohesion: 0.13
+Nodes (9): _bytes_igual_ref(), count_dl(), _enforce_characters(), _enforce_image_only(), fetch_url(), grab_image(), on_resp(), _imagem_repetida() (+1 more)
 
 ### Community 98 - "load_char"
 Cohesion: 0.16
@@ -603,8 +617,8 @@ Cohesion: 0.17
 Nodes (6): column_fill(), diffuse_fill(), _down_weighted(), inpaint(), inpaint_zone(), _jacobi()
 
 ### Community 104 - "grab_media"
-Cohesion: 0.20
-Nodes (7): _bytes_igual_ref(), _copiar_para_banco(), fetch_url(), on_resp(), grab_media(), is_generating(), try_download()
+Cohesion: 0.18
+Nodes (8): _copiar_para_banco(), dismiss_ads_and_permissions(), grab_media(), grab_text(), is_generating(), LoginRequired, open_fresh(), save_bytes()
 
 ### Community 105 - "Motor Flow — gerar movimento, baixar, cortar, guardar"
 Cohesion: 0.17
@@ -615,12 +629,12 @@ Cohesion: 0.18
 Nodes (10): 1.1 O que as 16 folhas realmente tem, 1.2 Já existe um piscar verdadeiro no banco, 1.3 Esquema concreto a aplicar, 1.4 Limites do piscar, 2.1 Medição de todos os ciclos registados, 2.3 Os 3 ciclos a gerar a seguir (por beats desbloqueados), 2.4 Entradas a remover por serem coxas, 2.5 Limites honestos (+2 more)
 
 ### Community 107 - "render"
-Cohesion: 0.20
-Nodes (18): draw_iris(), drop_pts(), eye_aberto(), eye_coracao(), eye_lado(), eye_muito_aberto(), _glint(), heart_pts() (+10 more)
+Cohesion: 0.25
+Nodes (10): drop_pts(), eye_coracao(), _glint(), heart_pts(), render(), x_coracoes(), x_lagrima(), x_rubor() (+2 more)
 
 ### Community 108 - "main"
 Cohesion: 0.29
-Nodes (10): cdp_alive(), default_profile(), grab_text(), latest_project(), launch_chrome(), load_prompts(), main(), resolve_project_dir() (+2 more)
+Nodes (9): cdp_alive(), default_profile(), latest_project(), launch_chrome(), load_prompts(), main(), resolve_project_dir(), _resolve_project_dir() (+1 more)
 
 ### Community 109 - "Processo de produção — vídeo animado a partir de uma fonte"
 Cohesion: 0.18
@@ -666,6 +680,10 @@ Nodes (11): abertura_pes, altura_sprite, ficheiros, fonte, fps, frames, nota, pa
 Cohesion: 0.29
 Nodes (5): apply_green(), build_alpha(), ellipse_mask(), lum_of(), sample_palette()
 
+### Community 120 - "draw_iris"
+Cohesion: 0.25
+Nodes (6): draw_iris(), eye_aberto(), eye_lado(), eye_meio_fechado(), body(), eye_muito_aberto()
+
 ### Community 121 - "Micro-movimentos obrigatórios — regra do motor"
 Cohesion: 0.25
 Nodes (7): Bloco para injectar no prompt (inglês), Frida — regiões obrigatórias, Luna — regiões obrigatórias, Micro-movimentos obrigatórios — regra do motor, Negativo — acrescentar, Princípio, Verificação no motor
@@ -683,8 +701,8 @@ Cohesion: 0.29
 Nodes (6): As três regras que faltavam, Bloco para colar (positivo), Como verificar quando chegar (antes de animar), Diagnóstico que este prompt corrige (medido, não suposto), Negativo, Prompt — ciclo de marcha v3 (perfil puro, duas pernas)
 
 ### Community 125 - "_flow_target_url"
-Cohesion: 0.17
-Nodes (6): dismiss_ads_and_permissions(), _flow_target_url(), _load_flow_state(), LoginRequired, open_fresh(), validate_flow_ready()
+Cohesion: 0.29
+Nodes (3): _flow_target_url(), _load_flow_state(), validate_flow_ready()
 
 ### Community 126 - "O Parque dos Pets — Remotion"
 Cohesion: 0.29
@@ -743,25 +761,89 @@ Cohesion: 0.28
 Nodes (3): componentes(), main(), sem_fundo()
 
 ### Community 142 - "movimentos.py"
-Cohesion: 0.50
-Nodes (6): cmd_listar(), cmd_registar(), cmd_render(), load_man(), main(), save_man()
+Cohesion: 0.23
+Nodes (9): eye_espiral(), mouth_ondulada(), eye_espiral(), cmd_listar(), cmd_registar(), cmd_render(), load_man(), main() (+1 more)
 
 ### Community 143 - "Relatório — Banco de Movimentos Semânticos (Frida & Luna)"
-Cohesion: 0.25
-Nodes (7): 1. Análise das 26 imagens do teste inicial, 2. Validador especialista — `validar_imagem.py`, 3. Geração, processamento e registo, 4. Banco final (20 ciclos), 5. Limitações honestas, Relatório — Banco de Movimentos Semânticos (Frida & Luna), Resultado final
+Cohesion: 0.16
+Nodes (11): continuidade(), corr(), main(), 1. Análise das 26 imagens do teste inicial, 2. Validador especialista — `validar_imagem.py`, 3. Geração, processamento e registo, 4. Banco final (20 ciclos), 5. Limitações honestas (+3 more)
 
 ### Community 144 - "Resolução das pendências da Auditoria Visual"
 Cohesion: 0.40
 Nodes (4): Estado, Pendência 1 — oval creme sob os pés da Luna, Pendência 2 — `luna/olhar`: frente vs perfil, Resolução das pendências da Auditoria Visual
 
 ### Community 145 - "frida"
-Cohesion: 0.50
-Nodes (3): personagens, frida, luna
+Cohesion: 0.29
+Nodes (9): fonte, fps, frames, pasta, acenar, acenar, personagens, frida (+1 more)
+
+### Community 146 - "gen_edit.py"
+Cohesion: 0.21
+Nodes (4): main(), post(), attempt(), main()
+
+### Community 147 - "acenar.py"
+Cohesion: 0.26
+Nodes (8): explorar(), extrair_braco(), folha(), gerar(), _interp(), main(), _micro(), rodar_braco()
+
+### Community 148 - "desenhar_esboco"
+Cohesion: 0.23
+Nodes (8): desenhar_esboco(), circulo(), colinas(), forma(), nuvem(), rect(), _elipse_tremida(), _poligono_rasgado()
+
+### Community 149 - "validar-avatar-v2.py"
+Cohesion: 0.33
+Nodes (4): carregar_rgb(), correr_pipeline(), main(), preparar_repo()
+
+### Community 150 - "animar_tira.py"
+Cohesion: 0.29
+Nodes (6): avaliar(), main(), serie(), cortar(), main(), validar()
+
+### Community 151 - "rig_gesto.py"
+Cohesion: 0.29
+Nodes (6): animar_peça(), extrair(), gerar(), _limpar_detritos(), main(), _rodar()
+
+### Community 152 - "rig_novo.py"
+Cohesion: 0.31
+Nodes (7): _alfa_real(), animar_peça(), _comprimir(), extrair(), gerar(), main(), _rodar_peça()
+
+### Community 153 - "cena01_compor.py"
+Cohesion: 0.24
+Nodes (3): caixa(), main(), render_char()
+
+### Community 154 - "RELATÓRIO — RIG ESTENDIDO (Frida & Luna)"
+Cohesion: 0.20
+Nodes (9): As 13 regiões animadas, Limitações honestas, Método, Objetivo, RELATÓRIO — RIG ESTENDIDO (Frida & Luna), Saídas (apenas pastas de teste — NADA instalado no banco), `validar_ciclo.py --quem`, `validar_imagem.py` — 8/8 ACEITE (+1 more)
+
+### Community 155 - "yt-audit.mjs"
+Cohesion: 0.29
+Nodes (5): DASH, DATA, fail(), ok(), PORT
+
+### Community 156 - "RELATÓRIO — GESTOS VISÍVEIS (rig_gesto.py)"
+Cohesion: 0.25
+Nodes (7): Amplitudes, Entregáveis, Limitações honestas, Problema e causa, RELATÓRIO — GESTOS VISÍVEIS (rig_gesto.py), Solução (`work/frida-luna/rig_gesto.py`), Validação — `validar_imagem.py`: 6/6 ACEITE
+
+### Community 157 - "card10.py"
+Cohesion: 0.48
+Nodes (4): beat_at(), bg_1080(), main(), sprite()
+
+### Community 158 - "fatiar_grelha.py"
+Cohesion: 0.43
+Nodes (3): fatiar(), main(), sem_fundo()
+
+### Community 159 - "RELATÓRIO — movimento ACENAR (tchau)"
+Cohesion: 0.29
+Nodes (6): Como foi feito (sem pixéis novos), Estado, Limite honesto, O que foi produzido, RELATÓRIO — movimento ACENAR (tchau), Validação (`validar_imagem.py`)
+
+### Community 162 - "_dedos"
+Cohesion: 0.33
+Nodes (3): _dedos(), _regioes_frida(), _regioes_luna()
+
+### Community 164 - "normalizar_canvas.py"
+Cohesion: 0.60
+Nodes (3): caixa(), main(), normalizar()
 
 ## Ambiguous Edges - Review These
 - `STOP_MARKS` → `re`  [AMBIGUOUS]
   scripts/roteiro_para_cenas.mjs · relation: conceptually_related_to
-- `Gates de qualidade Q1–Q8` → `Mix de prévia v2 — 163,415 s, -14,0 LUFS, valsa a -22 dB`  [AMBIGUOUS]
+- `Mix de prévia v2 — 163,415 s, -14,0 LUFS, valsa a -22 dB` → `Gates de qualidade Q1–Q8`  [AMBIGUOUS]
   CONTRATO_FABRICA.md · relation: semantically_similar_to
 - `tempos-narracao.json v2 — 4.902 frames @30fps, transcrição faster-whisper small int8` → `Beat sheet frame-exato (3.199 frames medidos no áudio)`  [AMBIGUOUS]
   video-orquestracao/public/assets/especificacao-tecnica-quatro-estacoes.md · relation: shares_data_with
@@ -772,27 +854,27 @@ Nodes (3): personagens, frida, luna
 
 ## Knowledge Gaps
 - **12 isolated node(s):** `Decisão herdada: clonar estrutura, nunca conteúdo`, `Agente Dev-3D-Craft`, `Agente Dev-Motion-QA`, `Agente Diretor-Arte`, `Agente Especialista-ComfyUI` (+7 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 918 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 982 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `AGENTS.md — mapa vivo do ecossistema Video Orchestrator` connect `Bot Chain and Audio v1` to `ArtCraft Dispatcher CLI`, `OpenMontage Catalog`, `Cadeia de produção com 6 bots (sala OpenBot)`, `Episodio.tsx`, `AGENTES.md`, `Train Scene React Code`?**
-  _High betweenness centrality (0.130) - this node is a cross-community bridge._
+  _High betweenness centrality (0.163) - this node is a cross-community bridge._
 - **What connects `Decisão herdada: clonar estrutura, nunca conteúdo`, `Agente Dev-3D-Craft`, `Agente Dev-Motion-QA` to the rest of the system?**
   _12 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `blender_diorama.py` be split into smaller, more focused modules?**
-  _Cohesion score 0.05553923009109609 - nodes in this community are weakly interconnected._
-- **Why does `===============================================================================…` connect `Runtime Detection` to `blender_diorama.py`, `Avatar Base Generator`?**
-  _High betweenness centrality (0.098) - this node is a cross-community bridge._
+  _Cohesion score 0.08248587570621468 - nodes in this community are weakly interconnected._
+- **Why does `===============================================================================…` connect `yt-clone-build Engine` to `validar-avatar-v2.py`, `Avatar Base Generator`?**
+  _High betweenness centrality (0.124) - this node is a cross-community bridge._
 - **Should `yt-clone-build Engine` be split into smaller, more focused modules?**
-  _Cohesion score 0.05701754385964912 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.04695304695304695 - nodes in this community are weakly interconnected._
 
 ### Low-confidence Hints
 _AMBIGUOUS edges — the extractor was unsure. Verify before acting on these._
 
 - **What is the exact relationship between `STOP_MARKS` and `re`?**
   _Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low._
-- **What is the exact relationship between `Gates de qualidade Q1–Q8` and `Mix de prévia v2 — 163,415 s, -14,0 LUFS, valsa a -22 dB`?**
+- **What is the exact relationship between `Mix de prévia v2 — 163,415 s, -14,0 LUFS, valsa a -22 dB` and `Gates de qualidade Q1–Q8`?**
   _Edge tagged AMBIGUOUS (relation: semantically_similar_to) - confidence is low._

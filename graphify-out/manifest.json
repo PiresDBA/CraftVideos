@@ -1518,9 +1518,9 @@
     "semantic_hash": ""
   },
   "work/frida-luna/remotion/gerar_timeline.mjs": {
-    "mtime": 1795017975.462613,
-    "seen": 1795018303.251754,
-    "ast_hash": "482c08939a862f7f2e7cb9575fa37c1c",
+    "mtime": 1795030113.479298,
+    "seen": 1795035242.9310398,
+    "ast_hash": "15984e7c01df513ef9caaa461a0bbf5e",
     "semantic_hash": ""
   },
   "work/frida-luna/remotion/package.json": {
@@ -1578,9 +1578,9 @@
     "semantic_hash": ""
   },
   "work/frida-luna/remotion/timeline.json": {
-    "mtime": 1795018022.0085561,
-    "seen": 1795018303.2517836,
-    "ast_hash": "791daf7ba295fb6b8cc90d2cb5b35502",
+    "mtime": 1795034684.6981747,
+    "seen": 1795035242.931068,
+    "ast_hash": "96ec4dd3892689ab74361640e7d97597",
     "semantic_hash": ""
   },
   "work/frida-luna/remotion/tsconfig.json": {
@@ -1608,9 +1608,9 @@
     "semantic_hash": ""
   },
   "work/frida-luna/semantica_narracao.py": {
-    "mtime": 1795012457.2318385,
-    "seen": 1795012719.2853463,
-    "ast_hash": "c3a2edf00f91e8638e4868b4db74f396",
+    "mtime": 1795033558.4964297,
+    "seen": 1795035242.9310966,
+    "ast_hash": "74598554501206eb77b0fe4aeecc7117",
     "semantic_hash": ""
   },
   "work/frida-luna/strip.py": {
@@ -1644,9 +1644,9 @@
     "semantic_hash": ""
   },
   "work/frida-luna/verificar_contrato.py": {
-    "mtime": 1795014126.6949527,
-    "seen": 1795018303.2518256,
-    "ast_hash": "740d2f04dbe3997a61d0d0c286677c49",
+    "mtime": 1795034623.0552397,
+    "seen": 1795035242.931128,
+    "ast_hash": "388ef965770cd31b6903290f423980b1",
     "semantic_hash": ""
   },
   "work/frida-luna/write_flow_state.py": {
@@ -1656,9 +1656,9 @@
     "semantic_hash": ""
   },
   "CONTRATO-ANIMACAO.md": {
-    "mtime": 1795015497.9158442,
-    "seen": 1795018303.2518404,
-    "ast_hash": "20f61bb81d3b6dd07600214460ea9b0c",
+    "mtime": 1795030433.2655075,
+    "seen": 1795035242.931142,
+    "ast_hash": "a60585b231acbd823cd928515e15dbe3",
     "semantic_hash": ""
   },
   "video-orquestracao/ENTREGA-ARTISTA-DESENHO.md": {
@@ -1812,8 +1812,8 @@
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/escuta/f04.png": {
-    "mtime": 1795015007.7652516,
-    "seen": 1795018303.2526622,
+    "mtime": 1795033156.7882483,
+    "seen": 1795035242.932053,
     "ast_hash": "519335b6ac604cb53291d69280deb38f",
     "semantic_hash": ""
   },
@@ -1824,21 +1824,21 @@
     "semantic_hash": ""
   },
   "work/frida-luna/animacao/movimentos-por-fala.json": {
-    "mtime": 1795012436.3383121,
-    "seen": 1795018303.2515097,
-    "ast_hash": "31b4042ed0d67b5a9614bb3575ba4c5b",
+    "mtime": 1795033587.0138948,
+    "seen": 1795035242.9307566,
+    "ast_hash": "46b1a0be54e1e4d0cc17cc41698904b9",
     "semantic_hash": ""
   },
   "work/frida-luna/animacao/movimentos-semanticos-faltam.json": {
-    "mtime": 1795017661.4968653,
-    "seen": 1795018303.2515125,
-    "ast_hash": "0ef81aa7623a891620094db0a943b1de",
+    "mtime": 1795033587.0148928,
+    "seen": 1795035242.9307594,
+    "ast_hash": "99914b932bd37a50b983c5e7c90ae93b",
     "semantic_hash": ""
   },
   "work/frida-luna/auditoria_final.py": {
-    "mtime": 1795015559.9391866,
-    "seen": 1795018303.2515392,
-    "ast_hash": "f9cd62329b5a142cb5fb7135ae921b99",
+    "mtime": 1795034480.1328506,
+    "seen": 1795035242.9307957,
+    "ast_hash": "24fd2da1a36b0ad5b63676dfefacf82e",
     "semantic_hash": ""
   },
   "work/frida-luna/cortar_neutro.py": {
@@ -1884,9 +1884,9 @@
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/manifest.json": {
-    "mtime": 1795017600.6328614,
-    "seen": 1795018303.25172,
-    "ast_hash": "54e2522b3dfb14776c2d2b152cf879c9",
+    "mtime": 1795034512.7498348,
+    "seen": 1795035242.931005,
+    "ast_hash": "3d4046764550e771b8944061c7661092",
     "semantic_hash": ""
   },
   "work/frida-luna/processar_semanticos.py": {
@@ -1902,9 +1902,9 @@
     "semantic_hash": ""
   },
   "work/frida-luna/validar_imagem.py": {
-    "mtime": 1795014829.4221547,
-    "seen": 1795018303.2518232,
-    "ast_hash": "3c9e3218ab1fc2737a49b1af5f7b99c0",
+    "mtime": 1795034339.6699567,
+    "seen": 1795035242.9311182,
+    "ast_hash": "4ce0a8dae10d99cca87ea3babb9ee59f",
     "semantic_hash": ""
   },
   "work/frida-luna/RELATORIO-AUDITORIA-VISUAL.md": {
@@ -3216,249 +3216,225 @@
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/comer/f00.png": {
-    "mtime": 1795017600.5429752,
-    "seen": 1795018303.2526052,
+    "mtime": 1795033156.469789,
+    "seen": 1795035242.9319768,
     "ast_hash": "876f3a58d6c969284f5b115afe4bc646",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/comer/f01.png": {
-    "mtime": 1795017600.5429752,
-    "seen": 1795018303.2526076,
+    "mtime": 1795033156.470791,
+    "seen": 1795035242.9319792,
     "ast_hash": "de64c0db6d675d2f6ff10252b8708df1",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/comer/f02.png": {
-    "mtime": 1795017600.5439446,
-    "seen": 1795018303.25261,
+    "mtime": 1795033156.4727929,
+    "seen": 1795035242.9319823,
     "ast_hash": "636d829b91687459c6553045ac98cf45",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/comer/f03.png": {
-    "mtime": 1795017600.545258,
-    "seen": 1795018303.2526124,
+    "mtime": 1795033156.47479,
+    "seen": 1795035242.931985,
     "ast_hash": "a117268f98569e28f198f1e0431790cd",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/comer/f04.png": {
-    "mtime": 1795017600.545258,
-    "seen": 1795018303.252615,
+    "mtime": 1795033156.477302,
+    "seen": 1795035242.9319878,
     "ast_hash": "232a322cbe1f1636781cc3de3a2b3b07",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/comer/f05.png": {
-    "mtime": 1795017600.5463636,
-    "seen": 1795018303.2526171,
+    "mtime": 1795033156.479314,
+    "seen": 1795035242.9319906,
     "ast_hash": "36a9490448f39bce95748c380a86a027",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/comer/f06.png": {
-    "mtime": 1795017600.5473735,
-    "seen": 1795018303.2526195,
+    "mtime": 1795033156.480317,
+    "seen": 1795035242.931993,
     "ast_hash": "ce2d15eed0d0d42d7f54a1e9affa79f0",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/comer/f07.png": {
-    "mtime": 1795017600.6302676,
-    "seen": 1795018303.252622,
+    "mtime": 1795033156.4823153,
+    "seen": 1795035242.9320178,
     "ast_hash": "07f15f0da792de19279dfe1795b23250",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/corrida/f00.png": {
-    "mtime": 1795017598.685885,
-    "seen": 1795018303.2526243,
-    "ast_hash": "383ebc73f854525a2fec252ce333e2f1",
+    "mtime": 1795033271.3990202,
+    "seen": 1795035242.932021,
+    "ast_hash": "a02cbdaedf0b75a4b8c2274a5839de94",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/corrida/f01.png": {
-    "mtime": 1795017598.685885,
-    "seen": 1795018303.2526267,
-    "ast_hash": "ea64fb45c4b16086eda6284bc3300f88",
+    "mtime": 1795033271.4110198,
+    "seen": 1795035242.9320235,
+    "ast_hash": "44b717b2ae99ad46ec5e3200bb806ca2",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/corrida/f02.png": {
-    "mtime": 1795017598.686878,
-    "seen": 1795018303.2526293,
-    "ast_hash": "6bfdc01d96e7979d9f910db8c675a8e4",
+    "mtime": 1795033271.4255502,
+    "seen": 1795035242.9320264,
+    "ast_hash": "1af8d653f0adf6e16bed3a5099ac38a8",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/corrida/f03.png": {
-    "mtime": 1795017598.6874332,
-    "seen": 1795018303.252632,
-    "ast_hash": "0639cd172ee3046bfc5d6f39137994f3",
+    "mtime": 1795033271.4390535,
+    "seen": 1795035242.9320292,
+    "ast_hash": "1b9d940dc2461918c3737f8c9b07bdc0",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/corrida/f04.png": {
-    "mtime": 1795017598.6874332,
-    "seen": 1795018303.252634,
-    "ast_hash": "9ee0514611f8ed52f69efe369cbf2356",
+    "mtime": 1795033271.4483645,
+    "seen": 1795035242.9320316,
+    "ast_hash": "7e09ab0a447ed63852a145180e97af93",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/corrida/f05.png": {
-    "mtime": 1795017598.6874332,
-    "seen": 1795018303.2526367,
-    "ast_hash": "793d6e2506e9a070dd85ae39178660cf",
+    "mtime": 1795033271.4613714,
+    "seen": 1795035242.9320343,
+    "ast_hash": "dd0f9569f768817174b7b7f3ece1cc83",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/corrida/f06.png": {
-    "mtime": 1795017598.688479,
-    "seen": 1795018303.2526393,
-    "ast_hash": "6cabdf5de604cfcec8e330467deeade5",
+    "mtime": 1795033271.4735613,
+    "seen": 1795035242.9320369,
+    "ast_hash": "dba36e035c8f30c839214d307f44fa49",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/corrida/f07.png": {
-    "mtime": 1795017598.6897936,
-    "seen": 1795018303.2526417,
-    "ast_hash": "ce0d0f8a959b0c502a36978914368561",
-    "semantic_hash": ""
-  },
-  "work/frida-luna/movimentos/frida/corrida/f08.png": {
-    "mtime": 1795017598.6897936,
-    "seen": 1795018303.252644,
-    "ast_hash": "44ad684919f43120252a398848b62dee",
-    "semantic_hash": ""
-  },
-  "work/frida-luna/movimentos/frida/corrida/f09.png": {
-    "mtime": 1795017598.6911972,
-    "seen": 1795018303.2526467,
-    "ast_hash": "d3b6a87eebcd2f76ed50d064f8d528c9",
-    "semantic_hash": ""
-  },
-  "work/frida-luna/movimentos/frida/corrida/f10.png": {
-    "mtime": 1795017598.6920412,
-    "seen": 1795018303.2526493,
-    "ast_hash": "84900cdb346061bf781b423050141558",
+    "mtime": 1795033271.4868429,
+    "seen": 1795035242.9320395,
+    "ast_hash": "614340126fd2ccf6226dd37611c5a4ec",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/escuta/f00.png": {
-    "mtime": 1795012201.4598897,
-    "seen": 1795018303.2526517,
+    "mtime": 1795033156.7812514,
+    "seen": 1795035242.9320426,
     "ast_hash": "68fef62b376353542e700de40b10ff6c",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/escuta/f01.png": {
-    "mtime": 1795012201.474571,
-    "seen": 1795018303.252654,
+    "mtime": 1795033156.7832491,
+    "seen": 1795035242.932045,
     "ast_hash": "9363428d577cab1b1a8ee8b1ef45726f",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/escuta/f02.png": {
-    "mtime": 1795012201.4863548,
-    "seen": 1795018303.252657,
+    "mtime": 1795033156.7842484,
+    "seen": 1795035242.9320476,
     "ast_hash": "dcbabd54947a9ab498a5fd759d5ae94e",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/escuta/f03.png": {
-    "mtime": 1795012201.5018916,
-    "seen": 1795018303.2526596,
+    "mtime": 1795033156.7862487,
+    "seen": 1795035242.9320502,
     "ast_hash": "638b95ba3a15cdf0e6de10554cd019de",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/escuta/f05.png": {
-    "mtime": 1795012201.5325565,
-    "seen": 1795018303.2526646,
+    "mtime": 1795033156.7922485,
+    "seen": 1795035242.9320555,
     "ast_hash": "3ad7f07ef6df51aa4882c7134cdbd6a5",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/fala/f00.png": {
-    "mtime": 1795012203.4066515,
-    "seen": 1795018303.2526672,
-    "ast_hash": "72f69bfd0536d772696a9fc532204c75",
+    "mtime": 1795033271.9419627,
+    "seen": 1795035242.932058,
+    "ast_hash": "521379dac70c671f4ce4018833c433a1",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/fala/f01.png": {
-    "mtime": 1795012203.4261084,
-    "seen": 1795018303.2526698,
-    "ast_hash": "43bd9d7c1a1e872e520324333f2e3fd0",
+    "mtime": 1795033271.9570673,
+    "seen": 1795035242.9320607,
+    "ast_hash": "ec228cb78c91771fd9255be3bab6024b",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/fala/f02.png": {
-    "mtime": 1795012203.4444559,
-    "seen": 1795018303.252672,
-    "ast_hash": "f34363d2ec16246b3ce99f2d5496c995",
+    "mtime": 1795033271.9681711,
+    "seen": 1795035242.9320633,
+    "ast_hash": "f7b89f0e7603411edaef6206e7f4b52a",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/fala/f03.png": {
-    "mtime": 1795012203.4607677,
-    "seen": 1795018303.2526743,
-    "ast_hash": "7cd3fc18b3d27fee179a7bc308027e6f",
+    "mtime": 1795033271.9819107,
+    "seen": 1795035242.9320657,
+    "ast_hash": "234006a5ded9ea57336588cb3c3799d7",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/fala/f04.png": {
-    "mtime": 1795012203.4777155,
-    "seen": 1795018303.252677,
-    "ast_hash": "8349974521ec0e52a416ce784fce2184",
+    "mtime": 1795033271.990975,
+    "seen": 1795035242.932068,
+    "ast_hash": "fd548af3ac20a01d07efc607c66f7d90",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/fala/f05.png": {
-    "mtime": 1795012203.494362,
-    "seen": 1795018303.2526793,
-    "ast_hash": "555634915aa20097657568e6179a99f1",
+    "mtime": 1795033272.0034258,
+    "seen": 1795035242.9320707,
+    "ast_hash": "abca8a5ad47737480914764f84e88584",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/fala/f06.png": {
-    "mtime": 1795012203.515312,
-    "seen": 1795018303.2526817,
-    "ast_hash": "a215fed1bbe5c4e31bde9fdb1bce13c2",
+    "mtime": 1795033272.0154195,
+    "seen": 1795035242.9320734,
+    "ast_hash": "d91ad4747eb2116239b5b8de860456bd",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/fala/f07.png": {
-    "mtime": 1795012203.532859,
-    "seen": 1795018303.2526844,
-    "ast_hash": "76c159ed663a71eaaf01e52cdb6143e6",
-    "semantic_hash": ""
-  },
-  "work/frida-luna/movimentos/frida/fala/f08.png": {
-    "mtime": 1795012203.550064,
-    "seen": 1795018303.2526865,
-    "ast_hash": "ca100f7de8d4a05d4acb3892f6578076",
+    "mtime": 1795033272.0269642,
+    "seen": 1795035242.932076,
+    "ast_hash": "7addffc13e0cc33af1d6522d31b6c045",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/giro/f00.png": {
-    "mtime": 1795017596.5636966,
-    "seen": 1795018303.2526894,
-    "ast_hash": "582f64a29131e4d00f9f2ba07e90e680",
+    "mtime": 1795033271.7086093,
+    "seen": 1795035242.9320786,
+    "ast_hash": "0bc2ec9c9bfe4bc014e643ce9cb05814",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/giro/f01.png": {
-    "mtime": 1795017596.5636966,
-    "seen": 1795018303.2526917,
-    "ast_hash": "4b48e9df7f21d921c3b34418c1bf8d1c",
+    "mtime": 1795033271.7345843,
+    "seen": 1795035242.932082,
+    "ast_hash": "16f4e1365a6875850ac9f9a3aca6ba70",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/giro/f02.png": {
-    "mtime": 1795017596.564247,
-    "seen": 1795018303.2526946,
-    "ast_hash": "d12e000c2d93b60d76d1ec0d91123a90",
+    "mtime": 1795033271.773497,
+    "seen": 1795035242.9320843,
+    "ast_hash": "15c78f3a847d5f91b4e281d2d78454e2",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/giro/f03.png": {
-    "mtime": 1795017596.564247,
-    "seen": 1795018303.2526968,
-    "ast_hash": "138c2c43a3425d38d6473a5cea66a038",
+    "mtime": 1795033271.800715,
+    "seen": 1795035242.9320867,
+    "ast_hash": "865e925ee905a91b1db47b3e9f47e581",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/giro/f04.png": {
-    "mtime": 1795017596.5652552,
-    "seen": 1795018303.2526994,
-    "ast_hash": "62ee94667f915d7d877d97f21897f98a",
+    "mtime": 1795033271.8517835,
+    "seen": 1795035242.9320893,
+    "ast_hash": "6c00eb60c625be64c0185883e0af214a",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/giro/f05.png": {
-    "mtime": 1795017596.5652552,
-    "seen": 1795018303.2527022,
-    "ast_hash": "1462dc49c1568b9064e20f2af1c77705",
+    "mtime": 1795033271.8636937,
+    "seen": 1795035242.9320922,
+    "ast_hash": "d47886bb1b0b0aa4615a9ffb75ae5f69",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/giro/f06.png": {
-    "mtime": 1795017596.5652552,
-    "seen": 1795018303.2527046,
-    "ast_hash": "83d3a3923175240a298faee9d1aa5afd",
+    "mtime": 1795033271.8753037,
+    "seen": 1795035242.932095,
+    "ast_hash": "0f5497ab038ad79314e952b6f0d7c7e8",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/giro/f07.png": {
-    "mtime": 1795017596.5675287,
-    "seen": 1795018303.252707,
-    "ast_hash": "76a42be02c2f84defb9c5eb25c7a691b",
+    "mtime": 1795033271.887857,
+    "seen": 1795035242.9320977,
+    "ast_hash": "6ac701bd862af93795d046b9e47f7a66",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/m12-est/f00.png": {
@@ -4488,819 +4464,1047 @@
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/marcha/f00.png": {
-    "mtime": 1795017595.5120988,
-    "seen": 1795018303.2531486,
-    "ast_hash": "81013d91acb4085dd08428fb616db429",
+    "mtime": 1795033271.0823977,
+    "seen": 1795035242.9326332,
+    "ast_hash": "3d91fab4b3aa90d80f406c0fc1a3d9fc",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/marcha/f01.png": {
-    "mtime": 1795017595.5131066,
-    "seen": 1795018303.253151,
-    "ast_hash": "59e09a6da9bd319018ff81cb58a601e9",
+    "mtime": 1795033271.094043,
+    "seen": 1795035242.9326355,
+    "ast_hash": "10d0375e4fafbd19b8b528ca3f3fdd3c",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/marcha/f02.png": {
-    "mtime": 1795017595.5131066,
-    "seen": 1795018303.2531538,
-    "ast_hash": "10c468bc709c3b33c59f1b6534630db6",
+    "mtime": 1795033271.1070218,
+    "seen": 1795035242.932638,
+    "ast_hash": "a35a98484c920e2c9e973aea2b37bea4",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/marcha/f03.png": {
-    "mtime": 1795017595.5131066,
-    "seen": 1795018303.2531562,
-    "ast_hash": "00bc330706a1cdd7ebe92b11f2d7f288",
+    "mtime": 1795033271.1191356,
+    "seen": 1795035242.9326408,
+    "ast_hash": "2ebcfb994a84699d0061dee0a3bc2dd4",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/marcha/f04.png": {
-    "mtime": 1795017595.5141046,
-    "seen": 1795018303.2531586,
-    "ast_hash": "d9c9149909ee63da0194517922a440ca",
+    "mtime": 1795033271.1281803,
+    "seen": 1795035242.9326434,
+    "ast_hash": "6c00eb60c625be64c0185883e0af214a",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/marcha/f05.png": {
-    "mtime": 1795017595.5141046,
-    "seen": 1795018303.253161,
-    "ast_hash": "f917dbd4c094362c75d0509b05d4b351",
+    "mtime": 1795033271.1418984,
+    "seen": 1795035242.9326456,
+    "ast_hash": "9677d956521578b30992368e65ef7300",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/marcha/f06.png": {
-    "mtime": 1795017595.5151258,
-    "seen": 1795018303.2531636,
-    "ast_hash": "a2612e1226b1ad94ba06fa29e7af5545",
+    "mtime": 1795033271.152974,
+    "seen": 1795035242.9326482,
+    "ast_hash": "ce91c867a49fe28587e7fa58c6174462",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/marcha/f07.png": {
-    "mtime": 1795017595.5151258,
-    "seen": 1795018303.2531657,
-    "ast_hash": "679103e559afad4416de7b8ec86c5da7",
-    "semantic_hash": ""
-  },
-  "work/frida-luna/movimentos/frida/marcha/f08.png": {
-    "mtime": 1795017595.5161345,
-    "seen": 1795018303.2531683,
-    "ast_hash": "9aef3cc3a19ccdc34376491dbbd2faae",
-    "semantic_hash": ""
-  },
-  "work/frida-luna/movimentos/frida/marcha/f09.png": {
-    "mtime": 1795017595.5167546,
-    "seen": 1795018303.2531707,
-    "ast_hash": "359899717fdd808911451933f9b0b236",
-    "semantic_hash": ""
-  },
-  "work/frida-luna/movimentos/frida/marcha/f10.png": {
-    "mtime": 1795017595.5174456,
-    "seen": 1795018303.2531734,
-    "ast_hash": "38211c2f556debb0d8c6658c598b57a3",
-    "semantic_hash": ""
-  },
-  "work/frida-luna/movimentos/frida/marcha/f11.png": {
-    "mtime": 1795017595.5174456,
-    "seen": 1795018303.2531757,
-    "ast_hash": "a1a8160e2d06632b622b71548a543dbd",
+    "mtime": 1795033271.164531,
+    "seen": 1795035242.9326508,
+    "ast_hash": "05c9d015941b328d04b0570e2e0c71ce",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/olhar-frente/f00.png": {
-    "mtime": 1795017593.3570485,
-    "seen": 1795018303.2531781,
-    "ast_hash": "a4d05892995a9307f4a10d2bf9292647",
+    "mtime": 1795033113.6466575,
+    "seen": 1795035242.9326534,
+    "ast_hash": "d1a618cd9d168c5b2bde40dcca13c165",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/olhar-frente/f01.png": {
-    "mtime": 1795017593.3585563,
-    "seen": 1795018303.2531807,
-    "ast_hash": "71abe498fdffc22d72b7874969a1ac0a",
+    "mtime": 1795033113.6937084,
+    "seen": 1795035242.9326558,
+    "ast_hash": "f93c3e9101008533dfd717603d645682",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/olhar-frente/f02.png": {
-    "mtime": 1795017593.3595848,
-    "seen": 1795018303.2531836,
-    "ast_hash": "7a8de45a4e644a58c0d7afc84b676e59",
+    "mtime": 1795033113.7467852,
+    "seen": 1795035242.9326587,
+    "ast_hash": "5f5bffc4de21b57c14cc2d0b910ec6d5",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/olhar-frente/f03.png": {
-    "mtime": 1795017593.3595848,
-    "seen": 1795018303.2531857,
-    "ast_hash": "62f701731e374acfc743d53222a1db05",
+    "mtime": 1795033113.7723174,
+    "seen": 1795035242.932661,
+    "ast_hash": "54a307cce6d1d9ec96a22d956ac43886",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/olhar-frente/f04.png": {
-    "mtime": 1795017593.36057,
-    "seen": 1795018303.2531884,
-    "ast_hash": "36430d1ed3172b2d33745b62d9986887",
+    "mtime": 1795033113.8073611,
+    "seen": 1795035242.9326634,
+    "ast_hash": "bde3be841dd6ff5600c363b1fdfe0229",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/olhar-frente/f05.png": {
-    "mtime": 1795017593.3615706,
-    "seen": 1795018303.253191,
-    "ast_hash": "edfca3686a04a201a5d60e397a0425a8",
+    "mtime": 1795033113.8408868,
+    "seen": 1795035242.9326658,
+    "ast_hash": "3def677a6361d1a02d81b582c5a69567",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/olhar-frente/f06.png": {
-    "mtime": 1795017593.3631864,
-    "seen": 1795018303.2531934,
-    "ast_hash": "8544220919c5429f781004195baac63b",
+    "mtime": 1795033113.8799407,
+    "seen": 1795035242.9326684,
+    "ast_hash": "ce10a37765ce5fc8313cff8682917369",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/olhar-frente/f07.png": {
-    "mtime": 1795017593.3631864,
-    "seen": 1795018303.2531958,
-    "ast_hash": "ecc4cd87c31d285975cb699a29f14476",
+    "mtime": 1795033113.9204612,
+    "seen": 1795035242.9326708,
+    "ast_hash": "5badf1688a9d9379fb825fbbadc32ba5",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/salto/f00.png": {
-    "mtime": 1795017592.2088559,
-    "seen": 1795018303.2531981,
-    "ast_hash": "e3453475b0cc1091525ba1798f23a2cc",
+    "mtime": 1795034652.4218118,
+    "seen": 1795035242.932673,
+    "ast_hash": "5ce9134b00fb2bcceb665e202240ceb5",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/salto/f01.png": {
-    "mtime": 1795017592.2100258,
-    "seen": 1795018303.2532012,
-    "ast_hash": "b09d8726942ce4c845a9ff9360fcaec2",
+    "mtime": 1795034652.4720023,
+    "seen": 1795035242.9326756,
+    "ast_hash": "5a5776c27062a9073bb6f2acf90b2098",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/salto/f02.png": {
-    "mtime": 1795017592.2105634,
-    "seen": 1795018303.2532067,
-    "ast_hash": "bdc1845e11653a80726d0ec755e9f634",
+    "mtime": 1795034652.51469,
+    "seen": 1795035242.9326782,
+    "ast_hash": "f6eb2126f399df56da88a644676ce867",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/salto/f03.png": {
-    "mtime": 1795017592.2116034,
-    "seen": 1795018303.2532132,
-    "ast_hash": "ffbc02491f6708e11580b449991b9f3e",
+    "mtime": 1795034652.5708165,
+    "seen": 1795035242.9326928,
+    "ast_hash": "4a2934405ed3b0131c46b1e1aaf9188c",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/salto/f04.png": {
-    "mtime": 1795017592.2125747,
-    "seen": 1795018303.2532196,
-    "ast_hash": "3db232a089adf5d283d166b6e2832841",
+    "mtime": 1795034652.5895193,
+    "seen": 1795035242.9327176,
+    "ast_hash": "734f6c84b6320b21de9f22867285ba14",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/salto/f05.png": {
-    "mtime": 1795017592.2125747,
-    "seen": 1795018303.253226,
-    "ast_hash": "d9292e585a4ab9cb030f6d49b56f090a",
+    "mtime": 1795034652.659199,
+    "seen": 1795035242.9327204,
+    "ast_hash": "ebdce43612e07a3095068e8f64a168cc",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/salto/f06.png": {
-    "mtime": 1795017592.21362,
-    "seen": 1795018303.2532322,
-    "ast_hash": "5cd0c910a224ddd4f72735098f3ae8a7",
+    "mtime": 1795034652.726017,
+    "seen": 1795035242.9327233,
+    "ast_hash": "59e846f82a8fcda9aa3cb5b73480af7c",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/salto/f07.png": {
-    "mtime": 1795017592.2155807,
-    "seen": 1795018303.2532427,
-    "ast_hash": "711aeaf8147640389d5340ec47704939",
+    "mtime": 1795034652.80537,
+    "seen": 1795035242.9327257,
+    "ast_hash": "baf384b7fb6f78d657fb496cea753434",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/sorrir/f00.png": {
-    "mtime": 1795017591.1032882,
-    "seen": 1795018303.2532496,
+    "mtime": 1795033157.4463317,
+    "seen": 1795035242.9327285,
     "ast_hash": "c559852a64e0256c4d6f533eaada53b4",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/sorrir/f01.png": {
-    "mtime": 1795017591.1042979,
-    "seen": 1795018303.253256,
+    "mtime": 1795033157.4483309,
+    "seen": 1795035242.9327312,
     "ast_hash": "358f804a418621b1c987d5ecd3e619a9",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/sorrir/f02.png": {
-    "mtime": 1795017591.105339,
-    "seen": 1795018303.2532618,
+    "mtime": 1795033157.4503322,
+    "seen": 1795035242.9327338,
     "ast_hash": "2be82a854093965bbc9110fca8171a8b",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/sorrir/f03.png": {
-    "mtime": 1795017591.105339,
-    "seen": 1795018303.2532687,
+    "mtime": 1795033157.4523284,
+    "seen": 1795035242.9327362,
     "ast_hash": "aeeb66af6e2eda1cc24df1e3b5a95782",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/sorrir/f04.png": {
-    "mtime": 1795017591.1062965,
-    "seen": 1795018303.2533164,
+    "mtime": 1795033157.454328,
+    "seen": 1795035242.9327388,
     "ast_hash": "cc3d839117c88c18ae1a13d0942c3aca",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/sorrir/f05.png": {
-    "mtime": 1795017591.1062965,
-    "seen": 1795018303.253334,
+    "mtime": 1795033157.45533,
+    "seen": 1795035242.9327414,
     "ast_hash": "9764e2ab0fb464fa241e0e612107d9aa",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/sorrir/f06.png": {
-    "mtime": 1795017591.1073272,
-    "seen": 1795018303.2533429,
+    "mtime": 1795033157.4568388,
+    "seen": 1795035242.932744,
     "ast_hash": "fd386b0c0beda49fb96a0bfe826cc6be",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/sorrir/f07.png": {
-    "mtime": 1795017591.1086292,
-    "seen": 1795018303.2533503,
+    "mtime": 1795033157.4618561,
+    "seen": 1795035242.9327464,
     "ast_hash": "d0aca9cdd473fd7bd93e026a2496fa8e",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/sorrir/f08.png": {
-    "mtime": 1795017591.1086292,
-    "seen": 1795018303.2533581,
+    "mtime": 1795033157.4638515,
+    "seen": 1795035242.9327493,
     "ast_hash": "300546de2f38cf86a7be1e28f05e0a12",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/sorrir/f09.png": {
-    "mtime": 1795017591.1096365,
-    "seen": 1795018303.253365,
+    "mtime": 1795033157.4658513,
+    "seen": 1795035242.932752,
     "ast_hash": "73aab23f95859273258313c24e8f8d66",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/sorrir/f10.png": {
-    "mtime": 1795017591.1096365,
-    "seen": 1795018303.2533724,
+    "mtime": 1795033157.4678538,
+    "seen": 1795035242.9327545,
     "ast_hash": "455aacdb2faf61f4f41d433af44286ee",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/sorrir/f11.png": {
-    "mtime": 1795017591.1096365,
-    "seen": 1795018303.25338,
+    "mtime": 1795033157.4688504,
+    "seen": 1795035242.9327924,
     "ast_hash": "fb9d766e52db162466db417f4c0f66f8",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/surpreso/f00.png": {
-    "mtime": 1795017589.7739809,
-    "seen": 1795018303.2533875,
+    "mtime": 1795033157.7832723,
+    "seen": 1795035242.9327953,
     "ast_hash": "cf23798ba61b7d090fda45a1ebccd3c2",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/surpreso/f01.png": {
-    "mtime": 1795017589.774994,
-    "seen": 1795018303.2533944,
+    "mtime": 1795033157.786271,
+    "seen": 1795035242.9328249,
     "ast_hash": "9474d89ec08795a17c7c0b42a8035340",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/surpreso/f02.png": {
-    "mtime": 1795017589.774994,
-    "seen": 1795018303.253401,
+    "mtime": 1795033157.7872713,
+    "seen": 1795035242.9328277,
     "ast_hash": "42598bbfdfea99443fe951a3511a860a",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/surpreso/f03.png": {
-    "mtime": 1795017589.774994,
-    "seen": 1795018303.2534084,
+    "mtime": 1795033157.7882702,
+    "seen": 1795035242.93283,
     "ast_hash": "fd9f4f02cba8d6d50a352497bc922d1b",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/surpreso/f04.png": {
-    "mtime": 1795017589.7760274,
-    "seen": 1795018303.2534153,
+    "mtime": 1795033157.7937949,
+    "seen": 1795035242.932833,
     "ast_hash": "c8dce28f63a400a75ef4be6bf11d57f7",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/surpreso/f05.png": {
-    "mtime": 1795017589.7760274,
-    "seen": 1795018303.2534227,
+    "mtime": 1795033157.7957973,
+    "seen": 1795035242.9328358,
     "ast_hash": "42ec0cd81260bf6dba2a3d6583dca9d5",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/surpreso/f06.png": {
-    "mtime": 1795017589.7760274,
-    "seen": 1795018303.2534301,
+    "mtime": 1795033157.796797,
+    "seen": 1795035242.9328384,
     "ast_hash": "4f1ca798dd56f28b5fb44f9973d38bbe",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/surpreso/f07.png": {
-    "mtime": 1795017589.777975,
-    "seen": 1795018303.2534375,
+    "mtime": 1795033157.798797,
+    "seen": 1795035242.9328413,
     "ast_hash": "61a42101a86d1204f69be405183b8217",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/frida/surpreso/f08.png": {
-    "mtime": 1795017589.777975,
-    "seen": 1795018303.2534447,
+    "mtime": 1795033157.800799,
+    "seen": 1795035242.932844,
     "ast_hash": "9cf7d0e8a9df108bb3569598e39e6e73",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/comer/f00.png": {
-    "mtime": 1795017588.5930912,
-    "seen": 1795018303.2534518,
+    "mtime": 1795033158.1493194,
+    "seen": 1795035242.9328723,
     "ast_hash": "5e0b2e5e70354281a1a4fa61798e7c71",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/comer/f01.png": {
-    "mtime": 1795017588.5944571,
-    "seen": 1795018303.2534587,
+    "mtime": 1795033158.1513207,
+    "seen": 1795035242.9328911,
     "ast_hash": "0b4316fd1456658e2df02bc9fd04cc9e",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/comer/f02.png": {
-    "mtime": 1795017588.5956514,
-    "seen": 1795018303.2534652,
+    "mtime": 1795033158.1527934,
+    "seen": 1795035242.9328938,
     "ast_hash": "e735e8a82e1e4d3b0c7f0ada8e9b5b82",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/comer/f03.png": {
-    "mtime": 1795017588.597639,
-    "seen": 1795018303.253472,
+    "mtime": 1795033158.1548193,
+    "seen": 1795035242.9328969,
     "ast_hash": "d32bfd3a931ed1bff8a88abeaa8ef7e8",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/comer/f04.png": {
-    "mtime": 1795017588.5991805,
-    "seen": 1795018303.2534795,
+    "mtime": 1795033158.1568182,
+    "seen": 1795035242.9328992,
     "ast_hash": "940c24b9613667269c339bb25baa224d",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/comer/f05.png": {
-    "mtime": 1795017588.6002026,
-    "seen": 1795018303.253486,
+    "mtime": 1795033158.1578197,
+    "seen": 1795035242.9329019,
     "ast_hash": "da5e567822cbe178c1815f1e4e5e3f9d",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/corrida/f00.png": {
-    "mtime": 1795017587.593009,
-    "seen": 1795018303.2534926,
-    "ast_hash": "5125fc6ccae8ae7e9366bfa291430292",
+    "mtime": 1795033272.2203114,
+    "seen": 1795035242.9329047,
+    "ast_hash": "ee4cbcbf990371ff6e3a2ceb7b4220e5",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/corrida/f01.png": {
-    "mtime": 1795017587.594072,
-    "seen": 1795018303.2535,
-    "ast_hash": "dc134bb199c6a06e9ff58bdabb01267f",
+    "mtime": 1795033272.2328293,
+    "seen": 1795035242.9329076,
+    "ast_hash": "c954b9c5e7962b03bb6f6d7c3b5b4561",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/corrida/f02.png": {
-    "mtime": 1795017587.594072,
-    "seen": 1795018303.2535067,
-    "ast_hash": "72de373cf840f09069eaeb407375ac78",
+    "mtime": 1795033272.2448287,
+    "seen": 1795035242.93291,
+    "ast_hash": "027f28927c8f126813cd02c8048a0501",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/corrida/f03.png": {
-    "mtime": 1795017587.5952806,
-    "seen": 1795018303.2535138,
-    "ast_hash": "7810cdbfff771bfe3bcbac7f39d10ab5",
+    "mtime": 1795033272.2559495,
+    "seen": 1795035242.9329128,
+    "ast_hash": "ef318b1a3e3ab7595c5f7e15a38a1f12",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/corrida/f04.png": {
-    "mtime": 1795017587.5952806,
-    "seen": 1795018303.2535205,
-    "ast_hash": "85f1e80e3014a34fea1817f609cbb698",
+    "mtime": 1795033272.2629483,
+    "seen": 1795035242.9329152,
+    "ast_hash": "7cfa1659e32da53b9473be64e422cbb5",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/corrida/f05.png": {
-    "mtime": 1795017587.596281,
-    "seen": 1795018303.2535264,
-    "ast_hash": "f03992a522b1652ddadeec242f7f2bf8",
+    "mtime": 1795033272.2751093,
+    "seen": 1795035242.9329178,
+    "ast_hash": "21db1e2036e8a518b22fb1516d974057",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/corrida/f06.png": {
-    "mtime": 1795017587.596281,
-    "seen": 1795018303.2535336,
-    "ast_hash": "838dc093330e879cb507051d85310e29",
+    "mtime": 1795033272.2887135,
+    "seen": 1795035242.9329207,
+    "ast_hash": "87ef174cd46f1292c5bd6c0d41366fe4",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/corrida/f07.png": {
-    "mtime": 1795017587.596281,
-    "seen": 1795018303.2535408,
-    "ast_hash": "9f3f33e98cc79e7526dab79ef4a5e6bc",
+    "mtime": 1795033272.3012452,
+    "seen": 1795035242.9329233,
+    "ast_hash": "2fc566f73215a9bd526f17fe3179f9fc",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/escuta/f00.png": {
-    "mtime": 1795012197.5960207,
-    "seen": 1795018303.2535472,
+    "mtime": 1795033158.5098226,
+    "seen": 1795035242.9329257,
     "ast_hash": "d211798b67788d55193468c3a6649aa0",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/escuta/f01.png": {
-    "mtime": 1795012197.609867,
-    "seen": 1795018303.2535543,
+    "mtime": 1795033158.5108252,
+    "seen": 1795035242.9329283,
     "ast_hash": "6363d8bf81235a6cda2b55e24604366e",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/escuta/f02.png": {
-    "mtime": 1795012197.6219344,
-    "seen": 1795018303.253561,
+    "mtime": 1795033158.5128243,
+    "seen": 1795035242.9329307,
     "ast_hash": "0bb5758ed8465020c873474ed0ee7641",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/escuta/f03.png": {
-    "mtime": 1795012197.6322112,
-    "seen": 1795018303.2535682,
+    "mtime": 1795033158.5178216,
+    "seen": 1795035242.932934,
     "ast_hash": "9f2dc38c7064df02aae0fcd859d3b864",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/escuta/f04.png": {
-    "mtime": 1795012197.6415994,
-    "seen": 1795018303.253575,
+    "mtime": 1795033158.5193336,
+    "seen": 1795035242.9329367,
     "ast_hash": "b95664916fcc45734bcc93c7f9b726d0",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/escuta/f05.png": {
-    "mtime": 1795012197.659746,
-    "seen": 1795018303.253582,
+    "mtime": 1795033158.5213456,
+    "seen": 1795035242.9329393,
     "ast_hash": "ae96484aed5383b442e0b750f2759012",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/escuta/f06.png": {
-    "mtime": 1795012197.6730099,
-    "seen": 1795018303.2535892,
+    "mtime": 1795033158.5223475,
+    "seen": 1795035242.932942,
     "ast_hash": "6c0538df708a2d55339b34c2a1da929d",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/escuta/f07.png": {
-    "mtime": 1795012197.6882904,
-    "seen": 1795018303.2535954,
+    "mtime": 1795033158.5243454,
+    "seen": 1795035242.9329443,
     "ast_hash": "dde1ff663aad6315535b61c4da25340b",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/fala/f00.png": {
-    "mtime": 1795012199.5078502,
-    "seen": 1795018303.253602,
-    "ast_hash": "b850f53d5a0395ccad319889d0b9b780",
+    "mtime": 1795033272.7173698,
+    "seen": 1795035242.9329467,
+    "ast_hash": "9c7512f289cd488dc79355aef316a16c",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/fala/f01.png": {
-    "mtime": 1795012199.51991,
-    "seen": 1795018303.2536094,
-    "ast_hash": "651d4eee55bfb7e10a432c5998c4cb01",
+    "mtime": 1795033272.7276013,
+    "seen": 1795035242.9329495,
+    "ast_hash": "de9970436bb8f7e7ef4029795f20ef4b",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/fala/f02.png": {
-    "mtime": 1795012199.5304537,
-    "seen": 1795018303.2536168,
-    "ast_hash": "f8f1885e60935416603ac332b7d94642",
+    "mtime": 1795033272.7380846,
+    "seen": 1795035242.9329524,
+    "ast_hash": "7c1585893e52001c7f2f9bcbc0aef8ea",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/fala/f03.png": {
-    "mtime": 1795012199.5401084,
-    "seen": 1795018303.253624,
-    "ast_hash": "a3243766adf2437f54f098c088f59860",
+    "mtime": 1795033272.7500896,
+    "seen": 1795035242.9329545,
+    "ast_hash": "b4f94d865d38d693e2d413d1d4c54ede",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/fala/f04.png": {
-    "mtime": 1795012199.5496666,
-    "seen": 1795018303.253632,
-    "ast_hash": "50b23ae5bfa222458af29a01fa3b5480",
+    "mtime": 1795033272.757625,
+    "seen": 1795035242.9329576,
+    "ast_hash": "f58cea97cbc8866b771ef06dbc1e5a1c",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/fala/f05.png": {
-    "mtime": 1795012199.5598295,
-    "seen": 1795018303.2536387,
-    "ast_hash": "244132420a659a6e66b2d4285e4a4096",
+    "mtime": 1795033272.7696328,
+    "seen": 1795035242.93296,
+    "ast_hash": "4a871881ef6a764ebbc8d887ea64dad4",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/fala/f06.png": {
-    "mtime": 1795012199.5718665,
-    "seen": 1795018303.253646,
-    "ast_hash": "3732a5638682151ec80228ff38cc1043",
+    "mtime": 1795033272.7807012,
+    "seen": 1795035242.932963,
+    "ast_hash": "f668eb99ece09a2cc72f5e7cc2d52d47",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/fala/f07.png": {
-    "mtime": 1795012199.5820603,
-    "seen": 1795018303.253653,
-    "ast_hash": "888bf9ac468af51d4924a6c7892fbf51",
-    "semantic_hash": ""
-  },
-  "work/frida-luna/movimentos/luna/fala/f08.png": {
-    "mtime": 1795012199.593474,
-    "seen": 1795018303.25366,
-    "ast_hash": "428f2899cd9b5a69ff1c272b7c230899",
-    "semantic_hash": ""
-  },
-  "work/frida-luna/movimentos/luna/fala/f09.png": {
-    "mtime": 1795012199.607069,
-    "seen": 1795018303.2536669,
-    "ast_hash": "8a4f82da2395b15c9273270d9e833f05",
-    "semantic_hash": ""
-  },
-  "work/frida-luna/movimentos/luna/fala/f10.png": {
-    "mtime": 1795012199.623614,
-    "seen": 1795018303.253674,
-    "ast_hash": "353f0a6e8bf8076ff3eb97e1bc0e72bd",
-    "semantic_hash": ""
-  },
-  "work/frida-luna/movimentos/luna/fala/f11.png": {
-    "mtime": 1795012199.635459,
-    "seen": 1795018303.253681,
-    "ast_hash": "c249aa9e02b64e5d8b1cd5648a1fc5e1",
+    "mtime": 1795033272.7917078,
+    "seen": 1795035242.9329653,
+    "ast_hash": "0f1b692f1c966c74b8c2b1e65245c2ba",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/giro/f00.png": {
-    "mtime": 1795017585.7944942,
-    "seen": 1795018303.2536874,
-    "ast_hash": "5b082fe18967de62d479ad2a3daf14cd",
+    "mtime": 1795033272.4948125,
+    "seen": 1795035242.9329677,
+    "ast_hash": "09c1cf48571bf43d774aea63b12b7ef2",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/giro/f01.png": {
-    "mtime": 1795017585.7985723,
-    "seen": 1795018303.2536943,
-    "ast_hash": "63d2c06378363041d0c6af8e5de2b22e",
+    "mtime": 1795033272.5071979,
+    "seen": 1795035242.9329705,
+    "ast_hash": "2873ccdbb913b37901ba07382b817ab2",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/giro/f02.png": {
-    "mtime": 1795017585.8005428,
-    "seen": 1795018303.2537012,
-    "ast_hash": "cff1906bc23b44b20499c5c40ea18920",
+    "mtime": 1795033272.519208,
+    "seen": 1795035242.9329731,
+    "ast_hash": "1bf554c43f6bfbdc30fc629730919b5a",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/giro/f03.png": {
-    "mtime": 1795017585.8039372,
-    "seen": 1795018303.2537084,
-    "ast_hash": "46fac15fa9a6eee69f3ab572ae5cf533",
+    "mtime": 1795033272.5319462,
+    "seen": 1795035242.9329758,
+    "ast_hash": "68fb0ae5b8da3728424bd0acef794cec",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/giro/f04.png": {
-    "mtime": 1795017585.8054576,
-    "seen": 1795018303.2537153,
-    "ast_hash": "c1673f6c03312a1c21b700394a6b2430",
+    "mtime": 1795033272.5429623,
+    "seen": 1795035242.9329782,
+    "ast_hash": "a140a7a6a68154d31aa7d872623786b8",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/giro/f05.png": {
-    "mtime": 1795017585.8079076,
-    "seen": 1795018303.2537224,
-    "ast_hash": "1b645796453b613ed481f0db56ad4daa",
+    "mtime": 1795033272.5554886,
+    "seen": 1795035242.9329808,
+    "ast_hash": "89c1b02d950aeffc7be398a9f1442473",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/giro/f06.png": {
-    "mtime": 1795017585.808928,
-    "seen": 1795018303.2537289,
-    "ast_hash": "aeffc9fb819ef4dd0f9a459231762ad1",
+    "mtime": 1795033272.5678625,
+    "seen": 1795035242.932983,
+    "ast_hash": "ccdabbec3715f546cc568a4bf93d5f2d",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/giro/f07.png": {
-    "mtime": 1795017585.8120625,
-    "seen": 1795018303.2537355,
-    "ast_hash": "e675cdd8a1ffd62eab6ebd696414f829",
-    "semantic_hash": ""
-  },
-  "work/frida-luna/movimentos/luna/giro/f08.png": {
-    "mtime": 1795017585.8130734,
-    "seen": 1795018303.2537417,
-    "ast_hash": "b278da7b6bce8dda223bc04f0a3cd26e",
-    "semantic_hash": ""
-  },
-  "work/frida-luna/movimentos/luna/giro/f09.png": {
-    "mtime": 1795017585.8140824,
-    "seen": 1795018303.2537482,
-    "ast_hash": "621547d045ce40b1d5a9cac943385adf",
-    "semantic_hash": ""
-  },
-  "work/frida-luna/movimentos/luna/giro/f10.png": {
-    "mtime": 1795017585.8140824,
-    "seen": 1795018303.2537553,
-    "ast_hash": "e80b90ff4ce2570f905cfb43976ff1de",
-    "semantic_hash": ""
-  },
-  "work/frida-luna/movimentos/luna/giro/f11.png": {
-    "mtime": 1795017585.8155918,
-    "seen": 1795018303.2537634,
-    "ast_hash": "9715f63e903673773bee6702f00807f8",
+    "mtime": 1795033272.6586564,
+    "seen": 1795035242.9329855,
+    "ast_hash": "372921cb62aeb8b4e2eb11bce9e9f36c",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/marcha/f00.png": {
-    "mtime": 1795017584.4510314,
-    "seen": 1795018303.2537706,
-    "ast_hash": "9eb06337ad8fac89ad4415f10807a2da",
+    "mtime": 1795033272.0807211,
+    "seen": 1795035242.9329882,
+    "ast_hash": "a8efc2b91765d5d104b039ee9ca3eed3",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/marcha/f01.png": {
-    "mtime": 1795017584.4520302,
-    "seen": 1795018303.2537785,
-    "ast_hash": "ecb54141a23f918cf19fe1249d410c44",
+    "mtime": 1795033272.0936923,
+    "seen": 1795035242.9329908,
+    "ast_hash": "4d802cc4bf9a039f9cc9c4ee7b51a0b3",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/marcha/f02.png": {
-    "mtime": 1795017584.4520302,
-    "seen": 1795018303.2537858,
-    "ast_hash": "ce87d58344a684d060d42c513b524a90",
+    "mtime": 1795033272.1072347,
+    "seen": 1795035242.9330099,
+    "ast_hash": "96276f6e9ca65a0acab7ccf69f18a4fd",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/marcha/f03.png": {
-    "mtime": 1795017584.453031,
-    "seen": 1795018303.253793,
-    "ast_hash": "9ccdf93177f41578305beee2f4910162",
+    "mtime": 1795033272.1185606,
+    "seen": 1795035242.9330125,
+    "ast_hash": "20a059a35ea517f25e1de770f47512bd",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/marcha/f04.png": {
-    "mtime": 1795017584.453031,
-    "seen": 1795018303.2538002,
-    "ast_hash": "36d58f424d1bceeb4a43bbe218aa8696",
+    "mtime": 1795033272.1259198,
+    "seen": 1795035242.9330149,
+    "ast_hash": "a140a7a6a68154d31aa7d872623786b8",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/marcha/f05.png": {
-    "mtime": 1795017584.453031,
-    "seen": 1795018303.2538073,
-    "ast_hash": "ac6660493c19d29e7333410142e8cd22",
+    "mtime": 1795033272.1389995,
+    "seen": 1795035242.9330175,
+    "ast_hash": "9d817d2680abcdce8b7c843812d17247",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/marcha/f06.png": {
-    "mtime": 1795017584.4545844,
-    "seen": 1795018303.2538145,
-    "ast_hash": "be93b2c08f6b65b6e1f038deba28e6a5",
+    "mtime": 1795033272.1505098,
+    "seen": 1795035242.93302,
+    "ast_hash": "e6ca1ad91f65abcd74accdfbf8eee87c",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/marcha/f07.png": {
-    "mtime": 1795017584.4556155,
-    "seen": 1795018303.2538211,
-    "ast_hash": "f501b7dc0fd5d2da3f3208ec688823ef",
+    "mtime": 1795033272.1615975,
+    "seen": 1795035242.9330227,
+    "ast_hash": "63bcea4a35ce808ab0242e5ba381adeb",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/olhar/f00.png": {
-    "mtime": 1795011813.7587464,
-    "seen": 1795018303.253828,
+    "mtime": 1795033158.9319482,
+    "seen": 1795035242.9330254,
     "ast_hash": "8c80a96956d1c1b4ee2c8901d57fe6e3",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/olhar/f01.png": {
-    "mtime": 1795011813.768888,
-    "seen": 1795018303.2538345,
+    "mtime": 1795033158.93595,
+    "seen": 1795035242.9330275,
     "ast_hash": "a09090cf6bc6d7195a905614d8b76932",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/olhar/f02.png": {
-    "mtime": 1795011813.7995782,
-    "seen": 1795018303.2538419,
+    "mtime": 1795033158.9379487,
+    "seen": 1795035242.9330301,
     "ast_hash": "832a28e8a72f35c4b3b9fb70ada300f6",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/olhar/f03.png": {
-    "mtime": 1795011813.8160734,
-    "seen": 1795018303.2538486,
+    "mtime": 1795033158.9399478,
+    "seen": 1795035242.9330328,
     "ast_hash": "d5b6e00fc34300d8275861a7c17d1900",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/olhar/f04.png": {
-    "mtime": 1795011813.8516076,
-    "seen": 1795018303.253856,
+    "mtime": 1795033158.940945,
+    "seen": 1795035242.9330356,
     "ast_hash": "2dfa0148768396a09d13e0a243dc67e5",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/olhar/f05.png": {
-    "mtime": 1795011813.878495,
-    "seen": 1795018303.2538636,
+    "mtime": 1795033158.9429593,
+    "seen": 1795035242.933038,
     "ast_hash": "6ce8b196a2df163b084088cc2d90d33f",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/olhar/f06.png": {
-    "mtime": 1795011813.897007,
-    "seen": 1795018303.25387,
+    "mtime": 1795033158.9449584,
+    "seen": 1795035242.9330406,
     "ast_hash": "535ce14dce54c7a5c283ad4ca045d899",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/olhar/f07.png": {
-    "mtime": 1795011813.9129417,
-    "seen": 1795018303.2538764,
+    "mtime": 1795033158.9469585,
+    "seen": 1795035242.9330432,
     "ast_hash": "4a7fc931d7df044f8f3e661720b4f568",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/salto/f00.png": {
-    "mtime": 1795017582.6009662,
-    "seen": 1795018303.253883,
-    "ast_hash": "5b78863d6ba14fe7042f2076d1e28c80",
+    "mtime": 1795034210.2162921,
+    "seen": 1795035242.9330454,
+    "ast_hash": "ab6116463622b9db896558792bceb4aa",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/salto/f01.png": {
-    "mtime": 1795017582.601969,
-    "seen": 1795018303.2538898,
-    "ast_hash": "51f54be9c7ede725b2b58d7e0d399fee",
+    "mtime": 1795034210.2410266,
+    "seen": 1795035242.9330482,
+    "ast_hash": "36f8806f841d43846af3115abcd33f97",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/salto/f02.png": {
-    "mtime": 1795017582.601969,
-    "seen": 1795018303.2538958,
-    "ast_hash": "1fb7505cbf84df5882d42b758eb5c83f",
+    "mtime": 1795034210.3149428,
+    "seen": 1795035242.9330506,
+    "ast_hash": "7ecf56e3e4598d007d8ad7c7b14f529a",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/salto/f03.png": {
-    "mtime": 1795017582.6030052,
-    "seen": 1795018303.2539032,
-    "ast_hash": "ed068c5339bbf0b5df47de88dc91a30d",
+    "mtime": 1795034210.334086,
+    "seen": 1795035242.9330535,
+    "ast_hash": "a7cb5de3de8cc7bfaa98500682bb51cd",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/salto/f04.png": {
-    "mtime": 1795017582.6030052,
-    "seen": 1795018303.2539105,
-    "ast_hash": "faa37cfaabc7154499c0168ba6cf0d45",
+    "mtime": 1795034210.4088843,
+    "seen": 1795035242.933056,
+    "ast_hash": "4ed3d2b8ac110d3e57b1eb5ccf46f576",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/salto/f05.png": {
-    "mtime": 1795017582.604012,
-    "seen": 1795018303.253917,
-    "ast_hash": "5edf57839e9aa577a529633ed6d7046b",
+    "mtime": 1795034210.4244766,
+    "seen": 1795035242.9330583,
+    "ast_hash": "a3cd0752818b0ce3a5b5f5d9761ee978",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/salto/f06.png": {
-    "mtime": 1795017582.604012,
-    "seen": 1795018303.2539227,
-    "ast_hash": "c15bf9070f17b4a33d4b6c9b07d32ce2",
+    "mtime": 1795034210.4403322,
+    "seen": 1795035242.933061,
+    "ast_hash": "23dc51ced8a917d927f0a243c7a19bc5",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/salto/f07.png": {
-    "mtime": 1795017582.6062615,
-    "seen": 1795018303.2539291,
-    "ast_hash": "4fddec56926cc9245db5474dfeaa812c",
+    "mtime": 1795034210.455521,
+    "seen": 1795035242.9330635,
+    "ast_hash": "dacac19413350366252ba7faff0fbf99",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/sorrir/f00.png": {
-    "mtime": 1795017580.7852075,
-    "seen": 1795018303.2539358,
+    "mtime": 1795033159.443166,
+    "seen": 1795035242.933066,
     "ast_hash": "53bccd2b21d24b4b84db0f6324dc5133",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/sorrir/f01.png": {
-    "mtime": 1795017580.7882063,
-    "seen": 1795018303.2539415,
+    "mtime": 1795033159.4441738,
+    "seen": 1795035242.9330685,
     "ast_hash": "2b0401a079fb7660f09d1ecf22949a7b",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/sorrir/f02.png": {
-    "mtime": 1795017580.7887664,
-    "seen": 1795018303.253948,
+    "mtime": 1795033159.4472551,
+    "seen": 1795035242.9330711,
     "ast_hash": "13d3258df95f5812b01a1dfd776576d8",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/sorrir/f03.png": {
-    "mtime": 1795017580.7887664,
-    "seen": 1795018303.253955,
+    "mtime": 1795033159.4502685,
+    "seen": 1795035242.9330738,
     "ast_hash": "5c311329e7d19b648eb22c41ffa99c01",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/sorrir/f04.png": {
-    "mtime": 1795017580.7898388,
-    "seen": 1795018303.2539618,
+    "mtime": 1795033159.4512682,
+    "seen": 1795035242.9330761,
     "ast_hash": "1ecd98276796e40789de3743c3d77a80",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/sorrir/f05.png": {
-    "mtime": 1795017580.7908492,
-    "seen": 1795018303.2539685,
+    "mtime": 1795033159.4532661,
+    "seen": 1795035242.9330788,
     "ast_hash": "6760bf73abc7b50b6a4bf9b626e66638",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/sorrir/f06.png": {
-    "mtime": 1795017580.7908492,
-    "seen": 1795018303.2539756,
+    "mtime": 1795033159.4552677,
+    "seen": 1795035242.9330814,
     "ast_hash": "d672f6c5a84c8ea08a56262b37e68e94",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/sorrir/f07.png": {
-    "mtime": 1795017580.7923596,
-    "seen": 1795018303.2539833,
+    "mtime": 1795033159.456294,
+    "seen": 1795035242.933084,
     "ast_hash": "108ee8fe3f4c4e9e121495b7104881cf",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/sorrir/f08.png": {
-    "mtime": 1795017580.793396,
-    "seen": 1795018303.253991,
+    "mtime": 1795033159.4582775,
+    "seen": 1795035242.9330864,
     "ast_hash": "5d399ebe7837c61e44842d03f9331902",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/sorrir/f09.png": {
-    "mtime": 1795017580.793396,
-    "seen": 1795018303.2539978,
+    "mtime": 1795033159.460277,
+    "seen": 1795035242.933089,
     "ast_hash": "78984a2b195d47905e58a28c2f92a220",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/surpreso/f00.png": {
-    "mtime": 1795017579.5311596,
-    "seen": 1795018303.2540045,
+    "mtime": 1795033159.8128417,
+    "seen": 1795035242.9330919,
     "ast_hash": "97b88ac6a70ead0af6396d619aaebc79",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/surpreso/f01.png": {
-    "mtime": 1795017579.5311596,
-    "seen": 1795018303.2540119,
+    "mtime": 1795033159.8148403,
+    "seen": 1795035242.9330945,
     "ast_hash": "0d8a20226c012a39d8432dec5ce7dc26",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/surpreso/f02.png": {
-    "mtime": 1795017579.5327148,
-    "seen": 1795018303.254019,
+    "mtime": 1795033159.8168392,
+    "seen": 1795035242.9330966,
     "ast_hash": "195d7651ca431e80be5d6b1e94d10939",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/surpreso/f03.png": {
-    "mtime": 1795017579.5327148,
-    "seen": 1795018303.2540257,
+    "mtime": 1795033159.8188372,
+    "seen": 1795035242.9330995,
     "ast_hash": "7c8d4c8a3c9ef492be8fe88d437a0087",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/surpreso/f04.png": {
-    "mtime": 1795017579.5337555,
-    "seen": 1795018303.2540329,
+    "mtime": 1795033159.8198407,
+    "seen": 1795035242.9331021,
     "ast_hash": "87dd908bcc78735ebd6caa16bc208a7f",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/surpreso/f05.png": {
-    "mtime": 1795017579.5337555,
-    "seen": 1795018303.2540398,
+    "mtime": 1795033159.821349,
+    "seen": 1795035242.9331048,
     "ast_hash": "b03a77896db73be14b20ac63d5235350",
     "semantic_hash": ""
   },
   "work/frida-luna/movimentos/luna/surpreso/f06.png": {
-    "mtime": 1795017579.5347576,
-    "seen": 1795018303.2540462,
+    "mtime": 1795033159.823361,
+    "seen": 1795035242.9331071,
     "ast_hash": "d4566c3734625d0a83b14532861b9740",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/acenar.py": {
+    "mtime": 1795032145.0197563,
+    "seen": 1795035242.9307344,
+    "ast_hash": "d27e8b1d0869ff63a95230b40535fcb0",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/catalogo25.py": {
+    "mtime": 1795028372.275431,
+    "seen": 1795035242.9308333,
+    "ast_hash": "172493f3d44f86e245a6a9a4bd5ea2b7",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/catalogo_movimentos.py": {
+    "mtime": 1795026878.6613083,
+    "seen": 1795035242.9308362,
+    "ast_hash": "8b58577a7d05c461b766aa400703dec1",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/clipes_rig_novo.py": {
+    "mtime": 1795029715.1809497,
+    "seen": 1795035242.9308727,
+    "ast_hash": "f5d85dcfaa83266fcd72a48673af58eb",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/detalhe_locomocao.py": {
+    "mtime": 1795024858.3314066,
+    "seen": 1795035242.9308975,
+    "ast_hash": "9ba14918f5266340d43f56ee8287582d",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/diag_caixas.py": {
+    "mtime": 1795023476.2787073,
+    "seen": 1795035242.9308996,
+    "ast_hash": "8aeda04e096abe5f2bc775525bb60d69",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/diag_quadrupede.py": {
+    "mtime": 1795023556.0096366,
+    "seen": 1795035242.9309049,
+    "ast_hash": "fe389575a573ab07eafa8faebe37b556",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/fechar_microburacos.py": {
+    "mtime": 1795033085.8289971,
+    "seen": 1795035242.9309185,
+    "ast_hash": "8f3d4e42148b96df18d25e3e1bcf72c6",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/fix_pasta_manifest.py": {
+    "mtime": 1795033360.3693078,
+    "seen": 1795035242.9309213,
+    "ast_hash": "395f53299596ad21caef0a96c4f9dd3e",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/gerar_clipes.py": {
+    "mtime": 1795027120.1703146,
+    "seen": 1795035242.9309375,
+    "ast_hash": "77382192c5b93ea0d0616dc07ab5268b",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/inspecionar_copia_flow.py": {
+    "mtime": 1795025464.9129827,
+    "seen": 1795035242.9309483,
+    "ast_hash": "3b89a02a16d41abc896e598eaf91f135",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/inspecionar_locomocao.py": {
+    "mtime": 1795024815.644795,
+    "seen": 1795035242.9309506,
+    "ast_hash": "0364a34c0cb6a3106e8346075b8ef0c2",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/instalar_final.py": {
+    "mtime": 1795032972.5769928,
+    "seen": 1795035242.930953,
+    "ast_hash": "9e9ad5267141585a867a15fa5c633d37",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/instalar_final2.py": {
+    "mtime": 1795033301.32519,
+    "seen": 1795035242.930956,
+    "ast_hash": "c3e3bef26411317c1ee31d1c1152cc71",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/instalar_marcha_luna.py": {
+    "mtime": 1795026835.4727705,
+    "seen": 1795035242.9309583,
+    "ast_hash": "65037051ef21b67d5c71e51b0110f385",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/instalar_rig.py": {
+    "mtime": 1795028417.1414466,
+    "seen": 1795035242.9309607,
+    "ast_hash": "d6c04d1d11b52f3920b4481264fd1927",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/instalar_rig_novo_banco.py": {
+    "mtime": 1795029939.9350193,
+    "seen": 1795035242.930963,
+    "ast_hash": "95606122da2dc34061aa0f69f804cd34",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/regenerar_locomocao.py": {
+    "mtime": 1795024245.8291872,
+    "seen": 1795035242.9310346,
+    "ast_hash": "20b86325c0786b622a55cfcc55283d8d",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/remover_oval.py": {
+    "mtime": 1795032219.963069,
+    "seen": 1795035242.931073,
+    "ast_hash": "60da6befc44e73e5ecb26e1e68da2cbe",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/remover_oval_banco.py": {
+    "mtime": 1795032919.7536008,
+    "seen": 1795035242.9310756,
+    "ast_hash": "3884b7d7e49abaae019c0be4e3562863",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/rig_estendido.py": {
+    "mtime": 1795026492.1599908,
+    "seen": 1795035242.9310834,
+    "ast_hash": "ca3422cba42720f9555402e1b3c43f81",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/rig_gerar.py": {
+    "mtime": 1795024996.2916021,
+    "seen": 1795035242.9310863,
+    "ast_hash": "7dd7d38e08f153e67995b028502c51d2",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/rig_gesto.py": {
+    "mtime": 1795031354.7546172,
+    "seen": 1795035242.9310887,
+    "ast_hash": "b635b2f256fb52518017e8b4c4501c22",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/rig_novo.py": {
+    "mtime": 1795034178.3376584,
+    "seen": 1795035242.9310913,
+    "ast_hash": "101049cdbc9de170ef122fce23a78fe2",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/validar_rig_novo.py": {
+    "mtime": 1795029474.847929,
+    "seen": 1795035242.9311209,
+    "ast_hash": "2792f0fbf0d6726fc23fca25272e9094",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/validar_saltos.py": {
+    "mtime": 1795034285.2052906,
+    "seen": 1795035242.9311235,
+    "ast_hash": "463c34f4cf4784248a81fdcfd6b9652a",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/ver_passo_rig.py": {
+    "mtime": 1795028262.681023,
+    "seen": 1795035242.9311256,
+    "ast_hash": "5d19d7ca8e3083ed7ba925e262911c53",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/RELATORIO-ACENAR.md": {
+    "mtime": 1795032250.2714138,
+    "seen": 1795035242.9312484,
+    "ast_hash": "4ea90e638cd9a9497f8696f3c8d99732",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/RELATORIO-GESTO.md": {
+    "mtime": 1795031654.142477,
+    "seen": 1795035242.9312568,
+    "ast_hash": "813a1ea5ca26997a148cdaf210891d91",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/RELATORIO-RIG.md": {
+    "mtime": 1795026636.2571883,
+    "seen": 1795035242.9312594,
+    "ast_hash": "8491e61b76bbd166254103cf6902f825",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/frida/acenar/f00.png": {
+    "mtime": 1795032156.835922,
+    "seen": 1795035242.93195,
+    "ast_hash": "54814e2c721be19f3de29cd3472c9bc1",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/frida/acenar/f01.png": {
+    "mtime": 1795032156.8502789,
+    "seen": 1795035242.931953,
+    "ast_hash": "99fce2a52a3bf437fc4ef96e220bc586",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/frida/acenar/f02.png": {
+    "mtime": 1795032156.8639512,
+    "seen": 1795035242.9319553,
+    "ast_hash": "59f5a7150a3d92db036488d28c941555",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/frida/acenar/f03.png": {
+    "mtime": 1795032156.8745415,
+    "seen": 1795035242.931958,
+    "ast_hash": "e767f14ad64be827ab8ee7eb06a87172",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/frida/acenar/f04.png": {
+    "mtime": 1795032156.8915932,
+    "seen": 1795035242.9319606,
+    "ast_hash": "4c396918149090508ce24f09d00e113b",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/frida/acenar/f05.png": {
+    "mtime": 1795032156.903596,
+    "seen": 1795035242.931963,
+    "ast_hash": "6c4b87a8144f24d531067d7e58c20e2e",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/frida/acenar/f06.png": {
+    "mtime": 1795032156.9174883,
+    "seen": 1795035242.9319656,
+    "ast_hash": "66f7b32921100b9c33b8b266c5d34fd6",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/frida/acenar/f07.png": {
+    "mtime": 1795032156.9304898,
+    "seen": 1795035242.9319685,
+    "ast_hash": "3fa6b4f52cf23185793f8c3e287adbf8",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/frida/acenar/f08.png": {
+    "mtime": 1795032156.9347076,
+    "seen": 1795035242.9319708,
+    "ast_hash": "0d9005670a0202d23202884fa92235ac",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/frida/acenar/f09.png": {
+    "mtime": 1795032156.959403,
+    "seen": 1795035242.931974,
+    "ast_hash": "104b924e05515c779f7697bdf9eb08b1",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/luna/acenar/f00.png": {
+    "mtime": 1795031216.8723013,
+    "seen": 1795035242.9328465,
+    "ast_hash": "14483cd13fc959bdcf5b05a8dec6af1c",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/luna/acenar/f01.png": {
+    "mtime": 1795031216.884142,
+    "seen": 1795035242.9328492,
+    "ast_hash": "7bdc8e8427293bf953e522eaab907e4c",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/luna/acenar/f02.png": {
+    "mtime": 1795031216.8955617,
+    "seen": 1795035242.9328518,
+    "ast_hash": "a7c46733f87531efd86e66f82483aabf",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/luna/acenar/f03.png": {
+    "mtime": 1795031216.9074705,
+    "seen": 1795035242.9328542,
+    "ast_hash": "6d9c6cf63fe5697207a33d0c3aea3a76",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/luna/acenar/f04.png": {
+    "mtime": 1795031216.9185004,
+    "seen": 1795035242.9328568,
+    "ast_hash": "c1c7b7077d44997ed0e04e0c0d1d830c",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/luna/acenar/f05.png": {
+    "mtime": 1795031216.9314427,
+    "seen": 1795035242.9328594,
+    "ast_hash": "2da653e4de9f60dc97445c6b73dec1fe",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/luna/acenar/f06.png": {
+    "mtime": 1795031216.9429944,
+    "seen": 1795035242.9328618,
+    "ast_hash": "c25fa3a246f39552a56698bfe6d3a8b8",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/luna/acenar/f07.png": {
+    "mtime": 1795031216.95488,
+    "seen": 1795035242.932864,
+    "ast_hash": "d06289f817d970b97bc9d4c857ca4b9f",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/luna/acenar/f08.png": {
+    "mtime": 1795031216.9663973,
+    "seen": 1795035242.9328668,
+    "ast_hash": "6f2b471f54ff2ea720dacbc308e4b471",
+    "semantic_hash": ""
+  },
+  "work/frida-luna/movimentos/luna/acenar/f09.png": {
+    "mtime": 1795031216.9774368,
+    "seen": 1795035242.9328694,
+    "ast_hash": "120cc72b1115e288cec6fe9f2a567251",
     "semantic_hash": ""
   }
 }
