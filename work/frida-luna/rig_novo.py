@@ -48,16 +48,16 @@ N = 8
 
 # amplitude por movimento.Na FALA o braço é contido (1 px) de propósito (avatar).
 AMP = {
-    "marcha": dict(perna=28, braco=16, cabeca=0.8, bob=5, orelha=4, olhar=2,
-                   piscar=1, sobr=2, bochecha=1, colar=2, cauda=5, dedo=1, boca=0.5),
-    "corrida": dict(perna=34, braco=21, cabeca=1.0, bob=7, orelha=7, olhar=2,
-                    piscar=1, sobr=2, bochecha=2, colar=3, cauda=8, dedo=2, boca=0.8),
-    "salto": dict(perna=22, braco=10, cabeca=0.8, bob=6, orelha=5, olhar=1,
-                  piscar=1, sobr=1, bochecha=1, colar=2, cauda=7, dedo=1, boca=0.6),
-    "giro": dict(perna=6, braco=5, cabeca=0.8, bob=2, orelha=4, olhar=2,
-                 piscar=1, sobr=2, bochecha=1, colar=2, cauda=6, dedo=1, boca=0.4),
-    "fala": dict(perna=0, braco=1, cabeca=0.6, bob=1, orelha=3, olhar=2,
-                 piscar=1, sobr=2, bochecha=1, colar=1, cauda=2, dedo=1, boca=1.0),
+    "marcha": dict(perna=22, braco=13, cabeca=0.8, bob=2, orelha=3, olhar=3,
+                   piscar=0, sobr=4, bochecha=2, colar=3, cauda=6, dedo=1, boca=0.5),
+    "corrida": dict(perna=26, braco=16, cabeca=1.0, bob=3, orelha=4, olhar=3,
+                    piscar=0, sobr=4, bochecha=3, colar=4, cauda=8, dedo=2, boca=0.8),
+    "salto": dict(perna=22, braco=10, cabeca=0.8, bob=8, orelha=7, olhar=2,
+                  piscar=0, sobr=3, bochecha=2, colar=3, cauda=7, dedo=1, boca=0.6),
+    "giro": dict(perna=6, braco=5, cabeca=0.8, bob=2, orelha=6, olhar=3,
+                 piscar=0, sobr=4, bochecha=2, colar=3, cauda=6, dedo=1, boca=0.4),
+    "fala": dict(perna=0, braco=1, cabeca=1.2, bob=1, orelha=5, olhar=3,
+                 piscar=0, sobr=4, bochecha=3, colar=2, cauda=3, dedo=1, boca=1.2),
 }
 
 # caixas das peças em pixéis do sprite aprovado (calibradas da arte 2x).
@@ -82,11 +82,11 @@ PECAS_LUNA = [
      ("boca",     (66,88,104,106, 85,90,10, "boca")),
 ]
 PECAS_FRIDA = [
-    ("rabo",     (2,158, 30,208, 24,163, 0, "rot")),
+    ("rabo",     (12,158, 40,208, 32,163, 0, "rot")),
      ("pata_esq", (30,204, 74,230, 48,206, 1, "rot")),
      ("pata_dir", (100,204,144,230,122,206, 1, "rot")),
-     ("braco_esq",(0,150, 34,184, 12,155, 2, "rot")),
-     ("braco_dir",(140,150,174,184,161,155, 2, "rot")),
+     ("braco_esq",(8,150, 42,184, 20,155, 2, "rot")),
+     ("braco_dir",(132,150,166,184,153,155, 2, "rot")),
      ("colar",    (18,94,155,132, 86,98, 3, "trans")),
      ("orelha_esq",(6,2, 68,32, 56,10, 4, "rot")),
      ("orelha_dir",(106,2,168,32,118,10, 4, "rot")),
@@ -162,7 +162,7 @@ def _comprimir(im, fator):
     return im.resize((im.width, h2), Image.LANCZOS)
 
 
-def animar_peça(p, i, a, mov):
+def animar_peça(p, i, a, mov, self_src=None):
     nome, box = p["nome"], p["box"]
     x0, y0, x1, y1, px, py, z, tipo = box
     piv = (px - x0, py - y0)
@@ -204,9 +204,32 @@ def animar_peça(p, i, a, mov):
         dy = int(round(0.5 * s))
         out = Image.new("RGBA", im.size, (0, 0, 0, 0))
         out.paste(im, (dx, dy))
-        # piscar: curva suave, 2 frames por ciclo (compressão da própria pálpebra)
-        if i in (3, 4):
-            out = _comprimir(out, 0.18)
+        # PISCAR DESACTIVADO: todas as versões do piscar geraram artefactos
+        # (olho duplo, rastro, pálpebra grande). O utilizador reprovou todas.
+        # Os olhos apenas olham 1-2 px (limpo); a vida vem das sobrancelhas,
+        # orelhas, bochechas, bandana e rabo. Sem piscar = sem artefacto.
+        if False and i in (3, 4):
+            arr = np.array(im)
+            escuros = arr[arr[:, :, 3] > 120][:, :3]
+            esc = escuros[np.argmin(escuros.mean(axis=1))].astype(np.uint8) if len(escuros) else np.array([40,20,20], np.uint8)
+            pisca = Image.new("RGBA", im.size, (0, 0, 0, 0))
+            pd = ImageDraw.Draw(pisca)
+            w, h = im.size
+            y = h // 2
+            # pele da pálpebra = cor do pixél opaco logo ACIMA do olho (na imagem cheia)
+            try:
+                gx0, gy0, _, _ = [int(v) for v in box[:4]]
+                acima = np.array(self_src)[max(0, gy0-6):gy0-2, gx0:gx0+w]
+                pele_op = acima[acima[:, :, 3] > 120][:, :3]
+                pele = np.median(pele_op, axis=0).astype(np.uint8) if len(pele_op) else np.array([200,150,90],np.uint8)
+            except Exception:
+                pele = np.array([200,150,90], np.uint8)
+            # 1) tapar o olho TODO com a pele (ellipse cerca da caixa inteira)
+            pd.ellipse((1, 1, w-2, h-2), fill=tuple(int(v) for v in pele)+(255,))
+            # 2) linha da pálpebra fechada, curta e dentro da caixa
+            pd.line([(int(w*0.15), y), (w//2, y+1), (int(w*0.85), y)],
+                    fill=tuple(int(v) for v in esc)+(255,), width=2)
+            return pisca
         return out
 
     if tipo == "nariz":
@@ -226,7 +249,8 @@ def animar_peça(p, i, a, mov):
 def gerar(quem, mov):
     W, H = CAIXA[quem]
     a = AMP[mov]
-    base, pecas = extrair(quem, sem_oval=(mov == "salto"))
+    src = np.array(Image.open(BASE / "chars" / "poses-v3" / quem / "happy.png").convert("RGBA"))
+    base, pecas = extrair(quem)   # referência é a happy.png sem oval; tudo alinhado
     dest = OUT / f"{quem}-{mov}"
     if dest.exists():
         import shutil
@@ -238,21 +262,20 @@ def gerar(quem, mov):
     for i in range(N):
         # f00 = repouso (bob 0); pico do salto nos frames 3-4
         bob = int(round(abs(math.sin((i / N) * math.tau)) * a["bob"]))
-        dy = maxbob - bob                      # >= 0, evita offset negativo no PIL
-        frame = Image.new("RGBA", (W, H + 2 * maxbob), (0, 0, 0, 0))
-        frame.alpha_composite(base, (0, dy))
+        # SALTO DE VERDADE: o boneco sobe INTEIRO (mesmo tamanho), os pés descolam
+        # do chão. Margem de 6 px extra no topo para a orelha não cortar. Sem resize!
+        MARGEM = 8
+        off = MARGEM - bob                    # repouso=8, pico=0
+        frame = Image.new("RGBA", (W, H + MARGEM + 4), (0, 0, 0, 0))
+        frame.alpha_composite(base, (0, off))
         for p in ordem:
             x0, y0, *_ = p["box"]
-            peça = animar_peça(p, i, a, mov)
-            frame.alpha_composite(peça, (x0, y0 + dy))
-        frame = frame.crop((0, maxbob, W, maxbob + H))
-        # SALTO: squash — encolhe no pico e cola no TOPO, deixando os pés no ar.
-        # (O crop acima mantém a base; aqui só lift final para o ar.)
-        if mov == "salto" and bob > 0:
-            k = 1 - 0.24 * (bob / max(1, maxbob))     # ate 24% mais curto no pico -> pes no ar visiveis
-            pequeno = frame.resize((W, max(1, int(H * k))), Image.LANCZOS)
-            frame = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-            frame.alpha_composite(pequeno, (0, 0))     # cabeca no topo, pes no ar
+            peça = animar_peça(p, i, a, mov, self_src=src)
+            frame.alpha_composite(peça, (x0, y0 + off))
+        # crop: em repouso queremos o sprite exatamente na caixa (offset 8 -> crop 0+8-8=0
+        # daria 8px deslocado); usamos crop em (off - 8 + bob)=0 fixo, e o boneco em
+        # repouso fica MARGEM(8)px abaixo do topo — compensamos colando em off=0 quando bob=0.
+        frame = frame.crop((0, 0, W, H))
         frame.save(dest / f"f{i:02d}.png")
 
     fs = sorted(dest.glob("*.png"))
