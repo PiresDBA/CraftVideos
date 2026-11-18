@@ -43,10 +43,14 @@ Esta folha é injectada automaticamente em todos os prompts por `gerar_ciclos.py
 ```
 OUTPUT — TRUE TRANSPARENT BACKGROUND (RGBA with real alpha), NOT cream paper, NOT white,
 NOT a coloured card. Each drawing must be an isolated figure with fully transparent space
-around it: no ground line, no shadow, no rectangle, no border. Keep the 8 figures in ONE
-horizontal row, evenly spaced, with generous empty gaps between them, identical size and the
-feet on the same baseline inside each cell. Do NOT flatten the alpha. Do NOT put the figures
-on a background.
+around it: no ground line, NO SHADOW, NO OVAL OR ELLIPSE UNDER THE FEET, no contact blob,
+no rectangle, no border. The shadow will be drawn later by the animation, so it must NOT be in
+the image. Keep the 8 figures in ONE
+horizontal row, evenly spaced, identical size and the feet on the same baseline inside each
+cell. MINIMUM GAP between neighbouring figures: at least one quarter of a figure's width of
+completely empty transparent space — the characters must NEVER touch, overlap or have their
+outlines nearly meet. A figure touching its neighbour makes the sheet unusable.
+Do NOT flatten the alpha. Do NOT put the figures on a background.
 
 MICRO-MOVEMENTS — MANDATORY. This is NOT a frozen character with only breathing and blinking.
 In every drawing, at least three small facial/appendage details change by 1 to 3 pixels

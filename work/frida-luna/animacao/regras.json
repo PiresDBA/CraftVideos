@@ -54,6 +54,8 @@
   }
  },
  "proibido": [
+  "sombra desenhada no sprite (a sombra e criada na animacao, depende da cena)",
+  "figuras encostadas na folha (exigir espacamento minimo entre quadros)",
   "gerar no Flow sem anexar a imagem de referencia aprovada",
   "usar folha de 3 vistas como referencia",
   "registar ciclo com o nome da personagem como prefixo",

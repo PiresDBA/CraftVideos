@@ -168,7 +168,8 @@ def submeter(nome, prompt, quem):
 
 def descarregar(destino, n=4):
     destino.mkdir(parents=True, exist_ok=True)
-    cmd = ["node", str(DOWNLOADER), PROJETO, str(destino), "--n", str(n), "--cdp", CDP]
+    cmd = ["node", str(DOWNLOADER), PROJETO, str(destino), "--n", str(n),
+           "--cdp", CDP, "--hires"]
     rodar(cmd, cwd=DOWNLOADER.parent, mostrar=False)
     return sorted(destino.glob("*.webp"))
 
@@ -321,6 +322,57 @@ def produzir(limite=0):
     return 0 if ok else 1
 
 
+def prompt_lote(quem, movimentos):
+    """Um prompt para N folhas de uma vez, com uma unica referencia anexada."""
+    micro = ""
+    f = BASE / "chars" / "PROMPTS-MICRO-MOVIMENTOS.md"
+    if f.exists():
+        m = re.search(r"```\s*\n(.*?)\n```", f.read_text(encoding="utf-8"), re.S)
+        micro = m.group(1).strip() if m else ""
+    nomes = "\n".join(f"- Image {i+1}: the cycle called \"{m}\"" for i, m in enumerate(movimentos))
+    return (
+        f"Create {len(movimentos)} SEPARATE images in this single request. Each image is one "
+        f"sprite sheet for the SAME approved character, drawn exactly like the attached "
+        f"reference image (same face, same colours, same proportions, same outline) — never "
+        f"a different character or a different style.\n\n"
+        f"The images, in order:\n{nomes}\n\n"
+        f"RULES FOR EVERY IMAGE (apply all of them):\n"
+        f"1. ONE horizontal row of exactly 8 evenly spaced drawings of the named movement, "
+        f"read left to right, same size, feet on one baseline, the 8th drawing flows back "
+        f"into the 1st.\n"
+        f"2. TRUE TRANSPARENT BACKGROUND (RGBA), no paper, no ground line, NO SHADOW, no oval "
+        f"under the feet, no border, no text. The shadow is drawn later by the animation.\n"
+        f"3. MINIMUM GAP between neighbouring drawings: at least one quarter of a figure's "
+        f"width of empty transparent space. Figures must NEVER touch or overlap.\n"
+        f"4. NO frame borders, no numbers, no labels.\n\n"
+        f"{micro}\n\n"
+        f"Keep the identity of the attached reference in every drawing of every image."
+    )
+
+
+def lote(quem, quantas=20):
+    """Gera N folhas de uma vez para uma personagem e descarrega todas."""
+    sec(f"LOTE — {quem} ({quantas} imagens)")
+    fal = BASE / "animacao" / "faltam.json"
+    movs = []
+    if fal.exists():
+        d = json.loads(fal.read_text(encoding="utf-8"))
+        movs = list(d.get(quem, {}).keys())
+    if not movs:
+        print("  sem movimentos em falta para esta personagem")
+        return 1
+    prompt = prompt_lote(quem, movs[:quantas])
+    print(f"  pedindo {len(movs[:quantas])} folhas: {', '.join(movs[:quantas])}")
+    if not submeter(f"{quem}-lote", prompt, quem):
+        print("  FALHOU ao submeter (referencia pode nao ter anexado)")
+        return 1
+    destino = BASE / "chars" / "folhas" / f"_lote-{quem}"
+    imgs = descarregar(destino, quantas)
+    print(f"  descarregadas {len(imgs)} imagens em {destino}")
+    print("  proximo: identificar cada folha e correr registar_novos.py com o mapa")
+    return 0
+
+
 MENU = [
     ("1", "ver estado do projecto", estado),
     ("2", "criar/regenerar um ciclo (pergunta nome)", None),
@@ -330,6 +382,7 @@ MENU = [
     ("6", "PIPELINE COMPLETO (tudo)", tudo),
     ("7", "produzir por ordem (planejar-gerar-validar-amostra)", produzir),
     ("8", "verificar regras e portas", verificar_portas),
+    ("9", "gerar lote de 20 folhas (pergunta personagem)", None),
     ("0", "sair", None),
 ]
 
@@ -347,6 +400,13 @@ def interactivo():
         if op == "0":
             print("  Até já.")
             return
+        if op == "9":
+            quem = input("  Personagem do lote (frida/luna)? ").strip().lower()
+            if quem in REF:
+                lote(quem)
+            else:
+                print("  personagem desconhecida")
+            continue
         if op == "2":
             quem = input("  Personagem (frida/luna)? ").strip().lower()
             mov = input("  Movimento (escuta, fala, marcha, piscar...)? ").strip().lower()
@@ -391,6 +451,8 @@ def main():
         produzir(int(sys.argv[2]) if len(sys.argv) > 2 else 0)
     elif cmd == "verificar":
         verificar_portas()
+    elif cmd == "lote" and len(sys.argv) >= 3:
+        lote(sys.argv[2].lower(), int(sys.argv[3]) if len(sys.argv) > 3 else 20)
     elif cmd in ("ajuda", "help", "-h"):
         print(__doc__)
     else:

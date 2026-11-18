@@ -108,11 +108,34 @@ def main():
     rot, n = ndimage.label(fig)
     areas = ndimage.sum(fig, rot, index=range(1, n + 1))
     caixas = ndimage.find_objects(rot)
-    figs = [i + 1 for i, a in enumerate(areas) if a >= area_min]
+    maior = max(areas) if len(areas) else 0
+
+    # A sombra de contacto e criada na animacao (depende do chao de cada cena), nunca
+    # vem no sprite. O Flow as vezes desenha uma oval baixa e achatada: remove-la aqui.
+    candidatos = []
+    for i, area in enumerate(areas):
+        if area < area_min:
+            continue
+        sl = caixas[i]
+        alt, larg = sl[0].stop - sl[0].start, sl[1].stop - sl[1].start
+        no_fundo = sl[0].start > fig.shape[0] * 0.82
+        oval = (larg / max(1, alt)) > 2.2 and area < maior * 0.30
+        if no_fundo and oval:
+            print(f"  sombra descartada: componente {i+1} ({larg}x{alt})")
+            continue
+        candidatos.append(i + 1)
+
+    # Figuras encostadas fundem-se num componente so. O prompt agora exige espacamento
+    # minimo de 1/4 da largura, mas se ainda acontecer avisamos em vez de cortar mal.
+    if len(candidatos) < 4 and candidatos:
+        print("  AVISO: menos de 4 componentes — as figuras podem estar encostadas. "
+              "Rejeitar a folha e pedir mais espacamento no Flow.")
+
+    figs = candidatos
     figs.sort(key=lambda k: caixas[k - 1][1].start)
-    print(f"componentes: {n} | figuras (area>={area_min}): {len(figs)}")
+    print(f"componentes: {n} | figuras usadas: {len(figs)}")
     if len(figs) < 4:
-        raise SystemExit("poucas figuras — verifica a imagem ou baixa o --area-min")
+        raise SystemExit("poucas figuras - verifica a imagem ou baixa o --area-min")
 
     recortes = []
     for k in figs:
