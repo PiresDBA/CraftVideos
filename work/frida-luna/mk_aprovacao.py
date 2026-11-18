@@ -11,13 +11,11 @@ CHARS = Path(r"D:\CRAFT\work\frida-luna\chars")
 OUT = Path(r"D:\CRAFT\work\frida-luna\APROVACAO.html")
 
 ORDER = [
-    ("frida-v2-ok-flat.png", "Frida — LIMPA (halo removido) — aprovada?"),
-    ("luna-v2-ok-flat.png", "Luna — LIMPA (halo removido) — aprovada?"),
-    ("frida-v2.png", "Frida — original com halo de autocolante (só referência)"),
-    ("luna-v2.png", "Luna — original (só referência)"),
-    ("frida-expressoes.png", "Frida — grelha antiga (reprovada por inconsistência)"),
-    ("luna-expressoes.png", "Luna — grelha antiga (reprovada por inconsistência)"),
-    ("expressoes-v2/_contact.png", "Expressões v2 — consistentes, corpo fixo"),
+    ("../bg/flow/_contact.png", "11 fundos FINAIS (Google Flow) — cores vivas, uma imagem por cena"),
+    ("../bg/_contact.png", "Fundos antigos (ComfyUI SD1.5) — para comparação"),
+    ("poses-v3/_contact.png", "Poses v3 — as tuas 8 expressões, corpo aprovado, fundo transparente"),
+    ("frida-v2-ok-flat.png", "Frida — LIMPA (halo removido) — aprovada"),
+    ("luna-v2-ok-flat.png", "Luna — LIMPA (halo removido) — aprovada"),
 ]
 
 cards = []

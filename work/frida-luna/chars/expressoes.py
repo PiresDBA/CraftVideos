@@ -199,15 +199,15 @@ POSES = {
     "sad":         dict(olhos="aberto",        sobrolhos="triste",      boca="franzida",       extras=["lagrima"], olho_dy=2.5),
     "angry":       dict(olhos="meio_fechado",  sobrolhos="zangado",     boca="aberta",         extras=[], lid=0.30, boca_escala=0.62, dentes=True),
     "excited":     dict(olhos="muito_aberto",  sobrolhos="levantado",   boca="sorriso_grande", extras=["brilhos"]),
-    "scared":      dict(olhos="muito_aberto",  sobrolhos="triste",      boca="aberta",         extras=["suor"], boca_escala=0.72, boca_alt=1.5),
+    "scared":      dict(olhos="muito_aberto",  sobrolhos="triste",      boca="aberta",         extras=["suor"], boca_escala=0.70, boca_alt=1.75, iris=0.50),
     "tired":       dict(olhos="meio_fechado",  sobrolhos="triste",      boca="franzida",       extras=["zzz"], lid=0.56),
     "confused":    dict(olhos="espiral",       sobrolhos="desconfiado", boca="ondulada",       extras=[]),
     "proud":       dict(olhos="meio_fechado",  sobrolhos="levantado",   boca="sorriso",        extras=["brilhos"], lid=0.42),
-    "surprised":   dict(olhos="muito_aberto",  sobrolhos="levantado",   boca="aberta",         extras=[], boca_escala=0.78, boca_alt=1.25),
+    "surprised":   dict(olhos="muito_aberto",  sobrolhos="levantado",   boca="aberta",         extras=[], boca_escala=0.86, boca_alt=1.10, iris=0.70),
     "shy":         dict(olhos="meio_fechado",  sobrolhos="triste",      boca="sorriso",        extras=["rubor"], lid=0.50),
     "silly":       dict(olhos=["fechado", "muito_aberto"], sobrolhos="levantado", boca="lingua", extras=[]),
     "sick":        dict(olhos="meio_fechado",  sobrolhos="triste",      boca="ondulada",       extras=["verde", "suor"], lid=0.46),
-    "worried":     dict(olhos="aberto",        sobrolhos="desconfiado", boca="franzida",       extras=["suor"]),
+    "worried":     dict(olhos="aberto",        sobrolhos="desconfiado", boca="franzida",       extras=["suor"], lisa=True),
     "mischievous": dict(olhos="lado",          sobrolhos="desconfiado", boca="sorriso_grande", extras=[], olho_dx=6),
     "loved":       dict(olhos="coracao",       sobrolhos="neutro",      boca="sorriso",        extras=["coracoes"]),
     "bored":       dict(olhos="meio_fechado",  sobrolhos="neutro",      boca="franzida",       extras=[], lid=0.66, lisa=True),
@@ -423,24 +423,6 @@ def build_erase_mask(who, rgb):
     return m, src
 
 
-def _down2(a):
-    """Reduz para metade por media 2x2 (piramide)."""
-    h, w = a.shape[:2]
-    h2, w2 = (h // 2) * 2, (w // 2) * 2
-    a = a[:h2, :w2]
-    c = a.shape[2] if a.ndim == 3 else 1
-    return a.reshape(h2 // 2, 2, w2 // 2, 2, c).mean(axis=(1, 3))
-
-
-def _up2(a, size):
-    """Amplia com bilinear ate `size` = (altura, largura)."""
-    chans = []
-    for i in range(a.shape[2]):
-        img = Image.fromarray(a[..., i].astype(np.float32), mode="F")
-        chans.append(np.asarray(img.resize((size[1], size[0]), Image.BILINEAR)))
-    return np.stack(chans, axis=-1)
-
-
 def inpaint(rgb, mask, src=None, blur=2.4):
     """Preenchimento por vizinho-mais-proximo (Voronoi) + suavizacao interior.
 
@@ -518,12 +500,12 @@ def eye_aberto(c, e, pal, lw=LW, ir=0.76, sh=(0.0, 0.0), **_):
           sh=(sh[0] - 2.0, sh[1] + 1.5))                 # iris baixa/esquerda
 
 
-def eye_muito_aberto(c, e, pal, lw=LW, **_):
+def eye_muito_aberto(c, e, pal, lw=LW, ir=0.62, **_):
     """Olho arregalado: esclera maior, iris mais pequena (muito branco)."""
     cx, cy = e["c"]
     rx, ry = e["r"][0] * 1.04, e["r"][1] * 1.04         # cresce 4%
     c.ell(cx, cy, rx, ry, fill=pal["esclera"], outline=pal["contorno"], w=lw)
-    _iris(c, cx, cy + ry * 0.02, min(rx, ry) * 0.62, pal)   # iris pequena
+    _iris(c, cx, cy + ry * 0.02, min(rx, ry) * ir, pal)     # iris pequena
 
 
 def eye_meio_fechado(c, e, pal, lid=0.45, lw=LW, sh=(0.0, 0.0), **_):
@@ -800,17 +782,21 @@ EXTRAS = {
 
 
 def apply_green(rgb, cfg):
-    """Tonalidade esverdeada (doente), limitada a cara e com corte no pescoco."""
+    """Tonalidade esverdeada (doente): veu verde uniforme sobre a cara.
+
+    Um veu (mistura para um verde claro) afecta por igual a pelagem e o focinho
+    claro -- ao contrario de um multiply, que so pintava as zonas claras.
+    """
     h, w = rgb.shape[:2]
     ell = _ellipse_mask((h, w), (cfg["verde"]["c"][0], cfg["verde"]["c"][1],
                                  cfg["verde"]["r"][0], cfg["verde"]["r"][1]))
     yy = np.mgrid[0:h, 0:w][0]
     ell &= yy < cfg["verde"]["corte"]                   # nao desce ao corpo
     m = Image.fromarray((ell * 255).astype(np.uint8), "L").filter(
-        ImageFilter.GaussianBlur(6))                    # bordo suave
-    a = (np.asarray(m).astype(np.float32) / 255.0)[..., None] * 0.45
-    tint = rgb.astype(np.float32) * np.array([0.90, 1.06, 0.82])
-    return np.clip(rgb * (1 - a) + tint * a, 0, 255).astype(np.uint8)
+        ImageFilter.GaussianBlur(9))                    # bordo bem suave
+    a = (np.asarray(m).astype(np.float32) / 255.0)[..., None] * 0.30
+    verde = np.array([148.0, 190.0, 128.0])             # cor do veu
+    return np.clip(rgb * (1 - a) + verde * a, 0, 255).astype(np.uint8)
 
 
 # ==========================================================================
@@ -849,7 +835,7 @@ def render(who, spec):
     if isinstance(olhos, str):
         olhos = [olhos, olhos]
     kw = dict(lid=spec.get("lid", 0.45), dx=spec.get("olho_dx", 5.0),
-              sh=(0.0, spec.get("olho_dy", 0.0)))
+              ir=spec.get("iris", 0.62), sh=(0.0, spec.get("olho_dy", 0.0)))
     for i, (style, eye) in enumerate(zip(olhos, cfg["olhos"])):
         EYES[style](c, eye, cfg, **kw)                  # olho i
         draw_brow(c, cfg["sobrolho"][i], spec["sobrolhos"], i, cfg, cfg["tilt"])

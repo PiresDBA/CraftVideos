@@ -32,12 +32,40 @@ r"""
    py gerar_fundos.py --passos 28 --cfg 7 --forca-lora 0.85
                                          # afinacao (probes rapidos com
                                          # --largura 896 --altura 512 --passos 16)
+   py gerar_fundos.py --so-borda         # so a borda de papel nos PNG existentes
+   py gerar_fundos.py --sem-borda        # nao desenha a borda de papel
    py gerar_fundos.py --server http://127.0.0.1:8188
+
+ TRES COISAS QUE SE APRENDERAM A FORCA (nao repetir os erros)
+ ----------------------------------------------------------
+   1. Ordem do prompt. Sujeito -> proibicao de gente -> estilo. Com o estilo
+      antes da proibicao sairam um cao, um motociclista e dois figurantes num
+      tunel que devia estar vazio.
+   2. Geometria nao se pede, desenha-se. Texto sozinho nao segura a cena: a
+      roda gigante saiu casa, o carrossel saiu fila de pelucias e a montanha
+      de biscoitos saiu bosque com veados. As 7 cenas com `"esboco": True`
+      recebem um layout desenhado em PIL (roda, carris, arcos, espelhos, sol)
+      que sobe por POST /upload/image e entra num img2img a denoise 0.5; o
+      modelo pinta a textura dentro da geometria.
+   3. Denoise alto em esboco esparso = bicho inventado. 0.5 e' o ponto; com
+      zonas vazias no esboco o modelo enche-as com criaturas.
+   4. Bordas de papel rasgado em todos os fundos (STYLE-BIBLE 8): tapam as
+      assinaturas que o modelo escreve no canto e unem as 11 cenas.
+
+ ESTADO CONHECIDO / LIMITES
+ --------------------------
+   * 2 cartoes (hook, final) e 9 cenarios. Os 2 cartoes sao codigo puro.
+   * 7 cenarios usam esboco + img2img: abertura, montanha, roda, carrossel,
+     tunel, espelhos, moral.
+   * 2 cenarios sao text2img puro por terem saido bem assim: portao, bolinhas.
+   * O LoRA infantil fica em 0.75-0.85 e SO nos fundos. Personagem continua
+     proibido (regra de ouro #6): sai das folhas aprovadas do Artista-desenho.
 
  DOIS METODOS, E PORQUE
  ---------------------
    9 cenarios (abertura -> moral) : ComfyUI, SD 1.5 + LoRA childrens-picture-book-sd15
-                                    a 0.85, 28 steps, cfg 7, seed fixa por cena.
+                                    a 0.75-0.85. 7 deles com esboco em img2img
+                                    (denoise 0.5); portao e bolinhas em text2img.
    2 cartoes (hook, final)        : desenhados por codigo em PIL (`desenhar_cartao`).
                                     O SD 1.5 escrevia texto falso no cartao
                                     ("PAARES TANE"), assinava o canto e chegou a
@@ -94,7 +122,7 @@ SCHEDULER = "karras"
 FORCA_LORA = 0.75                # vale so para fundos
 
 # Ajustes mutaveis pela linha de comandos (probes rapidos sem tocar no codigo).
-AJUSTES = {"passos": PASSOS, "cfg": CFG, "forca_lora": FORCA_LORA}
+AJUSTES = {"passos": PASSOS, "cfg": CFG, "forca_lora": FORCA_LORA, "denoise": 0.5}
 
 # Assinatura visual comum a todos os fundos (STYLE-BIBLE 0, 2.1, 2.5, 8).
 # Repetida em todos os prompts porque o CLIP nao "lembra" nada entre chamadas.
@@ -114,6 +142,7 @@ SEM_GENTE = (
 NEGATIVO = (
     "people, person, human, human figure, character, creature, animal, dog, puppy, cat, "
     "bird, child, children, crowd, silhouette of a person, small figure walking, "
+    "statue, totem, mascot, scarecrow, plush toy, doll, "
     "text, letters, words, typography, caption, signage lettering, watermark, signature, "
     "artist signature, handwriting, logo, "
     "photograph, photography, product mockup, flat lay, paper craft, origami, stationery, "
@@ -163,15 +192,13 @@ CENAS = [
     {
         "scene": "abertura",
         "ficheiro": "fundo-entrada-parque.png",
+        "esboco": True,
         "seed": 220237,
         "temperatura": {"cor": "#FFF6E6", "opacidade": 0.06, "nota": "manha clara"},
         "prompt": (
-            "the entrance of a friendly cartoon pet park seen from the path, "
-            "olive green lawn and round bushes in the foreground, "
-            "round fluffy trees with layered flat olive canopies, "
-            "a dirt path leading forward between the bushes, "
-            "pale cream paper sky with a few soft white clouds high above, "
-            "a distant empty archway at the horizon with no lettering"
+            "an empty park path between round olive green bushes and trees, "
+            "pale cream sky with soft clouds, a small stone archway in the distance, "
+            "flat cartoon scenery, nobody there"
         ),
     },
     {
@@ -190,40 +217,36 @@ CENAS = [
     {
         "scene": "montanha",
         "ficheiro": "fundo-montanha-biscoitos.png",
+        "esboco": True,
         "seed": 440459,
         "temperatura": {"cor": "#FFF3DE", "opacidade": 0.04, "nota": "meio-dia alto"},
         "prompt": (
-            "a cartoon roller coaster built out of chocolate biscuits, "
-            "long wavy biscuit track with cream filling layers and sprinkles, "
-            "biscuit support towers, looping high over olive green grass, "
-            "big soft white clouds in a bright paper sky, "
-            "high noon light, wide establishing shot, empty track with no cart and no rider"
+            "a roller coaster track made of chocolate biscuits, "
+            "wavy biscuit rails with cream filling stacked high on brown biscuit supports, "
+            "green grass below, bright cream sky, empty ride with no cart"
         ),
     },
     {
         "scene": "roda",
         "ficheiro": "fundo-roda-tigelas.png",
+        "esboco": True,
         "seed": 550560,
         "temperatura": {"cor": "#FFE3B8", "opacidade": 0.12, "nota": "tarde dourada"},
         "prompt": (
-            "a giant cartoon ferris wheel whose cabins are pet food bowls, "
-            "round amber bowls dangling on slim spokes, warm brown structure, "
-            "seen from below against a golden late afternoon paper sky, "
-            "olive green grass and a low hedge at the base, "
-            "golden hour light, empty cabins, no riders"
+            "a big ferris wheel with round amber bowl shaped cabins, seen from below, "
+            "slim brown spokes, green grass at the base, golden sky, empty cabins"
         ),
     },
     {
         "scene": "carrossel",
         "ficheiro": "fundo-carrossel-pelucias.png",
+        "esboco": True,
         "seed": 660671,
         "temperatura": {"cor": "#FFCF9E", "opacidade": 0.16, "nota": "fim de tarde quente"},
         "prompt": (
-            "a small cartoon carousel with plush toy seats, "
-            "plush bear and plush rabbit shapes as seats, striped amber and cream canopy roof, "
-            "little warm glowing bulbs hanging along the rim, "
-            "warm brown painted poles, olive green grass around, "
-            "late afternoon warm light, empty seats, no riders, no children"
+            "a fairground carousel with a round striped canopy roof and painted poles, "
+            "small warm glowing bulbs along the rim, empty seats, "
+            "green grass around, warm late afternoon light"
         ),
     },
     {
@@ -242,40 +265,37 @@ CENAS = [
     {
         "scene": "tunel",
         "ficheiro": "fundo-tunel-grama.png",
+        "esboco": True,
         "seed": 880893,
         "temperatura": {"cor": "#D9C79E", "opacidade": 0.18, "nota": "sombra de relva"},
         "prompt": (
-            "a tunnel made of tall grass and woven branches, "
-            "a row of round arches formed by green grass blades and olive foliage, "
-            "small warm string lights with tiny glowing bulbs hung along the tunnel, "
-            "sunlight filtering through at the far end, "
-            "packed dirt floor, deep green shadow, empty tunnel, no characters"
+            "a tunnel made of tall green grass arches with small hanging string lights, "
+            "a dirt path running through it, deep green shadow, sunlight at the far end, "
+            "empty tunnel"
         ),
     },
     {
         "scene": "espelhos",
         "ficheiro": "fundo-casa-espelhos.png",
+        "esboco": True,
         "seed": 990904,
         "temperatura": {"cor": "#C9BBA6", "opacidade": 0.22, "nota": "interior neutro"},
         "prompt": (
-            "the inside of a fairground house of mirrors, "
-            "several tall wavy distorting mirrors in ornate warm brown frames leaning "
-            "against a plain cream wall, reflections of the room inside the glass, "
-            "a checkered cream and sand floor, a low wooden bench, "
-            "dim neutral interior light, empty room, no characters, no reflections of people"
+            "a row of tall wavy funhouse distorting mirrors in gold frames leaning "
+            "against a cream wall, warped glass, checkered floor, "
+            "dim neutral interior light, empty room"
         ),
     },
     {
         "scene": "moral",
         "ficheiro": "fundo-por-do-sol.png",
+        "esboco": True,
         "seed": 1010015,
         "temperatura": {"cor": "#FFB877", "opacidade": 0.26, "nota": "por-do-sol"},
         "prompt": (
-            "a warm sunset over a cartoon pet park, "
-            "solid amber orange sky bands with a big low sun disc, "
-            "dark warm brown flat silhouettes of the ferris wheel, the roller coaster and "
-            "round trees along the horizon, olive green foreground grass, "
-            "silhouettes are solid masses with no outlines, empty landscape, no characters"
+            "a big orange sun setting on the horizon, amber and orange sky bands, "
+            "dark warm brown silhouette skyline of a ferris wheel and round trees, "
+            "olive green foreground grass, empty landscape, solid silhouettes"
         ),
     },
     {
@@ -355,8 +375,12 @@ def pre_voo(servidor):
 # Grafo de workflow (API format, SD 1.5)
 # ----------------------------------------------------------------------------
 
-def construir_workflow(cena, largura, altura, usar_lora):
-    positivo = "%s. %s. %s" % (cena["prompt"], ESTILO, SEM_GENTE)
+def construir_workflow(cena, largura, altura, usar_lora, esboco=None):
+    # Ordem importa: o sujeito primeiro, a proibicao de gente logo a seguir,
+    # o estilo no fim. Com o estilo no meio o SD 1.5 perde o sujeito e inventa
+    # transeuntes (foi assim que apareceram um cao, um motociclista e dois
+    # figurantes num tunel que devia estar vazio).
+    positivo = "%s. %s. %s" % (cena["prompt"], SEM_GENTE, ESTILO)
     negativo = NEGATIVO
     if EXTRA.get(cena["scene"]):
         negativo = "%s, %s" % (EXTRA[cena["scene"]], NEGATIVO)
@@ -391,23 +415,37 @@ def construir_workflow(cena, largura, altura, usar_lora):
         "class_type": "CLIPTextEncode",
         "inputs": {"clip": origem_clip, "text": negativo},
     }
-    grafo["4"] = {
-        "class_type": "EmptyLatentImage",
-        "inputs": {"width": largura, "height": altura, "batch_size": 1},
-    }
+    if esboco:
+        # img2img guiado por esboco: a geometria vem do PIL, a textura do modelo.
+        grafo["9"] = {
+            "class_type": "LoadImage",
+            "inputs": {"image": esboco},
+        }
+        grafo["10"] = {
+            "class_type": "VAEEncode",
+            "inputs": {"pixels": ["9", 0], "vae": ["1", 2]},
+        }
+        latent, denoise = ["10", 0], AJUSTES["denoise"]
+    else:
+        grafo["4"] = {
+            "class_type": "EmptyLatentImage",
+            "inputs": {"width": largura, "height": altura, "batch_size": 1},
+        }
+        latent, denoise = ["4", 0], 1.0
+
     grafo["5"] = {
         "class_type": "KSampler",
         "inputs": {
             "model": origem_modelo,
             "positive": ["2", 0],
             "negative": ["3", 0],
-            "latent_image": ["4", 0],
+            "latent_image": latent,
             "seed": cena["seed"],
             "steps": AJUSTES["passos"],
             "cfg": AJUSTES["cfg"],
             "sampler_name": SAMPLER,
             "scheduler": SCHEDULER,
-            "denoise": 1.0,
+            "denoise": denoise,
         },
     }
     grafo["7"] = {
@@ -425,6 +463,42 @@ def construir_workflow(cena, largura, altura, usar_lora):
 # Fila: submeter, esperar, descarregar
 # ----------------------------------------------------------------------------
 
+def carregar_imagem(servidor, caminho):
+    """POST /upload/image em multipart, escrito a mao (so stdlib).
+
+    O esboco nunca e' escrito dentro da pasta de instalacao do ComfyUI: entra
+    pela API, como manda o AGENTS.md (outputs e inputs ficam em work/).
+    """
+    fronteira = "----fridaluna%s" % uuid.uuid4().hex
+    with open(caminho, "rb") as ficheiro:
+        conteudo = ficheiro.read()
+    nome = os.path.basename(caminho)
+    partes = [
+        ("--%s\r\n" % fronteira).encode(),
+        ('Content-Disposition: form-data; name="image"; filename="%s"\r\n' % nome).encode(),
+        b"Content-Type: image/png\r\n\r\n",
+        conteudo,
+        ("\r\n--%s\r\n" % fronteira).encode(),
+        b'Content-Disposition: form-data; name="overwrite"\r\n\r\ntrue',
+        ("\r\n--%s--\r\n" % fronteira).encode(),
+    ]
+    corpo = b"".join(partes)
+    pedido = urllib.request.Request(
+        servidor.rstrip("/") + "/upload/image", data=corpo, method="POST",
+        headers={"Content-Type": "multipart/form-data; boundary=%s" % fronteira})
+    try:
+        with urllib.request.urlopen(pedido, timeout=120) as resposta:
+            dados = json.loads(resposta.read().decode("utf-8"))
+    except urllib.error.HTTPError as erro:
+        raise ErroComfy("upload do esboco falhou: HTTP %s -> %s"
+                        % (erro.code, erro.read().decode("utf-8", "replace")[:800])) from None
+    except urllib.error.URLError as erro:
+        raise ErroComfy("upload do esboco falhou: %s" % erro.reason) from None
+    if "name" not in dados:
+        raise ErroComfy("upload devolveu resposta inesperada: %s" % json.dumps(dados)[:600])
+    return dados["name"]
+
+
 def submeter(servidor, grafo, cliente):
     resposta = pedir_json(servidor, "/prompt", dados={"prompt": grafo, "client_id": cliente})
     if "prompt_id" not in resposta:
@@ -435,7 +509,7 @@ def submeter(servidor, grafo, cliente):
     return resposta["prompt_id"]
 
 
-def esperar(servidor, prompt_id, limite_s=900, intervalo_s=3):
+def esperar(servidor, prompt_id, limite_s=2400, intervalo_s=3):
     inicio = time.time()
     while time.time() - inicio < limite_s:
         historico = pedir_json(servidor, "/history/%s" % prompt_id, timeout=60)
@@ -557,6 +631,277 @@ def _coracao(centro, raio):
     return pontos
 
 
+# ----------------------------------------------------------------------------
+# Esbocos de layout -> img2img
+# ----------------------------------------------------------------------------
+# Porque existem: a 6.5, 7 e 8.5 o SD 1.5 trocou a roda gigante por uma casa, o
+# carrossel por uma fila de pelucias e a montanha-russa de biscoitos por um
+# bosque com veados. Texto nao resolve; falta-lhe geometria. Aqui a geometria e'
+# desenhada em PIL (roda, carris, arcos, espelhos, sol) e o modelo so pinta a
+# textura dentro dela, com denoise 0.6. A composicao deixa de ser sorte.
+
+def _elipse_tremida(centro, raio_x, raio_y, tremor, semente, passos=54):
+    """Elipse com desvio de mao: evita o circulo perfeito reprovado pela biblia."""
+    import math
+    import random as _random
+    aleatorio = _random.Random(semente)
+    x0, y0 = centro
+    pontos = []
+    for passo in range(passos):
+        angulo = 2 * math.pi * passo / passos
+        desvio = 1.0 + aleatorio.uniform(-tremor, tremor) / 100.0
+        pontos.append((x0 + raio_x * desvio * math.cos(angulo),
+                       y0 + raio_y * desvio * math.sin(angulo)))
+    return pontos
+
+
+def desenhar_esboco(cena, largura, altura, destino):
+    """Layout plano da cena, cores da biblia, sem texto e sem personagem."""
+    from PIL import Image, ImageDraw
+
+    L, A = largura, altura
+    contorno = PALETA_PAPEL["contorno"]
+    imagem = Image.new("RGB", (L, A), PALETA_PAPEL["papel"])
+    d = ImageDraw.Draw(imagem)
+    s = cena["seed"]
+
+    def forma(pontos, cor, largura_linha=4, linha=True):
+        d.polygon(pontos, fill=cor)
+        if linha:
+            d.line(pontos + [pontos[0]], fill=contorno, width=largura_linha, joint="curve")
+
+    def circulo(centro, rx, ry, cor, largura_linha=4, linha=True, semente=0):
+        forma(_elipse_tremida(centro, rx, ry, 2.5, s + semente), cor, largura_linha, linha)
+
+    def rect(x0, y0, x1, y1, cor, linha=True, largura_linha=4, semente=0):
+        forma(_poligono_rasgado((x0, y0, x1, y1), 2, s + semente), cor, largura_linha, linha)
+
+    def banda_seno(y_base, amplitude, espessura, cor, cor_contorno=contorno, semente=0):
+        """Carris ondulados da montanha-russa (ou qualquer fita ondulada)."""
+        import math
+        pontos_alto, pontos_baixo = [], []
+        for i in range(0, 41):
+            x = L * i / 40.0
+            y = y_base + amplitude * math.sin(i / 40.0 * math.pi * 2.2)
+            pontos_alto.append((x, y))
+            pontos_baixo.append((x, y + espessura))
+        d.polygon(pontos_alto + pontos_baixo[::-1], fill=cor)
+        d.line(pontos_alto, fill=cor_contorno, width=5, joint="curve")
+        d.line(pontos_baixo, fill=cor_contorno, width=5, joint="curve")
+        return pontos_baixo
+
+    def nuvem(cx, cy, escala, semente=0):
+        """Nuvem de circulos cheios, sem contorno fino: evita virar balao de fala."""
+        import random as _random
+        aleatorio = _random.Random(s + semente)
+        for _ in range(4):
+            rx = L * escala * aleatorio.uniform(0.55, 0.95)
+            ry = rx * 0.62
+            deslocamento = L * escala * aleatorio.uniform(-0.9, 0.9)
+            circulo((cx + deslocamento, cy + aleatorio.uniform(-0.25, 0.25) * ry),
+                    rx, ry, (255, 251, 242), largura_linha=0, linha=False,
+                    semente=semente + _)
+
+    def colinas():
+        """Fundo de colinas: tira o vazio onde o modelo inventa bichos."""
+        circulo((L * 0.20, A * 0.78), L * 0.42, A * 0.20, (150, 158, 96),
+                largura_linha=4, semente=21)
+        circulo((L * 0.78, A * 0.80), L * 0.46, A * 0.22, (128, 138, 78),
+                largura_linha=4, semente=22)
+
+    def tufos(y, quantidade=14, cor=None):
+        """Tufos de relva: preenchem o primeiro plano."""
+        import random as _random
+        aleatorio = _random.Random(s + 44)
+        for i in range(quantidade):
+            x = L * (i + aleatorio.uniform(0.1, 0.9)) / quantidade
+            altura = A * aleatorio.uniform(0.015, 0.035)
+            d.polygon([(x, y), (x - altura * 0.5, y + altura), (x + altura * 0.5, y + altura)],
+                      fill=cor or (86, 98, 42))
+
+    if cena["scene"] == "abertura":
+        rect(0, int(A * 0.52), L, A, PALETA_PAPEL["verde"], linha=False)
+        colinas()
+        nuvem(L * 0.30, A * 0.14, 0.11, semente=5)
+        nuvem(L * 0.72, A * 0.12, 0.09, semente=9)
+        for i, x in enumerate([0.10, 0.24, 0.40, 0.62, 0.78, 0.92]):
+            cx, cy = L * x, A * (0.34 + 0.05 * (i % 2))
+            rect(cx - 10, cy, cx + 10, A * 0.80, PALETA_PAPEL["castanho"], largura_linha=3,
+                 semente=i)
+            circulo((cx, cy - A * 0.05), L * 0.085, A * 0.11, PALETA_PAPEL["verde"],
+                    semente=i * 3)
+        rect(L * 0.36, A * 0.60, L * 0.64, A * 0.70, PALETA_PAPEL["areia"], largura_linha=5)
+        forma([(L * 0.47, A * 0.62), (L * 0.53, A * 0.62), (L * 0.60, A), (L * 0.40, A)],
+              PALETA_PAPEL["areia"], largura_linha=5)
+        for i, x in enumerate([0.16, 0.30, 0.70, 0.86]):
+            circulo((L * x, A * 0.72), L * 0.075, A * 0.075, PALETA_PAPEL["verde"],
+                    semente=i * 7)
+        tufos(int(A * 0.93))
+
+    elif cena["scene"] == "montanha":
+        import math
+        colinas()
+        nuvem(L * 0.22, A * 0.15, 0.10, semente=3)
+        nuvem(L * 0.62, A * 0.11, 0.12, semente=8)
+        nuvem(L * 0.87, A * 0.18, 0.08, semente=12)
+        apoio = banda_seno(A * 0.46, A * 0.14, A * 0.075, PALETA_PAPEL["castanho"], semente=3)
+        # camada de creme a meio da fita: e' isto que a le como biscoito recheado
+        creme = []
+        for i in range(0, 41):
+            x = L * i / 40.0
+            creme.append((x, A * 0.46 + A * 0.14 * math.sin(i / 40.0 * math.pi * 2.2)
+                          + A * 0.028))
+        d.line(creme, fill=PALETA_PAPEL["areia"], width=int(A * 0.022), joint="curve")
+        # pepitas e golpes de biscoito: sem isto a fita le-se como tubo de madeira
+        for i in range(0, 41, 2):
+            x = L * i / 40.0
+            y = A * 0.46 + A * 0.14 * math.sin(i / 40.0 * math.pi * 2.2) + A * 0.037
+            raio = A * 0.008
+            d.ellipse((x - raio, y - raio, x + raio, y + raio), fill=(74, 44, 28))
+        for i in range(1, 12):
+            x = L * i / 12.0
+            topo = A * 0.46 + A * 0.14 * math.sin(i / 12.0 * math.pi * 2.2)
+            d.line([(x, topo), (x, topo + A * 0.075)], fill=contorno, width=3)
+        for i in range(0, len(apoio), 5):
+            x, y = apoio[i]
+            d.line([(x, y), (x, A * 0.86)], fill=contorno, width=6)
+        rect(0, int(A * 0.86), L, A, PALETA_PAPEL["verde"], linha=False)
+        tufos(int(A * 0.88))
+
+    elif cena["scene"] == "roda":
+        rect(0, int(A * 0.80), L, A, PALETA_PAPEL["verde"], linha=False)
+        cx, cy, raio = L * 0.5, A * 0.46, A * 0.34
+        d.line([(cx - raio * 0.7, A * 0.86), (cx, cy)], fill=contorno, width=11)
+        d.line([(cx + raio * 0.7, A * 0.86), (cx, cy)], fill=contorno, width=11)
+        d.line(_elipse_tremida((cx, cy), raio, raio, 1.2, s + 2), fill=contorno,
+               width=9, joint="curve")
+        d.line(_elipse_tremida((cx, cy), raio * 0.86, raio * 0.86, 1.2, s + 4),
+               fill=contorno, width=5, joint="curve")
+        for i in range(8):
+            import math
+            angulo = i * math.pi / 4
+            px, py = cx + raio * math.cos(angulo), cy + raio * math.sin(angulo)
+            d.line([(cx, cy), (px, py)], fill=contorno, width=4)
+            circulo((px, py + A * 0.055), L * 0.042, A * 0.045, PALETA_PAPEL["ambar"],
+                    largura_linha=4, semente=i * 9)
+        circulo((cx, cy), L * 0.03, A * 0.05, PALETA_PAPEL["castanho"], semente=6)
+        tufos(int(A * 0.88))
+
+    elif cena["scene"] == "carrossel":
+        rect(0, int(A * 0.80), L, A, PALETA_PAPEL["verde"], linha=False)
+        cx = L * 0.5
+        circulo((cx, A * 0.80), L * 0.30, A * 0.055, PALETA_PAPEL["areia"], semente=2)
+        for i, x in enumerate([0.34, 0.42, 0.50, 0.58, 0.66]):
+            rect(L * x - 6, A * 0.42, L * x + 6, A * 0.80, PALETA_PAPEL["castanho"],
+                 largura_linha=3, semente=i)
+        forma([(cx, A * 0.20), (L * 0.24, A * 0.44), (L * 0.76, A * 0.44)],
+              PALETA_PAPEL["ambar"], largura_linha=6)
+        for i in range(5):
+            largura_faixa = (L * 0.52) / 5
+            x0 = L * 0.24 + i * largura_faixa
+            tronco = [(cx, A * 0.20)]
+            esq = (x0, A * 0.44)
+            dir_ = (x0 + largura_faixa, A * 0.44)
+            if i % 2:
+                d.polygon([tronco[0], esq, dir_], fill=PALETA_PAPEL["areia"])
+        for i in range(9):
+            circulo((L * (0.26 + 0.06 * i), A * 0.455), L * 0.011, A * 0.017,
+                    PALETA_PAPEL["ambar"], largura_linha=2, linha=False, semente=i * 5)
+        d.line([(L * 0.24, A * 0.44), (L * 0.76, A * 0.44)], fill=contorno, width=6)
+        tufos(int(A * 0.93))
+
+    elif cena["scene"] == "tunel":
+        rect(0, 0, L, A, PALETA_PAPEL["verde"], linha=False)
+        for i in range(4):
+            factor = 1.0 - i * 0.19
+            rx = L * 0.52 * factor
+            ry = A * 0.72 * factor
+            cor = (58, 66, 30) if i % 2 else (76, 88, 38)
+            forma(_elipse_tremida((L * 0.5, A * 0.62), rx, ry, 2.0, s + i), cor,
+                  largura_linha=6)
+        forma(_elipse_tremida((L * 0.5, A * 0.62), L * 0.13, A * 0.24, 2.0, s + 9),
+              PALETA_PAPEL["papel"], largura_linha=5)
+        forma([(L * 0.44, A), (L * 0.56, A), (L * 0.545, A * 0.80), (L * 0.455, A * 0.80)],
+              PALETA_PAPEL["areia"], largura_linha=5)
+        for i in range(5):
+            x = L * (0.20 + 0.15 * i)
+            y = A * (0.20 + 0.06 * (i % 2))
+            d.line([(x, 0), (x, y)], fill=contorno, width=3)
+            circulo((x, y + A * 0.03), L * 0.012, A * 0.022, PALETA_PAPEL["ambar"],
+                    largura_linha=2, semente=i * 6)
+        tufos(int(A * 0.94))
+
+    elif cena["scene"] == "espelhos":
+        rect(0, 0, L, A, (236, 224, 204), linha=False)
+        rect(0, int(A * 0.78), L, A, PALETA_PAPEL["areia"], linha=False)
+        for linha in range(3):
+            for coluna in range(9):
+                if (linha + coluna) % 2:
+                    continue
+                x0 = L * coluna / 9.0
+                y0 = A * 0.78 + (A * 0.22) * linha / 3.0
+                d.polygon([(x0, y0), (x0 + L / 9.0, y0),
+                           (x0 + L / 9.0, y0 + A * 0.073), (x0, y0 + A * 0.073)],
+                          fill=(214, 198, 172))
+        for i, (x, w, h) in enumerate([(0.14, 0.17, 0.46), (0.42, 0.20, 0.54), (0.72, 0.16, 0.44)]):
+            cx = L * (x + w / 2)
+            forma(_poligono_rasgado((L * x, A * 0.24, L * (x + w), A * (0.24 + h)), 3, s + i),
+                  PALETA_PAPEL["ambar"], largura_linha=7)
+            forma(_elipse_tremida((cx, A * (0.26 + h * 0.5)),
+                                  L * w * 0.42, A * h * 0.46, 3.0, s + i * 4),
+                  (198, 206, 208), largura_linha=4)
+
+    elif cena["scene"] == "moral":
+        for i, cor in enumerate([(255, 184, 119), (247, 160, 96), (232, 138, 78)]):
+            y0 = A * (0.18 + 0.22 * i)
+            rect(0, y0, L, y0 + A * 0.22, cor, linha=False)
+        circulo((L * 0.5, A * 0.52), L * 0.13, A * 0.16, PALETA_PAPEL["ambar"],
+                largura_linha=0, linha=False, semente=3)
+        rect(0, int(A * 0.72), L, A, PALETA_PAPEL["verde"], linha=False)
+        escuro = (58, 36, 21)
+        cx, cy, raio = L * 0.30, A * 0.50, A * 0.20
+        d.line(_elipse_tremida((cx, cy), raio, raio, 1.0, s + 5), fill=escuro, width=9)
+        import math
+        for i in range(8):
+            angulo = i * math.pi / 4
+            d.line([(cx, cy), (cx + raio * math.cos(angulo), cy + raio * math.sin(angulo))],
+                   fill=escuro, width=6)
+            d.ellipse((cx + raio * math.cos(angulo) - 10, cy + raio * math.sin(angulo) - 10,
+                       cx + raio * math.cos(angulo) + 10, cy + raio * math.sin(angulo) + 10),
+                      fill=escuro)
+        for i, x in enumerate([0.62, 0.74, 0.86, 0.95]):
+            altura_arvore = A * (0.16 + 0.03 * (i % 2))
+            d.polygon([(L * x, A * 0.72 - altura_arvore), (L * x - L * 0.045, A * 0.73),
+                       (L * x + L * 0.045, A * 0.73)], fill=escuro)
+        tufos(int(A * 0.90), cor=(74, 84, 38))
+
+    imagem.save(destino, "PNG")
+    return destino
+
+
+def aplicar_borda_papel(caminho, largura, altura, semente, espessura=None):
+    """STYLE-BIBLE 8: borda de papel rasgado nas extremidades.
+
+    Nenhum fundo toca o rebordo do quadro. Alem de cumprir a regra, tapa as
+    assinaturas que o SD 1.5 insiste em escrever no canto inferior direito.
+    """
+    from PIL import Image, ImageDraw
+    espessura = espessura or max(14, int(largura * 0.016))
+    with Image.open(caminho) as origem:
+        base = origem.convert("RGB")
+    mascara = Image.new("L", base.size, 0)
+    pincel = ImageDraw.Draw(mascara)
+    pincel.polygon(_poligono_rasgado((espessura, espessura, largura - espessura,
+                                      altura - espessura), 4, semente), fill=255)
+    kraft = Image.new("RGB", base.size, PALETA_PAPEL["kraft"])
+    resultado = Image.composite(base, kraft, mascara)
+    desenho = ImageDraw.Draw(resultado)
+    desenho.line(_poligono_rasgado((espessura, espessura, largura - espessura,
+                                    altura - espessura), 4, semente),
+                 fill=PALETA_PAPEL["contorno"], width=2, joint="curve")
+    resultado.save(caminho, "PNG", optimize=True)
+
+
 def desenhar_cartao(cena, largura, altura, destino):
     """Cartao de titulo / cartao final: papel creme, confetti ou coracoes, zero texto."""
     from PIL import Image, ImageDraw, ImageChops
@@ -633,7 +978,8 @@ def random_between(semente, indice):
 # Orquestracao
 # ----------------------------------------------------------------------------
 
-def gerar(cena, servidor, cliente, usar_lora, forcar, aplicar_cor, largura, altura):
+def gerar(cena, servidor, cliente, usar_lora, forcar, aplicar_cor, largura, altura,
+          aplicar_borda=True):
     destino = os.path.join(AQUI, cena["ficheiro"])
     if os.path.exists(destino) and not forcar:
         print("[skip] %s ja existe (usa --force para refazer)" % cena["ficheiro"])
@@ -675,10 +1021,22 @@ def gerar(cena, servidor, cliente, usar_lora, forcar, aplicar_cor, largura, altu
                      "escrevia letras falsas nestas duas cenas"),
         }
 
-    grafo, positivo = construir_workflow(cena, largura, altura, usar_lora)
+    grafo, positivo = construir_workflow(cena, largura, altura, usar_lora, None)
+    esboco_nome = None
+    if cena.get("esboco"):
+        pasta_esbocos = os.path.join(AQUI, "_esbocos")
+        os.makedirs(pasta_esbocos, exist_ok=True)
+        caminho_esboco = os.path.join(pasta_esbocos, "esboco-%s.png" % cena["scene"])
+        desenhar_esboco(cena, largura, altura, caminho_esboco)
+        esboco_nome = carregar_imagem(servidor, caminho_esboco)
+        grafo, positivo = construir_workflow(cena, largura, altura, usar_lora, esboco_nome)
+        print("[esboco] %-10s layout enviado como %s (denoise %.2f)"
+              % (cena["scene"], esboco_nome, AJUSTES["denoise"]))
     print("[fila] %-10s seed=%-8d %dx%d" % (cena["scene"], cena["seed"], largura, altura))
     inicio = time.time()
     prompt_id = submeter(servidor, grafo, cliente)
+    # 2400 s: uma cena ja demorou 1217 s nesta GTX 1060 quando o /free apanhou
+    # o modelo a meio. Desistir aos 900 s era desistir de uma imagem que saiu bem.
     ficheiros = esperar(servidor, prompt_id)
     bytes_png = descarregar(servidor, ficheiros[0])
 
@@ -695,6 +1053,8 @@ def gerar(cena, servidor, cliente, usar_lora, forcar, aplicar_cor, largura, altu
         raise ErroComfy("dimensoes inesperadas em %s: %sx%s"
                         % (cena["ficheiro"], largura_real, altura_real))
 
+    if aplicar_borda:
+        aplicar_borda_papel(destino, largura, altura, cena["seed"])
     if aplicar_cor:
         aplicar_temperatura(destino, cena["temperatura"]["cor"], cena["temperatura"]["opacidade"])
 
@@ -724,6 +1084,9 @@ def gerar(cena, servidor, cliente, usar_lora, forcar, aplicar_cor, largura, altu
         "temperatura_aplicada_no_png": bool(aplicar_cor),
         "prompt_id": prompt_id,
         "segundos": round(segundos, 1),
+        "esboco": esboco_nome,
+        "denoise": AJUSTES["denoise"] if esboco_nome else 1.0,
+        "borda_de_papel": bool(aplicar_borda),
         "nota": "fundo sem personagens e sem texto; personagens saem das folhas aprovadas",
     }
 
@@ -747,6 +1110,10 @@ def main():
     parser.add_argument("--list", action="store_true", help="so mostra o plano")
     parser.add_argument("--no-free", action="store_true", help="nao liberta VRAM entre imagens")
     parser.add_argument("--tint", action="store_true", help="aplica a temperatura 2.3 no PNG")
+    parser.add_argument("--sem-borda", action="store_true",
+                        help="nao desenha a borda de papel rasgado (STYLE-BIBLE 8)")
+    parser.add_argument("--so-borda", action="store_true",
+                        help="aplica so a borda de papel aos PNG que ja existem")
     parser.add_argument("--largura", type=int, default=LARGURA)
     parser.add_argument("--altura", type=int, default=ALTURA)
     parser.add_argument("--passos", type=int, default=PASSOS,
@@ -755,11 +1122,14 @@ def main():
                         help="forca do LoRA infantil nos fundos (0.6-0.9)")
     parser.add_argument("--cfg", type=float, default=CFG,
                         help="cfg de sampling; mais alto empurra o negativo")
+    parser.add_argument("--denoise", type=float, default=AJUSTES["denoise"],
+                        help="denoise do img2img guiado por esboco (0.5-0.75)")
     argumentos = parser.parse_args()
 
     AJUSTES["passos"] = argumentos.passos
     AJUSTES["cfg"] = argumentos.cfg
     AJUSTES["forca_lora"] = argumentos.forca_lora
+    AJUSTES["denoise"] = argumentos.denoise
 
     alvo = CENAS
     if argumentos.only:
@@ -776,6 +1146,20 @@ def main():
     if argumentos.list:
         for cena in alvo:
             print("%-10s seed=%-8d %s" % (cena["scene"], cena["seed"], cena["ficheiro"]))
+        return 0
+
+    if argumentos.so_borda:
+        for cena in alvo:
+            destino = os.path.join(AQUI, cena["ficheiro"])
+            if not os.path.exists(destino):
+                print("[skip] %s nao existe" % cena["ficheiro"])
+                continue
+            if cena.get("metodo") == "cartao-pil":
+                print("[skip] %s e' cartao (ja tem borda propria)" % cena["ficheiro"])
+                continue
+            largura_real, altura_real = tamanho_png(destino)
+            aplicar_borda_papel(destino, largura_real, altura_real, cena["seed"])
+            print("[borda] %s" % cena["ficheiro"])
         return 0
 
     try:
@@ -796,7 +1180,8 @@ def main():
         try:
             registo = gerar(cena, argumentos.server, cliente, usar_lora,
                             argumentos.force, argumentos.tint,
-                            argumentos.largura, argumentos.altura)
+                            argumentos.largura, argumentos.altura,
+                            aplicar_borda=not argumentos.sem_borda)
             if registo:
                 feitos[cena["scene"]] = registo
                 manifest["fundos"] = [feitos[c["scene"]] for c in CENAS if c["scene"] in feitos]
