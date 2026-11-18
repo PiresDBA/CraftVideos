@@ -1071,11 +1071,19 @@ async def grab_image(page, name, prompt, out_dir, wait_s, ref_image=None,
             ok_ref = True
             if ref_image:
                 ok_ref = await attach_reference(page, ref_image)
+                # O Flow falha o anexo na 1a tentativa e consegue na 2a (observado).
+                # Recarrega e tenta de novo, mas NUNCA gera sem a referencia.
                 if not ok_ref:
-                    # REFERENCIA OBRIGATORIA: gerar sem ela produz outra personagem
-                    # (foi a causa da quebra de continuidade do banco).
+                    for tentativa in range(2):
+                        print(f"  ref-image: nova tentativa {tentativa + 1}/2 "
+                              "depois de recarregar a pagina", flush=True)
+                        await open_fresh(page, "image")
+                        ok_ref = await attach_reference(page, ref_image)
+                        if ok_ref:
+                            break
+                if not ok_ref:
                     print("  ERRO: nao consegui anexar a imagem de referencia; "
-                          " abortando para nao gerar outro desenho.", flush=True)
+                          "abortando para nao gerar outro desenho.", flush=True)
                     return {"ok": False,
                             "error": "referencia obrigatoria nao anexada — continuidade nao garantida"}
             # Snapshot das imagens ja na tela (galeria do Flow) ANTES de enviar o
