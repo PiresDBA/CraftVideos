@@ -78,6 +78,26 @@ def micro_movimentos(imgs):
     return resultado
 
 
+def continuidade(pasta, quem):
+    """Compara o quadro 0 com UMA pose aprovada da personagem.
+
+    Limiar 0,45 calibrado: expressões aprovadas dão 0,00-0,40; os ciclos gerados no
+    Flow davam 0,48-2,97. É o teste que impede outro desenho de personagem entrar.
+    """
+    if not quem:
+        return None, None
+    try:
+        from calibrar_continuidade import assinatura, distancia
+        ref = BASE / "chars" / "poses-v3" / quem / "happy.png"
+        frame = Path(pasta) / "f00.png"
+        if not ref.exists() or not frame.exists():
+            return None, None
+        d = distancia(assinatura(frame), assinatura(ref))
+        return d, (d > 0.45)
+    except Exception as e:
+        return None, str(e)
+
+
 def principais(pasta, tipo):
     erros = []
     if tipo in ("marcha", "corrida"):
@@ -128,7 +148,17 @@ def main():
     ap.add_argument("tipo", choices=["marcha", "corrida", "escuta", "fala", "giro",
                                      "sentar", "olhar", "abracar"])
     ap.add_argument("--nome", default="")
+    ap.add_argument("--quem", default="")
     a = ap.parse_args()
+
+    quem = a.quem or (a.nome.split("-")[0] if "-" in a.nome else "")
+    fluxo, cisao = continuidade(a.pasta, quem)
+    if cisao is True:
+        print(f"REJEITADA: continuidade {fluxo:.2f} > 0,45 — "
+              f"a imagem nao e a personagem aprovada ({quem})")
+        return 1
+    if cisao:
+        print(f"AVISO: nao foi possivel medir continuidade: {cisao}")
 
     fs, imgs = carregar(a.pasta)
     if len(imgs) < 6:
@@ -153,7 +183,8 @@ def main():
     if g["media_passos"] < 0.25:
         erros.append(f"quadros identicos: diferenca media {g['media_passos']:.2f}")
 
-    print(json.dumps({"nome": a.nome or a.pasta, "tipo": a.tipo, **g,
+    print(json.dumps({"nome": a.nome or a.pasta, "tipo": a.tipo, "quem": quem,
+                      "continuidade": fluxo, **g,
                       "micro": micro, "regioes_vivas": regioes_vivas,
                       "erros": erros, "veredito": "ACEITE" if not erros else "REJEITADA"},
                      indent=1, ensure_ascii=False))

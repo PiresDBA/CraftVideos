@@ -1,0 +1,84 @@
+{
+ "data": "2026-11-18T09:40:40",
+ "fonte_canonica": "chars/poses-v3/{frida,luna}/*.png",
+ "movidos": [
+  {
+   "ciclo": "frida/marcha-8f",
+   "motivo": "desenho diferente do aprovado",
+   "score": 4.381,
+   "para": "D:\\CRAFT\\work\\frida-luna\\movimentos\\_quarentena\\frida\\marcha-8f"
+  },
+  {
+   "ciclo": "frida/marcha-24f",
+   "motivo": "desenho diferente do aprovado",
+   "score": 3.669,
+   "para": "D:\\CRAFT\\work\\frida-luna\\movimentos\\_quarentena\\frida\\marcha-24f"
+  },
+  {
+   "ciclo": "frida/marcha-24f-fix",
+   "motivo": "desenho diferente do aprovado",
+   "score": 3.699,
+   "para": "D:\\CRAFT\\work\\frida-luna\\movimentos\\_quarentena\\frida\\marcha-24f-fix"
+  },
+  {
+   "ciclo": "frida/marcha-24f-ok",
+   "motivo": "desenho diferente do aprovado",
+   "score": 3.699,
+   "para": "D:\\CRAFT\\work\\frida-luna\\movimentos\\_quarentena\\frida\\marcha-24f-ok"
+  },
+  {
+   "ciclo": "frida/marcha-12f",
+   "motivo": "desenho diferente do aprovado",
+   "score": 5.231,
+   "para": "D:\\CRAFT\\work\\frida-luna\\movimentos\\_quarentena\\frida\\marcha-12f"
+  },
+  {
+   "ciclo": "frida/marcha-12f-v2",
+   "motivo": "desenho diferente do aprovado",
+   "score": 3.381,
+   "para": "D:\\CRAFT\\work\\frida-luna\\movimentos\\_quarentena\\frida\\marcha-12f-v2"
+  },
+  {
+   "ciclo": "frida/marcha-8f-v2",
+   "motivo": "desenho diferente do aprovado",
+   "score": 2.743,
+   "para": "D:\\CRAFT\\work\\frida-luna\\movimentos\\_quarentena\\frida\\marcha-8f-v2"
+  },
+  {
+   "ciclo": "frida/marcha-flow10",
+   "motivo": "desenho diferente do aprovado",
+   "score": 3.067,
+   "para": "D:\\CRAFT\\work\\frida-luna\\movimentos\\_quarentena\\frida\\marcha-flow10"
+  },
+  {
+   "ciclo": "frida/marcha-flow10-lenta",
+   "motivo": "desenho diferente do aprovado",
+   "score": 3.067,
+   "para": "D:\\CRAFT\\work\\frida-luna\\movimentos\\_quarentena\\frida\\marcha-flow10-lenta"
+  },
+  {
+   "ciclo": "frida/escuta",
+   "motivo": "desenho diferente do aprovado",
+   "score": 3.815,
+   "para": "D:\\CRAFT\\work\\frida-luna\\movimentos\\_quarentena\\frida\\escuta"
+  },
+  {
+   "ciclo": "luna/corrida",
+   "motivo": "desenho diferente do aprovado",
+   "score": null,
+   "para": "D:\\CRAFT\\work\\frida-luna\\movimentos\\_quarentena\\luna\\corrida"
+  },
+  {
+   "ciclo": "luna/escuta",
+   "motivo": "desenho diferente do aprovado",
+   "score": 5.763,
+   "para": "D:\\CRAFT\\work\\frida-luna\\movimentos\\_quarentena\\luna\\escuta"
+  },
+  {
+   "ciclo": "luna/olhar",
+   "motivo": "desenho diferente do aprovado",
+   "score": 5.287,
+   "para": "D:\\CRAFT\\work\\frida-luna\\movimentos\\_quarentena\\luna\\olhar"
+  }
+ ]
+}

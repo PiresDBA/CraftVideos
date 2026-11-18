@@ -23,9 +23,11 @@ FETCH = BASE / "flow_fetch_proj.py"
 DOWNLOADER = Path(r"C:\Users\Pires\StickFilms\.tools\flow_dl_all.mjs")
 PROJECT_URL = "https://flow.google.com/u/0/project/62cb2bc8-7c82-4351-850d-d8453429108e"
 CDP = "http://127.0.0.1:18800"
+# Uma pose aprovada por personagem. A folha de 3 vistas confundia o Flow e gerava
+# personagens diferentes — foi a causa raiz da quebra de continuidade.
 REF = {
-    "frida": BASE / "chars" / "frida-v2-ok-flat.png",
-    "luna": BASE / "chars" / "luna-v2-ok-flat.png",
+    "frida": BASE / "chars" / "poses-v3" / "frida" / "happy.png",
+    "luna": BASE / "chars" / "poses-v3" / "luna" / "happy.png",
 }
 
 

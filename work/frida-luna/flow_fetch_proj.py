@@ -1072,7 +1072,12 @@ async def grab_image(page, name, prompt, out_dir, wait_s, ref_image=None,
             if ref_image:
                 ok_ref = await attach_reference(page, ref_image)
                 if not ok_ref:
-                    ref_image = None
+                    # REFERENCIA OBRIGATORIA: gerar sem ela produz outra personagem
+                    # (foi a causa da quebra de continuidade do banco).
+                    print("  ERRO: nao consegui anexar a imagem de referencia; "
+                          " abortando para nao gerar outro desenho.", flush=True)
+                    return {"ok": False,
+                            "error": "referencia obrigatoria nao anexada — continuidade nao garantida"}
             # Snapshot das imagens ja na tela (galeria do Flow) ANTES de enviar o
             # prompt: o download nunca deve capturar uma delas como imagem nova.
             try:

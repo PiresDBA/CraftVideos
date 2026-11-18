@@ -26,8 +26,10 @@ BASE = Path(r"D:\CRAFT\work\frida-luna")
 CDP = "http://127.0.0.1:18800"
 PROJETO = "https://flow.google.com/u/0/project/62cb2bc8-7c82-4351-850d-d8453429108e"
 DOWNLOADER = Path(r"C:\Users\Pires\StickFilms\.tools\flow_dl_all.mjs")
-REF = {"frida": BASE / "chars" / "frida-v2-ok-flat.png",
-       "luna": BASE / "chars" / "luna-v2-ok-flat.png"}
+# UMA pose aprovada por personagem — nunca a folha de 3 vistas (confundia o Flow
+# e produzia desenhos diferentes a cada geracao)
+REF = {"frida": BASE / "chars" / "poses-v3" / "frida" / "happy.png",
+       "luna": BASE / "chars" / "poses-v3" / "luna" / "happy.png"}
 PASSADA_ZERO = {"escuta", "fala", "sentar", "olhar", "piscar"}
 
 
@@ -66,6 +68,57 @@ def estado():
               f"{t['durationInFrames']} frames")
     cards = sorted((BASE / "card").glob("*.mp4"), key=lambda p: p.stat().st_mtime)[-3:]
     print("\n  últimos renders: " + (", ".join(p.name for p in cards) or "nenhum"))
+
+
+# ---------------------------------------------------------------------- portas
+
+def regras():
+    f = BASE / "animacao" / "regras.json"
+    return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+
+
+def verificar_portas(verbose=True):
+    """Aplica as regras obrigatórias. Devolve (ok, lista_de_falhas)."""
+    R = regras()
+    falhas = []
+    mods = R.get("portas", {})
+
+    for nome, cfg in mods.items():
+        for arq in cfg.get("exige_arquivos", []):
+            if not (BASE / arq).exists():
+                falhas.append(f"{nome}: falta {arq}")
+        arq = cfg.get("exige_arquivo")
+        if arq and not (BASE / arq).exists():
+            falhas.append(f"{nome}: falta {arq}")
+
+    # continuidade: nenhum ciclo do banco pode ser outro desenho
+    rel = BASE / "animacao" / "auditoria-continuidade.json"
+    if rel.exists():
+        for r in json.loads(rel.read_text(encoding="utf-8")):
+            if r.get("tipo") == "ciclo-gerado" and r.get("score", 0) > 0.45:
+                falhas.append(f"continuidade: {r['nome']} score {r['score']} > 0,45")
+
+    # continuidade real: comparar cada ciclo do banco com a pose aprovada
+    man = json.loads((BASE / "movimentos" / "manifest.json").read_text(encoding="utf-8"))
+    for quem, movs in man["personagens"].items():
+        for nome in movs:
+            if nome.startswith(quem + "-"):
+                falhas.append(f"banco: nome com prefixo {quem}/{nome}")
+
+    aprov = BASE / "animacao" / "aprovacao.json"
+    if aprov.exists():
+        a = json.loads(aprov.read_text(encoding="utf-8"))
+        if not a.get("aprovado"):
+            falhas.append("aprovacao_humana: amostra ainda nao aprovada")
+
+    if verbose:
+        if falhas:
+            print("  PORTAS FECHADAS:")
+            for f in falhas:
+                print("   - " + f)
+        else:
+            print("  portas: OK")
+    return (not falhas), falhas
 
 
 # ---------------------------------------------------------------------- prompts
@@ -187,6 +240,10 @@ def novos():
 
 def episodio():
     sec("RENDERIZAR EPISÓDIO COMPLETO")
+    ok, falhas = verificar_portas()
+    if not ok:
+        print("  RENDER BLOQUEADO pelas regras. Corrigir as falhas acima primeiro.")
+        return 2
     rodar(["node", "gerar_timeline.mjs"], cwd=BASE / "remotion")
     rc, _ = rodar(["npm", "run", "render"], cwd=BASE / "remotion")
     print(f"  render: {'OK' if rc == 0 else 'FALHOU'} -> card/parque-dos-petes.mp4")
@@ -219,6 +276,51 @@ def tudo():
     comparar()
 
 
+def produzir(limite=0):
+    """Orquestra pela ordem obrigatória: plano -> gerar -> validar -> banco -> amostra."""
+    sec("PRODUÇÃO ORDENADA (Jarvis)")
+    print("  1/6 plano de beats")
+    rodar([sys.executable, str(BASE / "plano_animacao.py")], mostrar=False)
+
+    fal = BASE / "animacao" / "faltam.json"
+    fila = []
+    if fal.exists():
+        d = json.loads(fal.read_text(encoding="utf-8"))
+        for quem, movs in d.items():
+            for mov, ids in movs.items():
+                fila.append((len(ids), quem, mov))
+        fila.sort(reverse=True)
+    if limite:
+        fila = fila[:limite]
+
+    print(f"  2/6 geracao e validacao de {len(fila)} movimentos")
+    for n, quem, mov in fila:
+        print(f"\n  >>> {quem}/{mov} ({n} beats)")
+        for tentativa in range(1, 4):
+            print(f"    tentativa {tentativa}/3")
+            if ciclo(quem, mov) == 0:
+                break
+
+    print("\n  3/6 auditoria de continuidade")
+    rodar([sys.executable, str(BASE / "auditoria_consistencia.py")], mostrar=False)
+    ok, falhas = verificar_portas(verbose=False)
+
+    print("  4/6 timeline e amostra")
+    rodar(["node", "gerar_timeline.mjs"], cwd=BASE / "remotion", mostrar=False)
+    rodar(["npx", "remotion", "render", "src/index.ts", "Episodio",
+           "_remotion-preview-v3.mp4", "--frames=0-599", "--scale=0.5",
+           "--codec=h264", "--pixel-format=yuv420p", "--crf=22"],
+          cwd=BASE / "remotion", mostrar=False)
+
+    print("  5/6 verificação de portas")
+    ok, falhas = verificar_portas()
+    print("  6/6 PARADO à espera da tua aprovação da amostra.")
+    print("     Para aprovar: escrever animacao/aprovacao.json com {\"aprovado\": true}")
+    if falhas:
+        print("     (há portas fechadas — ver acima)")
+    return 0 if ok else 1
+
+
 MENU = [
     ("1", "ver estado do projecto", estado),
     ("2", "criar/regenerar um ciclo (pergunta nome)", None),
@@ -226,6 +328,8 @@ MENU = [
     ("4", "renderizar episódio completo", episodio),
     ("5", "comparar com o vídeo de origem", comparar),
     ("6", "PIPELINE COMPLETO (tudo)", tudo),
+    ("7", "produzir por ordem (planejar-gerar-validar-amostra)", produzir),
+    ("8", "verificar regras e portas", verificar_portas),
     ("0", "sair", None),
 ]
 
@@ -283,6 +387,10 @@ def main():
         comparar()
     elif cmd == "tudo":
         tudo()
+    elif cmd == "produzir":
+        produzir(int(sys.argv[2]) if len(sys.argv) > 2 else 0)
+    elif cmd == "verificar":
+        verificar_portas()
     elif cmd in ("ajuda", "help", "-h"):
         print(__doc__)
     else:

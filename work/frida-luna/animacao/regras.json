@@ -1,0 +1,65 @@
+{
+ "versao": 1,
+ "data": "2026-11-18",
+ "principio": "O personagem e uma unica imagem aprovada. O que muda e o movimento, nunca o desenho.",
+ "referencias_canonicas": {
+  "frida": "chars/poses-v3/frida/happy.png",
+  "luna": "chars/poses-v3/luna/happy.png"
+ },
+ "limiares": {
+  "continuidade_max": 0.45,
+  "altura_max_px": 6,
+  "deriva_centro_max_px": 10,
+  "emenda_max_factor": 1.5,
+  "regioes_micro_min": 2
+ },
+ "ordem_obrigatoria": [
+  "plano",
+  "geracao",
+  "download",
+  "corte",
+  "continuidade",
+  "movimento",
+  "micro",
+  "banco",
+  "timeline",
+  "amostra",
+  "aprovacao_humana",
+  "render_final"
+ ],
+ "portas": {
+  "plano": {
+   "exige_arquivos": ["animacao/plano-por-beat.json", "animacao/faltam.json"],
+   "comando": "py plano_animacao.py"
+  },
+  "continuidade": {
+   "exige_arquivos": ["animacao/calibracao-frida.json", "animacao/calibracao-luna.json"],
+   "verificacao": "todo sprite do banco com score > 0.45 reprova o lote",
+   "comando": "py auditoria_consistencia.py"
+  },
+  "movimento": {
+   "verificacao": "marcha troca pernas; escuta nao anda; fala fecha ciclo; emenda <= 1.5x media",
+   "comando": "py validar_ciclo.py <pasta> <tipo> --quem <quem>"
+  },
+  "banco": {
+   "verificacao": "nome curto do movimento (escuta, nao luna-escuta) e zero ciclos reprovados"
+  },
+  "amostra": {
+   "exige_arquivo": "remotion/_remotion-preview-v3.mp4",
+   "comando": "npx remotion render src/index.ts Episodio _remotion-preview-v3.mp4 --frames=0-599 --scale=0.5"
+  },
+  "aprovacao_humana": {
+   "marcador": "animacao/aprovacao.json",
+   "regra": "o render final so corre depois de o operador escrever {\"aprovado\":true,\"quem\":\"...\",\"data\":\"...\"}"
+  }
+ },
+ "proibido": [
+  "gerar no Flow sem anexar a imagem de referencia aprovada",
+  "usar folha de 3 vistas como referencia",
+  "registar ciclo com o nome da personagem como prefixo",
+  "animar o episodio antes da aprovacao da amostra",
+  "aceitar tira que falhe continuidade mesmo que o movimento esteja bom",
+  "introduzir sprite de outra geracao sem auditar"
+ ],
+ "accao_em_falha": "parar e reportar; NUNCA seguir para a fase seguinte"
+}
