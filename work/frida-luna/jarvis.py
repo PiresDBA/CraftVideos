@@ -133,7 +133,8 @@ def experimentar(imagem, nome, tipo, quem):
     if v.get("veredito") != "ACEITE":
         return None, v.get("erros")
     fps = "7.5"
-    cmd = [sys.executable, str(BASE / "movimentos.py"), "registar", quem, nome,
+    mov = nome[len(quem) + 1:] if nome.startswith(quem + "-") else nome
+    cmd = [sys.executable, str(BASE / "movimentos.py"), "registar", quem, mov,
            str(pasta), fps, "--fonte", f"Flow {imagem.name}",
            "--nota", "validado automaticamente pelo jarvis"]
     rodar(cmd)

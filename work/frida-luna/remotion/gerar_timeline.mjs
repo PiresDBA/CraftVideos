@@ -223,6 +223,10 @@ const resolverMovimento = (quem, bruto) => {
 // D) Fundo por cena (um PNG aprovado por cena em bg/flow/)
 // ---------------------------------------------------------------------------
 const fundoFinal = (nome) => {
+  // O beat 1 pede "cartao de titulo, fundo creme, particulas". O PNG aprovado para
+  // isso e final.png (creme com confete); hook.png e o parque inteiro e faz o vídeo
+  // parecer que começa no meio da história.
+  if (nome === "hook") return "bg/flow/final.png";
   for (const p of [`bg/flow/${nome}.png`, `bg/${nome}.png`]) {
     if (existsSync(join(RAIZ, p))) return p;
   }

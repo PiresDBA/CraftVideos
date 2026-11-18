@@ -81,12 +81,26 @@ const spriteEm = (
 };
 
 /** Sombra eliptica medida + sprite ancorado pelos pes. */
-const Personagem: React.FC<{ quem: "frida" | "luna"; dado: SpriteBeat; src: string }> = ({
+const Personagem: React.FC<{ quem: "frida" | "luna"; dado: SpriteBeat; src: string; frame: number }> = ({
+  quem,
   dado,
   src,
+  frame,
 }) => {
   const s: Sombra = dado.sombra ?? { w: 280, h: 16, op: 0.2, dx: 0, dy: 0 };
   const largura = dado.h * 1.15; // caixa larga; o sprite entra com object-fit: contain
+
+  // MICRO-MOVIMENTOS PROCEDURAIS — não dependem de mais imagens.
+  // Respiração: escala Y 1,000 -> 1,012 -> 1,000 (~7 px a 620 de altura), 48 frames.
+  // Inclinação da cabeça: +-2,5 graus em torno dos pés, 120 frames.
+  // Micro balanço lateral: 1,2 px, 24 frames. A Luna vai com 15 frames de atraso.
+  const fase = quem === "luna" ? 15 : 0;
+  const t = (frame + fase) / 30;
+  const resp = Math.sin((t * Math.PI * 2) / 48) * 0.012;
+  const inc = Math.sin((t * Math.PI * 2) / 120) * 2.5;
+  const balanco = Math.sin((t * Math.PI * 2) / 24) * 1.2;
+  const micro = `translateX(${balanco.toFixed(2)}px) rotate(${inc.toFixed(2)}deg) scaleY(${(1 + resp).toFixed(4)})`;
+  const transform = dado.flip ? `scaleX(-1) ${micro}` : micro;
 
   return (
     <React.Fragment>
@@ -109,7 +123,7 @@ const Personagem: React.FC<{ quem: "frida" | "luna"; dado: SpriteBeat; src: stri
           top: dado.y - dado.h,
           width: largura,
           height: dado.h,
-          transform: dado.flip ? "scaleX(-1)" : undefined,
+          transform,
           transformOrigin: "50% 100%",
         }}
       >
@@ -151,7 +165,7 @@ const Legenda: React.FC<{ beat: Beat; frame: number }> = ({ beat, frame }) => {
       style={{
         position: "absolute",
         left: "50%",
-        bottom: 64,
+        bottom: 150,
         transform: "translateX(-50%)",
         maxWidth: 1560,
         padding: "14px 30px",
@@ -178,7 +192,7 @@ const Legenda: React.FC<{ beat: Beat; frame: number }> = ({ beat, frame }) => {
 const Espera: React.FC = () => (
   <AbsoluteFill style={{ backgroundColor: "#FFF1DC" }}>
     <Img
-      src={staticFile("bg/flow/hook.png")}
+      src={staticFile("bg/flow/final.png")}
       style={{ width: "100%", height: "100%", objectFit: "cover" }}
     />
   </AbsoluteFill>
@@ -191,10 +205,14 @@ export const Episodio: React.FC = () => {
   if (!tl) return <Espera />;
 
   const cena: Scene | undefined = cenaEm(tl, frame);
-  const beat: Beat | undefined = cena ? beatEm(cena, frame) : undefined;
-  const fundo = cena?.bg ?? "bg/flow/hook.png";
+  const beatDentro: Beat | undefined = cena ? beatEm(cena, frame) : undefined;
+  // A narração entra 3,9 s depois do vídeo. Sem isto os primeiros 116 frames mostram
+  // só o fundo e parece que a animação começa a meio. Usa o primeiro beat da cena
+  // e fixa o quadro do ciclo no início até a fala começar.
+  const beat: Beat | undefined = beatDentro ?? cena?.beats?.[0];
+  const fundo = cena?.bg ?? "bg/flow/final.png";
   const cam: Camera = cena?.camera ?? { move: "none", amount: 0 };
-  const local = beat ? frame - beat.from : frame;
+  const local = beat ? Math.max(0, frame - beat.from) : frame;
 
   // "a frente" define o ultimo z dentro da camada de personagens.
   const elenco: { quem: "frida" | "luna"; dado: SpriteBeat }[] = beat
@@ -226,6 +244,7 @@ export const Episodio: React.FC = () => {
             quem={quem}
             dado={dado}
             src={spriteEm(tl, quem, dado, local, fps)}
+            frame={frame}
           />
         ))}
       </div>

@@ -75,7 +75,8 @@ def main():
         print(f"  ACEITE: emenda {validacao.get('emenda'):.1f} vs "
               f"{validacao.get('media_passos'):.1f}", flush=True)
 
-        corr([sys.executable, str(BASE / "movimentos.py"), "registar", quem, nome,
+        mov = nome[len(quem) + 1:] if nome.startswith(quem + "-") else nome
+        corr([sys.executable, str(BASE / "movimentos.py"), "registar", quem, mov,
               str(pasta), str(fps), "--fonte", f"Flow {origem.name}",
               "--nota", "validado por validar_ciclo.py"])
         passada = "0" if tipo in ("escuta", "fala", "sentar", "olhar") else None

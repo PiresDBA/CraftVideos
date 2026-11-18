@@ -21,6 +21,18 @@
         "movimentos/frida/escuta/f07.png"
       ]
     },
+    "luna/escuta": {
+      "fps": 7.5,
+      "frames": [
+        "movimentos/luna/escuta/f00.png",
+        "movimentos/luna/escuta/f01.png",
+        "movimentos/luna/escuta/f02.png",
+        "movimentos/luna/escuta/f03.png",
+        "movimentos/luna/escuta/f04.png",
+        "movimentos/luna/escuta/f05.png",
+        "movimentos/luna/escuta/f06.png"
+      ]
+    },
     "frida/marcha-flow10": {
       "fps": 10,
       "frames": [
@@ -43,6 +55,19 @@
         "movimentos/luna/corrida/run_003.png",
         "movimentos/luna/corrida/run_004.png",
         "movimentos/luna/corrida/run_005.png"
+      ]
+    },
+    "luna/olhar": {
+      "fps": 7.5,
+      "frames": [
+        "movimentos/luna/olhar/f00.png",
+        "movimentos/luna/olhar/f01.png",
+        "movimentos/luna/olhar/f02.png",
+        "movimentos/luna/olhar/f03.png",
+        "movimentos/luna/olhar/f04.png",
+        "movimentos/luna/olhar/f05.png",
+        "movimentos/luna/olhar/f06.png",
+        "movimentos/luna/olhar/f07.png"
       ]
     }
   },
@@ -73,7 +98,7 @@
       "scene": "hook",
       "from": 0,
       "durationInFrames": 505,
-      "bg": "bg/flow/hook.png",
+      "bg": "bg/flow/final.png",
       "chao": 1000,
       "camera": {
         "move": "push-in",
