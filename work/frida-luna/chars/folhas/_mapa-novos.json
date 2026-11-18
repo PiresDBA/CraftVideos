@@ -1,4 +1,30 @@
 {
- "luna-escuta": {"ficheiro": "flow-22.webp", "tipo": "escuta", "fps": 7.5},
- "luna-olhar": {"ficheiro": "flow-16.webp", "tipo": "olhar", "fps": 7.5}
+ "luna-escuta": {
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\imagens-download\\Dachshund_glance_animation_chara…_9d333d5c.jpg",
+  "tipo": "escuta",
+  "fps": 7.5,
+  "continuidade": 0.24,
+  "pontos": 7
+ },
+ "luna-fala": {
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\imagens-download\\Dachshund_sit_stand_loop_00ede980.jpg",
+  "tipo": "fala",
+  "fps": 7.5,
+  "continuidade": 0.25,
+  "pontos": 7
+ },
+ "frida-escuta": {
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\imagens-download\\Sprite_sheet_for_escuta_cycle_60601875.jpg",
+  "tipo": "escuta",
+  "fps": 7.5,
+  "continuidade": 0.39,
+  "pontos": 6
+ },
+ "frida-fala": {
+  "ficheiro": "D:\\CRAFT\\work\\frida-luna\\imagens-download\\Sprite_sheet_generation_for_move…_8692e946.jpg",
+  "tipo": "fala",
+  "fps": 7.5,
+  "continuidade": 0.28,
+  "pontos": 7
+ }
 }

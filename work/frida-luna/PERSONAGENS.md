@@ -10,17 +10,16 @@
 
 ## Proporção (regra dura)
 
-| personagem | massa | escala no quadro | altura relativa |
+| personagem | massa | escala de ALTURA no quadro | nota |
 | --- | --- | --- | --- |
-| **Frida** (buldogue) | 20 kg | **1,00** | 100 % |
-| **Luna** (salsicha) | 10 kg | **0,50** | 50 % |
+| **Frida** (buldogue) | 20 kg | **1,00** | referência |
+| **Luna** (salsicha) | 10 kg | **0,72** | Frida é maior, mas **não** o dobro na altura |
 
-- Frida tem **o dobro** da Luna: é mais alta e mais pesada no quadro.
-- Quando as duas aparecem juntas, a Luna nunca passa de **metade** da altura da Frida.
-- A Luna é longa, não alta: ganha em comprimento, não em altura. Nunca "esticar" a Luna
-  em altura para preencher o quadro.
-- Âncora das duas: **pés no chão** (mesma linha de base). A diferença de altura aparece
-  para cima, não para os lados.
+- **Correcção do utilizador (final):** a Frida é **maior**, mas **não o dobro**. A 0,50 ficou
+  ridícula; a 0,62 ainda lia como pequena demais. **Fica 0,72** — Frida ≈ 1,4× a altura da Luna.
+- A diferença de "peso" aparece no **volume** (corpo mais largo e alto), não num factor 2 na altura.
+- A Luna é longa, não alta: ganha em comprimento, não em altura.
+- Âncora das duas: **pés no chão** (mesma linha de base).
 
 ## Identidade visual fixa
 
